@@ -13,5 +13,7 @@
         </Grid.RowDefinitions>
         <local:Top_Bar />
         <TextBox Grid.Row="1" HorizontalAlignment="Left" Height="66" TextWrapping="Wrap" Text="Favorites" VerticalAlignment="Top" Width="236" Margin="528,298,0,0" FontSize="24"/>
+        <local:SmallListing x:Name="Test" HorizontalAlignment="Left" Height="350
+                            " Margin="65,30.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="401"/>
     </Grid>
 </UserControl>
