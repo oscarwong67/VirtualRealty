@@ -19,8 +19,21 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Column="1" Text="Hello World" />
         <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
-        <Button Content="Favorites" Click="GoToFavorites" Grid.Column="8" HorizontalAlignment="Left" Margin="43,49,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Text="Enter your city of neighborhood" TextChanged="TextBox_TextChanged" Margin="5,48,78,52" Grid.Column="1" Grid.ColumnSpan="2" />
+        <ComboBox Text="Home Type" IsEditable ="True" IsReadOnly="True" Name="HomeType" Grid.ColumnSpan="2" Margin="87,48,44,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Margin="5" IsChecked="{Binding IsChecked}"></CheckBox>
+                        <TextBlock Margin="5" Text="{Binding HomeTypeName}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+
+
+        </ComboBox>
+
+        <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>
     </Grid>
 </UserControl>
