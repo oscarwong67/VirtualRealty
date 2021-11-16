@@ -20,9 +20,13 @@ namespace VirtualRealty
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<Listing> Listings;
+
         public MainWindow()
         {
             InitializeComponent();
+            Listings = CreateListings();
 
             Switcher.pageSwitcher = this;
             Switcher.Switch(new SavedSearches());  //initial page   
@@ -31,6 +35,16 @@ namespace VirtualRealty
         public void Navigate(UserControl nextPage)
         {
             this.Content = nextPage;
+        }
+
+
+        /*
+         * Method used to create disgusting list of Listings
+         */
+        private List<Listing> CreateListings()
+        {
+            //TODO
+            return null;
         }
     }
 }
