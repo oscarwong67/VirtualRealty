@@ -22,5 +22,6 @@
         <TextBox Grid.Column="1" Text="Hello World" />
         <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
         <Button Content="Favorites" Click="GoToFavorites" Grid.Column="8" HorizontalAlignment="Left" Margin="43,49,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Saved Searches" Click="GoToSavedSearches" Grid.Column="7" HorizontalAlignment="Left" Margin="25,49,0,0" VerticalAlignment="Top" Width="96"/>
     </Grid>
 </UserControl>

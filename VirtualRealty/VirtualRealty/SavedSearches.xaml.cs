@@ -20,7 +20,7 @@ namespace VirtualRealty
     /// </summary>
     public partial class SavedSearches : UserControl
     {
-        private static List<SavedSearch> savedSearches;
+        public static List<SavedSearch> savedSearches;
 
         public SavedSearches()
         {
