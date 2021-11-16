@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace VirtualRealty
 {
     /// <summary>
-    /// Interaction logic for SavedSearches.xaml
+    /// Interaction logic for SavedSearch.xaml
     /// </summary>
-    public partial class SavedSearches : UserControl
+    public partial class SavedSearch : UserControl
     {
-        private static List<SavedSearch> savedSearches;
-
-        public SavedSearches()
+        public SavedSearch()
         {
             InitializeComponent();
-
-            foreach (SavedSearch savedSearch in savedSearches) {
-                SavedSearchesSection.Children.Add(savedSearch);
-            }
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }
