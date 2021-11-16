@@ -33,7 +33,7 @@ namespace VirtualRealty
 
             foreach (SmallListing L in Listings)
             {
-                switch (i)
+                switch (i % 3)
                 {
                     case 0:
                         Left.Children.Add(L);
