@@ -69,37 +69,41 @@ namespace VirtualRealty
         {
             SavedSearches.savedSearches = new List<SavedSearch>();
 
-            SavedSearch savedSearch1 = new SavedSearch();
-            savedSearch1.SearchName = "Condos in Calgary";
-            savedSearch1.LocationSearchString = "Calgary";
-            savedSearch1.HomeType = new List<HomeType>
+            SavedSearch savedSearch1 = new SavedSearch
+            {
+                SearchName = "Condos in Calgary",
+                LocationSearchString = "Calgary",
+                HomeType = new List<HomeType>
             {
                 HomeType.Condo,
+                HomeType.Apartment
+            },
+                MinPrice = 100000,
+                MaxPrice = 500000,
+                MinSqFt = 500,
+                MaxSqFt = 1200,
+                LastAccessed = DateTime.Parse("6/10/2021"),
+                DateSaved = DateTime.Parse("3/10/2021")
             };
-            savedSearch1.MinPrice = 100000;
-            savedSearch1.MaxPrice = 500000;
-            savedSearch1.MinSqFt = 500;
-            savedSearch1.MaxSqFt = 1200;
-            savedSearch1.LastAccessed = DateTime.Parse("6/10/2021");
-            savedSearch1.DateSaved = DateTime.Parse("3/10/2021");
 
             SavedSearches.savedSearches.Add(savedSearch1);
 
-            SavedSearch savedSearch2 = new SavedSearch();
-            savedSearch2.SearchName = "Mansions";
-            savedSearch2.LocationSearchString = "Airdrie";
-            savedSearch2.HomeType = new List<HomeType>
+            SavedSearch savedSearch2 = new SavedSearch
+            {
+                SearchName = "Mansions",
+                LocationSearchString = "Airdrie",
+                HomeType = new List<HomeType>
             {
                 HomeType.House,
+            },
+                MinPrice = 5000000,
+                MinSqFt = 3000,
+                MaxSqFt = 10000,
+                MinBeds = 5,
+                MinBaths = 5,
+                LastAccessed = DateTime.Parse("6/10/2021"),
+                DateSaved = DateTime.Parse("3/10/2021")
             };
-            savedSearch2.MinPrice = 5000000;
-            savedSearch2.MaxPrice = 9999000;
-            savedSearch2.MinSqFt = 3000;
-            savedSearch2.MaxSqFt = 10000;
-            savedSearch2.MinBeds = 5;
-            savedSearch2.MinBaths = 5;
-            savedSearch2.LastAccessed = DateTime.Parse("6/10/2021");
-            savedSearch2.DateSaved = DateTime.Parse("3/10/2021");
 
             SavedSearches.savedSearches.Add(savedSearch2);
         }
