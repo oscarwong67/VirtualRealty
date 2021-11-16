@@ -58,14 +58,25 @@
     <Compile Include="Favorites.xaml.cs">
       <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Listing.cs" />
+    <Compile Include="ListingsPage.xaml.cs">
+      <DependentUpon>ListingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SavedSearches.xaml.cs">
       <DependentUpon>SavedSearches.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SmallListing.xaml.cs">
+      <DependentUpon>SmallListing.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switcher.cs" />
     <Compile Include="Top_Bar.xaml.cs">
       <DependentUpon>Top_Bar.xaml</DependentUpon>
     </Compile>
     <Page Include="Favorites.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -82,6 +93,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SavedSearches.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SmallListing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
