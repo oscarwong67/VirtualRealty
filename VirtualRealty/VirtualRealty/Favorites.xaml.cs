@@ -23,9 +23,6 @@ namespace VirtualRealty
         public Favorites()
         {
             InitializeComponent();
-
-
-            this.Test.SetListing(new Listing());
         }
     }
 }
