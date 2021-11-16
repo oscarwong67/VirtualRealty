@@ -66,68 +66,41 @@ namespace VirtualRealty
             }
         }
 
-        
+
 
         /*
          * Massive headache to filer listings.
-         * For each integer filter, set to -1 to not filter
-         * For Filter filters, set to Filter.Any to not filter
+         * All filter arguments are optional, meaning you only need to include the filters you want.
+         *  ex FilterListings(SomeList,PriceMax:30000,MinSize:500)
+         * This means you can also call this function in sequence with one filter each time
+         * to filter by multiple filters (although it will be slow).
          */
-        public static List<Listing> FilterListings(List<Listing> Listings,int PriceMin,int PriceMax,/*HomeType Type,*/int MinBeds,int MinBaths,int MinSize, int MaxSize,int MaxListingAge, int MinYear,int MaxYear,string Washer, string Parking)
+        public static List<Listing> FilterListings(List<Listing> Listings, int PriceMin = -1, int PriceMax = -1,/*HomeType[] Types,*/int MinBeds = -1, int MinBaths = -1, int MinSize = -1, int MaxSize = -1, int MaxListingAge = -1, int MinYear = -1, int MaxYear = -1, string Washer = "", string Parking = "")
         {
             List<Listing> ToReturn = new List<Listing>();
 
             foreach (Listing L in Listings){
-                if (PriceMin >= 0 && L.Price < PriceMin)
-                {
-                    continue;
-                }
-                if (PriceMax >= 0 && L.Price > PriceMax)
-                {
-                    continue;
-                }
+
+                //each if checks if that filter matters, and then if this filter matches
+                if (PriceMin >= 0 && L.Price < PriceMin) continue;
+                if (PriceMax >= 0 && L.Price > PriceMax) continue;
                 /*
                 if (HomeType)
                 {
                     //TODO, waiting on Oscar's branch
                 }
                 */
-                if (MinBeds >= 0 && L.Beds < MinBeds)
-                {
-                    continue;
-                }
-                if (MinBaths >= 0 && L.Baths < MinBaths)
-                {
-                    continue;
-                }
-                if (MinSize >= 0 && L.size < MinSize)
-                {
-                    continue;
-                }
-                if (MaxSize >= 0 && L.size > MaxSize)
-                {
-                    continue;
-                }
-                if (MaxListingAge >= 0 && (DateTime.Today - L.DateListed).Days > MaxListingAge)
-                {
-                    continue;
-                }
-                if (MinYear >= 0 && L.YearBuilt < MinYear)
-                {
-                    continue;
-                }
-                if (MaxYear >= 0 && L.YearBuilt > MaxYear)
-                {
-                    continue;
-                }
-                if (Washer.Length != 0 && !L.Washer.Contains(Washer))
-                {
-                    continue;
-                }
-                if (Parking.Length != 0 && !L.Parking.Contains(Parking))
-                {
-                    continue;
-                }
+                if (MinBeds >= 0 && L.Beds < MinBeds) continue;
+                if (MinBaths >= 0 && L.Baths < MinBaths) continue;
+                if (MinSize >= 0 && L.size < MinSize) continue;
+                if (MaxSize >= 0 && L.size > MaxSize) continue;
+                if (MaxListingAge >= 0 && (DateTime.Today - L.DateListed).Days > MaxListingAge) continue;
+                if (MinYear >= 0 && L.YearBuilt < MinYear) continue;
+                if (MaxYear >= 0 && L.YearBuilt > MaxYear) continue;
+
+                //simple substring check for washer and parking
+                if (Washer.Length != 0 && !L.Washer.Contains(Washer)) continue;
+                if (Parking.Length != 0 && !L.Parking.Contains(Parking)) continue;
 
                 //this Listing passes all of the filters
                 ToReturn.Add(L);
