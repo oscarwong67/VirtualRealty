@@ -58,6 +58,7 @@
     <Compile Include="Favorites.xaml.cs">
       <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Listing.cs" />
     <Compile Include="SavedSearches.xaml.cs">
       <DependentUpon>SavedSearches.xaml</DependentUpon>
     </Compile>
