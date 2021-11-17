@@ -31,6 +31,12 @@ namespace VirtualRealty
             Switcher.Switch(new Favorites());
         }
 
+        void GoToSavedSearches(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new SavedSearches());
+        }
+
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

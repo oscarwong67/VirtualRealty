@@ -21,7 +21,8 @@
 
         <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
         <TextBox Text="Enter your city of neighborhood" TextChanged="TextBox_TextChanged" Margin="21,48,62,52" Grid.Column="1" Grid.ColumnSpan="2" />
-        <ComboBox Text="Home Type" IsEditable ="True" IsReadOnly="True" Name="HomeType" Grid.ColumnSpan="2" Margin="87,48,99,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged">
+
+        <ComboBox Text="Home Type" IsEditable ="True" IsReadOnly="True" Name="HomeType" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -31,6 +32,18 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <TextBlock Margin="89,50,117,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <ComboBox Text="Beds &amp; Baths" IsEditable ="True" IsReadOnly="True" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,106,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <Button Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
         <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>
     </Grid>
 </UserControl>
