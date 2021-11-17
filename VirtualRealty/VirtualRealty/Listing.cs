@@ -15,11 +15,15 @@ namespace VirtualRealty
         public readonly int Price, Beds, Baths, YearBuilt, size; //size is square footage
         public readonly DateTime DateListed;
         public List<string> Images { get; set; } //list of paths to images for this listing
+        public SmallListing Small;
+        //public BigListing Big; //Wait for Matthew's branch
 
         public Listing()
         {
             //generic contructor, should not be used
             DateListed = DateTime.Now;
+            Small = new SmallListing();
+            Small.SetListing(this);
         }
 
         public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, int Bath, int Size, string Type,
@@ -46,6 +50,9 @@ namespace VirtualRealty
             this.Gym = Gym;
             this.Elevator = Elevator;
             this.Images = Images;
+
+            Small = new SmallListing();
+            Small.SetListing(this);
         }
 
         public bool ToggleFavourite()
