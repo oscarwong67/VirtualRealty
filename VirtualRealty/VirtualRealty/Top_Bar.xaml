@@ -19,10 +19,18 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
+        <Button Click="GoToHomePage" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Height="56" Margin="0,27,0,0">
+            <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
+        </Button>
+
         <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
         <TextBox Text="Enter your city of neighborhood" TextChanged="TextBox_TextChanged" Margin="21,48,62,52" Grid.Column="1" Grid.ColumnSpan="2" />
 
-        <ComboBox Text="Home Type" IsEditable ="True" IsReadOnly="True" Name="HomeType" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        <ComboBox Text="Price" Name="Price" Grid.ColumnSpan="2" Margin="109,48,107,52" Grid.Column="2" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        </ComboBox>
+        <TextBlock Margin="111,50,126,54" Text="Price" Grid.Column="2" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <ComboBox Text="Home Type" Name="HomeType" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -32,17 +40,88 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Margin="89,50,117,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+        <TextBlock Margin="90,50,116,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
 
-        <ComboBox Text="Beds &amp; Baths" IsEditable ="True" IsReadOnly="True" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,106,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
+        <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+            <Label>Number Of Beds</Label>
+            <StackPanel Orientation="Horizontal">
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bedAnyB" Stretch="Fill" Source="bnbbuttons/any.png" Margin="0
+                           " Height="32" Width="32">
+                    </Image>
+                </Button>
+                <Button  HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding ClickCommand}" CommandParameter="{Binding ElementName=bedOneB, Path=Source}" >
+                    <Image Name="bedOneB" Stretch="Fill" Margin="0
+                           " Height="32" Width="32">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding isClicked}" Value="False">
+                                        <Setter Property="Source" Value="bnbbuttons/1.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding isClicked}" Value="True">
+                                        <Setter Property="Source" Value="bnbbuttons/1on.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bedTwoB" Stretch="Fill" Source="bnbbuttons/2.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bedThreeB" Stretch="Fill" Source="bnbbuttons/3.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bedFourB" Stretch="Fill" Source="bnbbuttons/4.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bedFiveB" Stretch="Fill" Source="bnbbuttons/5.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+            </StackPanel>
+
+            <Label>Number Of Baths</Label>
+            <StackPanel Orientation="Horizontal">
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bathAnyB" Stretch="Fill" Source="bnbbuttons/any.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bathOneB" Stretch="Fill" Source="bnbbuttons/1.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bathTwoB" Stretch="Fill" Source="bnbbuttons/1.5.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bathThreeB" Stretch="Fill" Source="bnbbuttons/2.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bathFourB" Stretch="Fill" Source="bnbbuttons/3.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Name="bathFiveB" Stretch="Fill" Source="bnbbuttons/4.png" Margin="0
+                           " Height="32" Width="32"></Image>
+                </Button>
+            </StackPanel>
         </ComboBox>
-        
+        <TextBlock Margin="81,50,118,54" Text="Bed &amp; Bath" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <ComboBox Text="More Filters" Name="MoreFilters" Grid.ColumnSpan="2" Margin="91,46,106,54" Grid.Column="5" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        </ComboBox>
+        <TextBlock Margin="94,48,124,56" Text="More Filters" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <RadioButton x:Name="Purchase" Content="Purchase" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="21,80,0,0" GroupName="BuyType" Checked="HandleCheck"></RadioButton>
+        <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="108,80,0,0" GroupName="BuyType" Checked="HandleCheck" Grid.ColumnSpan="2"/>
+        <Button Content="Search" Click="Search" HorizontalAlignment="Left" Margin="141,48,0,0" VerticalAlignment="Top" Width="63" Grid.Column="6" Grid.ColumnSpan="2"></Button>
         <Button Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
         <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>
     </Grid>
