@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="VirtualRealty.BigListing"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VirtualRealty"
+             mc:Ignorable="d"
+             d:DesignHeight="780" d:DesignWidth="1280">
+	<Grid HorizontalAlignment="Left" Height="780" VerticalAlignment="Top" Width="1280">
+		<local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
+		<ScrollViewer x:Name="Viewer" HorizontalAlignment="Center" Height="1120" Margin="100,118,100,-458" VerticalAlignment="Top" Width="1080">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="620"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Button Content="Close" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="10,0,0,924"/>
+				<Image x:Name="LargeImage" HorizontalAlignment="Left" Height="320" Margin="10,20,0,0" VerticalAlignment="Top" Width="600"/>
+				<Image x:Name="SmallImage1" HorizontalAlignment="Left" Height="160" Margin="10,20,0,0" VerticalAlignment="Top" Width="423" Grid.Column="1"/>
+				<Image x:Name="SmallImage2" HorizontalAlignment="Left" Height="160" Margin="10,180,0,0" VerticalAlignment="Top" Width="423" Grid.Column="1"/>
+				<Label x:Name="Price" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="50" Margin="10,345,0,0" Height="83" Width="326"/>
+				<Label x:Name="Address" Content="Label" HorizontalAlignment="Left" FontSize="36" Margin="10,423,0,0" VerticalAlignment="Top" Width="506"/>
+				<Label x:Name="Date" Content="Label" HorizontalAlignment="Left" FontSize="26" Margin="525,371,0,0" VerticalAlignment="Top" Height="50" Width="85"/>
+				<Label x:Name="Bed" Content="Label" HorizontalAlignment="Left" FontSize="36" Margin="10,494,0,0" VerticalAlignment="Top" Width="121"/>
+				<Label x:Name="Bath" Content="Label" HorizontalAlignment="Left" FontSize="36" Margin="136,494,0,0" VerticalAlignment="Top" Width="121"/>
+				<Label x:Name="SqFt" Content="Label" HorizontalAlignment="Left" FontSize="36" Margin="262,494,0,0" VerticalAlignment="Top" Width="121"/>
+				<Label x:Name="HomeType" Content="Label" HorizontalAlignment="Left" FontSize="36" Margin="388,494,0,0" VerticalAlignment="Top" Width="222"/>
+				<Label x:Name="FavBtn" Content="Label" Grid.Column="1" HorizontalAlignment="Left" FontSize="34" Margin="10,362,0,0" VerticalAlignment="Top" Height="59" Width="122"/>
+				<Button x:Name="Contact" Content="Contact" Grid.Column="1" HorizontalAlignment="Left" Margin="256,383,0,0" VerticalAlignment="Top" Width="118" Height="32"/>
+				<Label x:Name="Map" Content="Map" Grid.Column="1" HorizontalAlignment="Left" FontSize="46" Margin="10,456,0,0" VerticalAlignment="Top"/>
+				<Label Content="Property Description" HorizontalAlignment="Left" FontSize="40" Margin="10,572,0,0" VerticalAlignment="Top"/>
+				<TextBlock x:Name="Description" HorizontalAlignment="Left" Margin="10,643,0,0" TextWrapping="Wrap" FontSize="30" Text="TextBlock" VerticalAlignment="Top" Height="186" Width="600"/>
+
+
+
+
+
+			</Grid>
+
+		</ScrollViewer>
+
+
+
+
+
+	</Grid>
+
+</UserControl>

@@ -72,6 +72,9 @@
     <Compile Include="Top_Bar.xaml.cs">
       <DependentUpon>Top_Bar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BigListing.xaml.cs">
+      <DependentUpon>BigListing.xaml</DependentUpon>
+    </Compile>
     <Page Include="Favorites.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Top_Bar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BigListing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
