@@ -300,9 +300,9 @@ namespace VirtualRealty
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ApplyThisSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            // TODO: apply search filtering
         }
     }
 
