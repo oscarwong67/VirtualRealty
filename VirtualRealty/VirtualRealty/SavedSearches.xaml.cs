@@ -64,10 +64,5 @@ namespace VirtualRealty
                 SavedSearchesSection.Children.Add(savedSearch);
             }
         }
-
-        ~SavedSearches()
-        {
-            SavedSearchesSection.Children.Clear();
-        }
     }
 }

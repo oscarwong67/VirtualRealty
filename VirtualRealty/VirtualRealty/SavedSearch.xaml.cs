@@ -298,11 +298,16 @@ namespace VirtualRealty
         public SavedSearch()
         {
             InitializeComponent();
+            maxAgeOfListingInDays = -1;
+            maxYearBuilt = -1;
         }
 
         private void ApplyThisSearch_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: apply search filtering
+            ListingsPage LP = new ListingsPage();
+            // TODO (Oscar): max beds and baths
+            LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, /* HomeTypes:HomeTypes */ MinBeds:MinBeds, MinBaths:MinBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer ? "In-Unit" : "", Parking:hasGarage ? "Garage" : ""));
+            Switcher.Switch(LP);
         }
     }
 

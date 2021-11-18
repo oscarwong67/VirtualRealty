@@ -82,7 +82,7 @@ namespace VirtualRealty
          * This means you can also call this function in sequence with one filter each time
          * to filter by multiple filters (although it will be slow).
          */
-        public static List<Listing> FilterListings(List<Listing> Listings, int PriceMin = -1, int PriceMax = -1,/*HomeType[] Types,*/int MinBeds = -1, int MinBaths = -1, int MinSize = -1, int MaxSize = -1, int MaxListingAge = -1, int MinYear = -1, int MaxYear = -1, string Washer = "", string Parking = "")
+        public static List<Listing> FilterListings(List<Listing> Listings, int PriceMin = -1, int PriceMax = -1,/*HomeType[] Types,*/int MinBeds = -1, float MinBaths = -1, int MinSize = -1, int MaxSize = -1, int MaxListingAge = -1, int MinYear = -1, int MaxYear = -1, string Washer = "", string Parking = "")
         {
             List<Listing> ToReturn = new List<Listing>();
 

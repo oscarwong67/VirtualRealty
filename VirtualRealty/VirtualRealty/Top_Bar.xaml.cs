@@ -22,6 +22,7 @@ namespace VirtualRealty
         {
             if (MainWindow.savedSearchesPage == null)
             {
+                MainWindow.CreateInitialSavedSearches();
                 MainWindow.savedSearchesPage = new SavedSearches();
             }
             Switcher.Switch(MainWindow.savedSearchesPage);
