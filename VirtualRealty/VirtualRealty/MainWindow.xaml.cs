@@ -24,6 +24,8 @@ namespace VirtualRealty
         public List<Listing> Listings;
         public List<SmallListing> SmallListings;
 
+        public static SavedSearches savedSearchesPage;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -82,8 +84,8 @@ namespace VirtualRealty
                 MaxPrice = 500000,
                 MinSqFt = 500,
                 MaxSqFt = 1200,
-                LastAccessed = DateTime.Parse("6/10/2021"),
-                DateSaved = DateTime.Parse("3/10/2021")
+                LastAccessed = DateTime.Parse("10/6/2021"),
+                DateSaved = DateTime.Parse("10/3/2021")
             };
 
             SavedSearches.savedSearches.Add(savedSearch1);
@@ -100,7 +102,7 @@ namespace VirtualRealty
                 MinSqFt = 3000,
                 MaxSqFt = 10000,
                 MinBeds = 5,
-                MinBaths = 5,
+                MinBaths = 4,
                 LastAccessed = DateTime.Parse("6/10/2021"),
                 DateSaved = DateTime.Parse("3/10/2021")
             };

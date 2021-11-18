@@ -20,7 +20,11 @@ namespace VirtualRealty
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new SavedSearches());
+            if (MainWindow.savedSearchesPage == null)
+            {
+                MainWindow.savedSearchesPage = new SavedSearches();
+            }
+            Switcher.Switch(MainWindow.savedSearchesPage);
         }
     }
 }

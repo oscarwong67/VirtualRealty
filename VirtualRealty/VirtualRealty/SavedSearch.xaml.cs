@@ -40,8 +40,6 @@ namespace VirtualRealty
 
         private static int LABEL_FONTSIZE = 14;
 
-        // TODO (Oscar): change out adding labels to just having existing ones so I can control the font size and spacing better?
-
         // Goes on left
         private List<HomeType> homeType;
         public List<HomeType> HomeType {
@@ -106,7 +104,7 @@ namespace VirtualRealty
                 Label label = new Label
                 {
                     FontSize = LABEL_FONTSIZE,
-                    Content = "" + minSqFt + "+ sqft"
+                    Content = "" + minSqFt + "+ sq. ft"
                 };
                 Left.Children.Add(label);
             }
@@ -125,27 +123,177 @@ namespace VirtualRealty
                 Label label = new Label
                 {
                     FontSize = LABEL_FONTSIZE,
-                    Content = "" + minSqFt + " - " + maxSqFt + "sqft"
+                    Content = "" + minSqFt + " - " + maxSqFt + "sq. ft"
                 };
                 Left.Children.Add(label);
             }
         }
 
         // Goes on center
-        public int MinBeds { get; set; }
-        public int MaxBeds { get; set; }
-        public float MinBaths { get; set; }
-        public float MaxBaths { get; set; }
-        public bool HasGarage { get; set; }
+        private int minBeds;
+        public int MinBeds {
+            get { return minBeds;  }
+            set
+            {
+                minBeds = value;
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "" + minBeds + "+ Beds"
+                };
+                Center.Children.Add(label);
+            }
+        }
+        // THIS ASSUMES YOU SET MAXBEDS RIGHT AFTER MINBEDS!!!
+        private int maxBeds;
+        public int MaxBeds {
+            get { return maxBeds;  }
+            set
+            {
+                maxBeds = value;
+                if (this.minBeds != 0)
+                {
+                    Center.Children.RemoveAt(Center.Children.Count - 1); // Remove the last one which was like "2+ beds"
+                }
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "" + minBeds + " Beds" // We use exact match if there's a max
+                };
+                Center.Children.Add(label);
+            }
+        }
+
+        private float minBaths;
+        public float MinBaths {
+            get { return minBaths;  }
+            set {
+                minBaths = value;
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "" + minBaths  + "+ Baths"
+                };
+                Center.Children.Add(label);
+            }
+        }
+        // THIS ASSUMES YOU SET MAXBATHS RIGHT AFTER MAXBATHS!!!
+        private float maxBaths;
+        public float MaxBaths
+        {
+            get { return maxBaths; }
+            set
+            {
+                maxBaths = value;
+                if (this.minBaths != 0)
+                {
+                    Center.Children.RemoveAt(Center.Children.Count - 1); // Remove the last one which was like "2+ baths"
+                }
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "" + minBaths + " Baths" // We use exact match if there's a max for baths
+                };
+                Center.Children.Add(label);
+            }
+        }
+        private bool hasGarage;
+        public bool HasGarage {
+            get { return hasGarage; }
+            set
+            {
+                hasGarage = value;
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "Has Garage"
+                };
+                Center.Children.Add(label);
+            }
+        }
 
         // Goes on right
-        public bool HasWasherDryer { get; set; }
-        public int MaxAgeOfListingInDays { get; set; }
-        public int MinYearBuilt { get; set; }
-        public int MaxYearBuilt { get; set; }
+        private int maxAgeOfListingInDays;
+        public int MaxAgeOfListingInDays
+        {
+            get { return maxAgeOfListingInDays; }
+            set
+            {
+                maxAgeOfListingInDays = value;
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "Listing is at most " + maxAgeOfListingInDays + "days old"
+                };
+                Right.Children.Add(label);
+            }
+        }
+        private int minYearBuilt;
+        public int MinYearBuilt {
+            get { return minYearBuilt; }
+            set
+            {
+                minYearBuilt = value;
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "Built in " + minYearBuilt + " - 2021"
+                };
+                Right.Children.Add(label);
+            }
+        }
+        // THIS ASSUMES YOU SET MaxYearBuilt RIGHT AFTER MinYearBuilt!!!
+        private int maxYearBuilt;
+        public int MaxYearBuilt {
+            get { return maxYearBuilt; }
+            set {
+                maxYearBuilt = value;
+                if (minYearBuilt != 0)
+                {
+                    Right.Children.RemoveAt(Center.Children.Count - 1); // Remove the last one which was like "2005-2021"
+                }
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "Built in " + minYearBuilt + " - " + maxYearBuilt
+                };
+                Right.Children.Add(label);
+            }
+        }
+        private bool hasWasherDryer;
+        public bool HasWasherDryer {
+            get { return hasWasherDryer; }
+            set
+            {
+                hasWasherDryer = value;
+                Label label = new Label
+                {
+                    FontSize = LABEL_FONTSIZE,
+                    Content = "Has Washer & Dryer"
+                };
+                Right.Children.Add(label);
+            }
+        }
+        // TODO (Oscar): if we have time, add parking as a filter
 
-        public DateTime LastAccessed { get; set; }
-        public DateTime DateSaved { get; set; }
+        private DateTime lastAccessed;
+        public DateTime LastAccessed {
+            get { return lastAccessed; }
+            set {
+                lastAccessed = value;
+                LastAccessedSection.Content = "Last Accessed: " + lastAccessed.ToLongDateString();
+            }
+        }
+
+        private DateTime dateSaved;
+        public DateTime DateSaved {
+            get { return dateSaved; }
+            set
+            {
+                dateSaved = value;
+                DateSavedSection.Content = "Date Saved: " + dateSaved.ToLongDateString();
+            }
+        }
 
         public SavedSearch()
         {
@@ -155,6 +303,38 @@ namespace VirtualRealty
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+    }
+
+    class SavedSearchComparer : IComparer<SavedSearch>
+    {
+        public enum SortBy
+        {
+            DateSavedNewest,
+            DateSavedOldest,
+            LastAccessed,
+        }
+        
+        public SortBy Order;
+
+        public SavedSearchComparer(SortBy Order)
+        {
+            this.Order = Order;
+        }
+
+        public int Compare (SavedSearch a, SavedSearch b)
+        {
+            switch (Order)
+            {
+                case SortBy.DateSavedNewest:
+                    return -1 * a.DateSaved.CompareTo(b.DateSaved);
+                case SortBy.DateSavedOldest:
+                    return a.DateSaved.CompareTo(b.DateSaved);
+                case SortBy.LastAccessed:
+                    return -1 * a.LastAccessed.CompareTo(b.LastAccessed);
+                default:
+                    return 0;
+            }
         }
     }
 }
