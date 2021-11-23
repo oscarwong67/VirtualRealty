@@ -15,6 +15,7 @@ namespace VirtualRealty
     /// </summary>
     public partial class Top_Bar : UserControl
     {
+        private string locationInput;
         private int priceMin;
         private int priceMax;
         private HashSet<HomeType> homeTypes;
@@ -29,6 +30,7 @@ namespace VirtualRealty
         private int yearBuiltMax;
         private bool garage;
         private bool washerDryer;
+        
         public Top_Bar()
         {
             InitializeComponent();
@@ -52,6 +54,59 @@ namespace VirtualRealty
                 MainWindow.savedSearchesPage = new SavedSearches();
             }
             Switcher.Switch(MainWindow.savedSearchesPage);        
+        }
+
+        private void ToggleSavingSearch(object sender, RoutedEventArgs e)
+        {
+            SavingSearch.IsOpen = !SavingSearch.IsOpen;
+        }
+
+        private void NameThisSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = "";
+            box.GotFocus -= NameThisSearch_GotFocus;
+        }
+
+        // If the user deselects textbox and leaves it blank, display default message
+        private void NameThisSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "Name This Search";
+                box.GotFocus += NameThisSearch_LostFocus;
+            }
+        }
+
+        private void NameThisSearch_TextChanged(object sender, RoutedEventArgs e)
+        {
+            locationInput = NameThisSearch.Text;
+        }
+
+        private void SaveSearch(object sender, RoutedEventArgs e)
+        {
+            SavedSearch savedSearch = new SavedSearch();
+            savedSearch.LocationSearchString = locationInput;
+            savedSearch.MinPrice = priceMin;
+            savedSearch.MaxPrice = priceMax;
+            savedSearch.HomeType = new List<HomeType>(homeTypes);
+            savedSearch.MinSqFt = sqftMin;
+            savedSearch.MaxSqFt = sqftMax;
+            savedSearch.MinBeds = numBedMin;
+            savedSearch.MaxBeds = numBedMax;
+            savedSearch.MinBaths = numBathMin;
+            savedSearch.MaxBaths = numBathMax;
+            savedSearch.HasGarage = garage;
+            savedSearch.MaxAgeOfListingInDays = ageOfListing;
+            savedSearch.MinYearBuilt = yearBuiltMin;
+            savedSearch.MaxYearBuilt = yearBuiltMax;
+            savedSearch.HasWasherDryer = washerDryer;
+            savedSearch.LastAccessed = DateTime.Now;
+            savedSearch.DateSaved = DateTime.Now;
+            SavedSearches.savedSearches.Add(savedSearch);
+
+            ToggleSavingSearch(sender, e);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
