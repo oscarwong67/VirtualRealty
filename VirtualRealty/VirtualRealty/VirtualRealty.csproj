@@ -58,6 +58,10 @@
     <Compile Include="Favorites.xaml.cs">
       <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HomeType.cs" />
+    <Compile Include="SavedSearch.xaml.cs">
+      <DependentUpon>SavedSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Listing.cs" />
     <Compile Include="ListingsPage.xaml.cs">
       <DependentUpon>ListingsPage.xaml</DependentUpon>
@@ -92,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SavedSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SavedSearches.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

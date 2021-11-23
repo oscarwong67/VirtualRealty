@@ -27,22 +27,24 @@ namespace VirtualRealty
             InitializeComponent();
         }
 
-        public void SetListings(List<SmallListing> Listings)
+        public void SetListings(List<Listing> Listings)
         {
             int i = 0;
-
-            foreach (SmallListing L in Listings)
+            Left.Children.Clear();
+            Centre.Children.Clear();
+            Right.Children.Clear();
+            foreach (Listing L in Listings)
             {
-                switch (i)
+                switch (i % 3)
                 {
                     case 0:
-                        Left.Children.Add(L);
+                        Left.Children.Add(L.Small);
                         break;
                     case 1:
-                        Centre.Children.Add(L);
+                        Centre.Children.Add(L.Small);
                         break;
                     case 2:
-                        Right.Children.Add(L);
+                        Right.Children.Add(L.Small);
                         break;
                 }
 
