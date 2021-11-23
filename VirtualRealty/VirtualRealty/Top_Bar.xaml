@@ -35,7 +35,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox Margin="5" IsChecked="{Binding IsChecked}"></CheckBox>
-                        <TextBlock Margin="5" Text="{Binding HomeTypeName}"></TextBlock>
+                        <TextBlock Margin="5" Text="GetHomeType"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
@@ -45,72 +45,11 @@
         <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
             <Label>Number Of Beds</Label>
             <StackPanel Orientation="Horizontal">
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bedAnyB" Stretch="Fill" Source="bnbbuttons/any.png" Margin="0
-                           " Height="32" Width="32">
-                    </Image>
-                </Button>
-                <Button  HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding ClickCommand}" CommandParameter="{Binding ElementName=bedOneB, Path=Source}" >
-                    <Image Name="bedOneB" Stretch="Fill" Margin="0
-                           " Height="32" Width="32">
-                        <Image.Style>
-                            <Style TargetType="{x:Type Image}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding isClicked}" Value="False">
-                                        <Setter Property="Source" Value="bnbbuttons/1.png" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding isClicked}" Value="True">
-                                        <Setter Property="Source" Value="bnbbuttons/1on.png" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Image.Style>
-                    </Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bedTwoB" Stretch="Fill" Source="bnbbuttons/2.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bedThreeB" Stretch="Fill" Source="bnbbuttons/3.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bedFourB" Stretch="Fill" Source="bnbbuttons/4.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bedFiveB" Stretch="Fill" Source="bnbbuttons/5.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
             </StackPanel>
 
             <Label>Number Of Baths</Label>
             <StackPanel Orientation="Horizontal">
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bathAnyB" Stretch="Fill" Source="bnbbuttons/any.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bathOneB" Stretch="Fill" Source="bnbbuttons/1.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bathTwoB" Stretch="Fill" Source="bnbbuttons/1.5.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bathThreeB" Stretch="Fill" Source="bnbbuttons/2.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bathFourB" Stretch="Fill" Source="bnbbuttons/3.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
-                <Button Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Image Name="bathFiveB" Stretch="Fill" Source="bnbbuttons/4.png" Margin="0
-                           " Height="32" Width="32"></Image>
-                </Button>
+               
             </StackPanel>
         </ComboBox>
         <TextBlock Margin="81,50,118,54" Text="Bed &amp; Bath" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
