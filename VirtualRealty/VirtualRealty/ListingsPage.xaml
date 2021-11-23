@@ -8,7 +8,7 @@
              d:DesignHeight="780" d:DesignWidth="1280">
     <Grid HorizontalAlignment="Left" Height="780" VerticalAlignment="Top" Width="1280">
         <local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
-        <ScrollViewer x:Name="Viewer" HorizontalAlignment="Left" Height="662" Margin="15,118,0,0" VerticalAlignment="Top" Width="1265">
+        <ScrollViewer x:Name="Viewer" HorizontalAlignment="Left" Height="580" Margin="15,118,0,0" VerticalAlignment="Top" Width="1265">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

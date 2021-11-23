@@ -33,7 +33,7 @@ namespace VirtualRealty
 
             this.Price.Content = "$" + Listing.Price.ToString();
             this.Address.Content = Listing.Address;
-            this.Type.Content = Listing.ListingType;
+            this.Type.Content = L.ListingType.ToString();
             this.BedBath.Content = Listing.Beds.ToString() + " Beds, " + Listing.Baths.ToString() + " Baths";
             this.Size.Content = Listing.size.ToString() + "ft^2";
         }
