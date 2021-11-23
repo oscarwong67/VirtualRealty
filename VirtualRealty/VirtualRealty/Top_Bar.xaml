@@ -19,8 +19,63 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Column="1" Text="Hello World" />
+        <Button Click="GoToHomePage" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Height="56" Margin="0,27,0,0">
+            <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
+        </Button>
+
         <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
-        <Button Content="Favorites" Click="GoToFavorites" Grid.Column="8" HorizontalAlignment="Left" Margin="43,49,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="Location" Text="Enter your city or neighborhood" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" TextChanged="TextBox_TextChanged" Margin="21,48,62,52" Grid.Column="1" Grid.ColumnSpan="2" />
+
+        <ComboBox Text="Price" Name="Price" Grid.ColumnSpan="2" Margin="109,48,107,52" Grid.Column="2" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        </ComboBox>
+        <TextBlock Margin="111,50,126,54" Text="Price" Grid.Column="2" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <ComboBox Text="Home Type" Name="HomeType" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+            <StackPanel Orientation="Vertical">
+                <CheckBox x:Name="Apartment" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" >Apartment</CheckBox>
+                <CheckBox x:Name="Condo" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked">Condo</CheckBox>
+                <CheckBox x:Name="Townhouse" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked">Townhouse</CheckBox>
+                <CheckBox x:Name="House" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked">House</CheckBox>
+            </StackPanel>
+        </ComboBox>
+        <TextBlock Margin="90,50,116,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+            <Label>Number Of Beds</Label>
+            <StackPanel Orientation="Horizontal">
+            </StackPanel>
+
+            <Label>Number Of Baths</Label>
+            <StackPanel Orientation="Horizontal">
+
+            </StackPanel>
+        </ComboBox>
+        <TextBlock Margin="81,50,118,54" Text="Bed &amp; Bath" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <ComboBox Text="More Filters" Name="MoreFilters" Grid.ColumnSpan="2" Margin="91,46,106,54" Grid.Column="5" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        </ComboBox>
+        <TextBlock Margin="94,48,124,56" Text="More Filters" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+
+        <RadioButton x:Name="Purchase" Content="Purchase" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="21,80,0,0" GroupName="BuyType" Checked="HandleCheck"></RadioButton>
+        <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="108,80,0,0" GroupName="BuyType" Checked="HandleCheck" Grid.ColumnSpan="2"/>
+        <Button Content="Search" Click="Search" HorizontalAlignment="Left" Margin="141,48,0,0" VerticalAlignment="Top" Width="63" Grid.Column="6" Grid.ColumnSpan="2"></Button>
+        <Button Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
+        <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>
+        <Button Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Grid.Column="2" HorizontalAlignment="Left" Margin="109,77,0,0" VerticalAlignment="Top" Width="95"/>
+        <Popup Name="SavingSearch" IsOpen="False" Margin="392.5,-50,0,0" VerticalAlignment="Center" AllowsTransparency="True" >
+            <Grid Margin="501,0,0,0" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Padding="5,5,0,5">
+                    <TextBox Name="NameThisSearch" Grid.Column="0" Text="Name this Search" GotFocus="NameThisSearch_GotFocus" LostFocus="NameThisSearch_LostFocus" TextChanged="NameThisSearch_TextChanged"/>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="1" Padding="0,5,5,5" >
+                    <Button Content="Save" Click="SaveSearch" />
+                </Border>
+            </Grid>
+
+        </Popup>
     </Grid>
 </UserControl>

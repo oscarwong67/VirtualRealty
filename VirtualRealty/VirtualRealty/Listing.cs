@@ -11,8 +11,11 @@ namespace VirtualRealty
     {
         public readonly bool Purchase, Heating, AC, Pool, Gym, Elevator;
         public bool IsFavourited { get; set; }
-        public readonly string Address, ListingType, Description, Parking, View, Washer;
-        public readonly int Price, Beds, Baths, YearBuilt, size; //size is square footage
+        public bool Washer;
+        public readonly string Address, Description, Parking, View;
+        public HomeType ListingType;
+        public readonly int Price, Beds, YearBuilt, size; //size is square footage
+        public readonly double Baths;
         public readonly DateTime DateListed;
         public List<string> Images { get; set; } //list of paths to images for this listing
         public SmallListing Small;
@@ -26,8 +29,8 @@ namespace VirtualRealty
             Small.SetListing(this);
         }
 
-        public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, int Bath, int Size, string Type,
-            string Description, bool Favourited, string Parking, string Washer, int Year, string View, bool Heating, bool AC,
+        public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, double Bath, int Size, HomeType Type,
+            string Description, bool Favourited, string Parking, bool Washer, int Year, string View, bool Heating, bool AC,
             bool Pool, bool Gym, bool Elevator, List<String> Images)
         {
             this.Purchase = Purchase;
@@ -82,7 +85,9 @@ namespace VirtualRealty
          * This means you can also call this function in sequence with one filter each time
          * to filter by multiple filters (although it will be slow).
          */
-        public static List<Listing> FilterListings(List<Listing> Listings, int PriceMin = -1, int PriceMax = -1,/*HomeType[] Types,*/int MinBeds = -1, int MinBaths = -1, int MinSize = -1, int MaxSize = -1, int MaxListingAge = -1, int MinYear = -1, int MaxYear = -1, string Washer = "", string Parking = "")
+        public static List<Listing> FilterListings(List<Listing> Listings, int PriceMin = -1, int PriceMax = -1, List<HomeType> Types = null,
+            int MinBeds = -1, int MaxBeds = -1, double MinBaths = -1, double MaxBaths = -1, int MinSize = -1, int MaxSize = -1, int MaxListingAge = -1,
+            int MinYear = -1, int MaxYear = -1, bool Washer = false, string Parking = "")
         {
             List<Listing> ToReturn = new List<Listing>();
 
@@ -91,14 +96,11 @@ namespace VirtualRealty
                 //each if checks if that filter matters, and then if this filter matches
                 if (PriceMin >= 0 && L.Price < PriceMin) continue;
                 if (PriceMax >= 0 && L.Price > PriceMax) continue;
-                /*
-                if (HomeType)
-                {
-                    //TODO, waiting on Oscar's branch
-                }
-                */
+                if (Types != null && Types.Contains(L.ListingType)) continue;
                 if (MinBeds >= 0 && L.Beds < MinBeds) continue;
+                if (MaxBeds >= 0 && L.Beds > MaxBeds) continue;
                 if (MinBaths >= 0 && L.Baths < MinBaths) continue;
+                if (MaxBaths >= 0 && L.Baths > MaxBaths) continue;
                 if (MinSize >= 0 && L.size < MinSize) continue;
                 if (MaxSize >= 0 && L.size > MaxSize) continue;
                 if (MaxListingAge >= 0 && (DateTime.Today - L.DateListed).Days > MaxListingAge) continue;
@@ -106,7 +108,7 @@ namespace VirtualRealty
                 if (MaxYear >= 0 && L.YearBuilt > MaxYear) continue;
 
                 //simple substring check for washer and parking
-                if (Washer.Length != 0 && !L.Washer.Contains(Washer)) continue;
+                if (Washer && !L.Washer) continue;
                 if (Parking.Length != 0 && !L.Parking.Contains(Parking)) continue;
 
                 //this Listing passes all of the filters

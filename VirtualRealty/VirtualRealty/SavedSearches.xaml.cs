@@ -20,9 +20,49 @@ namespace VirtualRealty
     /// </summary>
     public partial class SavedSearches : UserControl
     {
+        public static List<SavedSearch> savedSearches;
+
         public SavedSearches()
         {
             InitializeComponent();
+            if (SavedSearchesSection.Children.Count == 0)
+            {
+                savedSearches.Sort(new SavedSearchComparer(SavedSearchComparer.SortBy.LastAccessed));
+                foreach (SavedSearch savedSearch in savedSearches)
+                {
+                    SavedSearchesSection.Children.Add(savedSearch);
+                }
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SavedSearchesSection == null || SavedSearchesSection.Children == null || SavedSearchesSection.Children.Count == 0)
+            {
+                return;
+            }
+            SavedSearchesSection.Children.Clear();
+
+            string text = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content as string;
+            if (text.Equals("Last Accessed"))
+            {
+                savedSearches.Sort(new SavedSearchComparer(SavedSearchComparer.SortBy.LastAccessed));
+            } else if (text.Equals("Date Saved (Newest)"))
+            {
+                savedSearches.Sort(new SavedSearchComparer(SavedSearchComparer.SortBy.DateSavedNewest));
+            } else
+            {
+                savedSearches.Sort(new SavedSearchComparer(SavedSearchComparer.SortBy.DateSavedOldest));
+            }
+            foreach (SavedSearch savedSearch in savedSearches)
+            {
+                SavedSearchesSection.Children.Add(savedSearch);
+            }
         }
     }
 }

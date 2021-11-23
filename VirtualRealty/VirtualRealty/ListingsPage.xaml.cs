@@ -30,7 +30,9 @@ namespace VirtualRealty
         public void SetListings(List<Listing> Listings)
         {
             int i = 0;
-
+            Left.Children.Clear();
+            Centre.Children.Clear();
+            Right.Children.Clear();
             foreach (Listing L in Listings)
             {
                 switch (i % 3)
