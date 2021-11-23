@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualRealty"
-             mc:Ignorable="d" d:DesignWidth="1280" Height="166">
+             mc:Ignorable="d" d:DesignWidth="1280" Height="166" FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
@@ -17,8 +17,8 @@
         <StackPanel x:Name="Left" HorizontalAlignment="Left" Height="89" Margin="0,77,0,0" VerticalAlignment="Top" Width="162"/>
         <StackPanel x:Name="Center" HorizontalAlignment="Left" Height="89" Margin="170,77,0,0" VerticalAlignment="Top" Width="162"/>
         <StackPanel x:Name="Right" HorizontalAlignment="Left" Height="76" Margin="342,77,0,0" VerticalAlignment="Top" Width="162"/>
-        <Label x:Name="LastAccessedSection" Content="Last Accessed: " HorizontalAlignment="Left" Margin="395,83,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
-        <Label x:Name="DateSavedSection" Content="Saved: " HorizontalAlignment="Left" Margin="395,120,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
+        <Label x:Name="LastAccessedSection" Content="Last Accessed: " HorizontalAlignment="Left" Margin="389,82,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
+        <Label x:Name="DateSavedSection" Content="Saved: " HorizontalAlignment="Left" Margin="389,119,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
         <Button Name="ApplyThisSearch" Content="Apply This Search" HorizontalAlignment="Left" Height="52" Margin="395,26,0,0" VerticalAlignment="Top" Width="282" FontSize="24" Click="ApplyThisSearch_Click" Grid.Column="1"/>
     </Grid>
 </UserControl>
