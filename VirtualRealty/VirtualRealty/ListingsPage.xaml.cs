@@ -51,5 +51,10 @@ namespace VirtualRealty
                 i++;
             }
         }
+
+        public void MapView_Click(Object Sender,RoutedEventArgs args)
+        {
+            Switcher.Switch(MainWindow.MapViewPage);
+        }
     }
 }

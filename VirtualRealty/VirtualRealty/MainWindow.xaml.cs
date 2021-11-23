@@ -25,6 +25,7 @@ namespace VirtualRealty
 
         public static ListingsPage LP = new ListingsPage();
         public static SavedSearches savedSearchesPage;
+        public static MapView MapViewPage = new MapView();
 
         public MainWindow()
         {
