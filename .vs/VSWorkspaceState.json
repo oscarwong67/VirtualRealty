@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\VirtualRealty",
+    "\\VirtualRealty\\VirtualRealty"
   ],
-  "SelectedNode": "\\VirtualRealty.sln",
+  "SelectedNode": "\\VirtualRealty\\VirtualRealty.sln",
   "PreviewInSolutionExplorer": false
 }

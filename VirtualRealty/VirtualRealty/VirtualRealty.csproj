@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ContactPopup.xaml.cs">
+      <DependentUpon>ContactPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Favorites.xaml.cs">
       <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
     <Compile Include="BigListing.xaml.cs">
       <DependentUpon>BigListing.xaml</DependentUpon>
     </Compile>
+    <Page Include="ContactPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Favorites.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

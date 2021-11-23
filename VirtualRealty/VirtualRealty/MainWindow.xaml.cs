@@ -27,13 +27,22 @@ namespace VirtualRealty
         {
             Listings = CreateListings();
 
-            ListingsPage LP = new ListingsPage();
-            LP.SetListings(Listings);
+            //ListingsPage LP = new ListingsPage();
+            //LP.SetListings(Listings);
+
+
+            // ADDED -------------------------------------------
+            BigListing BL = new BigListing();
+            BL.SetBigListing(Listings[0]);
 
             InitializeComponent();
-            
+
             Switcher.pageSwitcher = this;
-            Switcher.Switch(LP);  //initial page   
+            Switcher.Switch(BL);  //initial page 
+            // ADDED -------------------------------------------
+
+            //Switcher.pageSwitcher = this;
+            //Switcher.Switch(LP);  //initial page   
         }
 
         public void Navigate(UserControl nextPage)

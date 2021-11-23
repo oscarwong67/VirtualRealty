@@ -30,24 +30,51 @@ namespace VirtualRealty
         {
             Listing = L;
 
-            this.Price.Content = "$" + Listing.Price.ToString();
+            this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
             this.Address.Content = Listing.Address;
-            this.Date.Content = Listing.DateListed.ToString();
-            this.Bed.Content = Listing.Beds.ToString() + " Bed | ";
-            this.Bath.Content = Listing.Baths.ToString() + " Bath | ";
-            this.SqFt.Content = Listing.size.ToString() + " sqft | ";
+
+            // Convert date to amount of days passed since post
+            // Might need to handle case if listing date is in the future (date posted would be negative)
+            int days = (DateTime.Now - Listing.DateListed).Days;
+            this.Date.Content = "Posted " + days.ToString() + " day(s) ago";
+
+            this.Bed.Content = Listing.Beds.ToString() + " Bed |";
+            this.Bath.Content = Listing.Baths.ToString() + " Bath |";
+            this.SqFt.Content = Listing.size.ToString() + " sqft |";
             this.HomeType.Content = Listing.ListingType;
             this.Description.Text = Listing.Description;
-            /*
+
+            
             this.Parking.Content = Listing.Parking;
             this.Washer.Content = Listing.Washer;
             this.Year.Content = Listing.YearBuilt.ToString();
             this.View.Content = Listing.View;
-            // might need if statements
-            this.Heating.Content = Listing.Heating.ToString();
-            this.Cooling.Content = Listing.AC.ToString();
-            this.Pool.Content = Listing.Pool.ToString();
-            this.Elevator.Content = Listing.Elevator.ToString();*/
+
+            // If the listing has a feature set it to yes, else no
+            this.Heating.Content = Listing.Heating ? "Yes" : "No";
+            this.Cooling.Content = Listing.AC ? "Yes" : "No";
+            this.Pool.Content = Listing.Pool ? "Yes" : "No";
+            this.Gym.Content = Listing.Gym ? "Yes" : "No";
+            this.Elevator.Content = Listing.Elevator ? "Yes" : "No";
+        }
+
+        /*
+        public readonly bool Purchase, Heating, AC, Pool, Gym, Elevator;
+        public bool IsFavourited { get; set; }
+        public readonly string Address, ListingType, Description, Parking, View, Washer;
+        */
+
+        private void CloseBigListing(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Opens the contact page popup
+        private void OpenContactPopup(object sender, RoutedEventArgs e)
+        {
+            ContactPopup contactPopup = new ContactPopup();
+            contactPopup.SetContactInfo(Listing.Address);
+            BigListingGrid.Children.Add(contactPopup);
         }
     }
 }
