@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:VirtualRealty"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Width="1280" Height="120">
+
     <Grid Height="120">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
@@ -30,24 +32,35 @@
         </ComboBox>
         <TextBlock Margin="111,50,126,54" Text="Price" Grid.Column="2" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
 
-        <ComboBox Text="Home Type" Name="HomeType" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        <ComboBox Text="Home Type" Name="HomeTypesDropDown" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged">
             <StackPanel Orientation="Vertical">
-                <CheckBox x:Name="Apartment" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" >Apartment</CheckBox>
-                <CheckBox x:Name="Condo" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked">Condo</CheckBox>
-                <CheckBox x:Name="Townhouse" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked">Townhouse</CheckBox>
-                <CheckBox x:Name="House" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked">House</CheckBox>
+                <CheckBox x:Name="Apartment" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Apartment"></CheckBox>
+                <CheckBox x:Name="Condo" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Condo"></CheckBox>
+                <CheckBox x:Name="House" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="House"></CheckBox>
+                <CheckBox x:Name="Townhouse" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Townhouse"></CheckBox>
             </StackPanel>
         </ComboBox>
-        <TextBlock Margin="90,50,116,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+        <TextBlock Margin="90,50,116,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" RenderTransformOrigin="0.504,3.167"/>
 
         <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
             <Label>Number Of Beds</Label>
             <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="BedAny" Content="Any" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedOnePlus" Content="1+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedTwoPlus" Content="2+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedThreePlus" Content="3+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedFourPlus" Content="4+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedFivePlus" Content="5+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
             </StackPanel>
 
             <Label>Number Of Baths</Label>
             <StackPanel Orientation="Horizontal">
-               
+                <RadioButton x:Name="BathAny" Content="Any" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BathOne" Content="1" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BathOneHalf" Content="1.5" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BathTwo" Content="2" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BathThree" Content="3" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BathFour" Content="4" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
             </StackPanel>
         </ComboBox>
         <TextBlock Margin="81,50,118,54" Text="Bed &amp; Bath" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
@@ -56,8 +69,8 @@
         </ComboBox>
         <TextBlock Margin="94,48,124,56" Text="More Filters" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
 
-        <RadioButton x:Name="Purchase" Content="Purchase" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="21,80,0,0" GroupName="BuyType" Checked="HandleCheck"></RadioButton>
-        <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="108,80,0,0" GroupName="BuyType" Checked="HandleCheck" Grid.ColumnSpan="2"/>
+        <RadioButton x:Name="Purchase" Content="Purchase" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="21,80,0,0" GroupName="BuyType" Checked="PurchaseCheck"></RadioButton>
+        <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="108,80,0,0" GroupName="BuyType" Checked="PurchaseCheck" Grid.ColumnSpan="2"/>
         <Button Content="Search" Click="Search" HorizontalAlignment="Left" Margin="141,48,0,0" VerticalAlignment="Top" Width="63" Grid.Column="6" Grid.ColumnSpan="2"></Button>
         <Button Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
         <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>

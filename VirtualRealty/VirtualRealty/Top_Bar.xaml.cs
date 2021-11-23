@@ -17,7 +17,7 @@ namespace VirtualRealty
     {
         private int priceMin;
         private int priceMax;
-        private HashSet<HomeType> homeTypes;
+        private HashSet<HomeType> homeTypes = new HashSet<HomeType>();
         private int numBedMin;
         private int numBedMax;
         private int numBathMin;
@@ -29,6 +29,8 @@ namespace VirtualRealty
         private int yearBuiltMax;
         private bool garage;
         private bool washerDryer;
+        private bool isPurchase;
+
         public Top_Bar()
         {
             InitializeComponent();
@@ -69,19 +71,82 @@ namespace VirtualRealty
 
         }
 
-        private void HomeTypeChecked(object sender, RoutedEventArgs e)
+        private void NumBedCheck(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void NumBathCheck(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void HomeTypeChecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb.IsChecked == true)
+            {
+                HomeType home;
+                if (cb.Name == HomeType.Apartment.ToString())
+                {
+                    home = HomeType.Apartment;
+                    homeTypes.Add(home);
+                }
+                if (cb.Name == HomeType.Condo.ToString())
+                {
+                    home = HomeType.Condo;
+                    homeTypes.Add(home);
+                }
+                if (cb.Name == HomeType.House.ToString())
+                {
+                    home = HomeType.House;
+                    homeTypes.Add(home);
+                }
+                if (cb.Name == HomeType.Townhouse.ToString())
+                {
+                    home = HomeType.Townhouse;
+                    homeTypes.Add(home);
+                }
+            }
         }
 
         private void HomeTypeUnchecked(object sender, RoutedEventArgs e)
         {
-
+            CheckBox cb = sender as CheckBox;
+            if (cb.IsChecked == false)
+            {
+                HomeType home;
+                if (cb.Name == HomeType.Apartment.ToString())
+                {
+                    home = HomeType.Apartment;
+                    homeTypes.Remove(home);
+                }
+                if (cb.Name == HomeType.Condo.ToString())
+                {
+                    home = HomeType.Condo;
+                    homeTypes.Remove(home);
+                }
+                if (cb.Name == HomeType.House.ToString())
+                {
+                    home = HomeType.House;
+                    homeTypes.Remove(home);
+                }
+                if (cb.Name == HomeType.Townhouse.ToString())
+                {
+                    home = HomeType.Townhouse;
+                    homeTypes.Remove(home);
+                }
+            }
         }
 
-        private void HandleCheck(object sender, RoutedEventArgs e)
+        private void PurchaseCheck(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
+            if(Purchase.IsChecked == true)
+            {
+                isPurchase = true;
+            } else
+            {
+                isPurchase = false;
+            }
         }
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
