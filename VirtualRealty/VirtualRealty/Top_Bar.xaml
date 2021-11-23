@@ -63,5 +63,6 @@
         <Button Content="Search" Click="Search" HorizontalAlignment="Left" Margin="141,48,0,0" VerticalAlignment="Top" Width="63" Grid.Column="6" Grid.ColumnSpan="2"></Button>
         <Button Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
         <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>
+        <Button Content="Save this Search" Click="SaveSearch" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="109,77,0,0" VerticalAlignment="Top" Width="95"/>
     </Grid>
 </UserControl>

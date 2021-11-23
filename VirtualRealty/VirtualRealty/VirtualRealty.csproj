@@ -173,6 +173,7 @@
     <Resource Include="bnbbuttons\1.5.png" />
     <Resource Include="bnbbuttons\1.5on.png" />
     <Resource Include="bnbbuttons\5.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Fonts\Montserrat\OFL.txt" />
   </ItemGroup>
