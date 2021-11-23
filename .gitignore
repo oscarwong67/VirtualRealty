@@ -193,3 +193,5 @@ obj
 VirtualRealty/.vs/VirtualRealty/v15/Server/sqlite3/db.lock
 VirtualRealty/.vs/VirtualRealty/v15/Server/sqlite3/storage.ide
 
+*VirtualRealty/.vs
+.vs/slnx.sqlite

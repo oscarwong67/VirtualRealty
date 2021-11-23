@@ -7,15 +7,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
     <Grid>
-        <Rectangle Fill="#08F4F4F5" HorizontalAlignment="Left" Height="300" Stroke="Black" VerticalAlignment="Top" Width="400"/>
+        <Rectangle Fill="#08F4F4F5" HorizontalAlignment="Left" Height="251" Stroke="Black" VerticalAlignment="Top" Width="400"/>
 
-        <Image x:Name="PrimaryImage" HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="400"/>
-        <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" Margin="0,184,0,0" VerticalAlignment="Top" FontSize="24" Width="289"/>
-        <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" Margin="0,231,0,0" VerticalAlignment="Top" Width="289" FontSize="10"/>
-        <Label x:Name="Type" Content="Label" HorizontalAlignment="Left" Margin="36,266,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="BedBath" Content="Label" HorizontalAlignment="Left" Margin="155,266,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Size" Content="Label" HorizontalAlignment="Left" Margin="300,266,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="Heart" HorizontalAlignment="Left" Height="82" Margin="308,184,0,0" VerticalAlignment="Top" Width="82"/>
+        <Image x:Name="PrimaryImage" HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="400"/>
+        <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" Margin="0,149,0,0" VerticalAlignment="Top" FontSize="24" Width="289"/>
+        <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" Margin="0,196,0,0" VerticalAlignment="Top" Width="289" FontSize="10"/>
+        <Label x:Name="Type" Content="Label" HorizontalAlignment="Left" Margin="35,225,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="BedBath" Content="Label" HorizontalAlignment="Left" Margin="176,225,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Size" Content="Label" HorizontalAlignment="Left" Margin="299,225,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="Heart" HorizontalAlignment="Left" Height="82" Margin="299,144,0,0" VerticalAlignment="Top" Width="82"/>
+        <Rectangle Fill="#08F4F4F5" HorizontalAlignment="Left" Height="1" Margin="399,299,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
 
     </Grid>
 </UserControl>
