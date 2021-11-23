@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="VirtualRealty.SavedSearch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualRealty"
+             mc:Ignorable="d" d:DesignWidth="1280" Height="166" FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="166" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1279"/>
+        <Label x:Name="SearchTitle" Content="Saved Search Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="36"/>
+        <Label x:Name="Location" Content="Location" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Margin="0,47,0,0"/>
+        <StackPanel HorizontalAlignment="Left" Height="76" Margin="7,77,0,0" VerticalAlignment="Top" Width="100"/>
+        <StackPanel x:Name="Left" HorizontalAlignment="Left" Height="89" Margin="0,77,0,0" VerticalAlignment="Top" Width="162"/>
+        <StackPanel x:Name="Center" HorizontalAlignment="Left" Height="89" Margin="170,77,0,0" VerticalAlignment="Top" Width="162"/>
+        <StackPanel x:Name="Right" HorizontalAlignment="Left" Height="76" Margin="342,77,0,0" VerticalAlignment="Top" Width="162"/>
+        <Label x:Name="LastAccessedSection" Content="Last Accessed: " HorizontalAlignment="Left" Margin="389,82,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
+        <Label x:Name="DateSavedSection" Content="Saved: " HorizontalAlignment="Left" Margin="389,119,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
+        <Button Name="ApplyThisSearch" Content="Apply This Search" HorizontalAlignment="Left" Height="52" Margin="395,26,0,0" VerticalAlignment="Top" Width="282" FontSize="24" Click="ApplyThisSearch_Click" Grid.Column="1"/>
+    </Grid>
+</UserControl>
