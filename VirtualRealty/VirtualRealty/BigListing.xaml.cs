@@ -38,10 +38,12 @@ namespace VirtualRealty
             int days = (DateTime.Now - Listing.DateListed).Days;
             this.Date.Content = "Posted " + days.ToString() + " day(s) ago";
 
-            this.Bed.Content = Listing.Beds.ToString() + " Bed |";
-            this.Bath.Content = Listing.Baths.ToString() + " Bath |";
-            this.SqFt.Content = Listing.size.ToString() + " sqft |";
-            this.HomeType.Content = Listing.ListingType;
+            // Fill Beed, Bath, sqft, Home type
+            this.ListingDetails.Content = Listing.Beds.ToString() + " Bed | "
+                + Listing.Baths.ToString() + " Bath | "
+                + Listing.size.ToString() + " sqft | "
+                + Listing.ListingType;
+
             this.Description.Text = Listing.Description;
 
             
