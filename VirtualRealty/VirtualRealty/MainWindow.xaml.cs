@@ -23,13 +23,13 @@ namespace VirtualRealty
 
         public static List<Listing> Listings;
 
+        public static ListingsPage LP = new ListingsPage();
         public static SavedSearches savedSearchesPage;
 
         public MainWindow()
         {
             Listings = CreateListings();
 
-            ListingsPage LP = new ListingsPage();
             LP.SetListings(Listings);
 
             InitializeComponent();
