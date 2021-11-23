@@ -17,7 +17,7 @@ namespace VirtualRealty
     {
         private int priceMin;
         private int priceMax;
-        private List<HomeType> homeTypes;
+        private HashSet<HomeType> homeTypes;
         private int numBedMin;
         private int numBedMax;
         private int numBathMin;
@@ -54,7 +54,6 @@ namespace VirtualRealty
             Switcher.Switch(MainWindow.savedSearchesPage);        
         }
 
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -65,13 +64,41 @@ namespace VirtualRealty
 
         }
 
-        void Search(object sender, RoutedEventArgs e)
+        private void Search(object sender, RoutedEventArgs e)
         {
 
         }
+
+        private void HomeTypeChecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HomeTypeUnchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void HandleCheck(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
+        }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = "";
+            box.GotFocus -= TextBox_GotFocus;
+        }
+
+        // If the user deselects textbox and leaves it blank, display default message
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "Enter your city or neighbourhood";
+                box.GotFocus += TextBox_GotFocus;
+            }
         }
 
     }

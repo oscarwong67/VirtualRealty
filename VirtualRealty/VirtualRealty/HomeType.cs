@@ -8,9 +8,10 @@ namespace VirtualRealty
 {
     public enum HomeType
     {
-        Condo,
         Apartment,
-        Townhouse,
-        House
+        Condo,
+        House,
+        Townhouse
+        
     }
 }
