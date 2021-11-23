@@ -160,6 +160,20 @@
   <ItemGroup>
     <Resource Include="logo.png" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="bnbbuttons\1.png" />
+    <Resource Include="bnbbuttons\1on.png" />
+    <Resource Include="bnbbuttons\2.png" />
+    <Resource Include="bnbbuttons\3.png" />
+    <Resource Include="bnbbuttons\4.png" />
+    <Resource Include="bnbbuttons\any.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bnbbuttons\1.5.png" />
+    <Resource Include="bnbbuttons\1.5on.png" />
+    <Resource Include="bnbbuttons\5.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Fonts\Montserrat\OFL.txt" />
   </ItemGroup>

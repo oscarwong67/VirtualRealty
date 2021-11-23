@@ -304,8 +304,7 @@ namespace VirtualRealty
 
         private void ApplyThisSearch_Click(object sender, RoutedEventArgs e)
         {
-            // TODO (Oscar): max beds and baths
-            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, /* HomeTypes:HomeTypes */ MinBeds:MinBeds, MinBaths:MinBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasGarage ? "Garage" : ""));
+            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasGarage ? "Garage" : ""));
             Switcher.Switch(MainWindow.LP);
         }
     }
