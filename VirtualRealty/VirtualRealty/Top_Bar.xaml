@@ -45,15 +45,15 @@
         <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
             <Label>Number Of Beds</Label>
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="BedAny" Content="Any" IsChecked="True" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedOnePlus" Content="1+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedTwoPlus" Content="2+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedThreePlus" Content="3+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedFourPlus" Content="4+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedFivePlus" Content="5+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedAny" Content="Any" IsChecked="True" GroupName="NumberOfBeds" Style="{StaticResource {x:Type ToggleButton}}" Background="White" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedOne" Content="1+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedTwo" Content="2+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedThree" Content="3+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedFour" Content="4+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedFive" Content="5+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
             </StackPanel>
 
-            <CheckBox x:Name="ExactMatch" Content="Use Exact Match" Width="174"></CheckBox>
+            <CheckBox x:Name="ExactMatch" Content="Use Exact Match" Checked="UseExactMatchChecked" Unchecked="UseExactMatchUnchecked" Width="174"></CheckBox>
 
             <Label>Number Of Baths</Label>
             <StackPanel Orientation="Horizontal">

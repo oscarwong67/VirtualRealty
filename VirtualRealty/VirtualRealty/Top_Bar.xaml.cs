@@ -19,8 +19,8 @@ namespace VirtualRealty
         private int priceMin;
         private int priceMax;
         private HashSet<HomeType> homeTypes = new HashSet<HomeType>();
-        private int numBedMin;
-        private int numBedMax;
+        private int numBedMin = -1;
+        private int numBedMax = -1;
         private double numBathMin = -1;
         private double numBathMax = -1;
         private int sqftMin;
@@ -125,35 +125,53 @@ namespace VirtualRealty
 
         }
 
+        private void UseExactMatchChecked(object sender, RoutedEventArgs e)
+        {
+            BedOne.Content = "1";
+            BedTwo.Content = "2";
+            BedThree.Content = "3";
+            BedFour.Content = "4";
+            BedFive.Content = "5";
+        }
+
+        private void UseExactMatchUnchecked(object sender, RoutedEventArgs e)
+        {
+            BedOne.Content = "1+";
+            BedTwo.Content = "2+";
+            BedThree.Content = "3+";
+            BedFour.Content = "4+";
+            BedFive.Content = "5+";
+        }
+
         private void NumBedCheck(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            if (rb.Name == "BedAny")
+            if (rb.Content.ToString().Equals("Any"))
             {
                 numBedMin = -1;
                 numBedMax = -1;
 
-            }  else if (rb.Name == "BedOnePlus")
+            }  else if (rb.Content.ToString().Equals("1+"))
             {
                 numBedMin = 1;
                 numBedMax = -1;
 
-            } else if (rb.Name == "BedTwoPlus")
+            } else if (rb.Content.ToString().Equals("2+"))
             {
                 numBedMin = 2;
                 numBedMax = -1;
 
-            } else if (rb.Name == "BedThreePlus")
+            } else if (rb.Content.ToString().Equals("3+"))
             {
                 numBedMin = 3;
                 numBedMax = -1;
 
-            } else if (rb.Name == "BedFourPlus")
+            } else if (rb.Content.ToString().Equals("4+"))
             {
                 numBedMin = 4;
                 numBedMax = -1;
 
-            }  else if (rb.Name == "BedFivePlus")
+            }  else if (rb.Content.ToString().Equals("5+"))
             {
                 numBedMin = 5;
                 numBedMax = -1;
@@ -162,6 +180,7 @@ namespace VirtualRealty
         }
         private void NumBathCheck(object sender, RoutedEventArgs e)
         {
+            BedOnePlus.Content = "hi";
             RadioButton rb = sender as RadioButton;
             if (rb.Name == "BathAny")
             {
