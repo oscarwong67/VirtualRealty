@@ -45,6 +45,10 @@ namespace VirtualRealty
         public List<HomeType> HomeType {
             get { return homeType; }
             set {
+                if (value == null || value.Count() == 0)
+                {
+                    return;
+                }
                 homeType = value;
 
                 string homeTypeStr = "";
@@ -54,12 +58,7 @@ namespace VirtualRealty
                     homeTypeStr += ", ";
                 }
                 homeTypeStr = homeTypeStr.Substring(0, homeTypeStr.Length - 2);
-                Label label = new Label
-                {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = homeTypeStr,
-                };
-                Left.Children.Add(label);
+                HomeTypeLabel.Content = homeTypeStr;
             }
         }
         // TODO (Oscar): add support for millions?
@@ -68,12 +67,7 @@ namespace VirtualRealty
             get { return minPrice; }
             set {
                 minPrice = value;
-                Label label = new Label
-                {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = "$" + string.Format("{0:#.00}", Convert.ToDecimal(minPrice) / 1000) + "k+"
-                };
-                Left.Children.Add(label);
+                PriceLabel.Content = "$" + string.Format("{0:#.00}", Convert.ToDecimal(minPrice) / 1000) + "k+";
             }
         }
         // THIS ASSUMES YOU SET MAXPRICE RIGHT AFTER MINPRICE!!!
@@ -83,17 +77,11 @@ namespace VirtualRealty
             set
             {
                 maxPrice = value;
-                if (this.minPrice != 0)
+                PriceLabel.Content = "$" + string.Format("{0:#.00}", Convert.ToDecimal(minPrice) / 1000) + "k - $" + string.Format("{0:#.00}", Convert.ToDecimal(maxPrice) / 1000) + "k";
+                if (maxPrice == minPrice)
                 {
-                    Left.Children.RemoveAt(Left.Children.Count - 1); // Remove the last one which was like $minprice+
-
+                    PriceLabel.Content = "$" + string.Format("{0:#.00}", Convert.ToDecimal(minPrice) / 1000) + "k";
                 }
-                Label label = new Label
-                {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = "$" + string.Format("{0:#.00}", Convert.ToDecimal(minPrice) / 1000) + "k - $" + string.Format("{0:#.00}", Convert.ToDecimal(maxPrice) / 1000) + "k"
-                };
-                Left.Children.Add(label);
             }
         }
         private int minSqFt;
@@ -136,12 +124,7 @@ namespace VirtualRealty
             set
             {
                 minBeds = value;
-                Label label = new Label
-                {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = "" + minBeds + "+ Beds"
-                };
-                Center.Children.Add(label);
+                BedsLabel.Content = "" + minBeds + "+ Beds";
             }
         }
         // THIS ASSUMES YOU SET MAXBEDS RIGHT AFTER MINBEDS!!!
@@ -151,50 +134,27 @@ namespace VirtualRealty
             set
             {
                 maxBeds = value;
-                if (this.minBeds != 0)
-                {
-                    Center.Children.RemoveAt(Center.Children.Count - 1); // Remove the last one which was like "2+ beds"
-                }
-                Label label = new Label
-                {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = "" + minBeds + " Beds" // We use exact match if there's a max
-                };
-                Center.Children.Add(label);
+                BedsLabel.Content = "" + minBeds + " Beds"; // We use exact match if there's a max
             }
         }
 
-        private float minBaths;
-        public float MinBaths {
+        private double minBaths;
+        public double MinBaths {
             get { return minBaths;  }
             set {
                 minBaths = value;
-                Label label = new Label
-                {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = "" + minBaths  + "+ Baths"
-                };
-                Center.Children.Add(label);
+                BathsLabel.Content = "" + minBaths + "+ Baths";
             }
         }
         // THIS ASSUMES YOU SET MAXBATHS RIGHT AFTER MAXBATHS!!!
-        private float maxBaths;
-        public float MaxBaths
+        private double maxBaths;
+        public double MaxBaths
         {
             get { return maxBaths; }
             set
             {
                 maxBaths = value;
-                if (this.minBaths != 0)
-                {
-                    Center.Children.RemoveAt(Center.Children.Count - 1); // Remove the last one which was like "2+ baths"
-                }
-                Label label = new Label
-                {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = "" + minBaths + " Baths" // We use exact match if there's a max for baths
-                };
-                Center.Children.Add(label);
+                BathsLabel.Content = "" + minBaths + "+ Baths";
             }
         }
         private bool hasGarage;
@@ -223,7 +183,7 @@ namespace VirtualRealty
                 Label label = new Label
                 {
                     FontSize = LABEL_FONTSIZE,
-                    Content = "Listing is at most " + maxAgeOfListingInDays + "days old"
+                    Content = "Listing is at most " + maxAgeOfListingInDays + " days old"
                 };
                 Right.Children.Add(label);
             }
@@ -250,7 +210,7 @@ namespace VirtualRealty
                 maxYearBuilt = value;
                 if (minYearBuilt != 0)
                 {
-                    Right.Children.RemoveAt(Center.Children.Count - 1); // Remove the last one which was like "2005-2021"
+                    Right.Children.RemoveAt(Right.Children.Count - 1); // Remove the last one which was like "2005-2021"
                 }
                 Label label = new Label
                 {

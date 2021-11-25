@@ -28,6 +28,9 @@ namespace VirtualRealty
 
         public MainWindow()
         {
+            CreateInitialSavedSearches();
+            savedSearchesPage = new SavedSearches();
+
             Listings = CreateListings();
 
             // ORIGINAL ----------------------------------------
