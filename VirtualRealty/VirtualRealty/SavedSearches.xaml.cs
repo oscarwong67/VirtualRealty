@@ -35,6 +35,16 @@ namespace VirtualRealty
             }
         }
 
+        public void load()
+        {
+            SavedSearchesSection.Children.Clear();
+            savedSearches.Sort(new SavedSearchComparer(SavedSearchComparer.SortBy.LastAccessed));
+            foreach (SavedSearch savedSearch in savedSearches)
+            {
+                SavedSearchesSection.Children.Add(savedSearch);
+            }
+        }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

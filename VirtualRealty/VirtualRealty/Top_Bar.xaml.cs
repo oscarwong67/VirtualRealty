@@ -16,6 +16,7 @@ namespace VirtualRealty
     public partial class Top_Bar : UserControl
     {
         private string locationInput;
+        private string savedSearchName;
         private int priceMin;
         private int priceMax;
         private HashSet<HomeType> homeTypes = new HashSet<HomeType>();
@@ -35,6 +36,7 @@ namespace VirtualRealty
         public Top_Bar()
         {
             InitializeComponent();
+            savedSearchName = "Name this Search";
 
         }
         void GoToHomePage(object sender, RoutedEventArgs e)
@@ -49,11 +51,8 @@ namespace VirtualRealty
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.savedSearchesPage == null)
-            {
-                MainWindow.CreateInitialSavedSearches();
-                MainWindow.savedSearchesPage = new SavedSearches();
-            }
+           MainWindow.savedSearchesPage.load();
+            
             Switcher.Switch(MainWindow.savedSearchesPage);        
         }
 
@@ -82,18 +81,37 @@ namespace VirtualRealty
 
         private void NameThisSearch_TextChanged(object sender, RoutedEventArgs e)
         {
-            locationInput = NameThisSearch.Text;
+            savedSearchName = NameThisSearch.Text;
         }
 
         private void SaveSearch(object sender, RoutedEventArgs e)
         {
             SavedSearch savedSearch = new SavedSearch();
-            savedSearch.LocationSearchString = locationInput;
-            savedSearch.MinPrice = priceMin;
-            savedSearch.MaxPrice = priceMax;
+            if (savedSearch.LocationSearchString != null && savedSearch.LocationSearchString.Length > 0)
+            {
+                savedSearch.LocationSearchString = locationInput;
+            }
+            // TODO (Oscar): validation
+            savedSearch.SearchName = savedSearchName;
+            if (priceMin >= 0)
+            {
+                savedSearch.MinPrice = priceMin;
+            }
+            if (priceMax >= 0)
+            {
+                savedSearch.MinPrice = Math.Max(0, priceMin);
+                savedSearch.MaxPrice = priceMax;
+            }
             savedSearch.HomeType = new List<HomeType>(homeTypes);
-            savedSearch.MinSqFt = sqftMin;
-            savedSearch.MaxSqFt = sqftMax;
+            if (sqftMin >= 0)
+            {
+                savedSearch.MinSqFt = sqftMin;
+            }
+            if (sqftMax >= 0)
+            {
+                savedSearch.MinSqFt = Math.Max(0, sqftMin);
+                savedSearch.MaxSqFt = sqftMax;
+            }
             savedSearch.MinBeds = numBedMin;
             savedSearch.MaxBeds = numBedMax;
             savedSearch.MinBaths = numBathMin;

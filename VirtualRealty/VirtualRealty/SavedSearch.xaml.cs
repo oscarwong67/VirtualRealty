@@ -45,6 +45,10 @@ namespace VirtualRealty
         public List<HomeType> HomeType {
             get { return homeType; }
             set {
+                if (value == null || value.Count() == 0)
+                {
+                    return;
+                }
                 homeType = value;
 
                 string homeTypeStr = "";
@@ -93,6 +97,10 @@ namespace VirtualRealty
                     FontSize = LABEL_FONTSIZE,
                     Content = "$" + string.Format("{0:#.00}", Convert.ToDecimal(minPrice) / 1000) + "k - $" + string.Format("{0:#.00}", Convert.ToDecimal(maxPrice) / 1000) + "k"
                 };
+                if (maxPrice == minPrice)
+                {
+                    label.Content = "$" + string.Format("{0:#.00}", Convert.ToDecimal(minPrice) / 1000) + "k";
+                }
                 Left.Children.Add(label);
             }
         }
@@ -223,7 +231,7 @@ namespace VirtualRealty
                 Label label = new Label
                 {
                     FontSize = LABEL_FONTSIZE,
-                    Content = "Listing is at most " + maxAgeOfListingInDays + "days old"
+                    Content = "Listing is at most " + maxAgeOfListingInDays + " days old"
                 };
                 Right.Children.Add(label);
             }

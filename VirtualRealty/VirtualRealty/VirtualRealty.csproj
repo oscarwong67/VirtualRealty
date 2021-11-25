@@ -59,6 +59,7 @@
       <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
     <Compile Include="HomeType.cs" />
+    <Compile Include="NotEmptyRule.cs" />
     <Compile Include="SavedSearch.xaml.cs">
       <DependentUpon>SavedSearch.xaml</DependentUpon>
     </Compile>
