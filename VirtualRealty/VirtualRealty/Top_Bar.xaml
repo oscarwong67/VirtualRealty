@@ -77,8 +77,8 @@
         <Button Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
         <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>
         <Button Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Grid.Column="2" HorizontalAlignment="Left" Margin="109,77,0,0" VerticalAlignment="Top" Width="95"/>
-        <Popup Name="SavingSearch" IsOpen="False" Margin="392.5,-50,0,0" VerticalAlignment="Center" AllowsTransparency="True" >
-            <Grid Margin="501,0,0,0" Background="Gray">
+        <Popup Name="SavingSearch" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
+            <Grid Margin="0,0,0,0" Background="Gray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"/>
                     <ColumnDefinition Width="50" />
@@ -90,7 +90,6 @@
                     <Button Content="Save" Click="SaveSearch" />
                 </Border>
             </Grid>
-
         </Popup>
     </Grid>
 </UserControl>

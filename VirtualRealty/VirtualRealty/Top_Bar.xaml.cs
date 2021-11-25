@@ -76,7 +76,7 @@ namespace VirtualRealty
             if (box.Text.Trim().Equals(string.Empty))
             {
                 box.Text = "Name This Search";
-                box.GotFocus += NameThisSearch_LostFocus;
+                box.GotFocus += NameThisSearch_GotFocus;
             }
         }
 
