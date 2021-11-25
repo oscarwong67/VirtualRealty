@@ -180,7 +180,6 @@ namespace VirtualRealty
         }
         private void NumBathCheck(object sender, RoutedEventArgs e)
         {
-            BedOnePlus.Content = "hi";
             RadioButton rb = sender as RadioButton;
             if (rb.Name == "BathAny")
             {
