@@ -6,7 +6,8 @@ using System.Windows.Data;
 using System.ComponentModel;
 using System.Windows.Input;
 using System;
-
+using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace VirtualRealty
 {
@@ -84,7 +85,7 @@ namespace VirtualRealty
             savedSearchName = NameThisSearch.Text;
         }
 
-        private void SaveSearch(object sender, RoutedEventArgs e)
+        private async void SaveSearch(object sender, RoutedEventArgs e)
         {
             SavedSearch savedSearch = new SavedSearch();
             if (savedSearch.LocationSearchString != null && savedSearch.LocationSearchString.Length > 0)
@@ -151,6 +152,31 @@ namespace VirtualRealty
             SavedSearches.savedSearches.Add(savedSearch);
 
             ToggleSavingSearch(sender, e);
+            SavedSearchesButton.BorderBrush = Brushes.Green;
+            SavedSearchesButton.BorderThickness = new Thickness(3);
+
+            SavingSearchSuccess.IsOpen = true;
+            await Task.Delay(1); // wait 1s
+            for (int i = 99; i >= 0; i--)
+            {
+                SavingSearchSuccessContent.Opacity = i / 100d;
+                if (i % 12 == 0)
+                {
+                    if (SavedSearchesButton.BorderBrush == Brushes.Green)
+                    {
+                        SavedSearchesButton.BorderBrush = Brushes.LightGreen;
+                    } else
+                    {
+                        SavedSearchesButton.BorderBrush = Brushes.Green;
+                    }
+                }
+
+                await Task.Delay(3); // The animation will take 3 seconds
+            }
+            SavingSearchSuccess.IsOpen = false;
+            SavingSearchSuccessContent.Opacity = 1;
+            SavedSearchesButton.BorderBrush = Brushes.Gray;
+            SavedSearchesButton.BorderThickness = new Thickness(1);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
