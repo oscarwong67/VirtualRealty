@@ -99,7 +99,10 @@ namespace VirtualRealty
             }
             if (priceMax >= 0)
             {
-                savedSearch.MinPrice = Math.Max(0, priceMin);
+                if (priceMin == -1)
+                {
+                    savedSearch.MinPrice = 0;
+                }
                 savedSearch.MaxPrice = priceMax;
             }
             savedSearch.HomeType = new List<HomeType>(homeTypes);
