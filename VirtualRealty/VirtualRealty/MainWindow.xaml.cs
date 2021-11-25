@@ -30,26 +30,29 @@ namespace VirtualRealty
         {
             Listings = CreateListings();
 
-<<<<<<< HEAD
-            //ListingsPage LP = new ListingsPage();
-            //LP.SetListings(Listings);
-
-
-            // ADDED -------------------------------------------
-            BigListing BL = new BigListing();
-            BL.SetBigListing(Listings[0]);
-=======
+            // ORIGINAL ----------------------------------------
+            ListingsPage LP = new ListingsPage();
             LP.SetListings(Listings);
->>>>>>> main
 
             InitializeComponent();
 
             Switcher.pageSwitcher = this;
-            Switcher.Switch(BL);  //initial page 
+            Switcher.Switch(LP);  //initial page 
+            // ORIGINAL ----------------------------------------
+
+
             // ADDED -------------------------------------------
+            //BigListing BL = new BigListing();
+            //BL.SetBigListing(Listings[2]);
+
+            //LP.SetListings(Listings);
+
+            //InitializeComponent();
 
             //Switcher.pageSwitcher = this;
-            //Switcher.Switch(LP);  //initial page   
+            //Switcher.Switch(BL);  //initial page 
+            // ADDED -------------------------------------------
+
         }
 
         public void Navigate(UserControl nextPage)

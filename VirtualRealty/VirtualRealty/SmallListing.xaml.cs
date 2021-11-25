@@ -22,6 +22,8 @@ namespace VirtualRealty
     {
 
         private Listing Listing;
+        //private BigListing bigListing;
+        private Grid ListingPgGrid;
         public SmallListing()
         {
             InitializeComponent();
@@ -31,11 +33,41 @@ namespace VirtualRealty
         {
             Listing = L;
 
-            this.Price.Content = "$" + Listing.Price.ToString();
+            this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
             this.Address.Content = Listing.Address;
             this.Type.Content = L.ListingType.ToString();
             this.BedBath.Content = Listing.Beds.ToString() + " Beds, " + Listing.Baths.ToString() + " Baths";
-            this.Size.Content = Listing.size.ToString() + "ft^2";
+            this.Size.Content = Listing.size.ToString() + " sqft";
         }
+
+        //public void SetBigListingInfo(BigListing l)
+        //{
+        //    bigListing = l;
+        //}
+
+        public void SetListingGrid(Grid grid)
+        {
+            ListingPgGrid = grid;
+        }
+
+        private void OpenBigListing(object sender, MouseButtonEventArgs e)
+        {
+
+            //if(ListingPgGrid.Children.Contains(bigListing))
+            //{
+            //    ListingPgGrid.Children.Remove(bigListing);
+            //}
+
+            //ListingPgGrid.Children.Add(bigListing);
+
+
+            BigListing bigL = new BigListing();
+            bigL.SetBigListing(Listing);
+            ListingPgGrid.Children.Add(bigL);
+
+        }
+
+        
+
     }
 }

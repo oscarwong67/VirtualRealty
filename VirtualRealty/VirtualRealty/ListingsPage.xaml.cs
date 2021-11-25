@@ -39,12 +39,15 @@ namespace VirtualRealty
                 {
                     case 0:
                         Left.Children.Add(L.Small);
+                        L.Small.SetListingGrid(this.ListingPgGrid);
                         break;
                     case 1:
                         Centre.Children.Add(L.Small);
+                        L.Small.SetListingGrid(this.ListingPgGrid);
                         break;
                     case 2:
                         Right.Children.Add(L.Small);
+                        L.Small.SetListingGrid(this.ListingPgGrid);
                         break;
                 }
 

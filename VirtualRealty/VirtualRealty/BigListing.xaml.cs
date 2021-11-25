@@ -26,6 +26,7 @@ namespace VirtualRealty
             InitializeComponent();
         }
 
+
         public void SetBigListing(Listing L)
         {
             Listing = L;
@@ -39,8 +40,8 @@ namespace VirtualRealty
             this.Date.Content = "Posted " + days.ToString() + " day(s) ago";
 
             // Fill Beed, Bath, sqft, Home type
-            this.ListingDetails.Content = Listing.Beds.ToString() + " Bed | "
-                + Listing.Baths.ToString() + " Bath | "
+            this.ListingDetails.Content = Listing.Beds.ToString() + " Beds | "
+                + Listing.Baths.ToString() + " Baths | "
                 + Listing.size.ToString() + " sqft | "
                 + Listing.ListingType;
 
@@ -68,7 +69,8 @@ namespace VirtualRealty
 
         private void CloseBigListing(object sender, RoutedEventArgs e)
         {
-
+            // Close the big listing popup using the close button, or if the user clicked outside the popup
+            this.Visibility = Visibility.Collapsed;
         }
 
         // Opens the contact page popup
