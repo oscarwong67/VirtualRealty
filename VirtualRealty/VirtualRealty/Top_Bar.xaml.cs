@@ -132,6 +132,8 @@ namespace VirtualRealty
             BedThree.Content = "3";
             BedFour.Content = "4";
             BedFive.Content = "5";
+
+            numBedMax = numBedMin; // For updating value right on click rather than having to reclick
         }
 
         private void UseExactMatchUnchecked(object sender, RoutedEventArgs e)
@@ -141,6 +143,8 @@ namespace VirtualRealty
             BedThree.Content = "3+";
             BedFour.Content = "4+";
             BedFive.Content = "5+";
+
+            numBedMax = -1; // For updating value right on click rather than having to reclick
         }
 
         private void NumBedCheck(object sender, RoutedEventArgs e)
@@ -175,6 +179,35 @@ namespace VirtualRealty
             {
                 numBedMin = 5;
                 numBedMax = -1;
+
+            } else if (rb.Content.ToString().Equals("1"))
+            {
+                numBedMin = 1;
+                numBedMax = 1;
+
+            }
+            else if (rb.Content.ToString().Equals("2"))
+            {
+                numBedMin = 2;
+                numBedMax = 2;
+
+            }
+            else if (rb.Content.ToString().Equals("3"))
+            {
+                numBedMin = 3;
+                numBedMax = 3;
+
+            }
+            else if (rb.Content.ToString().Equals("4"))
+            {
+                numBedMin = 4;
+                numBedMax = 4;
+
+            }
+            else if (rb.Content.ToString().Equals("5"))
+            {
+                numBedMin = 5;
+                numBedMax = 5;
 
             }
         }
@@ -280,7 +313,23 @@ namespace VirtualRealty
                 box.GotFocus += TextBox_GotFocus;
             }
         }
+        private void YearMinMax_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = "";
+            box.GotFocus -= YearMinMax_GotFocus;
+        }
 
+        // If the user deselects textbox and leaves it blank, display default message
+        private void YearMinMax_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = box.Name.Equals("MinYear") ? "Min" : "Max";
+                box.GotFocus += YearMinMax_GotFocus;
+            }
+        }
     }
 
 }
