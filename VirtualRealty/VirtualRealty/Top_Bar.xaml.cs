@@ -21,8 +21,8 @@ namespace VirtualRealty
         private HashSet<HomeType> homeTypes = new HashSet<HomeType>();
         private int numBedMin;
         private int numBedMax;
-        private int numBathMin;
-        private int numBathMax;
+        private double numBathMin = -1;
+        private double numBathMax = -1;
         private int sqftMin;
         private int sqftMax;
         private int ageOfListing;
@@ -127,11 +127,61 @@ namespace VirtualRealty
 
         private void NumBedCheck(object sender, RoutedEventArgs e)
         {
+            RadioButton rb = sender as RadioButton;
+            if (rb.Name == "BedAny")
+            {
+                numBedMin = -1;
+                numBedMax = -1;
 
+            }  else if (rb.Name == "BedOnePlus")
+            {
+                numBedMin = 1;
+                numBedMax = -1;
+
+            } else if (rb.Name == "BedTwoPlus")
+            {
+                numBedMin = 2;
+                numBedMax = -1;
+
+            } else if (rb.Name == "BedThreePlus")
+            {
+                numBedMin = 3;
+                numBedMax = -1;
+
+            } else if (rb.Name == "BedFourPlus")
+            {
+                numBedMin = 4;
+                numBedMax = -1;
+
+            }  else if (rb.Name == "BedFivePlus")
+            {
+                numBedMin = 5;
+                numBedMax = -1;
+
+            }
         }
         private void NumBathCheck(object sender, RoutedEventArgs e)
         {
-
+            RadioButton rb = sender as RadioButton;
+            if (rb.Name == "BathAny")
+            {
+                numBathMin = -1;
+            } else if (rb.Name == "BathOne")
+            {
+                numBathMin = 1;
+            } else if (rb.Name == "BathOneHalf")
+            {
+                numBathMin = 1.5;
+            } else if (rb.Name == "BathTwo")
+            {
+                numBathMin = 2;
+            } else if (rb.Name == "BathThree")
+            {
+                numBathMin = 3;
+            } else if (rb.Name == "BathFour")
+            {
+                numBathMin = 4;
+            }
         }
         private void HomeTypeChecked(object sender, RoutedEventArgs e)
         {
@@ -143,18 +193,15 @@ namespace VirtualRealty
                 {
                     home = HomeType.Apartment;
                     homeTypes.Add(home);
-                }
-                if (cb.Name == HomeType.Condo.ToString())
+                } else if (cb.Name == HomeType.Condo.ToString())
                 {
                     home = HomeType.Condo;
                     homeTypes.Add(home);
-                }
-                if (cb.Name == HomeType.House.ToString())
+                } else if (cb.Name == HomeType.House.ToString())
                 {
                     home = HomeType.House;
                     homeTypes.Add(home);
-                }
-                if (cb.Name == HomeType.Townhouse.ToString())
+                } else if (cb.Name == HomeType.Townhouse.ToString())
                 {
                     home = HomeType.Townhouse;
                     homeTypes.Add(home);
@@ -172,18 +219,15 @@ namespace VirtualRealty
                 {
                     home = HomeType.Apartment;
                     homeTypes.Remove(home);
-                }
-                if (cb.Name == HomeType.Condo.ToString())
+                } else if (cb.Name == HomeType.Condo.ToString())
                 {
                     home = HomeType.Condo;
                     homeTypes.Remove(home);
-                }
-                if (cb.Name == HomeType.House.ToString())
+                } else if (cb.Name == HomeType.House.ToString())
                 {
                     home = HomeType.House;
                     homeTypes.Remove(home);
-                }
-                if (cb.Name == HomeType.Townhouse.ToString())
+                } else if (cb.Name == HomeType.Townhouse.ToString())
                 {
                     home = HomeType.Townhouse;
                     homeTypes.Remove(home);
@@ -193,7 +237,6 @@ namespace VirtualRealty
 
         private void PurchaseCheck(object sender, RoutedEventArgs e)
         {
-            RadioButton rb = sender as RadioButton;
             if(Purchase.IsChecked == true)
             {
                 isPurchase = true;
