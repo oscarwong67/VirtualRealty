@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Windows.Services.Maps;
 
 namespace VirtualRealty
 {
@@ -16,6 +18,7 @@ namespace VirtualRealty
         public HomeType ListingType;
         public readonly int Price, Beds, YearBuilt, size; //size is square footage
         public readonly double Baths;
+        public double Latitude, Longitude;
         public readonly DateTime DateListed;
         public List<string> Images { get; set; } //list of paths to images for this listing
         public SmallListing Small;
@@ -27,6 +30,24 @@ namespace VirtualRealty
             DateListed = DateTime.Now;
             Small = new SmallListing();
             Small.SetListing(this);
+        }
+
+        private async void CalcLocation()
+        {
+            //Location to use as a hint in geocoding
+            BasicGeoposition CalgaryPos = new BasicGeoposition() { Latitude = 51, Longitude = -114 };
+            Geopoint Calgary = new Geopoint(CalgaryPos);
+
+            MapService.ServiceToken = "n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760";
+
+            MapLocationFinderResult Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
+
+            while (Result.Status != MapLocationFinderStatus.Success)
+            {
+
+                this.Latitude = Result.Locations[0].Point.Position.Latitude;
+                this.Longitude = Result.Locations[0].Point.Position.Longitude;
+            }
         }
 
         public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, double Bath, int Size, HomeType Type,
@@ -53,6 +74,9 @@ namespace VirtualRealty
             this.Gym = Gym;
             this.Elevator = Elevator;
             this.Images = Images;
+
+            CalcLocation();
+
 
             Small = new SmallListing();
             Small.SetListing(this);
