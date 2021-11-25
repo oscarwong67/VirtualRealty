@@ -9,9 +9,7 @@
              d:DesignHeight="780" d:DesignWidth="1280">
     <Grid>
         <local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
-        <WebBrowser HorizontalAlignment="Left" Height="605" Margin="0,175,0,0" VerticalAlignment="Top" Width="865" Source="https://www.google.com/maps/place/Calgary,+AB/@51.0318378,-114.1258125,11.04z/data=!4m5!3m4!1s0x537170039f843fd5:0x266d3bb1b652b63a!8m2!3d51.0447397!4d-114.0719032"/>
-
-        <Controls:MapControl HorizontalAlignment="Left" Height="100" Margin="1014,390,0,0" VerticalAlignment="Top" Width="100"/>
+        <Controls:MapControl HorizontalAlignment="Left" Height="303" Margin="258,477,0,0" VerticalAlignment="Top" Width="657"/>
 
     </Grid>
 </UserControl>
