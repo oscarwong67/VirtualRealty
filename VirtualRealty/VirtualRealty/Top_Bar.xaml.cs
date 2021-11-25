@@ -17,18 +17,18 @@ namespace VirtualRealty
     {
         private string locationInput;
         private string savedSearchName;
-        private int priceMin;
-        private int priceMax;
+        private int priceMin = -1;
+        private int priceMax = -1;
         private HashSet<HomeType> homeTypes = new HashSet<HomeType>();
         private int numBedMin = -1;
         private int numBedMax = -1;
         private double numBathMin = -1;
         private double numBathMax = -1;
-        private int sqftMin;
-        private int sqftMax;
-        private int ageOfListing;
-        private int yearBuiltMin;
-        private int yearBuiltMax;
+        private int sqftMin = -1;
+        private int sqftMax = -1;
+        private int ageOfListing = -1;
+        private int yearBuiltMin = -1;
+        private int yearBuiltMax = -1;
         private bool garage;
         private bool washerDryer;
         private bool isPurchase;
@@ -99,10 +99,6 @@ namespace VirtualRealty
             }
             if (priceMax >= 0)
             {
-                if (priceMin == -1)
-                {
-                    savedSearch.MinPrice = 0;
-                }
                 savedSearch.MaxPrice = priceMax;
             }
             savedSearch.HomeType = new List<HomeType>(homeTypes);
@@ -112,18 +108,44 @@ namespace VirtualRealty
             }
             if (sqftMax >= 0)
             {
-                savedSearch.MinSqFt = Math.Max(0, sqftMin);
                 savedSearch.MaxSqFt = sqftMax;
             }
-            savedSearch.MinBeds = numBedMin;
-            savedSearch.MaxBeds = numBedMax;
-            savedSearch.MinBaths = numBathMin;
-            savedSearch.MaxBaths = numBathMax;
-            savedSearch.HasGarage = garage;
-            savedSearch.MaxAgeOfListingInDays = ageOfListing;
-            savedSearch.MinYearBuilt = yearBuiltMin;
-            savedSearch.MaxYearBuilt = yearBuiltMax;
-            savedSearch.HasWasherDryer = washerDryer;
+            if (numBedMin >= 0)
+            {
+                savedSearch.MinBeds = numBedMin;
+            }
+            if (numBedMax >= 0)
+            {
+                savedSearch.MaxBeds = numBedMax;
+            }
+            if (numBathMin >= 0)
+            {
+                savedSearch.MinBaths = numBathMin;
+            }
+            if (numBathMax >= 0)
+            {
+                savedSearch.MaxBaths = numBathMax;
+            }
+            if (garage)
+            {
+                savedSearch.HasGarage = garage;
+            }
+            if (ageOfListing >= 0)
+            {
+                savedSearch.MaxAgeOfListingInDays = ageOfListing;
+            }
+            if (yearBuiltMin >= 0)
+            {
+                savedSearch.MinYearBuilt = yearBuiltMin;
+            }
+            if (yearBuiltMax >= 0)
+            {
+                savedSearch.MaxYearBuilt = yearBuiltMax;
+            }
+            if (washerDryer)
+            {
+                savedSearch.HasWasherDryer = washerDryer;
+            }
             savedSearch.LastAccessed = DateTime.Now;
             savedSearch.DateSaved = DateTime.Now;
             SavedSearches.savedSearches.Add(savedSearch);
