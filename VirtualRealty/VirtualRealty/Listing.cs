@@ -25,8 +25,13 @@ namespace VirtualRealty
         {
             //generic contructor, should not be used
             DateListed = DateTime.Now;
+
+            //BigListing Big = new BigListing();
+            //Big.SetBigListing(this);
+
             Small = new SmallListing();
             Small.SetListing(this);
+            //Small.SetBigListingInfo(Big);
         }
 
         public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, double Bath, int Size, HomeType Type,
@@ -54,8 +59,12 @@ namespace VirtualRealty
             this.Elevator = Elevator;
             this.Images = Images;
 
+            //BigListing Big = new BigListing();
+            //Big.SetBigListing(this);
+
             Small = new SmallListing();
             Small.SetListing(this);
+            //Small.SetBigListingInfo(Big);
         }
 
         public bool ToggleFavourite()
