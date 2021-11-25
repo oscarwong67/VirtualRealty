@@ -172,8 +172,8 @@ namespace VirtualRealty
             }
         }
 
-        private float minBaths;
-        public float MinBaths {
+        private double minBaths;
+        public double MinBaths {
             get { return minBaths;  }
             set {
                 minBaths = value;
@@ -186,8 +186,8 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MAXBATHS RIGHT AFTER MAXBATHS!!!
-        private float maxBaths;
-        public float MaxBaths
+        private double maxBaths;
+        public double MaxBaths
         {
             get { return maxBaths; }
             set
