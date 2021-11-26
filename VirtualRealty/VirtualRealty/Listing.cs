@@ -28,8 +28,13 @@ namespace VirtualRealty
         {
             //generic contructor, should not be used
             DateListed = DateTime.Now;
+
+            //BigListing Big = new BigListing();
+            //Big.SetBigListing(this);
+
             Small = new SmallListing();
             Small.SetListing(this);
+            //Small.SetBigListingInfo(Big);
         }
 
         private async void CalcLocation()
@@ -80,6 +85,7 @@ namespace VirtualRealty
 
             Small = new SmallListing();
             Small.SetListing(this);
+            //Small.SetBigListingInfo(Big);
         }
 
         public bool ToggleFavourite()

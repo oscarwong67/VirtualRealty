@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="VirtualRealty.ContactPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualRealty"
+             mc:Ignorable="d" 
+             d:DesignHeight="780" d:DesignWidth="1280">
+    <Grid>
+        <!-- Background rectangle behind contact popup -->
+        <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseContactPopup"/>
+        <Grid Background="White" Margin="170,94,156,104" HorizontalAlignment="Center" Width="954">
+            <Button Content="Close" Click="CloseContactPopup" Width="75" Margin="20,10,856,0" Height="32" VerticalAlignment="Top" Cursor="Hand"/>
+            <Grid>
+                <!-- Contact Information Rectangle -->
+                <Border Background="#FFB4B4B4" Margin="24,53,24,319"/>
+                <Label Content="Contact Information" FontSize="22" HorizontalAlignment="Left" Margin="24,53,0,0" VerticalAlignment="Top" Height="35" Width="883" RenderTransformOrigin="0.5,0.5"/>
+                <Label Content="Name: Pj Khaled" FontSize="18" HorizontalAlignment="Left" Margin="24,88,0,0" VerticalAlignment="Top" Height="35" Width="150" RenderTransformOrigin="0.5,0.5"/>
+                <Label Content="Email: pjkhaled@gmail.com" FontSize="18" HorizontalAlignment="Left" Margin="24,123,0,0" VerticalAlignment="Top" Height="35" Width="234" RenderTransformOrigin="0.5,0.5"/>
+                <Label Content="Phone: 403-273-7373" FontSize="18" HorizontalAlignment="Left" Margin="24,158,0,0" VerticalAlignment="Top" Height="35" Width="187" RenderTransformOrigin="0.5,0.5"/>
+                <Label Content="Listing ID: 89137" FontSize="18" HorizontalAlignment="Left" Margin="24,193,0,0" VerticalAlignment="Top" Height="35" Width="150" RenderTransformOrigin="0.5,0.5"/>
+                <Label Content="Listing Address:" FontSize="18" HorizontalAlignment="Left" Margin="24,228,0,0" VerticalAlignment="Top" Height="35" Width="137" RenderTransformOrigin="0.5,0.5"/>
+                <Label x:Name="ContactListAddress" Content="Address" FontSize="18" HorizontalAlignment="Left" Margin="161,228,0,0" VerticalAlignment="Top" Height="35" Width="632" RenderTransformOrigin="0.5,0.5"/>
+
+                <!-- User Message textbox -->
+                <TextBox x:Name="Message" HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="214" Margin="24,280,0,0" TextWrapping="Wrap" Text="Enter your message here" VerticalAlignment="Top" Width="906"/>
+
+                <!-- User Email textbox and send btn -->
+                <TextBox x:Name="Email"  HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="33" Margin="24,514,0,0" TextWrapping="Wrap" Text="Enter your email here" VerticalAlignment="Top" Width="769"/>
+                <Button Content="Send" HorizontalAlignment="Left" Margin="808,514,0,0" VerticalAlignment="Top" Width="122" Height="32" Cursor="Hand"/>
+
+                <!-- Copy Buttons -->
+                <Button Content="Copy" HorizontalAlignment="Left" Margin="263,132,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick"/>
+                <Button Content="Copy" HorizontalAlignment="Left" Margin="211,167,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick"/>
+                <Button Content="Copy" HorizontalAlignment="Left" Margin="168,202,0,0" VerticalAlignment="Top" Width="76" Click="CopyBtnClick"/>
+                <Button Content="Copy" HorizontalAlignment="Left" Margin="808,237,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick"/>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>
