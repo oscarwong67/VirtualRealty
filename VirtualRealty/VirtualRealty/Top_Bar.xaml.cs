@@ -286,6 +286,36 @@ namespace VirtualRealty
             }
         }
 
+
+        private void AmenitiesChecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if(cb.Name == "Garage" && cb.IsChecked == true)
+            {
+                garage = true;
+            }
+
+            if (cb.Name == "WasherDryer" && cb.IsChecked == true)
+            {
+                washerDryer = true;
+            }
+
+        }
+
+        private void AmenitiesUnchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb.Name == "Garage" && cb.IsChecked == false)
+            {
+                garage = false;
+            }
+
+            if (cb.Name == "WasherDryer" && cb.IsChecked == false)
+            {
+                washerDryer = false;
+            }
+        }
+
         private void PurchaseCheck(object sender, RoutedEventArgs e)
         {
             if(Purchase.IsChecked == true)

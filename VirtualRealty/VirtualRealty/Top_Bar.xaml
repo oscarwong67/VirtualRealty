@@ -43,7 +43,7 @@
         <TextBlock Margin="90,50,116,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" RenderTransformOrigin="0.504,3.167"/>
 
         <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
-            <Label Width="173">Number Of Beds</Label>
+            <Label Width="173" FontWeight="Bold">Number Of Beds</Label>
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="BedAny" Content="Any" IsChecked="True" GroupName="NumberOfBeds" Style="{StaticResource {x:Type ToggleButton}}" Background="White" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
                 <RadioButton x:Name="BedOne" Content="1+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
@@ -55,7 +55,7 @@
 
             <CheckBox x:Name="ExactMatch" Content="Use Exact Match" Checked="UseExactMatchChecked" Unchecked="UseExactMatchUnchecked" Width="174"></CheckBox>
 
-            <Label Width="174">Number Of Baths</Label>
+            <Label Width="174" FontWeight="Bold">Number Of Baths</Label>
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="BathAny" Content="Any" IsChecked="True" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
                 <RadioButton x:Name="BathOne" Content="1+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
@@ -68,20 +68,21 @@
         <TextBlock Margin="81,50,118,54" Text="Bed &amp; Bath" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
 
         <ComboBox Text="More Filters" Name="MoreFilters" Grid.ColumnSpan="2" Margin="94,48,97,52" Grid.Column="5" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
-            <Label Width="141">Square Footage</Label>
+            <Label Width="141" FontWeight="Bold">Square Footage</Label>
             <StackPanel Orientation="Horizontal">
                 <Label>—</Label>
             </StackPanel>
-            <Label>Max Age of Listing (days)</Label>
+            <Label FontWeight="Bold">Max Age of Listing (days)</Label>
             <TextBox x:Name="AgeListing" Text="" Width="53" Height="19" Margin="5,0,0,0"></TextBox>
-            <Label Width="134">Year Built</Label>
+            <Label Width="134" FontWeight="Bold">Year Built</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="MinYear" Text="Min" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" Height="19" Margin="5,0,0,0"></TextBox>
                 <Label>—</Label>
                 <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" Height="19"></TextBox>
-            </StackPanel>            
-            <CheckBox x:Name="Garage" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Attached Garage" Width="131"></CheckBox>
-            <CheckBox x:Name="WasherDryer" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Washer/Dryer in Unit"></CheckBox>
+            </StackPanel>
+            <Label Width="134" FontWeight="Bold">Amenities</Label>
+            <CheckBox x:Name="Garage" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Attached Garage" Width="131"></CheckBox>
+            <CheckBox x:Name="WasherDryer" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Washer/Dryer in Unit"></CheckBox>
 
         </ComboBox>
         <TextBlock Margin="97,50,116,54" Text="More Filters" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
