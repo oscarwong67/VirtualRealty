@@ -26,8 +26,8 @@ namespace VirtualRealty
         private int sqftMin;
         private int sqftMax;
         private int ageOfListing;
-        private int yearBuiltMin;
-        private int yearBuiltMax;
+        private int yearBuiltMin = -1;
+        private int yearBuiltMax = -1;
         private bool garage;
         private bool washerDryer;
         private bool isPurchase;
@@ -110,10 +110,6 @@ namespace VirtualRealty
             ToggleSavingSearch(sender, e);
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -299,6 +295,11 @@ namespace VirtualRealty
             {
                 washerDryer = true;
             }
+
+        }
+
+        private void YearTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
         }
 

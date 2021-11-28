@@ -26,7 +26,7 @@
         </Button>
 
         <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
-        <TextBox x:Name="Location" Text="Enter your city or neighborhood" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" TextChanged="TextBox_TextChanged" Margin="21,48,62,52" Grid.Column="1" Grid.ColumnSpan="2" />
+        <TextBox x:Name="Location" Text="Enter your city or neighborhood" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="21,48,62,52" Grid.Column="1" Grid.ColumnSpan="2" />
 
         <ComboBox Text="Price" Name="Price" Grid.ColumnSpan="2" Margin="109,48,107,52" Grid.Column="2" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
         </ComboBox>
@@ -72,13 +72,16 @@
             <StackPanel Orientation="Horizontal">
                 <Label>—</Label>
             </StackPanel>
-            <Label FontWeight="Bold">Max Age of Listing (days)</Label>
-            <TextBox x:Name="AgeListing" Text="" Width="53" Height="19" Margin="5,0,0,0"></TextBox>
+            <Label FontWeight="Bold">Max Age of Listing</Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="AgeListing" Text="" Width="53" Height="19" Margin="5,0,0,0"></TextBox>
+                <Label>days</Label>
+            </StackPanel>
             <Label Width="134" FontWeight="Bold">Year Built</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="MinYear" Text="Min" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" Height="19" Margin="5,0,0,0"></TextBox>
+                <TextBox x:Name="MinYear" Text="Min" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="19" Margin="5,0,0,0"></TextBox>
                 <Label>—</Label>
-                <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" Height="19"></TextBox>
+                <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="19"></TextBox>
             </StackPanel>
             <Label Width="134" FontWeight="Bold">Amenities</Label>
             <CheckBox x:Name="Garage" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Attached Garage" Width="131"></CheckBox>
