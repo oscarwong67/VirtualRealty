@@ -66,7 +66,7 @@ namespace VirtualRealty
             Small.SetListing(this);
             //Small.SetBigListingInfo(Big);
         }
-
+        
         public bool ToggleFavourite()
         {
             return IsFavourited = !IsFavourited;

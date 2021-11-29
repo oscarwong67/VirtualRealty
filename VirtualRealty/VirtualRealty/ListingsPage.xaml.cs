@@ -27,6 +27,11 @@ namespace VirtualRealty
             InitializeComponent();
         }
 
+        public List<Listing> getListings()
+        {
+            return Listings;
+        }
+
         public void SetListings(List<Listing> Listings)
         {
             int i = 0;
@@ -40,17 +45,19 @@ namespace VirtualRealty
                     case 0:
                         Left.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.ListingPgGrid);
+                        L.Small.SetListingInd(Listings, i);
                         break;
                     case 1:
                         Centre.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.ListingPgGrid);
+                        L.Small.SetListingInd(Listings, i);
                         break;
                     case 2:
                         Right.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.ListingPgGrid);
+                        L.Small.SetListingInd(Listings, i);
                         break;
                 }
-
                 i++;
             }
         }

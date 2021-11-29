@@ -20,6 +20,8 @@ namespace VirtualRealty
     /// </summary>
     public partial class ContactPopup : UserControl
     {
+        //private string savedText;
+
         public ContactPopup()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace VirtualRealty
 
         public void SetContactInfo(string listingAddr)
         {
+            //this.Message.Text = savedText;
             this.ContactListAddress.Content = listingAddr;
         }
 
@@ -34,6 +37,7 @@ namespace VirtualRealty
         {
             // Close the contact popup using the close button, or if the user clicked outside the popup
             this.Visibility = Visibility.Collapsed;
+            //savedText = Message.Text.ToString();
         }
 
         // Sets the textbox to blank when a user clicks it (removes default msg)
@@ -58,7 +62,22 @@ namespace VirtualRealty
         // Copy label content to clipboard
         private void CopyBtnClick(object sender, RoutedEventArgs e)
         {
-
+            string btn = ((Button)sender).Name;
+            switch(btn)
+            {
+                case "EmailCopy":
+                    Clipboard.SetText(this.EmailLabel.Content.ToString());
+                    break;
+                case "PhoneCopy":
+                    Clipboard.SetText(this.PhoneLabel.Content.ToString());
+                    break;
+                case "ListingIDCopy":
+                    Clipboard.SetText(this.ListingIDLabel.Content.ToString());
+                    break;
+                case "AddressCopy":
+                    Clipboard.SetText(this.ContactListAddress.Content.ToString());
+                    break;
+            }
         }
     }
 }

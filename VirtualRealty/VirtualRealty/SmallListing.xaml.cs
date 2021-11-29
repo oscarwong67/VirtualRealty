@@ -22,8 +22,11 @@ namespace VirtualRealty
     {
 
         private Listing Listing;
+        private List<Listing> ListingsList;
         //private BigListing bigListing;
         private Grid ListingPgGrid;
+        private int index;
+
         public SmallListing()
         {
             InitializeComponent();
@@ -50,6 +53,12 @@ namespace VirtualRealty
             ListingPgGrid = grid;
         }
 
+        public void SetListingInd(List<Listing> list, int i)
+        {
+            ListingsList = list;
+            index = i;
+        }
+
         private void OpenBigListing(object sender, MouseButtonEventArgs e)
         {
 
@@ -60,14 +69,13 @@ namespace VirtualRealty
 
             //ListingPgGrid.Children.Add(bigListing);
 
-
+            // need to remove children
             BigListing bigL = new BigListing();
+            bigL.SetBigListingInd(ListingsList, index);
             bigL.SetBigListing(Listing);
             ListingPgGrid.Children.Add(bigL);
 
         }
-
-        
 
     }
 }
