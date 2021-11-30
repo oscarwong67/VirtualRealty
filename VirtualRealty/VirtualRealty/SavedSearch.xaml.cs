@@ -128,7 +128,7 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MAXBEDS RIGHT AFTER MINBEDS!!!
-        private int maxBeds;
+        private int maxBeds = -1;
         public int MaxBeds {
             get { return maxBeds;  }
             set
@@ -147,7 +147,7 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MAXBATHS RIGHT AFTER MAXBATHS!!!
-        private double maxBaths;
+        private double maxBaths = -1;
         public double MaxBaths
         {
             get { return maxBaths; }
