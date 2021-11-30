@@ -132,6 +132,10 @@ namespace VirtualRealty
             if (PriceMaxInput.Text != null && PriceMaxInput.Text.Length > 0 && PriceMaxInput.Text != "Max")
             {
                 priceMax = Int32.Parse(PriceMaxInput.Text, System.Globalization.NumberStyles.AllowThousands);
+                if (PriceMinInput.Text != null && PriceMinInput.Text.Length > 0 && PriceMinInput.Text[PriceMinInput.Text.Length - 1] == '+')
+                {
+                    PriceMinInput.Text = PriceMinInput.Text.Substring(0, PriceMinInput.Text.Length - 1);
+                }
             } else if (PriceMaxInput.Text != null && PriceMaxInput.Text.Length > 0 && PriceMaxInput.Text == "Max")
             {
                 priceMax = -1;
