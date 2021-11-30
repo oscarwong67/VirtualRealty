@@ -434,6 +434,7 @@ namespace VirtualRealty
         {
             priceMin = Int32.Parse((sender as TextBlock).Tag as String);
             PriceMinInput.Text = (sender as TextBlock).Text;
+            MaxPriceOptions.Visibility = Visibility.Visible;
         }
 
         private void ChooseMaxPriceInput(object sender, MouseButtonEventArgs e)
