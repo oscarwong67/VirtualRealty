@@ -42,7 +42,8 @@ namespace VirtualRealty
         }
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new ListingsPage());
+            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings));
+            Switcher.Switch(MainWindow.LP);
         }
 
         void GoToFavorites(object sender, RoutedEventArgs e)
