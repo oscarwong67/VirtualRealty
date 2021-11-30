@@ -14,11 +14,18 @@
         <Label x:Name="SearchTitle" Content="Saved Search Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="36"/>
         <Label x:Name="Location" Content="Location" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Margin="0,47,0,0"/>
         <StackPanel HorizontalAlignment="Left" Height="76" Margin="7,77,0,0" VerticalAlignment="Top" Width="100"/>
-        <StackPanel x:Name="Left" HorizontalAlignment="Left" Height="89" Margin="0,77,0,0" VerticalAlignment="Top" Width="162"/>
-        <StackPanel x:Name="Center" HorizontalAlignment="Left" Height="89" Margin="170,77,0,0" VerticalAlignment="Top" Width="162"/>
-        <StackPanel x:Name="Right" HorizontalAlignment="Left" Height="76" Margin="342,77,0,0" VerticalAlignment="Top" Width="162"/>
-        <Label x:Name="LastAccessedSection" Content="Last Accessed: " HorizontalAlignment="Left" Margin="389,82,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
-        <Label x:Name="DateSavedSection" Content="Saved: " HorizontalAlignment="Left" Margin="389,119,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
+        <StackPanel x:Name="Left" HorizontalAlignment="Left" Height="89" Margin="10,77,0,0" VerticalAlignment="Top" Width="162">
+            <Label Name="HomeTypeLabel" Content="Any Home Type" FontSize="14"/>
+            <Label Name="PriceLabel" Content="Any Price" FontSize="14"/>
+            <Label Name="SqftLabel" Content="Any Square Footage" FontSize="14"/>
+        </StackPanel>
+        <StackPanel x:Name="Center" HorizontalAlignment="Left" Height="89" Margin="180,77,0,0" VerticalAlignment="Top" Width="162">
+            <Label Name="BedsLabel" Content="Any # of Beds" FontSize="14"/>
+            <Label Name="BathsLabel" Content="Any # of Baths" FontSize="14"/>
+        </StackPanel>
+        <StackPanel x:Name="Right" HorizontalAlignment="Left" Height="76" Margin="350,77,0,0" VerticalAlignment="Top" Width="270"/>
+        <Label x:Name="LastAccessedSection" Content="Last Accessed: " HorizontalAlignment="Left" Margin="389,82,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1"/>
+        <Label x:Name="DateSavedSection" Content="Saved: " HorizontalAlignment="Left" Margin="389,119,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1"/>
         <Button Name="ApplyThisSearch" Content="Apply This Search" HorizontalAlignment="Left" Height="52" Margin="395,26,0,0" VerticalAlignment="Top" Width="282" FontSize="24" Click="ApplyThisSearch_Click" Grid.Column="1"/>
     </Grid>
 </UserControl>
