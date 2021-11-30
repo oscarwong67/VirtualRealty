@@ -30,9 +30,9 @@ namespace VirtualRealty
         private int ageOfListing = -1;
         private int yearBuiltMin = -1;
         private int yearBuiltMax = -1;
-        private bool garage;
-        private bool washerDryer;
-        private bool isPurchase;
+        private bool garage = false;
+        private bool washerDryer = false;
+        private bool isPurchase = true;
 
         public Top_Bar()
         {
@@ -44,6 +44,7 @@ namespace VirtualRealty
         {
             MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings));
             Switcher.Switch(MainWindow.LP);
+            MainWindow.LP.SortOrder.SelectedIndex = 0;
         }
 
         void GoToFavorites(object sender, RoutedEventArgs e)
