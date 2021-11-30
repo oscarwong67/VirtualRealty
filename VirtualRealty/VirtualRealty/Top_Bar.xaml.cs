@@ -62,6 +62,82 @@ namespace VirtualRealty
             SavingSearch.IsOpen = !SavingSearch.IsOpen;
         }
 
+        private void PriceMinInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            MinPriceOptions.Visibility = Visibility.Visible;
+            TextBox box = sender as TextBox;
+            if (box.Text != "Min") { return; }
+            box.Text = "";
+            box.GotFocus -= PriceMinInput_GotFocus;
+        }
+
+        // If the user deselects textbox and leaves it blank, display default message
+        private void PriceMinInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "Min";
+                box.GotFocus += PriceMinInput_GotFocus;
+            }
+        }
+
+        private void PriceMinInput_TextChanged(object sender, RoutedEventArgs e)
+        {
+            if (PriceMinInput.Text != null && PriceMinInput.Text.Length > 0 && PriceMinInput.Text[0] == '$')
+            {
+                PriceMinInput.Text = PriceMinInput.Text.Substring(1);
+            }
+            if (PriceMinInput.Text != null && PriceMinInput.Text.Length > 0 && PriceMinInput.Text != "Min")
+            {
+                if (PriceMinInput.Text[PriceMinInput.Text.Length - 1] == '+')
+                {
+                    priceMin = Int32.Parse(PriceMinInput.Text.Substring(0, PriceMinInput.Text.Length - 1), System.Globalization.NumberStyles.AllowThousands);
+                } else
+                {
+                    priceMin = Int32.Parse(PriceMinInput.Text, System.Globalization.NumberStyles.AllowThousands);
+                }
+            }
+        }
+
+        private void PriceMaxInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            MaxPriceOptions.Visibility = Visibility.Visible;
+            MinPriceOptions.Visibility = Visibility.Hidden;
+            TextBox box = sender as TextBox;
+            if (box.Text != "Max") { return; }
+            box.Text = "";
+            box.GotFocus -= PriceMaxInput_GotFocus;
+        }
+
+        // If the user deselects textbox and leaves it blank, display default message
+        private void PriceMaxInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            MaxPriceOptions.Visibility = Visibility.Hidden;
+            MinPriceOptions.Visibility = Visibility.Visible;
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "Max";
+                box.GotFocus += PriceMaxInput_GotFocus;
+            }
+        }
+
+        private void PriceMaxInput_TextChanged(object sender, RoutedEventArgs e)
+        {
+            if (PriceMaxInput.Text != null && PriceMaxInput.Text.Length > 0 && PriceMaxInput.Text[0] == '$')
+            {
+                PriceMaxInput.Text = PriceMaxInput.Text.Substring(1);
+            }
+            if (PriceMaxInput.Text != null && PriceMaxInput.Text.Length > 0 && PriceMaxInput.Text != "Max")
+            {
+                priceMax = Int32.Parse(PriceMaxInput.Text, System.Globalization.NumberStyles.AllowThousands);
+            } else if (PriceMaxInput.Text != null && PriceMaxInput.Text.Length > 0 && PriceMaxInput.Text == "Max")
+            {
+                priceMax = -1;
+            }
+        }
+
         private void NameThisSearch_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox box = sender as TextBox;
@@ -350,6 +426,17 @@ namespace VirtualRealty
             }
         }
 
+        private void ChooseMinPriceInput(object sender, MouseButtonEventArgs e)
+        {
+            priceMin = Int32.Parse((sender as TextBlock).Tag as String);
+            PriceMinInput.Text = (sender as TextBlock).Text;
+        }
+
+        private void ChooseMaxPriceInput(object sender, MouseButtonEventArgs e)
+        {
+            priceMax = Int32.Parse((sender as TextBlock).Tag as String);
+            PriceMaxInput.Text = (sender as TextBlock).Text;
+        }
     }
 
 }

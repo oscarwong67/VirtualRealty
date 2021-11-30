@@ -1,13 +1,26 @@
-﻿<UserControl x:Class="VirtualRealty.Top_Bar"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:VirtualRealty"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Width="1280" Height="120">
-
-    <Grid Height="120">
+﻿<UserControl
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:VirtualRealty"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="VirtualRealty.Top_Bar"
+        mc:Ignorable="d" 
+        d:DesignHeight="450" d:DesignWidth="800" Width="1280" Height="120">
+    <UserControl.Resources>
+        <Style x:Key="HoverStyle" TargetType="TextBlock">
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="Border.IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+<Grid Height="120">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -28,57 +41,95 @@
         <Image Margin="0,27,0,37" Source="logo.png" Stretch="Fill" VerticalAlignment="Center" Height="56" HorizontalAlignment="Center"/>
         <TextBox x:Name="Location" Text="Enter your city or neighborhood" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" TextChanged="TextBox_TextChanged" Margin="21,48,62,52" Grid.Column="1" Grid.ColumnSpan="2" />
 
-        <ComboBox Text="Price" Name="Price" Grid.ColumnSpan="2" Margin="109,48,107,52" Grid.Column="2" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        <ComboBox Text="Price" x:Name="Price" Grid.ColumnSpan="2" Margin="109,48,107,52" Grid.Column="2" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+            <Grid Width="210" Height="180">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="170"/>
+                </Grid.RowDefinitions>
+                <TextBox Name="PriceMinInput" Text="Min" Grid.Row="0" Grid.Column="0" GotFocus="PriceMinInput_GotFocus" LostFocus="PriceMinInput_LostFocus" TextChanged="PriceMinInput_TextChanged"/>
+                <TextBlock Grid.Column="1" Text=" - "/>
+                <TextBox Name="PriceMaxInput" Text="Max" Grid.Row="0" Grid.Column="2" GotFocus="PriceMaxInput_GotFocus" LostFocus="PriceMaxInput_LostFocus" TextChanged="PriceMaxInput_TextChanged"/>
+                
+                <StackPanel Name="MinPriceOptions" Grid.Row="1" Grid.Column="0" Visibility="Visible">
+                    <TextBlock Tag="0" Text="$0+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput"/>
+                    <TextBlock Tag="100000" Text="$100,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="200000" Text="$200,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="300000" Text="$300,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="400000" Text="$400,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="500000" Text="$500,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="600000" Text="$600,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="700000" Text="$700,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="800000" Text="$800,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                    <TextBlock Tag="900000" Text="$900,000+" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMinPriceInput" />
+                </StackPanel>
+                <StackPanel Name="MaxPriceOptions" Grid.Row="1" Grid.Column="2" Visibility="Hidden">
+                    <TextBlock Tag="500000" Text="$500,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="600000" Text="$600,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="700000" Text="$700,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="800000" Text="$800,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="900000" Text="$900,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="1000000" Text="$1,000,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="1250000" Text="$1,250,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="1500000" Text="$1,500,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="1750000" Text="$1,750,000" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                    <TextBlock Tag="Max" Text="Any Price" Style="{StaticResource HoverStyle}" PreviewMouseDown="ChooseMaxPriceInput" />
+                </StackPanel>
+            </Grid>
         </ComboBox>
         <TextBlock Margin="111,50,126,54" Text="Price" Grid.Column="2" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
 
-        <ComboBox Text="Home Type" Name="HomeTypesDropDown" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox Text="Home Type" x:Name="HomeTypesDropDown" Grid.ColumnSpan="2" Margin="87,48,97,52" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged">
             <StackPanel Orientation="Vertical">
-                <CheckBox x:Name="Apartment" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Apartment"></CheckBox>
-                <CheckBox x:Name="Condo" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Condo"></CheckBox>
-                <CheckBox x:Name="House" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="House"></CheckBox>
-                <CheckBox x:Name="Townhouse" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Townhouse"></CheckBox>
+                <CheckBox x:Name="Apartment" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Apartment"/>
+                <CheckBox x:Name="Condo" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Condo"/>
+                <CheckBox x:Name="House" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="House"/>
+                <CheckBox x:Name="Townhouse" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Townhouse"/>
             </StackPanel>
         </ComboBox>
         <TextBlock Margin="90,50,116,54" Text="Home Type" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" RenderTransformOrigin="0.504,3.167"/>
 
-        <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
-            <Label>Number Of Beds</Label>
+        <ComboBox Text="Beds &amp; Baths" x:Name="BedBaths" Grid.ColumnSpan="2" Margin="78,48,99,52" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+            <Label Content="Number Of Beds"/>
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="BedAny" Content="Any" IsChecked="True" GroupName="NumberOfBeds" Style="{StaticResource {x:Type ToggleButton}}" Background="White" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedOne" Content="1+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedTwo" Content="2+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedThree" Content="3+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedFour" Content="4+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BedFive" Content="5+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BedAny" Content="Any" IsChecked="True" GroupName="NumberOfBeds" Style="{StaticResource {x:Type ToggleButton}}" Background="White" Checked="NumBedCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BedOne" Content="1+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BedTwo" Content="2+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BedThree" Content="3+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BedFour" Content="4+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BedFive" Content="5+" GroupName="NumberOfBeds" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBedCheck" Height="29" Width="29"/>
             </StackPanel>
 
-            <CheckBox x:Name="ExactMatch" Content="Use Exact Match" Checked="UseExactMatchChecked" Unchecked="UseExactMatchUnchecked" Width="174"></CheckBox>
+            <CheckBox x:Name="ExactMatch" Content="Use Exact Match" Checked="UseExactMatchChecked" Unchecked="UseExactMatchUnchecked" Width="174"/>
 
-            <Label>Number Of Baths</Label>
+            <Label Content="Number Of Baths"/>
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="BathAny" Content="Any" IsChecked="True" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BathOne" Content="1+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BathOneHalf" Content="1.5+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BathTwo" Content="2+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BathThree" Content="3+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
-                <RadioButton x:Name="BathFour" Content="4+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
+                <RadioButton x:Name="BathAny" Content="Any" IsChecked="True" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BathOne" Content="1+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BathOneHalf" Content="1.5+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BathTwo" Content="2+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BathThree" Content="3+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"/>
+                <RadioButton x:Name="BathFour" Content="4+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"/>
             </StackPanel>
         </ComboBox>
         <TextBlock Margin="81,50,118,54" Text="Bed &amp; Bath" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
 
-        <ComboBox Text="More Filters" Name="MoreFilters" Grid.ColumnSpan="2" Margin="94,48,103,52" Grid.Column="5" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True">
-        </ComboBox>
+        <ComboBox Text="More Filters" x:Name="MoreFilters" Grid.ColumnSpan="2" Margin="94,48,103,52" Grid.Column="5" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True"/>
         <TextBlock Margin="97,50,121,54" Text="More Filters" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
 
-        <RadioButton x:Name="Purchase" Content="Purchase" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="21,80,0,0" GroupName="BuyType" Checked="PurchaseCheck"></RadioButton>
+        <RadioButton x:Name="Purchase" Content="Purchase" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="21,80,0,0" GroupName="BuyType" Checked="PurchaseCheck"/>
         <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="108,80,0,0" GroupName="BuyType" Checked="PurchaseCheck" Grid.ColumnSpan="2"/>
-        <Button Content="Search" Click="Search" HorizontalAlignment="Left" Margin="141,48,0,0" VerticalAlignment="Top" Width="63" Grid.Column="6" Grid.ColumnSpan="2"></Button>
-        <Button Name="SavedSearchesButton" Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
+        <Button Content="Search" Click="Search" HorizontalAlignment="Left" Margin="141,48,0,0" VerticalAlignment="Top" Width="63" Grid.Column="6" Grid.ColumnSpan="2"/>
+        <Button x:Name="SavedSearchesButton" Content="Saved Searches" Click="GoToSavedSearches" HorizontalAlignment="Left" Margin="67,48,0,0" VerticalAlignment="Top" Width="110" Grid.Column="7" Grid.ColumnSpan="2"/>
         <Button Content="Favorites" Click="GoToFavorites" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Width="75" Grid.Column="8"/>
         <Button Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Grid.Column="2" HorizontalAlignment="Left" Margin="109,77,0,0" VerticalAlignment="Top" Width="95"/>
-        <Popup Name="SavingSearchSuccess" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
-            <Grid Name="SavingSearchSuccessContent" Margin="0,0,0,0" Background="LightGreen">
+        <Popup x:Name="SavingSearchSuccess" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
+            <Grid x:Name="SavingSearchSuccessContent" Margin="0,0,0,0" Background="LightGreen">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="185"/>
                 </Grid.ColumnDefinitions>
@@ -87,14 +138,14 @@
                 </Border>
             </Grid>
         </Popup>
-        <Popup Name="SavingSearch" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
+        <Popup x:Name="SavingSearch" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
             <Grid Margin="0,0,0,0" Background="Gray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"/>
                     <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Row="0" Padding="5,5,0,5">
-                    <TextBox Name="NameThisSearch" Grid.Column="0" Text="Name this Search" GotFocus="NameThisSearch_GotFocus" LostFocus="NameThisSearch_LostFocus" TextChanged="NameThisSearch_TextChanged"/>
+                    <TextBox x:Name="NameThisSearch" Grid.Column="0" Text="Name this Search" GotFocus="NameThisSearch_GotFocus" LostFocus="NameThisSearch_LostFocus" TextChanged="NameThisSearch_TextChanged"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="1" Padding="0,5,5,5" >
                     <Button Content="Save" Click="SaveSearch" />
