@@ -126,7 +126,7 @@ namespace VirtualRealty
                 //each if checks if that filter matters, and then if this filter matches
                 if (PriceMin >= 0 && L.Price < PriceMin) continue;
                 if (PriceMax >= 0 && L.Price > PriceMax) continue;
-                if (Types != null && Types.Contains(L.ListingType)) continue;
+                if (Types != null && !Types.Contains(L.ListingType)) continue;
                 if (MinBeds >= 0 && L.Beds < MinBeds) continue;
                 if (MaxBeds >= 0 && L.Beds > MaxBeds) continue;
                 if (MinBaths >= 0 && L.Baths < MinBaths) continue;
@@ -142,7 +142,7 @@ namespace VirtualRealty
                 if (Parking.Length != 0 && !L.Parking.Contains(Parking)) continue;
 
                 //this Listing passes all of the filters
-                ToReturn.Add(L);
+                ToReturn.Add(new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images));
             }
 
             return ToReturn;
