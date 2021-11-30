@@ -21,7 +21,7 @@
             <ComboBoxItem Content="Date Saved (Newest)" />
             <ComboBoxItem Content="Date Saved (Oldest)" />
         </ComboBox>
-        <ScrollViewer Height="479" Margin="5,111,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <ScrollViewer Height="479" Width="1248" Margin="5,111,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
             <StackPanel Name="SavedSearchesSection" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         </ScrollViewer>
     </Grid>
