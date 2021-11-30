@@ -1,5 +1,4 @@
 ﻿
-using Microsoft.Toolkit.Wpf.UI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +32,7 @@ namespace VirtualRealty
             InitializeComponent();
 
             MapViewer.Loaded += MapControl_Loaded;
+            ;
         }
 
 
@@ -48,6 +48,8 @@ namespace VirtualRealty
 
             ClearListings();
 
+            MapElementsLayer Layer = new MapElementsLayer();
+            Layer.MapElementClick += Layer_MapElementClick;
 
             foreach (Listing L in Listings)
             {
@@ -57,8 +59,17 @@ namespace VirtualRealty
                 Geopoint Location = new Geopoint(new BasicGeoposition() { Latitude = L.Latitude, Longitude = L.Longitude });
                 Pin.Location = Location;
 
-                MapViewer.MapElements.Add(Pin);
+                Pin.Tag = L;
+
+                Layer.MapElements.Add(Pin);
             }
+
+            MapViewer.Layers.Add(Layer);
+        }
+
+        private void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
+        {
+            (args.MapElements.FirstOrDefault().Tag as Listing).Small.BringIntoView();
         }
 
 

@@ -9,9 +9,15 @@
              d:DesignHeight="780" d:DesignWidth="1280">
     <Grid>
         <local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
-        <Controls:MapControl x:Name="MapViewer" HorizontalAlignment="Left" Height="602" Margin="0,178,0,0" VerticalAlignment="Top" Width="878" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760"/>
         <Button Click="ListView_Click" Content="List View" HorizontalAlignment="Left" Margin="15,128,0,0" VerticalAlignment="Top" Width="75"/>
-        <StackPanel x:Name="ListingViewer" Margin="878,178,0,0"/>
+        <Grid Margin="0,178,402,0">
+            <Controls:MapControl x:Name="MapViewer" HorizontalAlignment="Left" Height="602"  VerticalAlignment="Top" Width="878" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760"/>
+        </Grid>
+        <ScrollViewer Margin="878,178,0,0">
+            <StackPanel x:Name="ListingViewer">
+                <TextBlock Text="Hello"/>
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </UserControl>
