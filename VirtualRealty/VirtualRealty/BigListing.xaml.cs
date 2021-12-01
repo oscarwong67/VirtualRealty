@@ -111,6 +111,7 @@ namespace VirtualRealty
             if (prev >= 0)
             {
                 SetBigListing(ListingsList[prev]);
+                SetThumbnailImages(prev);
                 prev--;
                 next--;
                 if(prev < 0)
@@ -129,6 +130,7 @@ namespace VirtualRealty
             if(next < ListingsList.Count && next >= 0)
             {
                 SetBigListing(ListingsList[next]);
+                SetThumbnailImages(next);
                 next++;
                 prev++;
                 if (prev >= 0)
@@ -140,6 +142,25 @@ namespace VirtualRealty
                     this.NextBtn.Visibility = Visibility.Collapsed;
                 }
             }
+        }
+
+        public void SetThumbnailImages(int i)
+        {
+            string src = "/img/" + i.ToString() + ".jpg";
+
+            this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+            this.SmallImage1.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+            this.SmallImage2.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+        }
+
+
+        private void OpenGallery(object sender, RoutedEventArgs e)
+        {
+           // ContactPopup contactPopup = new ContactPopup();
+           // contactPopup.SetContactInfo(Listing.Address);
+           // BigListingGrid.Children.Add(contactPopup);
+           //ListingGallery gallery = new ListingGallery
+
         }
     }
 }

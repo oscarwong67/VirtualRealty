@@ -62,6 +62,9 @@
       <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
     <Compile Include="HomeType.cs" />
+    <Compile Include="ListingGallery.xaml.cs">
+      <DependentUpon>ListingGallery.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NotEmptyRule.cs" />
     <Compile Include="SavedSearch.xaml.cs">
       <DependentUpon>SavedSearch.xaml</DependentUpon>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Favorites.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListingGallery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,7 +182,9 @@
   <ItemGroup>
     <Resource Include="logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="img\0.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="bnbbuttons\1.png" />
     <Resource Include="bnbbuttons\1on.png" />
@@ -191,6 +200,36 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Fonts\Montserrat\OFL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\19.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\10.jpg" />
+    <Resource Include="img\11.jpg" />
+    <Resource Include="img\12.jpg" />
+    <Resource Include="img\13.jpg" />
+    <Resource Include="img\14.jpg" />
+    <Resource Include="img\15.jpg" />
+    <Resource Include="img\16.jpg" />
+    <Resource Include="img\17.jpg" />
+    <Resource Include="img\18.jpg" />
+    <Resource Include="img\3.jpg" />
+    <Resource Include="img\4.jpg" />
+    <Resource Include="img\5.jpg" />
+    <Resource Include="img\6.jpg" />
+    <Resource Include="img\7.jpg" />
+    <Resource Include="img\8.jpg" />
+    <Resource Include="img\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\gallery\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

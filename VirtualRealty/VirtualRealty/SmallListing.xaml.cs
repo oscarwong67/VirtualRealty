@@ -59,6 +59,14 @@ namespace VirtualRealty
             index = i;
         }
 
+        public void SetDisplayImage(int i)
+        {
+            // change source of image to corresponding index
+            string src = "/img/" + i.ToString() + ".jpg";
+
+            this.PrimaryImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+        }
+
         private void OpenBigListing(object sender, MouseButtonEventArgs e)
         {
 
@@ -73,8 +81,11 @@ namespace VirtualRealty
             BigListing bigL = new BigListing();
             bigL.SetBigListingInd(ListingsList, index);
             bigL.SetBigListing(Listing);
+            bigL.SetThumbnailImages(index);
             ListingPgGrid.Children.Add(bigL);
 
+
+            // Set images here
         }
 
     }
