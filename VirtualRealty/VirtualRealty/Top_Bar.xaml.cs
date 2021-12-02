@@ -42,7 +42,9 @@ namespace VirtualRealty
         }
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
-            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings));
+            List<Listing> listings = Listing.FilterListings(MainWindow.Listings);
+            listings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
+            MainWindow.LP.SetListings(listings);
             Switcher.Switch(MainWindow.LP);
             MainWindow.LP.SortOrder.SelectedIndex = 0;
         }
