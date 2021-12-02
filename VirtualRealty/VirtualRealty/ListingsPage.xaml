@@ -29,7 +29,7 @@
                 <ComboBoxItem Content="Closest Proximity to Search Location" />
             </ComboBox>
         </Grid>
-        <ScrollViewer Grid.Row="1" x:Name="Viewer" HorizontalAlignment="Left" Height="520" Margin="15,0,0,0" VerticalAlignment="Top" Width="1265">
+        <ScrollViewer Grid.Row="1" x:Name="Viewer" HorizontalAlignment="Left" Height="520" Margin="15,0,0,0" VerticalAlignment="Top" Width="1248">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

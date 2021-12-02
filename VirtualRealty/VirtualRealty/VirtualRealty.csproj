@@ -14,9 +14,28 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="assets\logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="icons\favouritesIcon.png" />
+	  <None Remove="icons\magnifyingGlass.png" />
+	  <None Remove="icons\savedSearchesIcon.png" />
+	  <None Remove="logo.png" />
+	</ItemGroup>
 	
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Resource Include="assets\logo.png" />
+	  <Resource Include="icons\favouritesIcon.png" />
+	  <Resource Include="icons\magnifyingGlass.png" />
+	  <Resource Include="icons\savedSearchesIcon.png" />
+	  <Resource Include="logo.png" />
 	</ItemGroup>
 	
 	<ItemGroup>
