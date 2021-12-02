@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:VirtualRealty"
              mc:Ignorable="d"
-             d:DesignHeight="780" d:DesignWidth="1280">
+             d:DesignHeight="780" d:DesignWidth="1280"
+             Panel.ZIndex="1">
     <!-- GRID VIEW DEFAULT HEIGHT = 780 -->
     <Grid Name="BigListingGrid" HorizontalAlignment="Center" Height="780" VerticalAlignment="Top" Width="1280">
         <!--<local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/> -->

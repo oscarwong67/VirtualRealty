@@ -74,10 +74,13 @@ namespace VirtualRealty
             }
         }
 
-        public void MapView_Click(Object Sender,RoutedEventArgs args)
+        public void MapView_Click(Object Sender, RoutedEventArgs args)
         {
             Switcher.Switch(MainWindow.MapViewPage);
             List<Listing> temp = Listings;
+            foreach (Listing l in temp) {
+                l.Small.SetListingGrid(MainWindow.MapViewPage.MapViewGrid);
+            }
             ClearListings();
             MainWindow.MapViewPage.SetListings(temp);
         }

@@ -7,7 +7,7 @@
              xmlns:Controls="clr-namespace:Microsoft.Toolkit.Wpf.UI.Controls;assembly=Microsoft.Toolkit.Wpf.UI.Controls" x:Class="VirtualRealty.MapView"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1280">
-    <Grid>
+    <Grid x:FieldModifier="public" x:Name="MapViewGrid">
         <local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
         <Button Click="ListView_Click" Content="List View" HorizontalAlignment="Left" Margin="15,128,0,0" VerticalAlignment="Top" Width="75"/>
         <Grid Margin="0,178,402,0">

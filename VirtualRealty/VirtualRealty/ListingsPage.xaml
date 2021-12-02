@@ -7,11 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid x:Name="ListingPgGrid" x:FieldModifier="public" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="1280">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
-            <RowDefinition Height="520" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="200" VerticalAlignment="Center">
+        <Grid Grid.Row="0" Height="200" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="80" />
@@ -29,7 +25,7 @@
                 <ComboBoxItem Content="Closest Proximity to Search Location" />
             </ComboBox>
         </Grid>
-        <ScrollViewer Grid.Row="1" x:Name="Viewer" HorizontalAlignment="Left" Height="480" Margin="15,0,0,0" VerticalAlignment="Top" Width="1248">
+        <ScrollViewer Grid.Row="1" x:FieldModifier="public" x:Name="Viewer" HorizontalAlignment="Left" Height="480" Margin="15,200,0,0" VerticalAlignment="Top" Width="1248" Panel.ZIndex="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -39,7 +35,6 @@
                 <StackPanel x:Name="Left" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
                 <StackPanel x:Name="Centre" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
                 <StackPanel x:Name="Right" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
-
             </Grid>
         </ScrollViewer>
     </Grid>
