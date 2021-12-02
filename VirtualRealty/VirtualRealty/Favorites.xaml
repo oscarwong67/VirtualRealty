@@ -12,6 +12,19 @@
             <RowDefinition x:Name="Dynamic_Content" Height="569*"/>
         </Grid.RowDefinitions>
         <local:Top_Bar />
-        <TextBox Grid.Row="1" HorizontalAlignment="Left" Height="66" TextWrapping="Wrap" Text="Favorites" VerticalAlignment="Top" Width="236" Margin="528,298,0,0" FontSize="24"/>
+        <Label Content="Favourites" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="32"/>
+        <ScrollViewer x:Name="Viewer" HorizontalAlignment="Left" Height="520" Margin="0,63,0,0" VerticalAlignment="Top" Width="1265" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="Left" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <StackPanel x:Name="Centre" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <StackPanel x:Name="Right" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>
