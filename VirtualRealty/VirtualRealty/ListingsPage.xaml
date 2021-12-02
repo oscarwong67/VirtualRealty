@@ -26,7 +26,6 @@
             </ComboBox>
         </Grid>
         <ScrollViewer Grid.Row="1" x:FieldModifier="public" x:Name="Viewer" HorizontalAlignment="Left" Height="480" Margin="15,200,0,0" VerticalAlignment="Top" Width="1248" Panel.ZIndex="0">
-        <ScrollViewer Grid.Row="1" x:Name="Viewer" HorizontalAlignment="Left" Height="520" Margin="15,0,0,0" VerticalAlignment="Top" Width="1248">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

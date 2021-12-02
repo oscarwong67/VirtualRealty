@@ -16,20 +16,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="bnbbuttons\**" />
+	  <EmbeddedResource Remove="bnbbuttons\**" />
+	  <None Remove="bnbbuttons\**" />
+	  <Page Remove="bnbbuttons\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Remove="assets\logo.png" />
 	  <Content Remove="assets\Pushpin.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="bnbbuttons\1.5.png" />
-	  <None Remove="bnbbuttons\1.5on.png" />
-	  <None Remove="bnbbuttons\1.png" />
-	  <None Remove="bnbbuttons\1on.png" />
-	  <None Remove="bnbbuttons\2.png" />
-	  <None Remove="bnbbuttons\3.png" />
-	  <None Remove="bnbbuttons\4.png" />
-	  <None Remove="bnbbuttons\5.png" />
-	  <None Remove="bnbbuttons\any.png" />
 	  <None Remove="img\0.jpg" />
 	  <None Remove="img\1.jpg" />
 	  <None Remove="img\10.jpg" />
@@ -66,15 +64,6 @@
 	<ItemGroup>
 	  <Resource Include="assets\logo.png" />
 	  <Resource Include="assets\Pushpin.png" />
-	  <Resource Include="bnbbuttons\1.5.png" />
-	  <Resource Include="bnbbuttons\1.5on.png" />
-	  <Resource Include="bnbbuttons\1.png" />
-	  <Resource Include="bnbbuttons\1on.png" />
-	  <Resource Include="bnbbuttons\2.png" />
-	  <Resource Include="bnbbuttons\3.png" />
-	  <Resource Include="bnbbuttons\4.png" />
-	  <Resource Include="bnbbuttons\5.png" />
-	  <Resource Include="bnbbuttons\any.png" />
 	  <Resource Include="img\0.jpg" />
 	  <Resource Include="img\1.jpg" />
 	  <Resource Include="img\10.jpg" />
