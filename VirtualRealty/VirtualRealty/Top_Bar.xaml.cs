@@ -30,9 +30,9 @@ namespace VirtualRealty
         private int ageOfListing = -1;
         private int yearBuiltMin = -1;
         private int yearBuiltMax = -1;
-        private bool garage;
-        private bool washerDryer;
-        private bool isPurchase;
+        private bool garage = false;
+        private bool washerDryer = false;
+        private bool isPurchase = true;
 
         public Top_Bar()
         {
@@ -42,7 +42,9 @@ namespace VirtualRealty
         }
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new ListingsPage());
+            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings));
+            Switcher.Switch(MainWindow.LP);
+            MainWindow.LP.SortOrder.SelectedIndex = 0;
         }
 
         void GoToFavorites(object sender, RoutedEventArgs e)
@@ -259,10 +261,6 @@ namespace VirtualRealty
             SavedSearchesButton.BorderThickness = new Thickness(1);
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -281,6 +279,8 @@ namespace VirtualRealty
             BedThree.Content = "3";
             BedFour.Content = "4";
             BedFive.Content = "5";
+
+            numBedMax = numBedMin; // For updating value right on click rather than having to reclick
         }
 
         private void UseExactMatchUnchecked(object sender, RoutedEventArgs e)
@@ -290,6 +290,8 @@ namespace VirtualRealty
             BedThree.Content = "3+";
             BedFour.Content = "4+";
             BedFive.Content = "5+";
+
+            numBedMax = -1; // For updating value right on click rather than having to reclick
         }
 
         private void NumBedCheck(object sender, RoutedEventArgs e)
@@ -324,6 +326,35 @@ namespace VirtualRealty
             {
                 numBedMin = 5;
                 numBedMax = -1;
+
+            } else if (rb.Content.ToString().Equals("1"))
+            {
+                numBedMin = 1;
+                numBedMax = 1;
+
+            }
+            else if (rb.Content.ToString().Equals("2"))
+            {
+                numBedMin = 2;
+                numBedMax = 2;
+
+            }
+            else if (rb.Content.ToString().Equals("3"))
+            {
+                numBedMin = 3;
+                numBedMax = 3;
+
+            }
+            else if (rb.Content.ToString().Equals("4"))
+            {
+                numBedMin = 4;
+                numBedMax = 4;
+
+            }
+            else if (rb.Content.ToString().Equals("5"))
+            {
+                numBedMin = 5;
+                numBedMax = 5;
 
             }
         }
@@ -402,6 +433,41 @@ namespace VirtualRealty
             }
         }
 
+
+        private void AmenitiesChecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if(cb.Name == "Garage" && cb.IsChecked == true)
+            {
+                garage = true;
+            }
+
+            if (cb.Name == "WasherDryer" && cb.IsChecked == true)
+            {
+                washerDryer = true;
+            }
+
+        }
+
+        private void YearTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void AmenitiesUnchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb.Name == "Garage" && cb.IsChecked == false)
+            {
+                garage = false;
+            }
+
+            if (cb.Name == "WasherDryer" && cb.IsChecked == false)
+            {
+                washerDryer = false;
+            }
+        }
+
         private void PurchaseCheck(object sender, RoutedEventArgs e)
         {
             if(Purchase.IsChecked == true)
@@ -429,18 +495,45 @@ namespace VirtualRealty
                 box.GotFocus += TextBox_GotFocus;
             }
         }
+        private void YearMinMax_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = "";
+            box.GotFocus -= YearMinMax_GotFocus;
+        }
 
+        // If the user deselects textbox and leaves it blank, display default message
+        private void YearMinMax_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = box.Name.Equals("MinYear") ? "Min" : "Max";
+                box.GotFocus += YearMinMax_GotFocus;
+            }
+        }
+        
         private void ChooseMinPriceInput(object sender, MouseButtonEventArgs e)
         {
-            priceMin = Int32.Parse((sender as TextBlock).Tag as String);
+            priceMin = Int32.Parse((sender as TextBlock).Tag as string);
             PriceMinInput.Text = (sender as TextBlock).Text;
             MaxPriceOptions.Visibility = Visibility.Visible;
         }
 
         private void ChooseMaxPriceInput(object sender, MouseButtonEventArgs e)
         {
-            priceMax = Int32.Parse((sender as TextBlock).Tag as String);
-            PriceMaxInput.Text = (sender as TextBlock).Text;
+            TextBlock tb = sender as TextBlock;
+            if (tb.Tag.Equals("Max"))
+            {
+                priceMax = -1;
+                PriceMaxInput.Text = "Max";
+            }
+            else
+            {
+                priceMax = Int32.Parse(tb.Tag as string);
+                PriceMaxInput.Text = (sender as TextBlock).Text;
+            }
+
         }
     }
 

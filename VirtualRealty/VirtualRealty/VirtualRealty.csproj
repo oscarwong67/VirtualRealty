@@ -50,6 +50,12 @@
 	  <None Remove="img\7.jpg" />
 	  <None Remove="img\8.jpg" />
 	  <None Remove="img\9.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="icons\favouritesIcon.png" />
+	  <None Remove="icons\magnifyingGlass.png" />
+	  <None Remove="icons\savedSearchesIcon.png" />
 	  <None Remove="logo.png" />
 	</ItemGroup>
 	
@@ -89,6 +95,9 @@
 	  <Resource Include="img\7.jpg" />
 	  <Resource Include="img\8.jpg" />
 	  <Resource Include="img\9.jpg" />
+	  <Resource Include="icons\favouritesIcon.png" />
+	  <Resource Include="icons\magnifyingGlass.png" />
+	  <Resource Include="icons\savedSearchesIcon.png" />
 	  <Resource Include="logo.png" />
 	</ItemGroup>
 	
