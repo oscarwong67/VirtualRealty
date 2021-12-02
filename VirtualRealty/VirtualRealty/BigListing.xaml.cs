@@ -48,7 +48,7 @@ namespace VirtualRealty
             this.Description.Text = Listing.Description;
 
             
-            this.Parking.Content = Listing.Parking;
+            this.Parking.Content = Listing.Parking ? "Yes" : "No";
             this.Washer.Content = Listing.Washer;
             this.Year.Content = Listing.YearBuilt.ToString();
             this.View.Content = Listing.View;

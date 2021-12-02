@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Linq;
 
 namespace VirtualRealty
 {
@@ -30,7 +31,7 @@ namespace VirtualRealty
         private int ageOfListing = -1;
         private int yearBuiltMin = -1;
         private int yearBuiltMax = -1;
-        private bool garage = false;
+        private bool parking = false;
         private bool washerDryer = false;
         private bool isPurchase = true;
 
@@ -57,6 +58,17 @@ namespace VirtualRealty
            MainWindow.savedSearchesPage.load();
             
             Switcher.Switch(MainWindow.savedSearchesPage);        
+        }
+        private void Search(object sender, RoutedEventArgs e)
+        {
+            if(Location.Text != "Enter your city or neighborhood")
+            {
+                locationInput = Location.Text;
+            }
+
+            List<HomeType> homeTypesList = homeTypes.ToList(); 
+
+            Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase);
         }
 
         private void ToggleSavingSearch(object sender, RoutedEventArgs e)
@@ -209,9 +221,9 @@ namespace VirtualRealty
             {
                 savedSearch.MaxBaths = numBathMax;
             }
-            if (garage)
+            if (parking)
             {
-                savedSearch.HasGarage = garage;
+                savedSearch.HasGarage = parking;
             }
             if (ageOfListing >= 0)
             {
@@ -264,13 +276,39 @@ namespace VirtualRealty
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ComboBox cb = sender as ComboBox;
+            if(cb.IsDropDownOpen == true)
+            {
+                cb.IsDropDownOpen = true;
+            }
         }
 
-        private void Search(object sender, RoutedEventArgs e)
+
+        private void MinSelected(object sender, SelectionChangedEventArgs e)
         {
-
+            ComboBoxItem cbi = (ComboBoxItem)(sender as ComboBox).SelectedItem;
+            if (cbi.Content.Equals("Any"))
+            {
+                sqftMin = -1;
+            } else
+            {
+                sqftMin = Int32.Parse(cbi.Content as string);
+            }
         }
+
+        private void MaxSelected(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)(sender as ComboBox).SelectedItem;
+            if (cbi.Content.Equals("Any"))
+            {
+                sqftMax = -1;
+            }
+            else
+            {
+                sqftMax = Int32.Parse(cbi.Content as string);
+            }
+        }
+
 
         private void UseExactMatchChecked(object sender, RoutedEventArgs e)
         {
@@ -437,9 +475,9 @@ namespace VirtualRealty
         private void AmenitiesChecked(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            if(cb.Name == "Garage" && cb.IsChecked == true)
+            if(cb.Name == "Parking" && cb.IsChecked == true)
             {
-                garage = true;
+                parking = true;
             }
 
             if (cb.Name == "WasherDryer" && cb.IsChecked == true)
@@ -457,9 +495,9 @@ namespace VirtualRealty
         private void AmenitiesUnchecked(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            if (cb.Name == "Garage" && cb.IsChecked == false)
+            if (cb.Name == "Parking" && cb.IsChecked == false)
             {
-                garage = false;
+                parking = false;
             }
 
             if (cb.Name == "WasherDryer" && cb.IsChecked == false)

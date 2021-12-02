@@ -85,7 +85,7 @@
         <TextBlock Margin="126,27,108,57" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
         <TextBlock Margin="126,33,108,65" Text="Price" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" FontSize="16"/>
 
-        <ComboBox Text="Home Type" x:Name="HomeTypesDropDown" Grid.ColumnSpan="2" Margin="77,25,99,55" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" FontSize="14" Cursor="Hand">
+        <ComboBox Text="Home Type" x:Name="HomeTypesDropDown" Grid.ColumnSpan="2" Margin="76,25,100,55" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" FontSize="14" Cursor="Hand">
             <StackPanel Orientation="Vertical">
                 <CheckBox x:Name="Apartment" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Apartment"/>
                 <CheckBox x:Name="Condo" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Condo"/>
@@ -93,10 +93,10 @@
                 <CheckBox x:Name="Townhouse" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Townhouse"/>
             </StackPanel>
         </ComboBox>
-        <TextBlock Margin="79,27,118,57" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
-        <TextBlock Margin="80,33,121,65" Text="Home Type" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" RenderTransformOrigin="0.504,3.167" FontSize="16"/>
+        <TextBlock Margin="78,27,119,57" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+        <TextBlock Margin="79,33,122,65" Text="Home Type" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" RenderTransformOrigin="0.504,3.167" FontSize="16"/>
 
-        <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Margin="64,26,115,54" Grid.Column="5" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" Grid.ColumnSpan="2" FontSize="13">
+        <ComboBox Text="Beds &amp; Baths" Name="BedBaths" Margin="65,26,114,54" Grid.Column="5" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" Grid.ColumnSpan="2" FontSize="13">
             <Label Width="173" FontWeight="Bold">Number Of Beds</Label>
             <StackPanel Orientation="Horizontal" Cursor="Hand">
                 <RadioButton x:Name="BedAny" Content="Any" IsChecked="True" GroupName="NumberOfBeds" Style="{StaticResource {x:Type ToggleButton}}" Background="White" Checked="NumBedCheck" Height="29" Width="29"></RadioButton>
@@ -119,18 +119,42 @@
                 <RadioButton x:Name="BathFour" Content="4+" GroupName="NumberOfBaths" Background="White" Style="{StaticResource {x:Type ToggleButton}}" Checked="NumBathCheck" Height="29" Width="29"></RadioButton>
             </StackPanel>
         </ComboBox>
-        <TextBlock Margin="65,28,132,56" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
-        <TextBlock Margin="65,34,132,64" Text="Bed &amp; Bath" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" FontSize="16" Grid.ColumnSpan="2"/>
+        <TextBlock Margin="66,28,131,56" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
+        <TextBlock Margin="66,34,131,64" Text="Bed &amp; Bath" Grid.Column="5" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" FontSize="16" Grid.ColumnSpan="2"/>
 
-        <ComboBox Text="More Filters" Name="MoreFilters" Margin="51,25,124,55" Grid.Column="6" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" FontSize="14" Grid.ColumnSpan="2">
+        <ComboBox Text="More Filters" Name="MoreFilters" Margin="51,25,124,55" Grid.Column="6" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" FontSize="14" Grid.ColumnSpan="2" AllowDrop="True">
             <Label Width="141" FontWeight="Bold">Square Footage</Label>
             <StackPanel Orientation="Horizontal">
-                <ComboBox Text="Min" Name="MinSqFt" Cursor="Hand" Width="60" Height="25">
-                    <ComboBoxItem>1000</ComboBoxItem>
+                <ComboBox Text="Min" Name="MinSqFt" Cursor="Hand" Width="60" Height="25" IsEditable="True" IsReadOnly="True" SelectionChanged="MinSelected">
+                    <ComboBoxItem Content="Any"></ComboBoxItem>
+                    <ComboBoxItem Content="500"></ComboBoxItem>
+                    <ComboBoxItem Content="750"></ComboBoxItem>
+                    <ComboBoxItem Content="1000"></ComboBoxItem>
+                    <ComboBoxItem Content="1250"></ComboBoxItem>
+                    <ComboBoxItem Content="1500"></ComboBoxItem>
+                    <ComboBoxItem Content="1750"></ComboBoxItem>
+                    <ComboBoxItem Content="2000"></ComboBoxItem>
+                    <ComboBoxItem Content="2250"></ComboBoxItem>
+                    <ComboBoxItem Content="2500"></ComboBoxItem>
+                    <ComboBoxItem Content="3000"></ComboBoxItem>
+                    <ComboBoxItem Content="4000"></ComboBoxItem>
+                    <ComboBoxItem Content="7000"></ComboBoxItem>
                 </ComboBox>
                 <Label>—</Label>
-                <ComboBox Text="Max" Name="MaxSqFt" Cursor="Hand" Width="60" Height="25">
-                    <ComboBoxItem>1000</ComboBoxItem>
+                <ComboBox Text="Max" Name="MaxSqFt" Cursor="Hand" Width="60" Height="25" IsEditable="True" IsReadOnly="True" SelectionChanged="MaxSelected">
+                    <ComboBoxItem Content="500"></ComboBoxItem>
+                    <ComboBoxItem Content="750"></ComboBoxItem>
+                    <ComboBoxItem Content="1000"></ComboBoxItem>
+                    <ComboBoxItem Content="1250"></ComboBoxItem>
+                    <ComboBoxItem Content="1500"></ComboBoxItem>
+                    <ComboBoxItem Content="1750"></ComboBoxItem>
+                    <ComboBoxItem Content="2000"></ComboBoxItem>
+                    <ComboBoxItem Content="2250"></ComboBoxItem>
+                    <ComboBoxItem Content="2500"></ComboBoxItem>
+                    <ComboBoxItem Content="3000"></ComboBoxItem>
+                    <ComboBoxItem Content="4000"></ComboBoxItem>
+                    <ComboBoxItem Content="7000"></ComboBoxItem>
+                    <ComboBoxItem Content="Any"></ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <Label FontWeight="Bold">Max Age of Listing</Label>
@@ -140,12 +164,12 @@
             </StackPanel>
             <Label Width="134" FontWeight="Bold">Year Built</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="MinYear" Text="Min" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="20" Margin="5,0,0,0"></TextBox>
+                <TextBox x:Name="MinYear" Text="Min" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="22" Margin="5,0,0,0"></TextBox>
                 <Label>—</Label>
-                <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="20"></TextBox>
+                <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="22"></TextBox>
             </StackPanel>
             <Label Width="134" FontWeight="Bold">Amenities</Label>
-            <CheckBox x:Name="Garage" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Attached Garage" Width="131" Cursor="Hand"></CheckBox>
+            <CheckBox x:Name="Parking" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Parking Included" Width="131" Cursor="Hand"></CheckBox>
             <CheckBox x:Name="WasherDryer" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Washer/Dryer in Unit" Cursor="Hand"></CheckBox>
         </ComboBox>
         <TextBlock Margin="53,27,141,57" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
@@ -157,8 +181,8 @@
         <Button x:Name="SavedSearchesButton" Click="GoToSavedSearches" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="7" RenderTransformOrigin="0.5,0.5" Background="White" BorderBrush="White" Margin="132,21,0,0" Cursor="Hand" Grid.ColumnSpan="2">
             <Image Margin="0,0,0,0" Source="icons/savedSearchesIcon.png" Height="45" Width="47" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
-        <Button Click="GoToFavorites" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="8" Background="White" BorderBrush="White" Margin="61,19,0,0" Width="61">
-            <Image Source="icons/favouritesIcon.png" Height="48" Width="57" Stretch="UniformToFill" Cursor="Hand"/>
+        <Button Click="GoToFavorites" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="8" Background="White" BorderBrush="White" Margin="58,19,0,0" Width="65">
+            <Image Source="icons/favouritesIcon.png" Height="51" Width="59" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
         <Button Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Grid.Column="2" HorizontalAlignment="Left" Margin="109,72,0,0" VerticalAlignment="Top" Width="126" FontSize="16" Height="26"/>
         <Popup x:Name="SavingSearchSuccess" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
