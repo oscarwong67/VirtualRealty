@@ -515,15 +515,25 @@ namespace VirtualRealty
         
         private void ChooseMinPriceInput(object sender, MouseButtonEventArgs e)
         {
-            priceMin = Int32.Parse((sender as TextBlock).Tag as String);
+            priceMin = Int32.Parse((sender as TextBlock).Tag as string);
             PriceMinInput.Text = (sender as TextBlock).Text;
             MaxPriceOptions.Visibility = Visibility.Visible;
         }
 
         private void ChooseMaxPriceInput(object sender, MouseButtonEventArgs e)
         {
-            priceMax = Int32.Parse((sender as TextBlock).Tag as String);
-            PriceMaxInput.Text = (sender as TextBlock).Text;
+            TextBlock tb = sender as TextBlock;
+            if (tb.Tag.Equals("Max"))
+            {
+                priceMax = -1;
+                PriceMaxInput.Text = "Max";
+            }
+            else
+            {
+                priceMax = Int32.Parse(tb.Tag as string);
+                PriceMaxInput.Text = (sender as TextBlock).Text;
+            }
+
         }
     }
 
