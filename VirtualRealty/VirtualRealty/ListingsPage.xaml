@@ -22,7 +22,7 @@
                 <ComboBoxItem Content="Oldest" />
                 <ComboBoxItem Content="Price (Low to High)" />
                 <ComboBoxItem Content="Price (High to Low)" />
-                <ComboBoxItem Content="Closest Proximity to Search Location" />
+                <ComboBoxItem Content="Closest Proximity to Calgary" Tag="LocationSort" />
             </ComboBox>
         </Grid>
         <ScrollViewer Grid.Row="1" x:FieldModifier="public" x:Name="Viewer" HorizontalAlignment="Left" Height="520" Margin="15,155,0,0" VerticalAlignment="Top" Width="1248" Panel.ZIndex="0">
