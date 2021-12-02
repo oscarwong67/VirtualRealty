@@ -47,12 +47,13 @@ namespace VirtualRealty
 
             MapLocationFinderResult Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
 
-            while (Result.Status != MapLocationFinderStatus.Success)
-            {
+            //wait for search to finish
+            while (Result.Status != MapLocationFinderStatus.Success) { }
+            
 
-                this.Latitude = Result.Locations[0].Point.Position.Latitude;
-                this.Longitude = Result.Locations[0].Point.Position.Longitude;
-            }
+            this.Latitude = Result.Locations[0].Point.Position.Latitude;
+            this.Longitude = Result.Locations[0].Point.Position.Longitude;
+        
         }
 
         public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, double Bath, int Size, HomeType Type,
@@ -61,6 +62,8 @@ namespace VirtualRealty
         {
             this.Purchase = Purchase;
             this.Price = Price;
+            //string[] Parts = Address.Split('#');
+            //System.Diagnostics.Debug.WriteLine(Parts[0]);
             this.Address = Address;
             this.DateListed = ListingDate;
             this.Beds = Bed;
