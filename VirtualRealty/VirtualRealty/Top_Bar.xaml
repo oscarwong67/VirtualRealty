@@ -125,8 +125,13 @@
         <ComboBox Text="More Filters" Name="MoreFilters" Margin="51,25,124,55" Grid.Column="6" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" FontSize="14" Grid.ColumnSpan="2">
             <Label Width="141" FontWeight="Bold">Square Footage</Label>
             <StackPanel Orientation="Horizontal">
-                
+                <ComboBox Text="Min" Name="MinSqFt" Cursor="Hand" Width="60" Height="25">
+                    <ComboBoxItem>1000</ComboBoxItem>
+                </ComboBox>
                 <Label>—</Label>
+                <ComboBox Text="Max" Name="MaxSqFt" Cursor="Hand" Width="60" Height="25">
+                    <ComboBoxItem>1000</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
             <Label FontWeight="Bold">Max Age of Listing</Label>
             <StackPanel Orientation="Horizontal">
@@ -135,14 +140,13 @@
             </StackPanel>
             <Label Width="134" FontWeight="Bold">Year Built</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="MinYear" Text="Min" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="19" Margin="5,0,0,0"></TextBox>
+                <TextBox x:Name="MinYear" Text="Min" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="20" Margin="5,0,0,0"></TextBox>
                 <Label>—</Label>
-                <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="19"></TextBox>
+                <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="20"></TextBox>
             </StackPanel>
             <Label Width="134" FontWeight="Bold">Amenities</Label>
             <CheckBox x:Name="Garage" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Attached Garage" Width="131" Cursor="Hand"></CheckBox>
             <CheckBox x:Name="WasherDryer" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Washer/Dryer in Unit" Cursor="Hand"></CheckBox>
-
         </ComboBox>
         <TextBlock Margin="53,27,141,57" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
         <TextBlock Margin="53,33,0,0" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Height="22" TextAlignment="Center" Text="More Filters" Width="90" Grid.ColumnSpan="2"/>
