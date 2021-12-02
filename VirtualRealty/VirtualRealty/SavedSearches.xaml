@@ -7,21 +7,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition x:Name="Top_Bar_Section" Height="120*"/>
-            <RowDefinition x:Name="Dynamic_Content" Height="569*"/>
-        </Grid.RowDefinitions>
-        <local:Top_Bar />
-        <TextBlock Grid.Row="1" HorizontalAlignment="Left" Height="101" TextWrapping="Wrap" Text="Saved Searches" VerticalAlignment="Top" Width="508" Margin="0,10,0,0" FontSize="72" />
-        <ComboBox Name="SortOrderLabel" HorizontalAlignment="Left" Margin="556,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
-            <ComboBoxItem Content="Sort Order: " IsSelected="True" />
-        </ComboBox>
-        <ComboBox x:Name="SortOrder" HorizontalAlignment="Left" Margin="654,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="195" FontSize="18" SelectionChanged="SortOrder_SelectionChanged">
-            <ComboBoxItem Content="Last Accessed" IsSelected="True" />
-            <ComboBoxItem Content="Date Saved (Newest)" />
-            <ComboBoxItem Content="Date Saved (Oldest)" />
-        </ComboBox>
-        <ScrollViewer Height="479" Width="1248" Margin="5,111,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid Grid.Row="0" Height="155" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="105"/>
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Saved Searches" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
+            <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,0" VerticalAlignment="Center" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
+                <ComboBoxItem Content="Sort Order: " IsSelected="True" />
+            </ComboBox>
+            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="354,0,0,0" VerticalAlignment="Center" Width="195" FontSize="18" SelectionChanged="SortOrder_SelectionChanged">
+                <ComboBoxItem Content="Last Accessed" IsSelected="True" />
+                <ComboBoxItem Content="Date Saved (Newest)" />
+                <ComboBoxItem Content="Date Saved (Oldest)" />
+            </ComboBox>
+        </Grid>
+        <ScrollViewer Height="520" Width="1248" Margin="5,155,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
             <StackPanel Name="SavedSearchesSection" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         </ScrollViewer>
     </Grid>
