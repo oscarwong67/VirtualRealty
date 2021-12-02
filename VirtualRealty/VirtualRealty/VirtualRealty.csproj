@@ -16,7 +16,38 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="bnbbuttons\**" />
+	  <EmbeddedResource Remove="bnbbuttons\**" />
+	  <None Remove="bnbbuttons\**" />
+	  <Page Remove="bnbbuttons\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Remove="assets\logo.png" />
+	  <Content Remove="assets\Pushpin.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="img\0.jpg" />
+	  <None Remove="img\1.jpg" />
+	  <None Remove="img\10.jpg" />
+	  <None Remove="img\11.jpg" />
+	  <None Remove="img\12.jpg" />
+	  <None Remove="img\13.jpg" />
+	  <None Remove="img\14.jpg" />
+	  <None Remove="img\15.jpg" />
+	  <None Remove="img\16.jpg" />
+	  <None Remove="img\17.jpg" />
+	  <None Remove="img\18.jpg" />
+	  <None Remove="img\19.jpg" />
+	  <None Remove="img\2.jpg" />
+	  <None Remove="img\3.jpg" />
+	  <None Remove="img\4.jpg" />
+	  <None Remove="img\5.jpg" />
+	  <None Remove="img\6.jpg" />
+	  <None Remove="img\7.jpg" />
+	  <None Remove="img\8.jpg" />
+	  <None Remove="img\9.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -32,6 +63,27 @@
 	
 	<ItemGroup>
 	  <Resource Include="assets\logo.png" />
+	  <Resource Include="assets\Pushpin.png" />
+	  <Resource Include="img\0.jpg" />
+	  <Resource Include="img\1.jpg" />
+	  <Resource Include="img\10.jpg" />
+	  <Resource Include="img\11.jpg" />
+	  <Resource Include="img\12.jpg" />
+	  <Resource Include="img\13.jpg" />
+	  <Resource Include="img\14.jpg" />
+	  <Resource Include="img\15.jpg" />
+	  <Resource Include="img\16.jpg" />
+	  <Resource Include="img\17.jpg" />
+	  <Resource Include="img\18.jpg" />
+	  <Resource Include="img\19.jpg" />
+	  <Resource Include="img\2.jpg" />
+	  <Resource Include="img\3.jpg" />
+	  <Resource Include="img\4.jpg" />
+	  <Resource Include="img\5.jpg" />
+	  <Resource Include="img\6.jpg" />
+	  <Resource Include="img\7.jpg" />
+	  <Resource Include="img\8.jpg" />
+	  <Resource Include="img\9.jpg" />
 	  <Resource Include="icons\favouritesIcon.png" />
 	  <Resource Include="icons\magnifyingGlass.png" />
 	  <Resource Include="icons\savedSearchesIcon.png" />

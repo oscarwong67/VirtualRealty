@@ -22,8 +22,11 @@ namespace VirtualRealty
     {
 
         private Listing Listing;
+        private List<Listing> ListingsList;
         //private BigListing bigListing;
         private Grid ListingPgGrid;
+        private int index;
+
         public SmallListing()
         {
             InitializeComponent();
@@ -50,6 +53,20 @@ namespace VirtualRealty
             ListingPgGrid = grid;
         }
 
+        public void SetListingInd(List<Listing> list, int i)
+        {
+            ListingsList = list;
+            index = i;
+        }
+
+        public void SetDisplayImage(int i)
+        {
+            // change source of image to corresponding index
+            string src = "/img/" + i.ToString() + ".jpg";
+
+            this.PrimaryImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+        }
+
         private void OpenBigListing(object sender, MouseButtonEventArgs e)
         {
 
@@ -60,14 +77,18 @@ namespace VirtualRealty
 
             //ListingPgGrid.Children.Add(bigListing);
 
-
+            // need to remove children
             BigListing bigL = new BigListing();
+            bigL.SetBigListingInd(ListingsList, index);
             bigL.SetBigListing(Listing);
+            bigL.SetThumbnailImages(index);
+
             ListingPgGrid.Children.Add(bigL);
 
-        }
+            MainWindow.MapViewPage.MapViewer.Visibility = Visibility.Hidden;
 
-        
+            // Set images here
+        }
 
     }
 }

@@ -54,6 +54,7 @@ namespace VirtualRealty
             foreach (Listing L in Listings)
             {
                 ListingViewer.Children.Add(L.Small);
+                L.Small.SetListingGrid(MapViewGrid);
 
                 MapIcon Pin = new MapIcon();
                 Geopoint Location = new Geopoint(new BasicGeoposition() { Latitude = L.Latitude, Longitude = L.Longitude });
@@ -90,6 +91,38 @@ namespace VirtualRealty
             List<Listing> temp = Listings;
             ClearListings();
             MainWindow.LP.SetListings(temp);
+        }
+
+        private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Listings == null || Listings.Count == 0)
+            {
+                return;
+            }
+            List<Listing> sortedListings = new List<Listing>(Listings);
+
+            string text = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content as string;
+            if (text.Equals("Newest"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
+            }
+            else if (text.Equals("Oldest"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed, true /* Descending */));
+            }
+            else if (text.Equals("Price (Low to High)"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price, true));
+            }
+            else if (text.Equals("Price (High to Low)"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price));
+            }
+            else
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Proximity));
+            }
+            SetListings(sortedListings);
         }
     }
 }
