@@ -82,13 +82,8 @@ namespace VirtualRealty
             bigL.SetBigListingInd(ListingsList, index);
             bigL.SetBigListing(Listing);
             bigL.SetThumbnailImages(index);
-            foreach (UIElement element in ListingPgGrid.Children)
-            {
-                Panel.SetZIndex(element, 0);
-            }
 
             ListingPgGrid.Children.Add(bigL);
-            Panel.SetZIndex(bigL, 1);
 
             // Set images here
         }
