@@ -49,7 +49,10 @@ namespace VirtualRealty
 
         void GoToFavorites(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Favorites());
+            Switcher.Switch(MainWindow.FavouritesPage);
+            MainWindow.LP.ClearListings();
+            MainWindow.MapViewPage.ClearListings();
+
         }
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
