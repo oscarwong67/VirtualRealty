@@ -120,7 +120,7 @@ namespace VirtualRealty
          */
         public static List<Listing> FilterListings(List<Listing> Listings, int PriceMin = -1, int PriceMax = -1, List<HomeType> Types = null,
             int MinBeds = -1, int MaxBeds = -1, double MinBaths = -1, double MaxBaths = -1, int MinSize = -1, int MaxSize = -1, int MaxListingAge = -1,
-            int MinYear = -1, int MaxYear = -1, bool Washer = false, bool Parking = false, bool Purchase = true)
+            int MinYear = -1, int MaxYear = -1, bool Washer = false, bool Parking = false, bool Purchase = true, bool Favourite = false)
         {
             List<Listing> ToReturn = new List<Listing>();
 
@@ -145,6 +145,7 @@ namespace VirtualRealty
                 if (Parking && !L.Parking) continue;
                 if (!Purchase && L.Purchase) continue;
                 if (Purchase && !L.Purchase) continue;
+                if (Favourite && !L.IsFavourited) continue;
 
                 //this Listing passes all of the filters
                 ToReturn.Add(new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images));

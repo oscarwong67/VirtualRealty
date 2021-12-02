@@ -236,19 +236,21 @@ namespace VirtualRealty
         }
         // TODO (Oscar): if we have time, add parking as a filter
 
-        private bool isPurchase;
+        // NEVER SET LOCATION AFTER PURCHASE!!!!!
+        private bool isPurchase = true;
         public bool IsPurchase
         {
             get { return isPurchase; }
             set
             {
                 isPurchase = value;
-                Label label = new Label
+                if (value == false)
                 {
-                    FontSize = LABEL_FONTSIZE,
-                    Content = "Purchase"
-                };
-                Right.Children.Add(label);
+                    Content = Location.Content + ", Rentals";
+                } else
+                {
+                    Content = Location.Content + ", Purchases";
+                }
             }
         }
 
@@ -280,7 +282,7 @@ namespace VirtualRealty
 
         private void ApplyThisSearch_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasGarage));
+            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasGarage, Purchase:isPurchase));
             Switcher.Switch(MainWindow.LP);
         }
 
