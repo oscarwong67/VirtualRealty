@@ -53,6 +53,15 @@ namespace VirtualRealty
             MainWindow.LP.ClearListings();
             MainWindow.MapViewPage.ClearListings();
 
+            List<Listing> list = new List<Listing>();
+
+            foreach (Listing L in MainWindow.Listings)
+            {
+                if (L.IsFavourited) list.Add(L);
+            }
+
+            MainWindow.FavouritesPage.SetListings(list);
+
         }
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
