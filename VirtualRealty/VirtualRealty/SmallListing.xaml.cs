@@ -85,6 +85,8 @@ namespace VirtualRealty
 
             ListingPgGrid.Children.Add(bigL);
 
+            MainWindow.MapViewPage.MapViewer.Visibility = Visibility.Hidden;
+
             // Set images here
         }
 
