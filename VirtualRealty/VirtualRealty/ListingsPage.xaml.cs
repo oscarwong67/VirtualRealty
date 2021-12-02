@@ -53,6 +53,7 @@ namespace VirtualRealty
                     case 0:
                         Left.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.ListingPgGrid);
+                        //L.Small.SetListingGrid();
                         L.Small.SetListingInd(Listings, i);
                         L.Small.SetDisplayImage(i);
                         break;
