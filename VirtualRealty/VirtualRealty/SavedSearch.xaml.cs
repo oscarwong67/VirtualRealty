@@ -128,7 +128,7 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MAXBEDS RIGHT AFTER MINBEDS!!!
-        private int maxBeds;
+        private int maxBeds = -1;
         public int MaxBeds {
             get { return maxBeds;  }
             set
@@ -147,7 +147,7 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MAXBATHS RIGHT AFTER MAXBATHS!!!
-        private double maxBaths;
+        private double maxBaths = -1;
         public double MaxBaths
         {
             get { return maxBaths; }
@@ -266,6 +266,18 @@ namespace VirtualRealty
         {
             MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasGarage ? "Garage" : ""));
             Switcher.Switch(MainWindow.LP);
+        }
+
+        private void DeleteThisSearch_Click(object sender, RoutedEventArgs e)
+        {
+            UIElement target = this;
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete the search " + SearchTitle.Content + "?", "Confirmation", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                // Yes code here  
+                MainWindow.savedSearchesPage.SavedSearchesSection.Children.Remove(target);
+                SavedSearches.savedSearches.Remove(target as SavedSearch);
+            }
         }
     }
 

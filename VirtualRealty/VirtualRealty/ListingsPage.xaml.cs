@@ -32,12 +32,20 @@ namespace VirtualRealty
             return Listings;
         }
 
-        public void SetListings(List<Listing> Listings)
+    
+        public void ClearListings()
         {
-            int i = 0;
+            Listings = new List<Listing>();
             Left.Children.Clear();
             Centre.Children.Clear();
             Right.Children.Clear();
+        }
+
+        public void SetListings(List<Listing> Listings)
+        {
+            int i = 0;
+            ClearListings();
+            this.Listings = Listings;
             foreach (Listing L in Listings)
             {
                 switch (i % 3)
@@ -65,5 +73,43 @@ namespace VirtualRealty
             }
         }
 
+        public void MapView_Click(Object Sender,RoutedEventArgs args)
+        {
+            Switcher.Switch(MainWindow.MapViewPage);
+            List<Listing> temp = Listings;
+            ClearListings();
+            MainWindow.MapViewPage.SetListings(temp);
+        }
+
+        private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Listings == null || Listings.Count == 0)
+            {
+                return;
+            }
+            List<Listing> sortedListings = new List<Listing>(Listings);
+
+            string text = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content as string;
+            if (text.Equals("Newest"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
+            }
+            else if (text.Equals("Oldest"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed, true /* Descending */));
+            }
+            else if (text.Equals("Price (Low to High)"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price, true));
+            }
+            else if (text.Equals("Price (High to Low)"))
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price));
+            } else
+            {
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Proximity));
+            }
+            SetListings(sortedListings);
+        }
     }
 }

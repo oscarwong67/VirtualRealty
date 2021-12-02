@@ -1,0 +1,23 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualRealty"
+             xmlns:Controls="clr-namespace:Microsoft.Toolkit.Wpf.UI.Controls;assembly=Microsoft.Toolkit.Wpf.UI.Controls" x:Class="VirtualRealty.MapView"
+             mc:Ignorable="d" 
+             d:DesignHeight="780" d:DesignWidth="1280">
+    <Grid>
+        <local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
+        <Button Click="ListView_Click" Content="List View" HorizontalAlignment="Left" Margin="15,128,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid Margin="0,178,402,0">
+            <Controls:MapControl x:Name="MapViewer" HorizontalAlignment="Left" Height="602"  VerticalAlignment="Top" Width="878" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760"/>
+        </Grid>
+        <ScrollViewer Margin="878,178,0,0">
+            <StackPanel x:Name="ListingViewer">
+                <TextBlock Text="Hello"/>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

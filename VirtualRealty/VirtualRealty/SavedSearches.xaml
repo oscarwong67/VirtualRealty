@@ -12,7 +12,7 @@
             <RowDefinition x:Name="Dynamic_Content" Height="569*"/>
         </Grid.RowDefinitions>
         <local:Top_Bar />
-        <TextBox Grid.Row="1" HorizontalAlignment="Left" Height="101" TextWrapping="Wrap" Text="Saved Searches" VerticalAlignment="Top" Width="508" Margin="0,10,0,0" FontSize="72" TextChanged="TextBox_TextChanged"/>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left" Height="101" TextWrapping="Wrap" Text="Saved Searches" VerticalAlignment="Top" Width="508" Margin="0,10,0,0" FontSize="72" />
         <ComboBox Name="SortOrderLabel" HorizontalAlignment="Left" Margin="556,81,0,0" Grid.Row="1" VerticalAlignment="Top" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
             <ComboBoxItem Content="Sort Order: " IsSelected="True" />
         </ComboBox>
@@ -21,7 +21,7 @@
             <ComboBoxItem Content="Date Saved (Newest)" />
             <ComboBoxItem Content="Date Saved (Oldest)" />
         </ComboBox>
-        <ScrollViewer Height="479" Margin="5,111,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <ScrollViewer Height="479" Width="1248" Margin="5,111,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
             <StackPanel Name="SavedSearchesSection" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         </ScrollViewer>
     </Grid>

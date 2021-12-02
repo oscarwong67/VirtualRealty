@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Windows.Services.Maps;
 
 namespace VirtualRealty
 {
@@ -16,6 +18,7 @@ namespace VirtualRealty
         public HomeType ListingType;
         public readonly int Price, Beds, YearBuilt, size; //size is square footage
         public readonly double Baths;
+        public double Latitude, Longitude;
         public readonly DateTime DateListed;
         public List<string> Images { get; set; } //list of paths to images for this listing
         public SmallListing Small;
@@ -34,12 +37,33 @@ namespace VirtualRealty
             //Small.SetBigListingInfo(Big);
         }
 
+        private async void CalcLocation()
+        {
+            //Location to use as a hint in geocoding
+            BasicGeoposition CalgaryPos = new BasicGeoposition() { Latitude = 51, Longitude = -114 };
+            Geopoint Calgary = new Geopoint(CalgaryPos);
+
+            MapService.ServiceToken = "n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760";
+
+            MapLocationFinderResult Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
+
+            //wait for search to finish
+            while (Result.Status != MapLocationFinderStatus.Success) { }
+            
+
+            this.Latitude = Result.Locations[0].Point.Position.Latitude;
+            this.Longitude = Result.Locations[0].Point.Position.Longitude;
+        
+        }
+
         public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, double Bath, int Size, HomeType Type,
             string Description, bool Favourited, string Parking, bool Washer, int Year, string View, bool Heating, bool AC,
             bool Pool, bool Gym, bool Elevator, List<String> Images)
         {
             this.Purchase = Purchase;
             this.Price = Price;
+            //string[] Parts = Address.Split('#');
+            //System.Diagnostics.Debug.WriteLine(Parts[0]);
             this.Address = Address;
             this.DateListed = ListingDate;
             this.Beds = Bed;
@@ -59,8 +83,8 @@ namespace VirtualRealty
             this.Elevator = Elevator;
             this.Images = Images;
 
-            //BigListing Big = new BigListing();
-            //Big.SetBigListing(this);
+            CalcLocation();
+
 
             Small = new SmallListing();
             Small.SetListing(this);
@@ -105,7 +129,7 @@ namespace VirtualRealty
                 //each if checks if that filter matters, and then if this filter matches
                 if (PriceMin >= 0 && L.Price < PriceMin) continue;
                 if (PriceMax >= 0 && L.Price > PriceMax) continue;
-                if (Types != null && Types.Contains(L.ListingType)) continue;
+                if (Types != null && !Types.Contains(L.ListingType)) continue;
                 if (MinBeds >= 0 && L.Beds < MinBeds) continue;
                 if (MaxBeds >= 0 && L.Beds > MaxBeds) continue;
                 if (MinBaths >= 0 && L.Baths < MinBaths) continue;
@@ -121,7 +145,7 @@ namespace VirtualRealty
                 if (Parking.Length != 0 && !L.Parking.Contains(Parking)) continue;
 
                 //this Listing passes all of the filters
-                ToReturn.Add(L);
+                ToReturn.Add(new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images));
             }
 
             return ToReturn;
