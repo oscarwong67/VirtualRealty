@@ -95,6 +95,7 @@ namespace VirtualRealty
         {
             // Close the big listing popup using the close button, or if the user clicked outside the popup
             this.Visibility = Visibility.Collapsed;
+            this.BigListingGrid.Children.Clear();
         }
 
         // Opens the contact page popup
