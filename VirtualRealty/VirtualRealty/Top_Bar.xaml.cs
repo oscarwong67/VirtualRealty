@@ -83,11 +83,11 @@ namespace VirtualRealty
 
             List<HomeType> homeTypesList = homeTypes.ToList(); 
 
-            Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase);
-            
-            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near" + locationInput : "");
+            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
+            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near " + locationInput : "");
             MainWindow.LP.ListingsHeader.Text = searchHeader;
             MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
+            Switcher.Switch(MainWindow.LP);
         }
 
         private void ToggleSavingSearch(object sender, RoutedEventArgs e)
@@ -298,11 +298,7 @@ namespace VirtualRealty
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox cb = sender as ComboBox;
-            if(cb.IsDropDownOpen == true)
-            {
-                cb.IsDropDownOpen = true;
-            }
+
         }
 
 
