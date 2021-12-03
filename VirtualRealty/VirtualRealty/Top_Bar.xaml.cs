@@ -65,6 +65,11 @@ namespace VirtualRealty
             {
                 locationInput = Location.Text;
             }
+            
+            if(AgeListing.Text != "")
+            {
+                ageOfListing = Int32.Parse(AgeListing.Text);
+            }
 
             List<HomeType> homeTypesList = homeTypes.ToList(); 
 

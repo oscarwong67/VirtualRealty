@@ -246,10 +246,10 @@ namespace VirtualRealty
                 isPurchase = value;
                 if (value == false)
                 {
-                    Content = Location.Content + ", Rentals";
+                    Location.Content = "Rentals near " + Location.Content;
                 } else
                 {
-                    Content = Location.Content + ", Purchases";
+                    Location.Content = "Purchases near " + Location.Content;
                 }
             }
         }
