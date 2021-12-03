@@ -54,6 +54,7 @@ namespace VirtualRealty
             {
                 ListingViewer.Children.Add(L.Small);
                 L.Small.SetListingGrid(MapViewGrid);
+                L.Small.ShowPurchaseOrRental();
 
                 MapIcon Pin = new MapIcon();
                 Geopoint Location = new Geopoint(new BasicGeoposition() { Latitude = L.Latitude, Longitude = L.Longitude });

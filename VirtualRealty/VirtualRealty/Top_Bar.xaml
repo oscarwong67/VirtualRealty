@@ -87,10 +87,10 @@
 
         <ComboBox Text="Home Type" x:Name="HomeTypesDropDown" Grid.ColumnSpan="2" Margin="76,25,100,55" Grid.Column="4" SelectionChanged="ComboBox_SelectionChanged" FontSize="14" Cursor="Hand">
             <StackPanel Orientation="Vertical">
-                <CheckBox x:Name="Apartment" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Apartment"/>
-                <CheckBox x:Name="Condo" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Condo"/>
-                <CheckBox x:Name="House" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="House"/>
-                <CheckBox x:Name="Townhouse" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Townhouse"/>
+                <CheckBox x:Name="Apartment" Cursor="Hand" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Apartment"/>
+                <CheckBox x:Name="Condo" Cursor="Hand" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Condo"/>
+                <CheckBox x:Name="House" Cursor="Hand" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="House"/>
+                <CheckBox x:Name="Townhouse" Cursor="Hand" Checked="HomeTypeChecked" Unchecked="HomeTypeUnchecked" Content="Townhouse"/>
             </StackPanel>
         </ComboBox>
         <TextBlock Margin="78,27,119,57" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
@@ -184,7 +184,7 @@
         <Button Click="GoToFavorites" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="8" Background="White" BorderBrush="White" Margin="58,19,0,0" Width="65">
             <Image Source="icons/favouritesIcon.png" Height="51" Width="59" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
-        <Button Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Grid.Column="2" HorizontalAlignment="Left" Margin="109,72,0,0" VerticalAlignment="Top" Width="126" FontSize="16" Height="26"/>
+        <Button Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Cursor="Hand" Grid.Column="2" HorizontalAlignment="Left" Margin="109,72,0,0" VerticalAlignment="Top" Width="126" FontSize="16" Height="26"/>
         <Popup x:Name="SavingSearchSuccess" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
             <Grid x:Name="SavingSearchSuccessContent" Margin="0,0,0,0" Background="LightGreen">
                 <Grid.ColumnDefinitions>
@@ -205,7 +205,7 @@
                     <TextBox x:Name="NameThisSearch" Grid.Column="0" Text="Name this Search" GotFocus="NameThisSearch_GotFocus" LostFocus="NameThisSearch_LostFocus" TextChanged="NameThisSearch_TextChanged"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="1" Padding="0,5,5,5" >
-                    <Button Content="Save" Click="SaveSearch" />
+                    <Button Content="Save" Click="SaveSearch" Cursor="Hand"/>
                 </Border>
             </Grid>
         </Popup>

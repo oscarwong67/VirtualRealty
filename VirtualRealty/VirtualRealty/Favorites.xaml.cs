@@ -48,6 +48,7 @@ namespace VirtualRealty
             this.Listings = Listings;
             foreach (Listing L in Listings)
             {
+                L.Small.ShowPurchaseOrRental();
                 switch (i % 3)
                 {
                     case 0:

@@ -43,6 +43,11 @@ namespace VirtualRealty
             this.Size.Content = Listing.size.ToString() + " sqft";
         }
 
+        public void ShowPurchaseOrRental()
+        {
+            this.Type.Content += ", For " + this.Listing.Purchase ? : "Purchase" : "Rent";
+        }
+
         //public void SetBigListingInfo(BigListing l)
         //{
         //    bigListing = l;
@@ -88,6 +93,16 @@ namespace VirtualRealty
             MainWindow.MapViewPage.MapViewer.Visibility = Visibility.Hidden;
 
             // Set images here
+        }
+
+        private void SmallListing_MouseEnter(object sender, MouseEventArgs e)
+        {
+            SmallListingDropShadow.Visibility = Visibility.Visible;
+        }
+
+        private void SmallListing_MouseLeave(object sender, MouseEventArgs e)
+        {
+            SmallListingDropShadow.Visibility = Visibility.Hidden;
         }
 
     }
