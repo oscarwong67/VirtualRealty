@@ -13,8 +13,8 @@ namespace VirtualRealty
     {
         public readonly bool Purchase, Heating, AC, Pool, Gym, Elevator;
         public bool IsFavourited { get; set; }
-        public bool Washer;
-        public readonly string Address, Description, Parking, View;
+        public bool Washer, Parking;
+        public readonly string Address, Description, View;
         public HomeType ListingType;
         public readonly int Price, Beds, YearBuilt, size; //size is square footage
         public readonly double Baths;
@@ -57,7 +57,7 @@ namespace VirtualRealty
         }
 
         public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, double Bath, int Size, HomeType Type,
-            string Description, bool Favourited, string Parking, bool Washer, int Year, string View, bool Heating, bool AC,
+            string Description, bool Favourited, bool Parking, bool Washer, int Year, string View, bool Heating, bool AC,
             bool Pool, bool Gym, bool Elevator, List<String> Images)
         {
             this.Purchase = Purchase;
@@ -120,7 +120,7 @@ namespace VirtualRealty
          */
         public static List<Listing> FilterListings(List<Listing> Listings, int PriceMin = -1, int PriceMax = -1, List<HomeType> Types = null,
             int MinBeds = -1, int MaxBeds = -1, double MinBaths = -1, double MaxBaths = -1, int MinSize = -1, int MaxSize = -1, int MaxListingAge = -1,
-            int MinYear = -1, int MaxYear = -1, bool Washer = false, string Parking = "")
+            int MinYear = -1, int MaxYear = -1, bool Washer = false, bool Parking = false, bool Purchase = true, bool Favourite = false)
         {
             List<Listing> ToReturn = new List<Listing>();
 
@@ -142,7 +142,10 @@ namespace VirtualRealty
 
                 //simple substring check for washer and parking
                 if (Washer && !L.Washer) continue;
-                if (Parking.Length != 0 && !L.Parking.Contains(Parking)) continue;
+                if (Parking && !L.Parking) continue;
+                if (!Purchase && L.Purchase) continue;
+                if (Purchase && !L.Purchase) continue;
+                if (Favourite && !L.IsFavourited) continue;
 
                 //this Listing passes all of the filters
                 ToReturn.Add(new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images));

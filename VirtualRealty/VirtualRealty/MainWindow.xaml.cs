@@ -38,7 +38,7 @@ namespace VirtualRealty
             // ORIGINAL ----------------------------------------
             ListingsPage LP = new ListingsPage();
             Listings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
-            LP.SetListings(Listings);
+            LP.SetListings(Listing.FilterListings(Listings));
 
             InitializeComponent();
 
