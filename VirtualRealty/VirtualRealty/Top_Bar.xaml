@@ -159,7 +159,7 @@
             </StackPanel>
             <Label FontWeight="Bold">Max Age of Listing</Label>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="AgeListing" Text="" Width="53" Height="19" Margin="5,0,0,0"></TextBox>
+                <TextBox x:Name="AgeListing" Text="—" Width="53" Height="19" Margin="5,0,0,0" TextChanged="AgeText_TextChanged" GotFocus="Age_GotFocus" LostFocus="Age_LostFocus" Foreground="#FF555555"></TextBox>
                 <Label>days</Label>
             </StackPanel>
             <Label Width="134" FontWeight="Bold">Year Built</Label>

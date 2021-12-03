@@ -244,7 +244,7 @@ namespace VirtualRealty
             }
             if (parking)
             {
-                savedSearch.HasParking = true;
+                savedSearch.HasParking = parking;
             }
             if (ageOfListing >= 0)
             {
@@ -507,6 +507,36 @@ namespace VirtualRealty
 
         private void YearTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            TextBox tb = sender as TextBox;
+            string year = string.Empty;
+            if(tb.Text != "Min" && tb.Text != "Max")
+            {
+                foreach(char c in tb.Text)
+                {
+                    if (Char.IsDigit(c))
+                    {
+                        year += c;
+                    }
+                }
+                tb.Text = year;
+            }
+        }
+
+        private void AgeText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            string age = string.Empty;
+            if (tb.Text != "—")
+            {
+                foreach (char c in tb.Text)
+                {
+                    if (Char.IsDigit(c))
+                    {
+                        age += c;
+                    }
+                }
+                tb.Text = age;
+            }
 
         }
 
@@ -592,6 +622,24 @@ namespace VirtualRealty
                 PriceMaxInput.Text = (sender as TextBlock).Text;
             }
 
+        }
+
+        private void Age_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = "";
+            box.GotFocus -= Age_GotFocus;
+        }
+
+        private void Age_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "—";
+                box.GotFocus += TextBox_GotFocus;
+                box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
+            }
         }
     }
 
