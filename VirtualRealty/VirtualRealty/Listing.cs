@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -90,7 +91,7 @@ namespace VirtualRealty
             Small.SetListing(this);
             //Small.SetBigListingInfo(Big);
         }
-        
+
         public bool ToggleFavourite()
         {
             return IsFavourited = !IsFavourited;
@@ -129,7 +130,7 @@ namespace VirtualRealty
                 //each if checks if that filter matters, and then if this filter matches
                 if (PriceMin >= 0 && L.Price < PriceMin) continue;
                 if (PriceMax >= 0 && L.Price > PriceMax) continue;
-                if (Types != null && !Types.Contains(L.ListingType)) continue;
+                if (Types != null && Types.Contains(L.ListingType)) continue;
                 if (MinBeds >= 0 && L.Beds < MinBeds) continue;
                 if (MaxBeds >= 0 && L.Beds > MaxBeds) continue;
                 if (MinBaths >= 0 && L.Baths < MinBaths) continue;
@@ -145,7 +146,7 @@ namespace VirtualRealty
                 if (Parking.Length != 0 && !L.Parking.Contains(Parking)) continue;
 
                 //this Listing passes all of the filters
-                ToReturn.Add(new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images));
+                ToReturn.Add(L);
             }
 
             return ToReturn;
@@ -161,6 +162,9 @@ namespace VirtualRealty
      */
     class ListingComparer : IComparer<Listing>
     {
+
+        Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.BasicGeoposition Loc;
+
         public enum SortBy
         { 
             Price,
@@ -175,6 +179,11 @@ namespace VirtualRealty
         public ListingComparer(SortBy Order)
         {
             this.Order = Order;
+        }
+
+        public void SetLocation(Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.BasicGeoposition L)
+        {
+            Loc = L;
         }
 
         public ListingComparer(SortBy Order, bool Descending)
@@ -200,8 +209,7 @@ namespace VirtualRealty
                 case SortBy.AgeOfBuilding:
                     return invert * A.YearBuilt.CompareTo(B.YearBuilt);
                 case SortBy.Proximity:
-                    //TODO
-                    return 0;
+                    return (int) (invert * (Math.Sqrt(Math.Pow((Loc.Latitude - A.Latitude), 2) + Math.Pow(Loc.Longitude - A.Longitude, 2) - Math.Sqrt(Math.Pow(Loc.Latitude - B.Latitude, 2) + Math.Pow(Loc.Longitude - B.Longitude, 2)))));
                 default:
                     return 0;
             }

@@ -32,9 +32,22 @@ namespace VirtualRealty
             InitializeComponent();
 
             MapViewer.Loaded += MapControl_Loaded;
-            ;
+            MapViewer.CenterChanged += MapControl_Moved;
         }
 
+        private void MapControl_Moved(object sender, object e)
+        {
+
+            if (MapViewer.Center == null) {
+                return; 
+            }
+
+            ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
+            Comp.SetLocation(MapViewer.Center.Position);
+
+            Listings.Sort();
+
+        }
 
         public void ClearListings()
         {
