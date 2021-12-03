@@ -112,7 +112,7 @@ namespace VirtualRealty
             if (prev >= 0)
             {
                 SetBigListing(ListingsList[prev]);
-                SetThumbnailImages(prev);
+                SetThumbnailImages();
                 prev--;
                 next--;
                 if(prev < 0)
@@ -131,7 +131,7 @@ namespace VirtualRealty
             if(next < ListingsList.Count && next >= 0)
             {
                 SetBigListing(ListingsList[next]);
-                SetThumbnailImages(next);
+                SetThumbnailImages();
                 next++;
                 prev++;
                 if (prev >= 0)
@@ -151,8 +151,19 @@ namespace VirtualRealty
             // send in name of image that was clicked
            //gallery.SetBigImage(sender.)
            string btn = (sender as Image).Name;
-           gallery.SetBigImage(btn);
+           gallery.SetImages(Listing.Address,btn);
            BigListingGrid.Children.Add(gallery);
+
+        }
+
+        private void OpenGalleryBtn(object sender, RoutedEventArgs e)
+        {
+            ListingGallery gallery = new ListingGallery();
+            // send in name of image that was clicked
+            //gallery.SetBigImage(sender.)
+            string btn = (sender as Button).Name;
+            gallery.SetImages(Listing.Address, btn);
+            BigListingGrid.Children.Add(gallery);
 
         }
 
@@ -167,9 +178,9 @@ namespace VirtualRealty
         //
         //}
 
-        public void SetThumbnailImages(int i)
+        public void SetThumbnailImages()
         {
-            string src,img2,img3;
+            string src;
             string addr = Listing.Address;
 
 
@@ -178,11 +189,9 @@ namespace VirtualRealty
                 // first listing in sorted by new
                 case "Pineridge Apartments, # 772706, 433 Pinestream Pl NE, Calgary, AB T1Y 3A5":
                     src = "/img/" + (19).ToString() + ".jpg";
-                    img2 = "/img/gallery1/1.jpg";
-                    img3 = "/img/gallery1/2.jpg"; 
                     this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-                    this.SmallImage1.Source = new BitmapImage(new Uri(@img2, UriKind.Relative));
-                    this.SmallImage2.Source = new BitmapImage(new Uri(@img3, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery1/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery1/2.jpg", UriKind.Relative));
                     break;
                 // second listing in sorted by new
                 case "841 NE Royal Ave SW, Calgary, AB T2T 0L4":
