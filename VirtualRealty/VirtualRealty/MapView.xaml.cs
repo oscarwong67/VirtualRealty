@@ -27,6 +27,7 @@ namespace VirtualRealty
 
         public List<Listing> Listings;
         private Boolean LocationSort = false;
+        private DateTime LastSorted = DateTime.Now;
 
         public MapView()
         {
@@ -39,14 +40,20 @@ namespace VirtualRealty
         private void MapControl_Moved(object sender, object e)
         {
 
-            if (MapViewer.Center == null || !LocationSort) {
+            if (MapViewer.ActualCamera == null || !LocationSort) {
                 return; 
             }
 
-            ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
-            Comp.SetLocation(MapViewer.Center.Position);
+            if (LastSorted.AddSeconds(2) >= DateTime.Now) return;
 
-            Listings.Sort();
+            LastSorted = DateTime.Now;
+
+            ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
+            Comp.SetLocation(MapViewer.ActualCamera.Location);
+
+            Listings.Sort(Comp);
+
+            this.SetListings(Listings);
 
         }
 
