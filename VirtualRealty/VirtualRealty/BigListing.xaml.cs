@@ -69,6 +69,7 @@ namespace VirtualRealty
 
             // listing details
             this.Parking.Content = Listing.Parking;
+            this.Washer.Content = Listing.Washer;
             this.Year.Content = Listing.YearBuilt.ToString();
             this.View.Content = Listing.View;
 
