@@ -52,7 +52,7 @@ namespace VirtualRealty
             MapLocationFinderResult Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
 
             
-            System.Diagnostics.Debug.WriteLine("Now calculating location for address " + this.Address);
+            //System.Diagnostics.Debug.WriteLine("Now calculating location for address " + this.Address);
 
             while (true)
             {
@@ -61,12 +61,10 @@ namespace VirtualRealty
                 Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
             }
 
-            int a = Result.Locations.Count;
-
             this.Latitude = Result.Locations[0].Point.Position.Latitude;
             this.Longitude = Result.Locations[0].Point.Position.Longitude;
 
-            System.Diagnostics.Debug.WriteLine("Finished calculating location for address " + this.Address);
+            //System.Diagnostics.Debug.WriteLine("Finished calculating location for address " + this.Address);
         
         }
 
