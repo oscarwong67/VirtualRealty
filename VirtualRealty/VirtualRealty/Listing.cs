@@ -48,14 +48,23 @@ namespace VirtualRealty
 
             MapService.ServiceToken = "n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760";
 
+
             MapLocationFinderResult Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
 
-            //wait for search to finish
-            while (Result.Status != MapLocationFinderStatus.Success) { }
+            
+            //System.Diagnostics.Debug.WriteLine("Now calculating location for address " + this.Address);
 
-            if (Result.Locations.Count <= 0) return; // idk why this gets hit but the alternative is crashing so
+            while (true)
+            {
+                if (Result.Status == MapLocationFinderStatus.Success && Result.Locations.Count > 0) break;
+
+                Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
+            }
+
             this.Latitude = Result.Locations[0].Point.Position.Latitude;
             this.Longitude = Result.Locations[0].Point.Position.Longitude;
+
+            //System.Diagnostics.Debug.WriteLine("Finished calculating location for address " + this.Address);
         
         }
 
