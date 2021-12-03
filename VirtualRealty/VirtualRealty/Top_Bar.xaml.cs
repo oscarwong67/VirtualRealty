@@ -84,6 +84,10 @@ namespace VirtualRealty
             List<HomeType> homeTypesList = homeTypes.ToList(); 
 
             Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase);
+            
+            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near" + locationInput : "");
+            MainWindow.LP.ListingsHeader.Text = searchHeader;
+            MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
         }
 
         private void ToggleSavingSearch(object sender, RoutedEventArgs e)
@@ -176,6 +180,7 @@ namespace VirtualRealty
             TextBox box = sender as TextBox;
             box.Text = "";
             box.GotFocus -= NameThisSearch_GotFocus;
+            box.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
 
         // If the user deselects textbox and leaves it blank, display default message
@@ -186,6 +191,7 @@ namespace VirtualRealty
             {
                 box.Text = "Name This Search";
                 box.GotFocus += NameThisSearch_GotFocus;
+                box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
             }
         }
 
@@ -537,6 +543,7 @@ namespace VirtualRealty
             TextBox box = sender as TextBox;
             box.Text = "";
             box.GotFocus -= TextBox_GotFocus;
+            box.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
 
         // If the user deselects textbox and leaves it blank, display default message
@@ -547,6 +554,7 @@ namespace VirtualRealty
             {
                 box.Text = "Enter your city or neighbourhood";
                 box.GotFocus += TextBox_GotFocus;
+                box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
             }
         }
         private void YearMinMax_GotFocus(object sender, RoutedEventArgs e)

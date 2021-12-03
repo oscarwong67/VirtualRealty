@@ -14,7 +14,7 @@
             </Grid.RowDefinitions>
             <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
             <Button Grid.Row="1" Click="MapView_Click" Content="Switch to Map View" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"/>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Favourites" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
+            <TextBlock Grid.Row="1" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Favourites" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" TextAlignment="Right" />
             <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="556,0,0,15" VerticalAlignment="Bottom" Width="178" Cursor="Hand" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>

@@ -26,10 +26,10 @@
                 <Label x:Name="ContactListAddress" Content="Address" FontSize="18" HorizontalAlignment="Left" Margin="161,228,0,0" VerticalAlignment="Top" Height="35" Width="527" RenderTransformOrigin="0.5,0.5"/>
 
                 <!-- User Message textbox -->
-                <TextBox x:Name="Message" ScrollViewer.VerticalScrollBarVisibility="Auto" AcceptsReturn="True" HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="214" Margin="24,280,0,0" TextWrapping="Wrap" Text="Enter your message here" VerticalAlignment="Top" Width="906"/>
+                <TextBox x:Name="Message" ScrollViewer.VerticalScrollBarVisibility="Auto" AcceptsReturn="True" HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="214" Margin="24,280,0,0" TextWrapping="Wrap" Foreground="#FF555555" Text="Enter your message here" VerticalAlignment="Top" Width="906"/>
 
                 <!-- User Email textbox and send btn -->
-                <TextBox x:Name="Email"  HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="33" Margin="24,514,0,0" TextWrapping="NoWrap" Text="Enter your email here" VerticalAlignment="Top" Width="769"/>
+                <TextBox x:Name="Email"  HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="33" Margin="24,514,0,0" TextWrapping="NoWrap" Text="Enter your email here" Foreground="#FF555555" VerticalAlignment="Top" Width="769"/>
                 <Button Content="Send" HorizontalAlignment="Left" Margin="808,514,0,0" VerticalAlignment="Top" Width="122" Height="32" Cursor="Hand" Click="CloseContactPopup"/>
 
                 <!-- Copy Buttons -->
