@@ -246,6 +246,7 @@ namespace VirtualRealty
             {
                 savedSearch.HasWasherDryer = washerDryer;
             }
+            savedSearch.IsPurchase = isPurchase;
             savedSearch.LastAccessed = DateTime.Now;
             savedSearch.DateSaved = DateTime.Now;
             SavedSearches.savedSearches.Add(savedSearch);
