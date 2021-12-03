@@ -121,8 +121,9 @@ namespace VirtualRealty
                 MinSqFt = 500,
                 MaxSqFt = 2000,
                 LastAccessed = DateTime.Parse("10/6/2021"),
-                DateSaved = DateTime.Parse("10/3/2021")
-            };
+                DateSaved = DateTime.Parse("10/3/2021"),
+                IsPurchase = true
+        };
 
             SavedSearches.savedSearches.Add(savedSearch1);
 
@@ -140,7 +141,8 @@ namespace VirtualRealty
                 MinBeds = 5,
                 MinBaths = 4,
                 LastAccessed = DateTime.Parse("6/10/2021"),
-                DateSaved = DateTime.Parse("3/10/2021")
+                DateSaved = DateTime.Parse("3/10/2021"),
+                IsPurchase = true
             };
 
             SavedSearches.savedSearches.Add(savedSearch2);

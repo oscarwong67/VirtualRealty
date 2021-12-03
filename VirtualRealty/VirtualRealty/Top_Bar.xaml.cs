@@ -75,6 +75,11 @@ namespace VirtualRealty
             {
                 locationInput = Location.Text;
             }
+            
+            if(AgeListing.Text != "")
+            {
+                ageOfListing = Int32.Parse(AgeListing.Text);
+            }
 
             List<HomeType> homeTypesList = homeTypes.ToList(); 
 
@@ -251,6 +256,7 @@ namespace VirtualRealty
             {
                 savedSearch.HasWasherDryer = washerDryer;
             }
+            savedSearch.IsPurchase = isPurchase;
             savedSearch.LastAccessed = DateTime.Now;
             savedSearch.DateSaved = DateTime.Now;
             SavedSearches.savedSearches.Add(savedSearch);

@@ -169,8 +169,10 @@
                 <TextBox x:Name="MaxYear" Text="Max" Width="53" GotFocus="YearMinMax_GotFocus" LostFocus="YearMinMax_LostFocus" TextChanged="YearTextBox_TextChanged" Height="22"></TextBox>
             </StackPanel>
             <Label Width="134" FontWeight="Bold">Amenities</Label>
-            <CheckBox x:Name="Parking" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Parking Included" Width="131" Cursor="Hand"></CheckBox>
-            <CheckBox x:Name="WasherDryer" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Washer/Dryer in Unit" Cursor="Hand"></CheckBox>
+            <StackPanel Orientation="Vertical">
+                <CheckBox x:Name="Parking" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Parking Included" Cursor="Hand"></CheckBox>
+                <CheckBox x:Name="WasherDryer" Checked="AmenitiesChecked" Unchecked="AmenitiesUnchecked" Content="Washer/Dryer in Unit" Cursor="Hand"></CheckBox>
+            </StackPanel>
         </ComboBox>
         <TextBlock Margin="53,27,141,57" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2"/>
         <TextBlock Margin="53,33,0,0" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Height="22" TextAlignment="Center" Text="More Filters" Width="90" Grid.ColumnSpan="2"/>
