@@ -13,7 +13,8 @@ namespace VirtualRealty
     {
         public readonly bool Purchase, Heating, AC, Pool, Gym, Elevator;
         public bool IsFavourited { get; set; }
-        public bool Washer, Parking;
+        public bool Washer;
+        public string Parking;
         public readonly string Address, Description, View;
         public HomeType ListingType;
         public readonly int Price, Beds, YearBuilt, size; //size is square footage
@@ -57,7 +58,7 @@ namespace VirtualRealty
         }
 
         public Listing(bool Purchase, int Price, string Address, DateTime ListingDate, int Bed, double Bath, int Size, HomeType Type,
-            string Description, bool Favourited, bool Parking, bool Washer, int Year, string View, bool Heating, bool AC,
+            string Description, bool Favourited, string Parking, bool Washer, int Year, string View, bool Heating, bool AC,
             bool Pool, bool Gym, bool Elevator, List<String> Images)
         {
             this.Purchase = Purchase;
@@ -127,25 +128,76 @@ namespace VirtualRealty
             foreach (Listing L in Listings){
 
                 //each if checks if that filter matters, and then if this filter matches
-                if (PriceMin >= 0 && L.Price < PriceMin) continue;
-                if (PriceMax >= 0 && L.Price > PriceMax) continue;
-                if (Types != null && !Types.Contains(L.ListingType)) continue;
-                if (MinBeds >= 0 && L.Beds < MinBeds) continue;
-                if (MaxBeds >= 0 && L.Beds > MaxBeds) continue;
-                if (MinBaths >= 0 && L.Baths < MinBaths) continue;
-                if (MaxBaths >= 0 && L.Baths > MaxBaths) continue;
-                if (MinSize >= 0 && L.size < MinSize) continue;
-                if (MaxSize >= 0 && L.size > MaxSize) continue;
-                if (MaxListingAge >= 0 && (DateTime.Today - L.DateListed).Days > MaxListingAge) continue;
-                if (MinYear >= 0 && L.YearBuilt < MinYear) continue;
-                if (MaxYear >= 0 && L.YearBuilt > MaxYear) continue;
+                if (PriceMin >= 0 && L.Price < PriceMin)
+                {
+                    continue;
+                }
+                if (PriceMax >= 0 && L.Price > PriceMax)
+                {
+                        continue;
+                }; 
+                if (Types != null && Types.Count > 0 && !Types.Contains(L.ListingType))
+                {
+                    continue;
+                }; 
+                if (MinBeds >= 0 && L.Beds < MinBeds)
+                {
+                    continue;
+                }; 
+                if (MaxBeds >= 0 && L.Beds > MaxBeds)
+                {
+                    continue;
+                }; 
+                if (MinBaths >= 0 && L.Baths < MinBaths)
+                {
+                    continue;
+                }; 
+                if (MaxBaths >= 0 && L.Baths > MaxBaths)
+                {
+                    continue;
+                }; 
+                if (MinSize >= 0 && L.size < MinSize)
+                {
+                    continue;
+                }; 
+                if (MaxSize >= 0 && L.size > MaxSize)
+                {
+                    continue;
+                }; 
+                if (MaxListingAge >= 0 && (DateTime.Today - L.DateListed).Days > MaxListingAge)
+                {
+                    continue;
+                }; 
+                if (MinYear >= 0 && L.YearBuilt < MinYear)
+                {
+                    continue;
+                }; 
+                if (MaxYear >= 0 && L.YearBuilt > MaxYear)
+                {
+                    continue;
+                }; 
 
                 //simple substring check for washer and parking
-                if (Washer && !L.Washer) continue;
-                if (Parking && !L.Parking) continue;
-                if (!Purchase && L.Purchase) continue;
-                if (Purchase && !L.Purchase) continue;
-                if (Favourite && !L.IsFavourited) continue;
+                if (Washer && !L.Washer)
+                {
+                    continue;
+                }; 
+                if (Parking && (L.Parking.Equals("None") || L.Parking.Length <= 0))
+                {
+                    continue;
+                }; 
+                if (!Purchase && L.Purchase)
+                {
+                    continue;
+                }; 
+                if (Purchase && !L.Purchase)
+                {
+                    continue;
+                }; 
+                if (Favourite && !L.IsFavourited)
+                {
+                    continue;
+                }; 
 
                 //this Listing passes all of the filters
                 ToReturn.Add(new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images));
