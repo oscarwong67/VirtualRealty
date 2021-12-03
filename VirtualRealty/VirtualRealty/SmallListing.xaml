@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              MouseEnter="SmallListing_MouseEnter"
              MouseLeave="SmallListing_MouseLeave"
-             d:DesignHeight="251" d:DesignWidth="400">
-    <Grid Margin="0,0,0,0">
-        <Rectangle Fill="#08F4F4F5" HorizontalAlignment="Left" Height="251" Stroke="Black" VerticalAlignment="Top" Width="400" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
+             d:DesignHeight="251" d:DesignWidth="400" BorderBrush="Black">
+    <Grid x:FieldModifier="public" x:Name="SmallListingGrid" Margin="0,0,0,0">
+        <Rectangle x:FieldModifier="public" x:Name="SmallListingGridBorder" Fill="#08F4F4F5" HorizontalAlignment="Left" Height="251" Stroke="Black" VerticalAlignment="Top" Width="400" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
         <Image x:Name="PrimaryImage" HorizontalAlignment="Left" Height="164" VerticalAlignment="Top" Width="400" Stretch="UniformToFill" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
         <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" Margin="0,164,0,0" VerticalAlignment="Top" FontSize="22" Width="289" MouseLeftButtonDown="OpenBigListing" Cursor="Hand" Height="37" RenderTransformOrigin="0.498,0.419"/>
         <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" Margin="0,199,0,0" VerticalAlignment="Top" Width="380" FontSize="12"/>

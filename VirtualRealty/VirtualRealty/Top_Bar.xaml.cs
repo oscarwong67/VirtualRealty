@@ -39,7 +39,6 @@ namespace VirtualRealty
         {
             InitializeComponent();
             savedSearchName = "Name this Search";
-
         }
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
@@ -56,6 +55,12 @@ namespace VirtualRealty
             MainWindow.LP.ClearListings();
             MainWindow.MapViewPage.ClearListings();
 
+            // TODO (Oscar): doesn't work
+            MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
+            MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
+            MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
+            MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
+
             // i cannot believe
             List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).Concat(Listing.FilterListings(MainWindow.Listings, Favourite: true, Purchase: false)).ToList();
             listings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
@@ -65,9 +70,12 @@ namespace VirtualRealty
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
         {
-           MainWindow.savedSearchesPage.load();
+            MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderBrush = Brushes.SlateGray;
+            MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderThickness = new Thickness(2);
+
+            MainWindow.savedSearchesPage.load();
             
-            Switcher.Switch(MainWindow.savedSearchesPage);        
+           Switcher.Switch(MainWindow.savedSearchesPage);
         }
         private void Search(object sender, RoutedEventArgs e)
         {

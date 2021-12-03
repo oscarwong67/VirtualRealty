@@ -68,10 +68,29 @@ namespace VirtualRealty
             MapViewer.Layers.Add(Layer);
         }
 
-        private void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
+        private async void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
         {
-            (args.MapElements.FirstOrDefault().Tag as Listing).Small.BringIntoView();
-        }
+            Listing listing = (args.MapElements.FirstOrDefault().Tag as Listing);
+            listing.Small.BringIntoView();
+            for (int i = 99; i >= 0; i--)
+            {
+                if (i % 12 == 0)
+                {
+                    if (listing.Small.SmallListingGridBorder.Fill == Brushes.Green)
+                    {
+                        listing.Small.SmallListingGridBorder.Fill = Brushes.LightGreen;
+                    }
+                    else
+                    {
+                        listing.Small.SmallListingGridBorder.Fill = Brushes.Green;
+                    }
+                }
+
+                await Task.Delay(3); // The animation will take 3 seconds
+            }
+            listing.Small.SmallListingGridBorder.Fill = (Brush)(new BrushConverter().ConvertFrom("#08F4F4F5"));
+        
+    }
 
 
 
