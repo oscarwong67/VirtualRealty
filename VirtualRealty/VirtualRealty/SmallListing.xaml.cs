@@ -46,7 +46,7 @@ namespace VirtualRealty
         public void ShowPurchaseOrRental()
         {
             string purchaseOrRentText = this.Listing.Purchase ? "Sale" : "Rent";
-            this.Type.Content += ", For " + purchaseOrRentText;
+            this.Type.Content = this.Listing.ListingType.ToString() + ", For " + purchaseOrRentText;
         }
 
         //public void SetBigListingInfo(BigListing l)
