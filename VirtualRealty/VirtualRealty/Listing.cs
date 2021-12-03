@@ -209,6 +209,9 @@ namespace VirtualRealty
                 case SortBy.AgeOfBuilding:
                     return invert * A.YearBuilt.CompareTo(B.YearBuilt);
                 case SortBy.Proximity:
+
+                    if (A.Latitude == B.Latitude && A.Longitude == B.Longitude) return 0;
+
                     return (int) (invert * (Math.Sqrt(Math.Pow((Loc.Latitude - A.Latitude), 2) + Math.Pow(Loc.Longitude - A.Longitude, 2) - Math.Sqrt(Math.Pow(Loc.Latitude - B.Latitude, 2) + Math.Pow(Loc.Longitude - B.Longitude, 2)))));
                 default:
                     return 0;

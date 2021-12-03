@@ -26,19 +26,20 @@ namespace VirtualRealty
     {
 
         public List<Listing> Listings;
+        private Boolean LocationSort = false;
 
         public MapView()
         {
             InitializeComponent();
 
             MapViewer.Loaded += MapControl_Loaded;
-            MapViewer.CenterChanged += MapControl_Moved;
+            MapViewer.ActualCameraChanged += MapControl_Moved;
         }
 
         private void MapControl_Moved(object sender, object e)
         {
 
-            if (MapViewer.Center == null) {
+            if (MapViewer.Center == null || !LocationSort) {
                 return; 
             }
 
@@ -117,23 +118,27 @@ namespace VirtualRealty
             string text = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content as string;
             if (text.Equals("Newest"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
             }
             else if (text.Equals("Oldest"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed, true /* Descending */));
             }
             else if (text.Equals("Price (Low to High)"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price, true));
             }
             else if (text.Equals("Price (High to Low)"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price));
             }
             else
             {
-                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Proximity));
+                LocationSort = true;
             }
             SetListings(sortedListings);
         }
