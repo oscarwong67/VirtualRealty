@@ -58,6 +58,7 @@ namespace VirtualRealty
 
             // i cannot believe
             List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).Concat(Listing.FilterListings(MainWindow.Listings, Favourite: true, Purchase: false)).ToList();
+            listings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
             MainWindow.FavouritesPage.SetListings(listings);
 
         }

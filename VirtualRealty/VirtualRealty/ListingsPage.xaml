@@ -17,7 +17,7 @@
             <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>
-            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="354,0,0,15" VerticalAlignment="Bottom" FontSize="18" SelectionChanged="SortOrder_SelectionChanged">
+            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="354,0,0,15" VerticalAlignment="Bottom" FontSize="18" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
                 <ComboBoxItem Content="Newest" IsSelected="True" />
                 <ComboBoxItem Content="Oldest" />
                 <ComboBoxItem Content="Price (Low to High)" />

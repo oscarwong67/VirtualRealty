@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,78 +13,83 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Windows.Devices.Geolocation;
+using Windows.Services.Maps;
+using Windows.UI.Xaml.Controls.Maps;
 
 namespace VirtualRealty
 {
     /// <summary>
-    /// Interaction logic for Favorites.xaml
+    /// Interaction logic for FavoritesMapView.xaml
     /// </summary>
-    public partial class Favorites : UserControl
+    public partial class FavoritesMapView : UserControl
     {
 
         public List<Listing> Listings;
-        public Favorites()
+
+        public FavoritesMapView()
         {
             InitializeComponent();
-        }
 
-        public List<Listing> getListings()
-        {
-            return Listings;
+            MapViewer.Loaded += MapControl_Loaded;
         }
 
 
         public void ClearListings()
         {
-            Listings = new List<Listing>();
-            LeftFaves.Children.Clear();
-            CentreFaves.Children.Clear();
-            RightFaves.Children.Clear();
+            MapViewer.MapElements.Clear();
+            ListingViewer.Children.Clear();
         }
 
         public void SetListings(List<Listing> Listings)
         {
-            int i = 0;
-            ClearListings();
             this.Listings = Listings;
+
+            ClearListings();
+
+            MapElementsLayer Layer = new MapElementsLayer();
+            Layer.MapElementClick += Layer_MapElementClick;
+
             foreach (Listing L in Listings)
             {
-                switch (i % 3)
-                {
-                    case 0:
-                        LeftFaves.Children.Add(L.Small);
-                        L.Small.SetListingGrid(this.FavesPgGrid);
-                        //L.Small.SetListingGrid();
-                        L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
-                        break;
-                    case 1:
-                        CentreFaves.Children.Add(L.Small);
-                        L.Small.SetListingGrid(this.FavesPgGrid);
-                        L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
-                        break;
-                    case 2:
-                        RightFaves.Children.Add(L.Small);
-                        L.Small.SetListingGrid(this.FavesPgGrid);
-                        L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
-                        break;
-                }
-                i++;
+                ListingViewer.Children.Add(L.Small);
+                L.Small.SetListingGrid(MapViewGrid);
+
+                MapIcon Pin = new MapIcon();
+                Geopoint Location = new Geopoint(new BasicGeoposition() { Latitude = L.Latitude, Longitude = L.Longitude });
+                Pin.Location = Location;
+
+                Pin.Tag = L;
+
+                Layer.MapElements.Add(Pin);
             }
+
+            MapViewer.Layers.Add(Layer);
         }
 
-        public void MapView_Click(Object Sender, RoutedEventArgs args)
+        private void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
         {
-            Switcher.Switch(MainWindow.FavouritesMapViewPage);
+            (args.MapElements.FirstOrDefault().Tag as Listing).Small.BringIntoView();
+        }
+
+
+
+        private async void MapControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Specify a known location.
+            BasicGeoposition cityPosition = new BasicGeoposition() { Latitude = 51.0447, Longitude = -114.0719 };
+            var cityCenter = new Geopoint(cityPosition);
+
+            // Set the map location.
+            await (sender as Microsoft.Toolkit.Wpf.UI.Controls.MapControl).TrySetViewAsync(cityCenter, 11);
+        }
+
+        public void ListView_Click(Object Sender, RoutedEventArgs args)
+        {
+            Switcher.Switch(MainWindow.FavouritesPage);
             List<Listing> temp = Listings;
-            foreach (Listing l in temp)
-            {
-                l.Small.SetListingGrid(MainWindow.FavouritesMapViewPage.MapViewGrid);
-            }
             ClearListings();
-            MainWindow.FavouritesMapViewPage.SetListings(temp);
+            MainWindow.FavouritesPage.SetListings(temp);
         }
 
         private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -98,7 +104,8 @@ namespace VirtualRealty
             if (text.Equals("Date Favourited (Newest)"))
             {
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
-            } else if (text.Equals("Date Favourited (Oldest)"))
+            }
+            else if (text.Equals("Date Favourited (Oldest)"))
             {
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited, true /* Descending */));
             }

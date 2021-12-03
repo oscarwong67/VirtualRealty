@@ -13,6 +13,7 @@ namespace VirtualRealty
     {
         public readonly bool Purchase, Heating, AC, Pool, Gym, Elevator;
         public bool IsFavourited { get; set; }
+        public DateTime DateFavourited;
         public bool Washer;
         public string Parking;
         public readonly string Address, Description, View;
@@ -50,8 +51,8 @@ namespace VirtualRealty
 
             //wait for search to finish
             while (Result.Status != MapLocationFinderStatus.Success) { }
-            
 
+            if (Result.Locations.Count <= 0) return; // idk why this gets hit but the alternative is crashing so
             this.Latitude = Result.Locations[0].Point.Position.Latitude;
             this.Longitude = Result.Locations[0].Point.Position.Longitude;
         
@@ -197,10 +198,15 @@ namespace VirtualRealty
                 if (Favourite && !L.IsFavourited)
                 {
                     continue;
-                }; 
+                };
 
                 //this Listing passes all of the filters
-                ToReturn.Add(new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images));
+                Listing newListing = new Listing(L.Purchase, L.Price, L.Address, L.DateListed, L.Beds, L.Baths, L.size, L.ListingType, L.Description, L.IsFavourited, L.Parking, L.Washer, L.YearBuilt, L.View, L.Heating, L.AC, L.Pool, L.Gym, L.Elevator, L.Images);
+                if (L.DateFavourited != null)
+                {
+                    newListing.DateFavourited = L.DateFavourited;
+                }
+                ToReturn.Add(newListing);
             }
 
             return ToReturn;
@@ -221,7 +227,8 @@ namespace VirtualRealty
             Price,
             DateListed,
             AgeOfBuilding,
-            Proximity
+            DateFavourited,
+            Proximity,
         }
 
         public bool Descending = false;
@@ -254,6 +261,8 @@ namespace VirtualRealty
                     return invert * A.DateListed.CompareTo(B.DateListed);
                 case SortBy.AgeOfBuilding:
                     return invert * A.YearBuilt.CompareTo(B.YearBuilt);
+                case SortBy.DateFavourited: // Date favorited can be null so be careful
+                    return invert * A.DateFavourited.CompareTo(B.DateFavourited);
                 case SortBy.Proximity:
                     //TODO
                     return 0;
