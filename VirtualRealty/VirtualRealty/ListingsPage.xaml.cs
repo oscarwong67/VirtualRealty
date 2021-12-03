@@ -55,19 +55,19 @@ namespace VirtualRealty
                         L.Small.SetListingGrid(this.ListingPgGrid);
                         //L.Small.SetListingGrid();
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        //L.Small.SetDisplayImage(i);
                         break;
                     case 1:
                         Centre.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.ListingPgGrid);
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        //L.Small.SetDisplayImage(i);
                         break;
                     case 2:
                         Right.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.ListingPgGrid);
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        //L.Small.SetDisplayImage(i);
                         break;
                 }
                 i++;

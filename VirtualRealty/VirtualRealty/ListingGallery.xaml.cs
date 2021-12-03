@@ -25,4 +25,12 @@ namespace VirtualRealty
             InitializeComponent();
         }
     }
+
+    private void ChangeBigImage(object sender, MouseButtonEventArgs e)
+    {
+        string src = "/img/" + i.ToString() + ".jpg";
+
+        this.GalleryBigImg.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+    }
+
 }

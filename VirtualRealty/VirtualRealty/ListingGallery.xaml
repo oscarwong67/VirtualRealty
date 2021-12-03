@@ -18,11 +18,11 @@
                         <Setter Property="Margin" Value="0,10,0,0"/>
                     </Style>
                 </StackPanel.Resources>
-                <Image x:Name="Gallery1" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery2" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery3" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery4" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery5" Source="/img/0.jpg" Stretch="UniformToFill"  Height="230" Width="352"/>
+                <Image x:Name="Gallery1" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352"/>
+                <Image x:Name="Gallery2" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352"/>
+                <Image x:Name="Gallery3" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352"/>
+                <Image x:Name="Gallery4" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352"/>
+                <Image x:Name="Gallery5" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352"/>
             </StackPanel>
 
         </ScrollViewer>
