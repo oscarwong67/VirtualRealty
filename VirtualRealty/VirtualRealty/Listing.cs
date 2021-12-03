@@ -233,7 +233,7 @@ namespace VirtualRealty
     class ListingComparer : IComparer<Listing>
     {
 
-        Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.BasicGeoposition Loc;
+        Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.Geopoint Loc;
 
         public enum SortBy
         { 
@@ -252,7 +252,7 @@ namespace VirtualRealty
             this.Order = Order;
         }
 
-        public void SetLocation(Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.BasicGeoposition L)
+        public void SetLocation(Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.Geopoint L)
         {
             Loc = L;
         }
@@ -282,7 +282,10 @@ namespace VirtualRealty
                 case SortBy.DateFavourited: // Date favorited can be null so be careful
                     return invert * A.DateFavourited.CompareTo(B.DateFavourited);
                 case SortBy.Proximity:
-                    return (int) (invert * (Math.Sqrt(Math.Pow((Loc.Latitude - A.Latitude), 2) + Math.Pow(Loc.Longitude - A.Longitude, 2) - Math.Sqrt(Math.Pow(Loc.Latitude - B.Latitude, 2) + Math.Pow(Loc.Longitude - B.Longitude, 2)))));
+
+                    if (A.Latitude == B.Latitude && A.Longitude == B.Longitude) return 0;
+
+                    return (int) (invert * (Math.Sqrt(Math.Pow((Loc.Position.Latitude - A.Latitude), 2) + Math.Pow(Loc.Position.Longitude - A.Longitude, 2) - Math.Sqrt(Math.Pow(Loc.Position.Latitude - B.Latitude, 2) + Math.Pow(Loc.Position.Longitude - B.Longitude, 2)))));
                 default:
                     return 0;
             }

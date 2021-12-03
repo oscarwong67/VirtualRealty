@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -111,7 +112,12 @@ namespace VirtualRealty
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price));
             } else
             {
-                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Proximity));
+                Geopoint Calgary = new Geopoint(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = 51.0447, Longitude = 114.0719 });
+
+                ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
+                Comp.SetLocation(Calgary);
+
+                sortedListings.Sort(Comp);
             }
             SetListings(sortedListings);
         }
