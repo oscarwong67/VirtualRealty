@@ -56,7 +56,9 @@ namespace VirtualRealty
             MainWindow.LP.ClearListings();
             MainWindow.MapViewPage.ClearListings();
 
-            MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, Favourite:true));
+            // i cannot believe
+            List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).Concat(Listing.FilterListings(MainWindow.Listings, Favourite: true, Purchase: false)).ToList();
+            MainWindow.FavouritesPage.SetListings(listings);
 
         }
 
