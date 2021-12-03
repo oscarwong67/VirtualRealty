@@ -30,7 +30,7 @@
             </ComboBox>
         </Grid>
         <Grid Margin="0,155,428,0">
-            <Controls:MapControl x:Name="MapViewer" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760"/>
+            <Controls:MapControl x:Name="MapViewer2" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760"/>
         </Grid>
         <ScrollViewer Margin="838,155,0,0">
             <StackPanel x:Name="ListingViewer"/>
