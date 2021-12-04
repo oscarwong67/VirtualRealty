@@ -20,46 +20,28 @@ using Windows.UI.Xaml.Controls.Maps;
 namespace VirtualRealty
 {
     /// <summary>
-    /// Interaction logic for MapView.xaml
+    /// Interaction logic for FavoritesMapView.xaml
     /// </summary>
-    public partial class MapView : UserControl
+    public partial class FavoritesMapView : UserControl
     {
 
         public List<Listing> Listings;
-        private Boolean LocationSort = false;
-        private DateTime LastSorted = DateTime.Now;
+        Boolean LocationSort = false;
+        DateTime LastSorted = DateTime.Now;
 
-        public MapView()
+        public FavoritesMapView()
         {
             InitializeComponent();
 
-            MapViewer.Loaded += MapControl_Loaded;
-            MapViewer.ActualCameraChanged += MapControl_Moved;
-        }
-
-        private void MapControl_Moved(object sender, object e)
-        {
-
-            if (MapViewer.ActualCamera == null || !LocationSort) {
-                return; 
-            }
-
-            if (LastSorted.AddSeconds(2) >= DateTime.Now) return;
-
-            LastSorted = DateTime.Now;
-
-            ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
-            Comp.SetLocation(MapViewer.ActualCamera.Location);
-
-            Listings.Sort(Comp);
-
-            this.SetListings(Listings);
+            MapViewer2.Loaded += MapControl_Loaded;
+            MapViewer2.ActualCameraChanged += MapControl_Moved;
 
         }
+
 
         public void ClearListings()
         {
-            MapViewer.MapElements.Clear();
+            MapViewer2.MapElements.Clear();
             ListingViewer.Children.Clear();
         }
 
@@ -76,6 +58,7 @@ namespace VirtualRealty
             {
                 ListingViewer.Children.Add(L.Small);
                 L.Small.SetListingGrid(MapViewGrid);
+                L.Small.ShowPurchaseOrRental();
 
                 MapIcon Pin = new MapIcon();
                 Geopoint Location = new Geopoint(new BasicGeoposition() { Latitude = L.Latitude, Longitude = L.Longitude });
@@ -86,7 +69,7 @@ namespace VirtualRealty
                 Layer.MapElements.Add(Pin);
             }
 
-            MapViewer.Layers.Add(Layer);
+            MapViewer2.Layers.Add(Layer);
         }
 
         private async void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
@@ -109,10 +92,30 @@ namespace VirtualRealty
 
                 await Task.Delay(3); // The animation will take 3 seconds
             }
-            listing.Small.SmallListingGridBorder.Fill = (Brush) (new BrushConverter().ConvertFrom("#08F4F4F5"));
+            listing.Small.SmallListingGridBorder.Fill = (Brush)(new BrushConverter().ConvertFrom("#08F4F4F5"));
+        
+    }
+
+        private void MapControl_Moved(object sender, object e)
+        {
+
+            if (MapViewer2.ActualCamera == null || !LocationSort)
+            {
+                return;
+            }
+
+            if (LastSorted.AddSeconds(2) >= DateTime.Now) return;
+
+            LastSorted = DateTime.Now;
+
+            ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
+            Comp.SetLocation(MapViewer2.ActualCamera.Location);
+
+            Listings.Sort(Comp);
+
+            this.SetListings(Listings);
+
         }
-
-
 
         private async void MapControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -124,12 +127,12 @@ namespace VirtualRealty
             await (sender as Microsoft.Toolkit.Wpf.UI.Controls.MapControl).TrySetViewAsync(cityCenter, 11);
         }
 
-        public void ListView_Click(Object Sender,RoutedEventArgs args)
+        public void ListView_Click(Object Sender, RoutedEventArgs args)
         {
-            Switcher.Switch(MainWindow.LP);
+            Switcher.Switch(MainWindow.FavouritesPage);
             List<Listing> temp = Listings;
             ClearListings();
-            MainWindow.LP.SetListings(temp);
+            MainWindow.FavouritesPage.SetListings(temp);
         }
 
         private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -141,7 +144,17 @@ namespace VirtualRealty
             List<Listing> sortedListings = new List<Listing>(Listings);
 
             string text = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content as string;
-            if (text.Equals("Newest"))
+            if (text.Equals("Date Favourited (Newest)"))
+            {
+                LocationSort = false;
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
+            }
+            else if (text.Equals("Date Favourited (Oldest)"))
+            {
+                LocationSort = false;
+                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited, true /* Descending */));
+            }
+            else if (text.Equals("Newest"))
             {
                 LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));

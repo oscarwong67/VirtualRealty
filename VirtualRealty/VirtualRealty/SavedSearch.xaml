@@ -12,7 +12,7 @@
         </Grid.ColumnDefinitions>
         <Rectangle Grid.ColumnSpan="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="166" Margin="0" Stroke="Black" VerticalAlignment="Top" Width="1279"/>
         <Label x:Name="SearchTitle" Content="Saved Search Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="36"/>
-        <Label x:Name="Location" Content="Location" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Margin="0,47,0,0"/>
+        <Label x:Name="Location" Content="Any Location" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Margin="0,47,0,0"/>
         <StackPanel HorizontalAlignment="Left" Height="76" Margin="7,77,0,0" VerticalAlignment="Top" Width="100"/>
         <StackPanel x:Name="Left" HorizontalAlignment="Left" Height="89" Margin="10,77,0,0" VerticalAlignment="Top" Width="162">
             <Label Name="HomeTypeLabel" Content="Any Home Type" FontSize="14"/>
@@ -28,5 +28,11 @@
         <Label x:Name="DateSavedSection" Content="Saved: " HorizontalAlignment="Left" Margin="289,119,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1"/>
         <Button Name="ApplyThisSearch" Content="Apply This Search" HorizontalAlignment="Left" Height="52" Margin="295,26,0,0" VerticalAlignment="Top" Width="282" FontSize="24" Click="ApplyThisSearch_Click" Grid.Column="1"/>
         <Button Name="DeleteThisSearch" Content="🗑️" HorizontalAlignment="Right" Height="52" Margin="0,26,10,0" VerticalAlignment="Top" Width="50" FontSize="24" Click="DeleteThisSearch_Click" Grid.Column="1"/>
+        <Border x:Name="SavedSearchDropShadow"  Visibility="Hidden" Margin="0,0,0,0" BorderThickness="0" Width="1280">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" />
+            </Border.Effect>
+            <Rectangle Fill="#0800" HorizontalAlignment="Left" Height="166" Width="1280" Stroke="Black" VerticalAlignment="Top" Cursor="Hand"/>
+        </Border>
     </Grid>
 </UserControl>

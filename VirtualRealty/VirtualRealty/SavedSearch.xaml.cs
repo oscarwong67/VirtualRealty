@@ -62,7 +62,7 @@ namespace VirtualRealty
             }
         }
         // TODO (Oscar): add support for millions?
-        private int minPrice;
+        private int minPrice = -1;
         public int MinPrice {
             get { return minPrice; }
             set {
@@ -71,7 +71,7 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MAXPRICE RIGHT AFTER MINPRICE!!!
-        private int maxPrice;
+        private int maxPrice = -1;
         public int MaxPrice {
             get { return maxPrice; }
             set
@@ -84,7 +84,7 @@ namespace VirtualRealty
                 }
             }
         }
-        private int minSqFt;
+        private int minSqFt = -1;
         public int MinSqFt {
             get { return minSqFt; }
             set {
@@ -98,7 +98,7 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MAXSQFT RIGHT AFTER MINSQFT!!!
-        private int maxSqFt;
+        private int maxSqFt = -1;
         public int MaxSqFt {
             get { return maxSqFt; }
             set
@@ -118,7 +118,7 @@ namespace VirtualRealty
         }
 
         // Goes on center
-        private int minBeds;
+        private int minBeds = -1;
         public int MinBeds {
             get { return minBeds;  }
             set
@@ -138,7 +138,7 @@ namespace VirtualRealty
             }
         }
 
-        private double minBaths;
+        private double minBaths = -1;
         public double MinBaths {
             get { return minBaths;  }
             set {
@@ -157,23 +157,23 @@ namespace VirtualRealty
                 BathsLabel.Content = "" + minBaths + "+ Baths";
             }
         }
-        private bool hasGarage;
-        public bool HasGarage {
-            get { return hasGarage; }
+        private bool hasParking;
+        public bool HasParking {
+            get { return hasParking; }
             set
             {
-                hasGarage = value;
+                hasParking = value;
                 Label label = new Label
                 {
                     FontSize = LABEL_FONTSIZE,
-                    Content = "Has Garage"
+                    Content = "Has Parking"
                 };
                 Center.Children.Add(label);
             }
         }
 
         // Goes on right
-        private int maxAgeOfListingInDays;
+        private int maxAgeOfListingInDays = -1;
         public int MaxAgeOfListingInDays
         {
             get { return maxAgeOfListingInDays; }
@@ -188,7 +188,7 @@ namespace VirtualRealty
                 Right.Children.Add(label);
             }
         }
-        private int minYearBuilt;
+        private int minYearBuilt = -1;
         public int MinYearBuilt {
             get { return minYearBuilt; }
             set
@@ -203,7 +203,7 @@ namespace VirtualRealty
             }
         }
         // THIS ASSUMES YOU SET MaxYearBuilt RIGHT AFTER MinYearBuilt!!!
-        private int maxYearBuilt;
+        private int maxYearBuilt = -1;
         public int MaxYearBuilt {
             get { return maxYearBuilt; }
             set {
@@ -236,6 +236,24 @@ namespace VirtualRealty
         }
         // TODO (Oscar): if we have time, add parking as a filter
 
+        // NEVER SET LOCATION AFTER PURCHASE!!!!!
+        private bool isPurchase = true;
+        public bool IsPurchase
+        {
+            get { return isPurchase; }
+            set
+            {
+                isPurchase = value;
+                if (value == false)
+                {
+                    Location.Content = "Rentals near " + Location.Content;
+                } else
+                {
+                    Location.Content = "Properties for sale near " + Location.Content;
+                }
+            }
+        }
+
         private DateTime lastAccessed;
         public DateTime LastAccessed {
             get { return lastAccessed; }
@@ -264,7 +282,10 @@ namespace VirtualRealty
 
         private void ApplyThisSearch_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasGarage ? "Garage" : ""));
+            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasParking, Purchase:isPurchase));
+            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationSearchString != null && locationSearchString.Length > 0) ? " near " + locationSearchString : "");
+            MainWindow.LP.ListingsHeader.Text = searchHeader;
+            MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
             Switcher.Switch(MainWindow.LP);
         }
 

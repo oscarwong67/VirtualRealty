@@ -44,6 +44,12 @@ namespace VirtualRealty
             SetDisplayImage(L);
         }
 
+        public void ShowPurchaseOrRental()
+        {
+            string purchaseOrRentText = this.Listing.Purchase ? "Sale" : "Rent";
+            this.Type.Content = this.Listing.ListingType.ToString() + ", For " + purchaseOrRentText;
+        }
+
         //public void SetBigListingInfo(BigListing l)
         //{
         //    bigListing = l;
@@ -178,6 +184,14 @@ namespace VirtualRealty
                     break;
 
             }
+        private void SmallListing_MouseEnter(object sender, MouseEventArgs e)
+        {
+            SmallListingDropShadow.Visibility = Visibility.Visible;
+        }
+
+        private void SmallListing_MouseLeave(object sender, MouseEventArgs e)
+        {
+            SmallListingDropShadow.Visibility = Visibility.Hidden;
         }
 
     }

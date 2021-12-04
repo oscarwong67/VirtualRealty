@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Linq;
 
 namespace VirtualRealty
 {
@@ -30,7 +31,7 @@ namespace VirtualRealty
         private int ageOfListing = -1;
         private int yearBuiltMin = -1;
         private int yearBuiltMax = -1;
-        private bool garage = false;
+        private bool parking = false;
         private bool washerDryer = false;
         private bool isPurchase = true;
 
@@ -38,7 +39,6 @@ namespace VirtualRealty
         {
             InitializeComponent();
             savedSearchName = "Name this Search";
-
         }
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
@@ -51,14 +51,51 @@ namespace VirtualRealty
 
         void GoToFavorites(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Favorites());
+            Switcher.Switch(MainWindow.FavouritesPage);
+            MainWindow.LP.ClearListings();
+            MainWindow.MapViewPage.ClearListings();
+
+            // TODO (Oscar): doesn't work
+            MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
+            MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
+            MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
+            MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
+
+            // i cannot believe
+            List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).Concat(Listing.FilterListings(MainWindow.Listings, Favourite: true, Purchase: false)).ToList();
+            listings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
+            MainWindow.FavouritesPage.SetListings(listings);
+
         }
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
         {
-           MainWindow.savedSearchesPage.load();
+            MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderBrush = Brushes.SlateGray;
+            MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderThickness = new Thickness(2);
+
+            MainWindow.savedSearchesPage.load();
             
-            Switcher.Switch(MainWindow.savedSearchesPage);        
+           Switcher.Switch(MainWindow.savedSearchesPage);
+        }
+        private void Search(object sender, RoutedEventArgs e)
+        {
+            if(Location.Text != "Enter your city or neighborhood")
+            {
+                locationInput = Location.Text;
+            }
+            
+            if(AgeListing.Text != "")
+            {
+                ageOfListing = Int32.Parse(AgeListing.Text);
+            }
+
+            List<HomeType> homeTypesList = homeTypes.ToList(); 
+
+            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
+            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near " + locationInput : "");
+            MainWindow.LP.ListingsHeader.Text = searchHeader;
+            MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
+            Switcher.Switch(MainWindow.LP);
         }
 
         private void ToggleSavingSearch(object sender, RoutedEventArgs e)
@@ -151,6 +188,7 @@ namespace VirtualRealty
             TextBox box = sender as TextBox;
             box.Text = "";
             box.GotFocus -= NameThisSearch_GotFocus;
+            box.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
 
         // If the user deselects textbox and leaves it blank, display default message
@@ -161,6 +199,7 @@ namespace VirtualRealty
             {
                 box.Text = "Name This Search";
                 box.GotFocus += NameThisSearch_GotFocus;
+                box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
             }
         }
 
@@ -211,9 +250,9 @@ namespace VirtualRealty
             {
                 savedSearch.MaxBaths = numBathMax;
             }
-            if (garage)
+            if (parking)
             {
-                savedSearch.HasGarage = garage;
+                savedSearch.HasParking = parking;
             }
             if (ageOfListing >= 0)
             {
@@ -231,6 +270,7 @@ namespace VirtualRealty
             {
                 savedSearch.HasWasherDryer = washerDryer;
             }
+            savedSearch.IsPurchase = isPurchase;
             savedSearch.LastAccessed = DateTime.Now;
             savedSearch.DateSaved = DateTime.Now;
             SavedSearches.savedSearches.Add(savedSearch);
@@ -269,10 +309,32 @@ namespace VirtualRealty
 
         }
 
-        private void Search(object sender, RoutedEventArgs e)
-        {
 
+        private void MinSelected(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)(sender as ComboBox).SelectedItem;
+            if (cbi.Content.Equals("Any"))
+            {
+                sqftMin = -1;
+            } else
+            {
+                sqftMin = Int32.Parse(cbi.Content as string);
+            }
         }
+
+        private void MaxSelected(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)(sender as ComboBox).SelectedItem;
+            if (cbi.Content.Equals("Any"))
+            {
+                sqftMax = -1;
+            }
+            else
+            {
+                sqftMax = Int32.Parse(cbi.Content as string);
+            }
+        }
+
 
         private void UseExactMatchChecked(object sender, RoutedEventArgs e)
         {
@@ -439,9 +501,9 @@ namespace VirtualRealty
         private void AmenitiesChecked(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            if(cb.Name == "Garage" && cb.IsChecked == true)
+            if(cb.Name == "Parking" && cb.IsChecked == true)
             {
-                garage = true;
+                parking = true;
             }
 
             if (cb.Name == "WasherDryer" && cb.IsChecked == true)
@@ -453,15 +515,45 @@ namespace VirtualRealty
 
         private void YearTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            TextBox tb = sender as TextBox;
+            string year = string.Empty;
+            if(tb.Text != "Min" && tb.Text != "Max")
+            {
+                foreach(char c in tb.Text)
+                {
+                    if (Char.IsDigit(c))
+                    {
+                        year += c;
+                    }
+                }
+                tb.Text = year;
+            }
+        }
+
+        private void AgeText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            string age = string.Empty;
+            if (tb.Text != "—")
+            {
+                foreach (char c in tb.Text)
+                {
+                    if (Char.IsDigit(c))
+                    {
+                        age += c;
+                    }
+                }
+                tb.Text = age;
+            }
 
         }
 
         private void AmenitiesUnchecked(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            if (cb.Name == "Garage" && cb.IsChecked == false)
+            if (cb.Name == "Parking" && cb.IsChecked == false)
             {
-                garage = false;
+                parking = false;
             }
 
             if (cb.Name == "WasherDryer" && cb.IsChecked == false)
@@ -485,6 +577,7 @@ namespace VirtualRealty
             TextBox box = sender as TextBox;
             box.Text = "";
             box.GotFocus -= TextBox_GotFocus;
+            box.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
 
         // If the user deselects textbox and leaves it blank, display default message
@@ -495,6 +588,7 @@ namespace VirtualRealty
             {
                 box.Text = "Enter your city or neighbourhood";
                 box.GotFocus += TextBox_GotFocus;
+                box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
             }
         }
         private void YearMinMax_GotFocus(object sender, RoutedEventArgs e)
@@ -536,6 +630,24 @@ namespace VirtualRealty
                 PriceMaxInput.Text = (sender as TextBlock).Text;
             }
 
+        }
+
+        private void Age_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            box.Text = "";
+            box.GotFocus -= Age_GotFocus;
+        }
+
+        private void Age_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.Text.Trim().Equals(string.Empty))
+            {
+                box.Text = "—";
+                box.GotFocus += TextBox_GotFocus;
+                box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
+            }
         }
     }
 

@@ -8,12 +8,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1280">
     <Grid x:FieldModifier="public" x:Name="MapViewGrid">
-        <local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
-        <Button Click="ListView_Click" Content="List View" HorizontalAlignment="Left" Margin="15,128,0,0" VerticalAlignment="Top" Width="75"/>
-        <Grid Margin="0,178,428,0">
+        <Grid Grid.Row="0" Height="155" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="105"/>
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
+            <Button Grid.Row="1" Click="ListView_Click" Content="Switch to List View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"/>
+            <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
+                <ComboBoxItem Content="Sort Order: " IsSelected="True" />
+            </ComboBox>
+            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="354,0,0,15" VerticalAlignment="Bottom" Cursor="Hand" FontSize="18" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
+                <ComboBoxItem Content="Newest" IsSelected="True" Cursor="Hand" />
+                <ComboBoxItem Content="Oldest" Cursor="Hand" />
+                <ComboBoxItem Content="Price (Low to High)" Cursor="Hand" />
+                <ComboBoxItem Content="Price (High to Low)" Cursor="Hand" />
+                <ComboBoxItem Content="Closest to Center of Map" Tag="LocationSort" Cursor="Hand" />
+            </ComboBox>
+            <TextBlock x:FieldModifier="public" Name="MapViewHeader" Grid.Row="1" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Homes for Sale Near Calgary" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
+        </Grid>
+        <Grid Margin="0,155,428,0">
             <Controls:MapControl x:Name="MapViewer" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760"/>
         </Grid>
-        <ScrollViewer Margin="838,178,0,0">
+        <ScrollViewer Margin="838,155,0,0">
             <StackPanel x:Name="ListingViewer"/>
         </ScrollViewer>
 
