@@ -15,7 +15,7 @@
         <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Height="32" Width="70"  Cursor="Hand" Click="BigListingBack"/>
         <Button x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="1191,364,0,0" VerticalAlignment="Top" Height="32" Width="69" Cursor="Hand" Click="BigListingNext"/>
         <!-- SCROLL VIEW DEFAULT HEIGHT = 682 -->
-        <ScrollViewer x:Name="Viewer" Background="White" HorizontalAlignment="Center" Margin="100,0,100,0" VerticalAlignment="Top" Width="1080" Height="682">
+        <ScrollViewer x:Name="Viewer" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="1080" Height="682">
             <Grid Background="White">
 
                 <Grid.ColumnDefinitions>
@@ -41,11 +41,12 @@
                 <!-- Right column: Fav button, contact button, map -->
                 <Button x:Name="FavBtn" Content="Favourite" Grid.Column="1" HorizontalAlignment="Left" Margin="10,393,0,0" VerticalAlignment="Top" Height="32" Width="122" Cursor="Hand"/>
                 <Button x:Name="Contact" Content="Contact" Click="OpenContactPopup" Grid.Column="1" Margin="256,393,69,0" VerticalAlignment="Top" Height="32" Cursor="Hand"/>
-                <Label x:Name="Map" Content="Map" Grid.Column="1" HorizontalAlignment="Left" FontSize="30" Margin="10,484,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="Map" Content="Map" Grid.Column="1" HorizontalAlignment="Left" FontSize="30" Margin="0,485,0,0" VerticalAlignment="Top" Cursor="Hand"/>
+                <Image x:Name="MapImage" Margin="8,547,19,651" Grid.Column="1"/>
 
                 <!-- Property Description -->
                 <Label Content="Property Description" HorizontalAlignment="Left" FontSize="34" Margin="10,560,0,0" VerticalAlignment="Top" Height="56" Width="318"/>
-                <TextBlock x:Name="Description" HorizontalAlignment="Left" Margin="19,620,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBlock" VerticalAlignment="Top" Height="379" Width="601"/>
+                <TextBlock x:Name="Description" HorizontalAlignment="Center" Margin="0,620,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBlock" VerticalAlignment="Top" Height="379" Width="581"/>
 
                 <!-- Property Description Labels (static) -->
                 <Label Content="Property Features" HorizontalAlignment="Left" FontSize="34" Margin="10,993,0,0" VerticalAlignment="Top" Height="54" Width="276"/>

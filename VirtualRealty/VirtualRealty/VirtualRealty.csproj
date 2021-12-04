@@ -69,6 +69,9 @@
 	  <None Remove="img\gallery3\2.jpg" />
 	  <None Remove="img\gallery3\3.jpg" />
 	  <None Remove="img\gallery3\4.jpg" />
+	  <None Remove="img\map0.jpg" />
+	  <None Remove="img\map1.jpg" />
+	  <None Remove="img\map2.jpg" />
 	  <None Remove="logo.png" />
 	</ItemGroup>
 	
@@ -117,6 +120,9 @@
 	  <Resource Include="img\gallery3\2.jpg" />
 	  <Resource Include="img\gallery3\3.jpg" />
 	  <Resource Include="img\gallery3\4.jpg" />
+	  <Resource Include="img\map0.jpg" />
+	  <Resource Include="img\map1.jpg" />
+	  <Resource Include="img\map2.jpg" />
 	  <Resource Include="logo.png" />
 	</ItemGroup>
 	

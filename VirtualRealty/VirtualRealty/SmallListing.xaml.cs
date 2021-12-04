@@ -76,6 +76,7 @@ namespace VirtualRealty
             bigL.SetBigListingInd(ListingsList, index);
             bigL.SetBigListing(Listing);
             bigL.SetThumbnailImages();
+            bigL.SetMapImage();
 
             ListingPgGrid.Children.Add(bigL);
 

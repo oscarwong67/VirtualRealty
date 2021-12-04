@@ -165,6 +165,7 @@ namespace VirtualRealty
                 //gall.BringIntoView();
                 string newImg = "/img/gallery" + galleryNum.ToString() + "/" + next.ToString() + ".jpg";
                 this.GalleryBigImg.Source = new BitmapImage(new Uri(newImg, UriKind.Relative));
+
                 if (prev >= 0)
                 {
                     this.BackBtn.Visibility = Visibility.Visible;
@@ -172,8 +173,24 @@ namespace VirtualRealty
                 if(next == 4)
                 {
                     this.NextBtn.Visibility = Visibility.Collapsed;
+                    Gallery3.BringIntoView();
                 }
-
+                if(index == 1)
+                {
+                    Gallery1.BringIntoView();
+                }
+                else if (index == 2)
+                {
+                    Gallery2.BringIntoView();
+                }
+                else if (index == 3)
+                {
+                    Gallery3.BringIntoView();
+                }
+                else if (index == 4)
+                {
+                    Gallery4.BringIntoView();
+                }
             }
         }
        
@@ -193,8 +210,26 @@ namespace VirtualRealty
                 if(prev == 0)
                 {
                     this.BackBtn.Visibility = Visibility.Collapsed;
+                    Gallery0.BringIntoView();
                 }
-           }
+                if(index == 0)
+                {
+                    Gallery0.BringIntoView();
+                }
+                else if(index == 1)
+                {
+                    Gallery1.BringIntoView();
+                }
+                else if (index == 2)
+                {
+                    Gallery2.BringIntoView();
+                }
+                else if (index == 3)
+                {
+                    Gallery3.BringIntoView();
+                }
+
+            }
         }
 
     }
