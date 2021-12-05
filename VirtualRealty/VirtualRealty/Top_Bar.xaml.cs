@@ -316,10 +316,33 @@ namespace VirtualRealty
             if (cbi.Content.Equals("Any"))
             {
                 sqftMin = -1;
+
+                for (int i = 1; i < MaxSqFt.Items.Count; i++)
+                {
+                    ComboBoxItem item = (ComboBoxItem)MaxSqFt.Items[i];
+                    int value = Int32.Parse(item.Content as string);
+                    item.Visibility = Visibility.Visible;
+                }
             } else
             {
                 sqftMin = Int32.Parse(cbi.Content as string);
+
+                if (MaxSqFt.SelectedIndex == -1 || MaxSqFt.SelectedIndex == 0)
+                {
+                    for(int i = 1; i < MaxSqFt.Items.Count; i++)
+                    {
+                        ComboBoxItem item = (ComboBoxItem)MaxSqFt.Items[i];
+                        int value = Int32.Parse(item.Content as string);
+
+                        if(value < sqftMin)
+                        {
+                            item.Visibility = Visibility.Collapsed;
+                        }
+                    }
+                }
             }
+
+            
         }
 
         private void MaxSelected(object sender, SelectionChangedEventArgs e)
@@ -328,10 +351,32 @@ namespace VirtualRealty
             if (cbi.Content.Equals("Any"))
             {
                 sqftMax = -1;
+
+                for (int i = 1; i < MinSqFt.Items.Count; i++)
+                {
+                    ComboBoxItem item = (ComboBoxItem)MinSqFt.Items[i];
+                    int value = Int32.Parse(item.Content as string);
+
+                    item.Visibility = Visibility.Visible;
+                }
             }
             else
             {
                 sqftMax = Int32.Parse(cbi.Content as string);
+
+                if(MinSqFt.SelectedIndex == -1 || MinSqFt.SelectedIndex == 0)
+                {
+                    for(int i = 1; i < MinSqFt.Items.Count; i++)
+                    {
+                        ComboBoxItem item = (ComboBoxItem)MinSqFt.Items[i];
+                        int value = Int32.Parse(item.Content as string);
+
+                        if(value > sqftMax)
+                        {
+                            item.Visibility = Visibility.Collapsed;
+                        }
+                    }
+                }
             }
         }
 
