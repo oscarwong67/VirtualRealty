@@ -28,6 +28,7 @@ namespace VirtualRealty
         public List<Listing> Listings;
         Boolean LocationSort = false;
         DateTime LastSorted = DateTime.Now;
+        MapElementsLayer Layer2 = new MapElementsLayer();
 
         public FavoritesMapView()
         {
@@ -41,7 +42,7 @@ namespace VirtualRealty
 
         public void ClearListings()
         {
-            MapViewer2.MapElements.Clear();
+            Layer2.MapElements.Clear();
             ListingViewer.Children.Clear();
         }
 
@@ -51,8 +52,7 @@ namespace VirtualRealty
 
             ClearListings();
 
-            MapElementsLayer Layer = new MapElementsLayer();
-            Layer.MapElementClick += Layer_MapElementClick;
+            Layer2.MapElementClick += Layer_MapElementClick;
 
             foreach (Listing L in Listings)
             {
@@ -66,10 +66,10 @@ namespace VirtualRealty
 
                 Pin.Tag = L;
 
-                Layer.MapElements.Add(Pin);
+                Layer2.MapElements.Add(Pin);
             }
 
-            MapViewer2.Layers.Add(Layer);
+            MapViewer2.Layers.Add(Layer2);
         }
 
         private async void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
