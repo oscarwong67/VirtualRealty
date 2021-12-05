@@ -130,6 +130,8 @@ namespace VirtualRealty
             List<Listing> temp = Listings;
             ClearListings();
             MainWindow.LP.SetListings(temp);
+
+            MainWindow.LP.SortOrder.SelectedIndex = this.SortOrder.SelectedIndex;
         }
 
         private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
