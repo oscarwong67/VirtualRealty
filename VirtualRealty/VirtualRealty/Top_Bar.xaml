@@ -37,8 +37,6 @@
         <Button Click="GoToHomePage" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White" BorderBrush="White" Width="142" Margin="0,16,0,0">
             <Image Source="logo.png" Height="54" Width="136" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
-
-        <Image Source="icons/magnifyingGlass.png" Margin="3,35,118,65" Grid.Column="1"/>
         <TextBox x:Name="Location" Text="Enter your city or neighborhood" KeyDown="OnLocationInputKeyDownHandler" Foreground="#FF555555" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="25,33,142,63" Grid.Column="1" Grid.ColumnSpan="3" Cursor="IBeam" FontSize="16" />
 
         <ComboBox Text="Price" x:Name="Price" Grid.ColumnSpan="2" Margin="19,25,116,55" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" Panel.ZIndex="0">
