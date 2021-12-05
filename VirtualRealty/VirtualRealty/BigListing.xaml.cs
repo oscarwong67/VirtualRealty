@@ -353,11 +353,13 @@ namespace VirtualRealty
             if (this.Listing.IsFavourited)
             {
                 this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+                Listing.Small.Heart.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
                 this.Listing.IsFavourited = false;
             }
             else
             {
                 this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+                Listing.Small.Heart.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
                 this.Listing.IsFavourited = true;
             }
 
