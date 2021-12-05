@@ -40,6 +40,13 @@ namespace VirtualRealty
             //savedText = Message.Text.ToString();
         }
 
+        private async void Send(object sender, RoutedEventArgs e)
+        {
+            UIElement target = this;
+            MessageBox.Show("Message Sent to " + EmailLabel.Content, "VirtualRealty", MessageBoxButton.OK, MessageBoxImage.Information);
+            CloseContactPopup(sender, e);
+        }
+
         // Sets the textbox to blank when a user clicks it (removes default msg)
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
