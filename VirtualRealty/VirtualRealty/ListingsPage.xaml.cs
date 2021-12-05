@@ -84,6 +84,8 @@ namespace VirtualRealty
             }
             ClearListings();
             MainWindow.MapViewPage.SetListings(temp);
+
+            MainWindow.MapViewPage.SortOrder.SelectedIndex = this.SortOrder.SelectedIndex;
         }
 
         private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
