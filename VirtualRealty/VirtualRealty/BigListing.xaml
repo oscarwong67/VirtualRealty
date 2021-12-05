@@ -7,13 +7,50 @@
              mc:Ignorable="d" d:DesignWidth="1280"
              Panel.ZIndex="1"
              FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat" Height="780">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="RoundedBlueBtn" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2A92CC"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2A92CC"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2583B8"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2583B8"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+ 
     <!-- GRID VIEW DEFAULT HEIGHT = 780 -->
     <Grid Name="BigListingGrid" HorizontalAlignment="Center" Height="780" VerticalAlignment="Top" Width="1280">
         <!--<local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/> -->
 
         <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseBigListing"/>
-        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="23,364,0,0" VerticalAlignment="Top" Height="32" Width="70"  Cursor="Hand" Click="BigListingBack"/>
-        <Button x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="1186,364,0,0" VerticalAlignment="Top" Height="32" Width="69" Cursor="Hand" Click="BigListingNext"/>
+        <Button Template="{DynamicResource RoundedBlueBtn}" x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="23,364,0,0" VerticalAlignment="Top" Height="32" Width="70"  Cursor="Hand" Click="BigListingBack"
+                Background="#23A6F0"
+                Foreground="White"/>
+        <Button Template="{DynamicResource RoundedBlueBtn}" x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="1186,364,0,0" VerticalAlignment="Top" Height="32" Width="69" Cursor="Hand" Click="BigListingNext"
+                Background="#23A6F0"
+                Foreground="White"/>
         <!-- SCROLL VIEW DEFAULT HEIGHT = 682 -->
         <ScrollViewer x:Name="Viewer" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="1080" Height="682">
             <Grid Background="White" Height="1553">
@@ -24,11 +61,15 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Images -->
-                <Button Content="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="75" Click="CloseBigListing" RenderTransformOrigin="1.447,2.453" Margin="10,10,0,0" Cursor="Hand"/>
+                <Button Template="{DynamicResource RoundedBlueBtn}" Content="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="75" Click="CloseBigListing" RenderTransformOrigin="1.447,2.453" Margin="10,10,0,0" Cursor="Hand"
+                        Background="#23A6F0"
+                        Foreground="White"/>
                 <Image x:Name="LargeImage" HorizontalAlignment="Left" Height="304" Margin="10,57,0,0" VerticalAlignment="Top" Width="597" Stretch="UniformToFill" MouseLeftButtonDown="OpenGallery" Cursor="Hand"/>
                 <Image x:Name="SmallImage1" HorizontalAlignment="Left" Height="145" Margin="0,57,0,0" VerticalAlignment="Top" Width="424" Grid.Column="1" Stretch="UniformToFill" MouseLeftButtonDown="OpenGallery" Cursor="Hand"/>
                 <Image x:Name="SmallImage2" HorizontalAlignment="Left" Height="145" Margin="0,216,0,0" VerticalAlignment="Top" Width="424" Grid.Column="1" Stretch="UniformToFill" MouseLeftButtonDown="OpenGallery" Cursor="Hand"/>
-                <Button x:Name="MoreBtn" Content="More Images" HorizontalAlignment="Left" Margin="331,322,0,0" VerticalAlignment="Top" Width="86" Grid.Column="1" Click="OpenGalleryBtn" Height="32"/>
+                <Button Template="{DynamicResource RoundedBlueBtn}" x:Name="MoreBtn" Content="More Images" HorizontalAlignment="Left" Margin="331,322,0,0" VerticalAlignment="Top" Width="86" Grid.Column="1" Click="OpenGalleryBtn" Height="32"
+                        Background="#23A6F0"
+                        Foreground="White"/>
 
 
 
@@ -42,7 +83,9 @@
                 <Button x:Name="FavBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="211,393,0,0" VerticalAlignment="Top" Background="White" BorderBrush="White" Width="65" Click="FavBtn_Click">
                     <Image x:Name="FavBtnImg" Source="icons/unfavouritedIcon.png" Height="51" Width="59" Stretch="UniformToFill" Cursor="Hand" RenderTransformOrigin="0.483,0.461"/>
                 </Button>
-                <Button x:Name="Contact" Content="Contact" Click="OpenContactPopup" Grid.Column="1" Margin="299,404,26,0" VerticalAlignment="Top" Height="32" Cursor="Hand"/>
+                <Button Template="{DynamicResource RoundedBlueBtn}" x:Name="Contact" Content="Contact" Click="OpenContactPopup" Grid.Column="1" Margin="299,404,26,0" VerticalAlignment="Top" Height="32" Cursor="Hand"
+                        Background="#23A6F0"
+                        Foreground="White"/>
                 <Label x:Name="Map" Content="Map" Grid.Column="1" HorizontalAlignment="Left" FontSize="30" Margin="3,565,0,0" VerticalAlignment="Top" Cursor="Hand" RenderTransformOrigin="0.522,0.752" Width="131"/>
                 <Image x:Name="MapImage" Margin="9,619,18,579" Grid.Column="1"/>
 

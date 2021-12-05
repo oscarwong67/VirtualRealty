@@ -19,6 +19,38 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- BUTTON STYLING -->
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="RoundedBlueBtn" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2A92CC"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2A92CC"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2583B8"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2583B8"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </UserControl.Resources>
     <Grid Height="120" Width="1280">
 
@@ -179,14 +211,19 @@
 
         <RadioButton x:Name="Purchase" IsChecked="True" Content="Purchase" HorizontalAlignment = "Center" VerticalAlignment = "Top" Grid.Column="1" Margin="0,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Cursor="Hand" Height="20" Width="87" FontSize="16"></RadioButton>
         <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="131,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Grid.ColumnSpan="2" Cursor="Hand" FontSize="16"/>
-        <Button Content="Search" Click="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="73" Grid.Column="7" Cursor="Hand" Height="38" FontSize="16" Margin="39,26,0,0"/>
+        <Button Template="{DynamicResource RoundedBlueBtn}" Content="Search" Click="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="87" Grid.Column="7" Cursor="Hand" Height="31" FontSize="16" Margin="32,30,0,0"
+                Background="#23A6F0"
+                Foreground="White"
+                />
         <Button x:FieldModifier="public" x:Name="SavedSearchesButton" Click="GoToSavedSearches" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="7" RenderTransformOrigin="0.5,0.5" Background="White" BorderBrush="White" Margin="132,21,0,0" Cursor="Hand" Grid.ColumnSpan="2">
             <Image Margin="0,0,0,0" Source="icons/savedSearchesIcon.png" Height="45" Width="47" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
         <Button x:FieldModifier="public" Name="GoToFavoritesButton" Click="GoToFavorites" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="8" Background="White" BorderBrush="White" Margin="58,19,0,0" Width="65">
             <Image Source="icons/favouritesIcon.png" Height="51" Width="59" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
-        <Button Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Cursor="Hand" Grid.Column="2" HorizontalAlignment="Left" Margin="109,72,0,0" VerticalAlignment="Top" Width="126" FontSize="16" Height="26"/>
+        <Button Template="{DynamicResource RoundedBlueBtn}" Content="Save this Search" Grid.ColumnSpan="2" Click="ToggleSavingSearch" Cursor="Hand" Grid.Column="2" HorizontalAlignment="Left" Margin="109,65,0,0" VerticalAlignment="Top" Width="138" FontSize="16" Height="32"
+                Background="#23A6F0"
+                Foreground="White"/>
         <Popup x:Name="SavingSearchSuccess" IsOpen="False" Margin="0" VerticalAlignment="Center" AllowsTransparency="True" Placement="RelativePoint" VerticalOffset="98" HorizontalOffset="392.5" >
             <Grid x:Name="SavingSearchSuccessContent" Margin="0,0,0,0" Background="LightGreen">
                 <Grid.ColumnDefinitions>

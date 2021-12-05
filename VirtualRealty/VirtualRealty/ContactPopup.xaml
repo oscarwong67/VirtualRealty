@@ -7,11 +7,45 @@
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1280"
              FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="RoundedBlueBtn" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2A92CC"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2A92CC"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2583B8"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2583B8"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid x:Name="ContactPopupGrid">
         <!-- Background rectangle behind contact popup -->
         <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseContactPopup"/>
         <Grid Background="White" Margin="163,94,163,104" HorizontalAlignment="Center" Width="954">
-            <Button Content="Close" Click="CloseContactPopup" Margin="24,10,851,0" Height="32" VerticalAlignment="Top" Cursor="Hand"/>
+            <Button Template="{DynamicResource RoundedBlueBtn}"  Content="Close" Click="CloseContactPopup" Margin="24,10,851,0" Height="32" VerticalAlignment="Top" Cursor="Hand"
+                    Background="#23A6F0"
+                    Foreground="White"/>
             <Grid>
                 <!-- Contact Information Rectangle -->
                 <Border Background="#FFB4B4B4" Margin="24,53,24,319"/>
@@ -27,11 +61,13 @@
                 <Label x:Name="ContactListAddress" Content="Address" FontSize="18" HorizontalAlignment="Left" Margin="172,228,0,0" VerticalAlignment="Top" Height="35" Width="516" RenderTransformOrigin="0.5,0.5"/>
 
                 <!-- User Message textbox -->
-                <TextBox x:Name="Message" ScrollViewer.VerticalScrollBarVisibility="Auto" AcceptsReturn="True" HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="214" Margin="24,280,0,0" TextWrapping="Wrap" Foreground="#FF555555" Text="Enter your message here" VerticalAlignment="Top" Width="906"/>
+                <TextBox x:Name="Message" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#FFF6F6F6" BorderBrush="{x:Null}" AcceptsReturn="True" HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="214" Margin="24,280,0,0" TextWrapping="Wrap" Foreground="#FF555555" Text="Enter your message here" VerticalAlignment="Top" Width="906"/>
 
                 <!-- User Email textbox and send btn -->
-                <TextBox x:Name="Email"  HorizontalAlignment="Left" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="33" Margin="24,514,0,0" TextWrapping="NoWrap" Text="Enter your email here" Foreground="#FF555555" VerticalAlignment="Top" Width="769"/>
-                <Button Content="Send" HorizontalAlignment="Left" Margin="808,514,0,0" VerticalAlignment="Top" Width="122" Height="32" Cursor="Hand" Click="CloseContactPopup"/>
+                <TextBox x:Name="Email"  HorizontalAlignment="Left" Background="#FFF6F6F6" BorderBrush="{x:Null}" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontSize="18" Height="33" Margin="24,514,0,0" TextWrapping="NoWrap" Text="Enter your email here" Foreground="#FF555555" VerticalAlignment="Top" Width="769"/>
+                <Button Template="{DynamicResource RoundedBlueBtn}"  Content="Send" HorizontalAlignment="Left" Margin="808,514,0,0" VerticalAlignment="Top" Width="122" Height="32" Cursor="Hand" Click="CloseContactPopup"
+                         Background="#23A6F0"
+                        Foreground="White"/>
 
                 <!-- Copy Buttons -->
                 <Button x:Name="EmailCopy" Content="Copy" HorizontalAlignment="Left" Margin="287,131,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick" Cursor="Hand"/>

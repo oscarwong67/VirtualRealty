@@ -7,6 +7,38 @@
              xmlns:Controls="clr-namespace:Microsoft.Toolkit.Wpf.UI.Controls;assembly=Microsoft.Toolkit.Wpf.UI.Controls" x:Class="VirtualRealty.FavoritesMapView"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="RoundedBlueBtn" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2A92CC"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2A92CC"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="#2583B8"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#2583B8"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid x:FieldModifier="public" x:Name="MapViewGrid">
         <Grid Grid.Row="0" Height="155" VerticalAlignment="Top">
             <Grid.RowDefinitions>
@@ -14,7 +46,9 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280" x:Name="FavesMapViewTopBar" x:FieldModifier="public"/>
-            <Button Grid.Row="1" Click="ListView_Click" Content="Switch to Map View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"/>
+            <Button  Template="{DynamicResource RoundedBlueBtn}" Grid.Row="1" Click="ListView_Click" Content="Switch to List View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"
+                     Background="#23A6F0"
+                    Foreground="White" Height="30"/>
             <TextBlock Grid.Row="1" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Favourites" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
             <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="556,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
