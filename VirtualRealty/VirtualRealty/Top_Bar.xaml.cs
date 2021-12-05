@@ -146,7 +146,7 @@ namespace VirtualRealty
 
             List<HomeType> homeTypesList = homeTypes.ToList();
 
-            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near " + locationInput : "");
+            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0 && locationInput != "Enter your city or neighborhood") ? " near " + locationInput : "");
             if (this.Tag != null && this.Tag.Equals("FavoritesMapViewTopBar"))
             {
                 MainWindow.FavouritesMapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));

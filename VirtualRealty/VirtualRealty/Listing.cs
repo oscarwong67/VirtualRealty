@@ -26,6 +26,7 @@ namespace VirtualRealty
         public List<string> Images { get; set; } //list of paths to images for this listing
         public SmallListing Small;
         //public BigListing Big; //Wait for Matthew's branch
+        public bool seen;
 
         public Listing()
         {
@@ -94,6 +95,7 @@ namespace VirtualRealty
             this.Gym = Gym;
             this.Elevator = Elevator;
             this.Images = Images;
+            this.seen = false;
 
             CalcLocation();
 
@@ -106,6 +108,11 @@ namespace VirtualRealty
         public bool ToggleFavourite()
         {
             return IsFavourited = !IsFavourited;
+        }
+
+        public void ToggleSeen()
+        {
+            seen = true;
         }
 
         public void AddImage(string NewImage)
@@ -215,6 +222,11 @@ namespace VirtualRealty
                 if (L.DateFavourited != null)
                 {
                     newListing.DateFavourited = L.DateFavourited;
+                  
+                }
+                if (L.seen)
+                {
+                    newListing.seen = true;
                 }
                 ToReturn.Add(newListing);
             }

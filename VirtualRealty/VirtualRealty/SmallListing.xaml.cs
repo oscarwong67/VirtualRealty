@@ -34,6 +34,7 @@ namespace VirtualRealty
 
         public void SetListing(Listing L)
         {
+
             Listing = L;
 
             this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
@@ -53,9 +54,14 @@ namespace VirtualRealty
                 this.Heart.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
             }
 
-            if (Listing != null && Math.Abs((Listing.DateListed - DateTime.Now).TotalDays) < 8)
+            if (Listing != null && Math.Abs((Listing.DateListed - DateTime.Now).TotalDays) < 8  && !Listing.seen)
             {
                 newIcon.Visibility = Visibility.Visible;
+            }
+            if (L.seen)
+            {
+                newIcon.Visibility = Visibility.Collapsed;
+                eyeIcon.Visibility = Visibility.Visible;
             }
         }
 
@@ -84,8 +90,16 @@ namespace VirtualRealty
 
         private void OpenBigListing(object sender, MouseButtonEventArgs e)
         {
-            newIcon.Visibility = Visibility.Hidden;
+            newIcon.Visibility = Visibility.Collapsed;
             eyeIcon.Visibility = Visibility.Visible;
+            Listing.ToggleSeen();
+            foreach (Listing L in MainWindow.Listings)
+            {
+                if (L.Address == Listing.Address)
+                {
+                    L.seen = !L.seen;
+                }
+            }
             //if(ListingPgGrid.Children.Contains(bigListing))
             //{
             //    ListingPgGrid.Children.Remove(bigListing);
