@@ -126,6 +126,8 @@ namespace VirtualRealty
 
             // Set the map location.
             await (sender as Microsoft.Toolkit.Wpf.UI.Controls.MapControl).TrySetViewAsync(cityCenter, 11);
+
+            MainWindow.isLoaded = true;
         }
 
         public void ListView_Click(Object Sender, RoutedEventArgs args)
