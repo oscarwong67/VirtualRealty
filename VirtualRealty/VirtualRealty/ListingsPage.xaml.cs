@@ -78,7 +78,6 @@ namespace VirtualRealty
         public void MapView_Click(Object Sender, RoutedEventArgs args)
         {
             MainWindow.isLoaded = false;
-            MainWindow.MapViewPage.MapViewTopBar = MainWindow.LP.LPTopBar;
             Switcher.Switch(MainWindow.MapViewPage);
             List<Listing> temp = Listings;
             foreach (Listing l in temp) {

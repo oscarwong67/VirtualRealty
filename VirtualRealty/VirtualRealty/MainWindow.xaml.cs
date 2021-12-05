@@ -28,13 +28,23 @@ namespace VirtualRealty
         public static MapView MapViewPage = new MapView();
         public static Favorites FavouritesPage = new Favorites();
         public static FavoritesMapView FavouritesMapViewPage = new FavoritesMapView();
+        public static Top_Bar Topbar;
         public static bool isLoaded = false;
 
         public MainWindow()
         {
+
+            Topbar = new Top_Bar();
+            Topbar.Height = 100;
+            Topbar.Width = 1280;
+            Topbar.BorderBrush = Brushes.SlateGray;
+            Topbar.BorderThickness = new Thickness(2);
+
             
 
             InitializeComponent();
+
+            large.Children.Add(Topbar);
 
             CreateInitialSavedSearches();
             savedSearchesPage = new SavedSearches();
@@ -67,7 +77,8 @@ namespace VirtualRealty
 
         public void Navigate(UserControl nextPage)
         {
-            this.Content = nextPage;
+            if (large.Children.Count > 1) this.large.Children.Remove(large.Children[1]);
+            this.large.Children.Add(nextPage);
         }
 
 

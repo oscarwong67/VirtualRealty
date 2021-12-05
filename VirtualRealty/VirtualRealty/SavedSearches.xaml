@@ -12,7 +12,6 @@
                 <RowDefinition Height="105"/>
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280" x:Name="SavedSearchesTopBar" x:FieldModifier="public"/>
             <Rectangle HorizontalAlignment="Left" Height="100" Margin="141,0,0,0" VerticalAlignment="Top" Width="972" Fill="White"/>
             <TextBlock HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Saved Searches" VerticalAlignment="Top" Margin="0,44,180,0" FontSize="36" />
             <ComboBox x:Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,60,0,0" VerticalAlignment="Top" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">

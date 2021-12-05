@@ -151,8 +151,6 @@ namespace VirtualRealty
             ClearListings();
             MainWindow.LP.SetListings(temp);
 
-            MainWindow.LP.LPTopBar = this.MapViewTopBar;
-
             MainWindow.LP.SortOrder.SelectedIndex = this.SortOrder.SelectedIndex;
         }
 

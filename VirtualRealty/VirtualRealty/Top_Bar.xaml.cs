@@ -87,12 +87,6 @@ namespace VirtualRealty
             MainWindow.FavouritesPage = new Favorites();
             Switcher.Switch(MainWindow.FavouritesPage);
             MainWindow.LP.ClearListings();
-            MainWindow.MapViewPage.ClearListings();
-
-            MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
-            MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
-            MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
-            MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
 
             // i cannot believe
             List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).ToList();
@@ -104,8 +98,8 @@ namespace VirtualRealty
         void GoToSavedSearches(object sender, RoutedEventArgs e)
         {
             MainWindow.isLoaded = false;
-            MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderBrush = Brushes.SlateGray;
-            MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderThickness = new Thickness(2);
+            //MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderBrush = Brushes.SlateGray;
+            //MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderThickness = new Thickness(2);
 
             MainWindow.savedSearchesPage.load();
 
@@ -154,9 +148,7 @@ namespace VirtualRealty
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
                 Switcher.Switch(MainWindow.FavouritesMapViewPage);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
-                MainWindow.FavouritesMapViewPage.FavesMapViewTopBar = this;
                 // MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.applyAllLabelText();
-                MainWindow.isLoaded = true;
             } else if (this.Tag != null && this.Tag.Equals("FavoritesTopBar"))
             {
                 MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
@@ -164,18 +156,14 @@ namespace VirtualRealty
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
                 Switcher.Switch(MainWindow.FavouritesPage);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
-                MainWindow.FavouritesPage.FavesTopBar = this;
                 // MainWindow.FavouritesPage.FavesTopBar.applyAllLabelText();
-                MainWindow.isLoaded = true;
             } else if (this.Tag != null && this.Tag.Equals("MapViewTopBar")) {
                 MainWindow.MapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
                 MainWindow.LP.ListingsHeader.Text = searchHeader;
                 MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
                 Switcher.Switch(MainWindow.MapViewPage);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
-                MainWindow.MapViewPage.MapViewTopBar = this;
                 // MainWindow.MapViewPage.MapViewTopBar.applyAllLabelText();
-                MainWindow.isLoaded = true;
             } else
             {
                 MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
@@ -184,7 +172,6 @@ namespace VirtualRealty
                 Switcher.Switch(MainWindow.LP);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
                 // MainWindow.LP.LPTopBar.copyPropertiesFrom(this);
-                MainWindow.LP.LPTopBar = this;
                 // MainWindow.LP.LPTopBar.applyAllLabelText();
                 MainWindow.isLoaded = true;
             }
