@@ -227,6 +227,13 @@ namespace VirtualRealty
                     this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
                     this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
                     break;
+                // first listing when sorted by price (low to high)
+                case "6503 SE Ranchview Dr NW #25, Calgary, AB T3G 1P2":
+                    src = "/img/" + (6).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery4/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery4/2.jpg", UriKind.Relative));
+                    break;
                 case "1510-1001 13th Ave SW #1510, Calgary, AB T2R 0K7":
                     src = "/img/" + (0).ToString() + ".jpg";
                     this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
@@ -253,12 +260,6 @@ namespace VirtualRealty
                     break;
                 case "711 Bearspaw Village Dr, Rocky View County, AB T3L 2P3":
                     src = "/img/" + (5).ToString() + ".jpg";
-                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
-                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
-                    break;
-                case "6503 SE Ranchview Dr NW #25, Calgary, AB T3G 1P2":
-                    src = "/img/" + (6).ToString() + ".jpg";
                     this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
                     this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
                     this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));

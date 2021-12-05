@@ -70,6 +70,11 @@
 	  <None Remove="img\gallery3\2.jpg" />
 	  <None Remove="img\gallery3\3.jpg" />
 	  <None Remove="img\gallery3\4.jpg" />
+	  <None Remove="img\gallery4\0.jpg" />
+	  <None Remove="img\gallery4\1.jpg" />
+	  <None Remove="img\gallery4\2.jpg" />
+	  <None Remove="img\gallery4\3.jpg" />
+	  <None Remove="img\gallery4\4.jpg" />
 	  <None Remove="img\map0.jpg" />
 	  <None Remove="img\map1.jpg" />
 	  <None Remove="img\map2.jpg" />
@@ -122,6 +127,11 @@
 	  <Resource Include="img\gallery3\2.jpg" />
 	  <Resource Include="img\gallery3\3.jpg" />
 	  <Resource Include="img\gallery3\4.jpg" />
+	  <Resource Include="img\gallery4\0.jpg" />
+	  <Resource Include="img\gallery4\1.jpg" />
+	  <Resource Include="img\gallery4\2.jpg" />
+	  <Resource Include="img\gallery4\3.jpg" />
+	  <Resource Include="img\gallery4\4.jpg" />
 	  <Resource Include="img\map0.jpg" />
 	  <Resource Include="img\map1.jpg" />
 	  <Resource Include="img\map2.jpg" />
