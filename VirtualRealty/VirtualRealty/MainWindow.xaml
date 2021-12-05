@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="VirtualRealty" Height="720" Width="1280">
+        Title="VirtualRealty" Height="720" Width="1280" WindowStyle="SingleBorderWindow" ResizeMode="NoResize">
 </Window>
