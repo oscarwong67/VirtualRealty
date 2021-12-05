@@ -28,6 +28,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="icons\eye.png" />
+	  <None Remove="icons\new.png" />
 	  <None Remove="icons\unfavouritedIcon.png" />
 	  <None Remove="img\0.jpg" />
 	  <None Remove="img\1.jpg" />
@@ -88,6 +90,8 @@
 	<ItemGroup>
 	  <Resource Include="assets\logo.png" />
 	  <Resource Include="assets\Pushpin.png" />
+	  <Resource Include="icons\eye.png" />
+	  <Resource Include="icons\new.png" />
 	  <Resource Include="icons\unfavouritedIcon.png" />
 	  <Resource Include="img\2.jpg" />
 	  <Resource Include="img\1.jpg" />
