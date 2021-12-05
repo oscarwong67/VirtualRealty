@@ -28,11 +28,16 @@ namespace VirtualRealty
         public List<Listing> Listings;
         private Boolean LocationSort = false;
         private DateTime LastSorted = DateTime.Now;
+        MapElementsLayer Layer;
 
         public MapView()
         {
             InitializeComponent();
+            Create_Mapview();
+        }
 
+        public void Create_Mapview()
+        {
             MapViewer.Loaded += MapControl_Loaded;
             MapViewer.ActualCameraChanged += MapControl_Moved;
         }
@@ -59,7 +64,11 @@ namespace VirtualRealty
 
         public void ClearListings()
         {
-            MapViewer.MapElements.Clear();
+            if (Layer != null)
+            {
+                Layer.MapElements.Clear();
+            }
+            
             ListingViewer.Children.Clear();
         }
 
@@ -69,7 +78,7 @@ namespace VirtualRealty
 
             ClearListings();
 
-            MapElementsLayer Layer = new MapElementsLayer();
+            Layer = new MapElementsLayer();
             Layer.MapElementClick += Layer_MapElementClick;
 
             foreach (Listing L in Listings)
