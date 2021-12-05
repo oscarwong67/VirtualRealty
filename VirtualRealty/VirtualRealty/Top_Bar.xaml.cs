@@ -73,6 +73,7 @@ namespace VirtualRealty
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
             List<Listing> listings = Listing.FilterListings(MainWindow.Listings);
+            MainWindow.LP = new ListingsPage();
             listings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
             MainWindow.LP.SetListings(listings);
             Switcher.Switch(MainWindow.LP);
@@ -81,18 +82,18 @@ namespace VirtualRealty
 
         void GoToFavorites(object sender, RoutedEventArgs e)
         {
+            MainWindow.FavouritesPage = new Favorites();
             Switcher.Switch(MainWindow.FavouritesPage);
             MainWindow.LP.ClearListings();
             MainWindow.MapViewPage.ClearListings();
 
-            // TODO (Oscar): doesn't work
             MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
             MainWindow.FavouritesPage.FavesTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
             MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderBrush = Brushes.SlateGray;
             MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.GoToFavoritesButton.BorderThickness = new Thickness(2);
 
             // i cannot believe
-            List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).Concat(Listing.FilterListings(MainWindow.Listings, Favourite: true, Purchase: false)).ToList();
+            List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).ToList();
             listings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
             MainWindow.FavouritesPage.SetListings(listings);
 
@@ -854,6 +855,7 @@ namespace VirtualRealty
             {
                 isPurchase = false;
             }
+            Search(sender, e);
         }
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
