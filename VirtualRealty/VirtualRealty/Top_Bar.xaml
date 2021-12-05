@@ -210,7 +210,8 @@
 
         <RadioButton x:Name="Purchase" IsChecked="True" Content="Purchase" HorizontalAlignment = "Center" VerticalAlignment = "Top" Grid.Column="1" Margin="0,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Cursor="Hand" Height="20" Width="87" FontSize="16"/>
         <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="131,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Grid.ColumnSpan="2" Cursor="Hand" FontSize="16"/>
-        <Button Content="🔍" Click="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="26" Grid.Column="2" Cursor="Hand" Height="24" FontSize="16" Margin="117,33,0,0" Grid.ColumnSpan="2"/>
+        <Button Content="🔍" Click="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="26" Grid.Column="2" Cursor="Hand" Height="24" FontSize="16" Margin="117,33,0,0" Grid.ColumnSpan="2"
+                Background="#23A6F0" Foreground="White"/>
         <Button x:FieldModifier="public" x:Name="SavedSearchesButton" Click="GoToSavedSearches" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="7" RenderTransformOrigin="0.5,0.5" Background="White" BorderBrush="White" Margin="132,21,0,0" Cursor="Hand" Grid.ColumnSpan="2">
             <Image Margin="0,0,0,0" Source="icons/savedSearchesIcon.png" Height="45" Width="47" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
@@ -241,6 +242,8 @@
                 </Border>
             </Grid>
         </Popup>
-        <Button Content="Save Search" Click="ToggleSavingSearch" Cursor="Hand" Grid.Column="3" HorizontalAlignment="Left" Margin="18,72,0,0" VerticalAlignment="Top" Width="118" FontSize="16" Height="26"/>
+        <Button Template="{DynamicResource RoundedBlueBtn}" Content="Save Search" Click="ToggleSavingSearch" Cursor="Hand" Grid.Column="3" HorizontalAlignment="Left" Margin="18,72,0,0" VerticalAlignment="Top" Width="118" FontSize="16" Height="26"
+                Background="#23A6F0"
+                Foreground="White"/>
     </Grid>
 </UserControl>
