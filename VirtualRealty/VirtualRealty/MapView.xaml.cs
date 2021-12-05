@@ -26,15 +26,36 @@ namespace VirtualRealty
     {
 
         public List<Listing> Listings;
+        private Boolean LocationSort = false;
+        private DateTime LastSorted = DateTime.Now;
 
         public MapView()
         {
             InitializeComponent();
 
             MapViewer.Loaded += MapControl_Loaded;
-            ;
+            MapViewer.ActualCameraChanged += MapControl_Moved;
         }
 
+        private void MapControl_Moved(object sender, object e)
+        {
+
+            if (MapViewer.ActualCamera == null || !LocationSort) {
+                return; 
+            }
+
+            if (LastSorted.AddSeconds(2) >= DateTime.Now) return;
+
+            LastSorted = DateTime.Now;
+
+            ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
+            Comp.SetLocation(MapViewer.ActualCamera.Location);
+
+            Listings.Sort(Comp);
+
+            this.SetListings(Listings);
+
+        }
 
         public void ClearListings()
         {
@@ -68,9 +89,27 @@ namespace VirtualRealty
             MapViewer.Layers.Add(Layer);
         }
 
-        private void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
+        private async void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)
         {
-            (args.MapElements.FirstOrDefault().Tag as Listing).Small.BringIntoView();
+            Listing listing = (args.MapElements.FirstOrDefault().Tag as Listing);
+            listing.Small.BringIntoView();
+            for (int i = 99; i >= 0; i--)
+            {
+                if (i % 12 == 0)
+                {
+                    if (listing.Small.SmallListingGridBorder.Fill == Brushes.Green)
+                    {
+                        listing.Small.SmallListingGridBorder.Fill = Brushes.LightGreen;
+                    }
+                    else
+                    {
+                        listing.Small.SmallListingGridBorder.Fill = Brushes.Green;
+                    }
+                }
+
+                await Task.Delay(3); // The animation will take 3 seconds
+            }
+            listing.Small.SmallListingGridBorder.Fill = (Brush) (new BrushConverter().ConvertFrom("#08F4F4F5"));
         }
 
 
@@ -104,23 +143,27 @@ namespace VirtualRealty
             string text = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content as string;
             if (text.Equals("Newest"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
             }
             else if (text.Equals("Oldest"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed, true /* Descending */));
             }
             else if (text.Equals("Price (Low to High)"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price, true));
             }
             else if (text.Equals("Price (High to Low)"))
             {
+                LocationSort = false;
                 sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Price));
             }
             else
             {
-                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Proximity));
+                LocationSort = true;
             }
             SetListings(sortedListings);
         }

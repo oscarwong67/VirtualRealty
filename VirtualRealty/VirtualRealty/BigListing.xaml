@@ -4,19 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:VirtualRealty"
-             mc:Ignorable="d"
-             d:DesignHeight="780" d:DesignWidth="1280"
-             Panel.ZIndex="1">
+             mc:Ignorable="d" d:DesignWidth="1280"
+             Panel.ZIndex="1"
+             FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat" Height="780">
     <!-- GRID VIEW DEFAULT HEIGHT = 780 -->
     <Grid Name="BigListingGrid" HorizontalAlignment="Center" Height="780" VerticalAlignment="Top" Width="1280">
         <!--<local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/> -->
 
         <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseBigListing"/>
-        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Height="32" Width="70"  Cursor="Hand" Click="BigListingBack"/>
-        <Button x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="1191,364,0,0" VerticalAlignment="Top" Height="32" Width="69" Cursor="Hand" Click="BigListingNext"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="23,364,0,0" VerticalAlignment="Top" Height="32" Width="70"  Cursor="Hand" Click="BigListingBack"/>
+        <Button x:Name="NextBtn" Content="Next" HorizontalAlignment="Left" Margin="1186,364,0,0" VerticalAlignment="Top" Height="32" Width="69" Cursor="Hand" Click="BigListingNext"/>
         <!-- SCROLL VIEW DEFAULT HEIGHT = 682 -->
-        <ScrollViewer x:Name="Viewer" Background="White" HorizontalAlignment="Center" Margin="100,0,100,0" VerticalAlignment="Top" Width="1080" Height="682">
-            <Grid Background="White">
+        <ScrollViewer x:Name="Viewer" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="1080" Height="682">
+            <Grid Background="White" Height="1553">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="620"/>
@@ -28,49 +28,52 @@
                 <Image x:Name="LargeImage" HorizontalAlignment="Left" Height="304" Margin="10,57,0,0" VerticalAlignment="Top" Width="597" Stretch="UniformToFill" MouseLeftButtonDown="OpenGallery" Cursor="Hand"/>
                 <Image x:Name="SmallImage1" HorizontalAlignment="Left" Height="145" Margin="0,57,0,0" VerticalAlignment="Top" Width="424" Grid.Column="1" Stretch="UniformToFill" MouseLeftButtonDown="OpenGallery" Cursor="Hand"/>
                 <Image x:Name="SmallImage2" HorizontalAlignment="Left" Height="145" Margin="0,216,0,0" VerticalAlignment="Top" Width="424" Grid.Column="1" Stretch="UniformToFill" MouseLeftButtonDown="OpenGallery" Cursor="Hand"/>
-                <Button Content="More" HorizontalAlignment="Left" Margin="342,333,0,0" VerticalAlignment="Top" Width="74" Grid.Column="1" Click="OpenGallery"/>
+                <Button x:Name="MoreBtn" Content="More Images" HorizontalAlignment="Left" Margin="331,322,0,0" VerticalAlignment="Top" Width="86" Grid.Column="1" Click="OpenGalleryBtn" Height="32"/>
 
 
 
                 <!-- Listing Details (price, address, date, bed/bath, sqft,  type.) -->
                 <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="44" Margin="10,366,0,0" Height="78" Width="373"/>
-                <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" FontSize="24" Margin="10,433,0,0" VerticalAlignment="Top" Width="600"/>
+                <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" FontSize="22" Margin="10,433,0,0" VerticalAlignment="Top" Width="807" Grid.ColumnSpan="2"/>
                 <Label x:Name="Date" Content="Label" HorizontalAlignment="Right" FontSize="20" Margin="0,381,0,0" VerticalAlignment="Top" Height="50" Width="209"/>
                 <Label x:Name="ListingDetails" Content="Label" HorizontalAlignment="Left" FontSize="24" Margin="10,493,0,0" VerticalAlignment="Top" Width="597"/>
 
                 <!-- Right column: Fav button, contact button, map -->
-                <Button x:Name="FavBtn" Content="Favourite" Grid.Column="1" HorizontalAlignment="Left" Margin="10,393,0,0" VerticalAlignment="Top" Height="32" Width="122" Cursor="Hand"/>
-                <Button x:Name="Contact" Content="Contact" Click="OpenContactPopup" Grid.Column="1" Margin="256,393,69,0" VerticalAlignment="Top" Height="32" Cursor="Hand"/>
-                <Label x:Name="Map" Content="Map" Grid.Column="1" HorizontalAlignment="Left" FontSize="30" Margin="10,484,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="FavBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="211,393,0,0" VerticalAlignment="Top" Background="White" BorderBrush="White" Width="65" Click="FavBtn_Click">
+                    <Image x:Name="FavBtnImg" Source="icons/unfavouritedIcon.png" Height="51" Width="59" Stretch="UniformToFill" Cursor="Hand" RenderTransformOrigin="0.483,0.461"/>
+                </Button>
+                <Button x:Name="Contact" Content="Contact" Click="OpenContactPopup" Grid.Column="1" Margin="299,404,26,0" VerticalAlignment="Top" Height="32" Cursor="Hand"/>
+                <Label x:Name="Map" Content="Map" Grid.Column="1" HorizontalAlignment="Left" FontSize="30" Margin="3,565,0,0" VerticalAlignment="Top" Cursor="Hand" RenderTransformOrigin="0.522,0.752" Width="131"/>
+                <Image x:Name="MapImage" Margin="9,619,18,579" Grid.Column="1"/>
 
                 <!-- Property Description -->
-                <Label Content="Property Description" HorizontalAlignment="Left" FontSize="34" Margin="10,560,0,0" VerticalAlignment="Top" Height="56" Width="318"/>
-                <TextBlock x:Name="Description" HorizontalAlignment="Left" Margin="19,620,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBlock" VerticalAlignment="Top" Height="379" Width="601"/>
+                <Label Content="Property Description" HorizontalAlignment="Left" FontSize="34" Margin="10,560,0,0" VerticalAlignment="Top" Height="56" Width="438"/>
+                <TextBlock x:Name="Description" HorizontalAlignment="Center" Margin="0,620,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBlock" VerticalAlignment="Top" Height="379" Width="581"/>
 
                 <!-- Property Description Labels (static) -->
-                <Label Content="Property Features" HorizontalAlignment="Left" FontSize="34" Margin="10,993,0,0" VerticalAlignment="Top" Height="54" Width="276"/>
-                <Label Content="Parking" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="10,1069,0,0" VerticalAlignment="Top" Height="34" Width="77"/>
-                <Label Content="Washer/Dryer" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="262,1069,0,0" VerticalAlignment="Top" Height="34" Width="136"/>
-                <Label Content="Year Built" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="552,1069,0,0" VerticalAlignment="Top" Height="34" Width="96" Grid.ColumnSpan="2"/>
-                <Label Content="View" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="211,1069,0,0" VerticalAlignment="Top" Grid.Column="1" Height="34" Width="51"/>
+                <Label Content="Property Features" HorizontalAlignment="Left" FontSize="34" Margin="10,993,0,0" VerticalAlignment="Top" Height="54" Width="438"/>
+                <Label Content="Parking" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="57,1070,0,0" VerticalAlignment="Top" Height="34" Width="121"/>
+                <Label Content="Washer/Dryer" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="296,1069,0,0" VerticalAlignment="Top" Height="34" Width="186"/>
+                <Label Content="Year Built" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="603,1070,0,0" VerticalAlignment="Top" Height="34" Width="136" Grid.ColumnSpan="2"/>
+                <Label Content="View" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="223,1070,0,0" VerticalAlignment="Top" Grid.Column="1" Height="34" Width="96"/>
 
-                <Label Content="Heating" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="10,1179,0,0" VerticalAlignment="Top" Height="34" Width="77"/>
-                <Label Content="Cooling" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="262,1179,0,0" VerticalAlignment="Top" Height="34" Width="76"/>
-                <Label Content="Pool" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="552,1179,0,0" VerticalAlignment="Top" Height="34" Width="60"/>
-                <Label Content="Gym" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="211,1179,0,0" VerticalAlignment="Top" Height="34" Width="60" Grid.Column="1"/>
+                <Label Content="Heating" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="57,1180,0,0" VerticalAlignment="Top" Height="34" Width="121"/>
+                <Label Content="Cooling" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="296,1179,0,0" VerticalAlignment="Top" Height="34" Width="136"/>
+                <Label Content="Pool" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="603,1180,0,0" VerticalAlignment="Top" Height="34" Width="60" Grid.ColumnSpan="2"/>
+                <Label Content="Gym" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="223,1180,0,0" VerticalAlignment="Top" Height="34" Width="60" Grid.Column="1"/>
 
 
                 <!-- Property Description Content -->
-                <Label x:Name="Parking" Content="Parking" FontSize="18" HorizontalAlignment="Left" Margin="10,1107,0,0" VerticalAlignment="Top" Height="34" Width="157"/>
-                <Label x:Name="Washer" Content="Washer/Dryer" FontSize="18" HorizontalAlignment="Left" Margin="262,1107,0,0" VerticalAlignment="Top" Height="34" Width="136"/>
-                <Label x:Name="Year" Content="Year Built" FontSize="18" HorizontalAlignment="Left" Margin="552,1107,0,0" VerticalAlignment="Top" Height="34" Width="96" Grid.ColumnSpan="2"/>
-                <Label x:Name="View" Content="View" FontSize="18" HorizontalAlignment="Left" Margin="211,1107,0,0" VerticalAlignment="Top" Grid.Column="1" Height="34" Width="131"/>
-                <Label x:Name="Heating" Content="Heating" FontSize="18" HorizontalAlignment="Left" Margin="10,1219,0,0" VerticalAlignment="Top" Height="34" Width="73"/>
-                <Label x:Name="Cooling" Content="Cooling" FontSize="18" HorizontalAlignment="Left" Margin="262,1219,0,0" VerticalAlignment="Top" Height="34" Width="72"/>
-                <Label x:Name="Pool" Content="Pool" FontSize="18" HorizontalAlignment="Left" Margin="552,1219,0,0" VerticalAlignment="Top" Height="34" Width="60"/>
-                <Label x:Name="Gym" Content="Gym" FontSize="18" HorizontalAlignment="Left" Margin="211,1219,0,0" VerticalAlignment="Top" Height="34" Width="46" Grid.Column="1"/>
-                <Label Content="Elevator" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="10,1287,0,-67" VerticalAlignment="Stretch" Width="79"/>
-                <Label x:Name="Elevator" Content="Elevator" FontSize="18" HorizontalAlignment="Left" Margin="10,1321,0,72" VerticalAlignment="Stretch" Width="74"/>
+                <Label x:Name="Parking" Content="Parking" FontSize="18" HorizontalAlignment="Left" Margin="57,1108,0,0" VerticalAlignment="Top" Height="34" Width="157"/>
+                <Label x:Name="Washer" Content="Washer/Dryer" FontSize="18" HorizontalAlignment="Left" Margin="296,1107,0,0" VerticalAlignment="Top" Height="34" Width="136"/>
+                <Label x:Name="Year" Content="Year Built" FontSize="18" HorizontalAlignment="Left" Margin="603,1108,0,0" VerticalAlignment="Top" Height="34" Width="112" Grid.ColumnSpan="2"/>
+                <Label x:Name="View" Content="View" FontSize="18" HorizontalAlignment="Left" Margin="223,1108,0,0" VerticalAlignment="Top" Grid.Column="1" Height="34" Width="131"/>
+                <Label x:Name="Heating" Content="Heating" FontSize="18" HorizontalAlignment="Left" Margin="57,1220,0,0" VerticalAlignment="Top" Height="34" Width="157"/>
+                <Label x:Name="Cooling" Content="Cooling" FontSize="18" HorizontalAlignment="Left" Margin="296,1219,0,0" VerticalAlignment="Top" Height="34" Width="152"/>
+                <Label x:Name="Pool" Content="Pool" FontSize="18" HorizontalAlignment="Left" Margin="603,1220,0,0" VerticalAlignment="Top" Height="34" Width="136" Grid.ColumnSpan="2"/>
+                <Label x:Name="Gym" Content="Gym" FontSize="18" HorizontalAlignment="Left" Margin="223,1220,0,0" VerticalAlignment="Top" Height="34" Width="147" Grid.Column="1"/>
+                <Label Content="Elevator" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="57,1288,0,-68" Width="157"/>
+                <Label x:Name="Elevator" Content="Elevator" FontSize="18" HorizontalAlignment="Left" Margin="57,1322,0,71" Width="121"/>
 
 
             </Grid>

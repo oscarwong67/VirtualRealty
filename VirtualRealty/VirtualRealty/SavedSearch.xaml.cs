@@ -246,10 +246,10 @@ namespace VirtualRealty
                 isPurchase = value;
                 if (value == false)
                 {
-                    Content = Location.Content + ", Rentals";
+                    Location.Content = "Rentals near " + Location.Content;
                 } else
                 {
-                    Content = Location.Content + ", Purchases";
+                    Location.Content = "Properties for sale near " + Location.Content;
                 }
             }
         }
@@ -283,6 +283,9 @@ namespace VirtualRealty
         private void ApplyThisSearch_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasParking, Purchase:isPurchase));
+            string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationSearchString != null && locationSearchString.Length > 0) ? " near " + locationSearchString : "");
+            MainWindow.LP.ListingsHeader.Text = searchHeader;
+            MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
             Switcher.Switch(MainWindow.LP);
         }
 

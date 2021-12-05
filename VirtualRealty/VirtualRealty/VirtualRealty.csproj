@@ -28,6 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="icons\unfavouritedIcon.png" />
 	  <None Remove="img\0.jpg" />
 	  <None Remove="img\1.jpg" />
 	  <None Remove="img\10.jpg" />
@@ -54,6 +55,29 @@
 	  <None Remove="icons\favouritesIcon.png" />
 	  <None Remove="icons\magnifyingGlass.png" />
 	  <None Remove="icons\savedSearchesIcon.png" />
+	  <None Remove="img\gallery1\0.jpg" />
+	  <None Remove="img\gallery1\1.jpg" />
+	  <None Remove="img\gallery1\2.jpg" />
+	  <None Remove="img\gallery1\3.jpg" />
+	  <None Remove="img\gallery1\4.jpg" />
+	  <None Remove="img\gallery2\0.jpg" />
+	  <None Remove="img\gallery2\1.jpg" />
+	  <None Remove="img\gallery2\2.jpg" />
+	  <None Remove="img\gallery2\3.jpg" />
+	  <None Remove="img\gallery2\4.jpg" />
+	  <None Remove="img\gallery3\0.jpg" />
+	  <None Remove="img\gallery3\1.jpg" />
+	  <None Remove="img\gallery3\2.jpg" />
+	  <None Remove="img\gallery3\3.jpg" />
+	  <None Remove="img\gallery3\4.jpg" />
+	  <None Remove="img\gallery4\0.jpg" />
+	  <None Remove="img\gallery4\1.jpg" />
+	  <None Remove="img\gallery4\2.jpg" />
+	  <None Remove="img\gallery4\3.jpg" />
+	  <None Remove="img\gallery4\4.jpg" />
+	  <None Remove="img\map0.jpg" />
+	  <None Remove="img\map1.jpg" />
+	  <None Remove="img\map2.jpg" />
 	  <None Remove="logo.png" />
 	</ItemGroup>
 	
@@ -64,7 +88,8 @@
 	<ItemGroup>
 	  <Resource Include="assets\logo.png" />
 	  <Resource Include="assets\Pushpin.png" />
-	  <Resource Include="img\0.jpg" />
+	  <Resource Include="icons\unfavouritedIcon.png" />
+	  <Resource Include="img\2.jpg" />
 	  <Resource Include="img\1.jpg" />
 	  <Resource Include="img\10.jpg" />
 	  <Resource Include="img\11.jpg" />
@@ -76,7 +101,7 @@
 	  <Resource Include="img\17.jpg" />
 	  <Resource Include="img\18.jpg" />
 	  <Resource Include="img\19.jpg" />
-	  <Resource Include="img\2.jpg" />
+	  <Resource Include="img\0.jpg" />
 	  <Resource Include="img\3.jpg" />
 	  <Resource Include="img\4.jpg" />
 	  <Resource Include="img\5.jpg" />
@@ -87,6 +112,29 @@
 	  <Resource Include="icons\favouritesIcon.png" />
 	  <Resource Include="icons\magnifyingGlass.png" />
 	  <Resource Include="icons\savedSearchesIcon.png" />
+	  <Resource Include="img\gallery1\1.jpg" />
+	  <Resource Include="img\gallery1\0.jpg" />
+	  <Resource Include="img\gallery1\2.jpg" />
+	  <Resource Include="img\gallery1\3.jpg" />
+	  <Resource Include="img\gallery1\4.jpg" />
+	  <Resource Include="img\gallery2\1.jpg" />
+	  <Resource Include="img\gallery2\2.jpg" />
+	  <Resource Include="img\gallery2\0.jpg" />
+	  <Resource Include="img\gallery2\3.jpg" />
+	  <Resource Include="img\gallery2\4.jpg" />
+	  <Resource Include="img\gallery3\0.jpg" />
+	  <Resource Include="img\gallery3\1.jpg" />
+	  <Resource Include="img\gallery3\2.jpg" />
+	  <Resource Include="img\gallery3\3.jpg" />
+	  <Resource Include="img\gallery3\4.jpg" />
+	  <Resource Include="img\gallery4\0.jpg" />
+	  <Resource Include="img\gallery4\1.jpg" />
+	  <Resource Include="img\gallery4\2.jpg" />
+	  <Resource Include="img\gallery4\3.jpg" />
+	  <Resource Include="img\gallery4\4.jpg" />
+	  <Resource Include="img\map0.jpg" />
+	  <Resource Include="img\map1.jpg" />
+	  <Resource Include="img\map2.jpg" />
 	  <Resource Include="logo.png" />
 	</ItemGroup>
 	

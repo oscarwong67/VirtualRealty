@@ -5,18 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualRealty"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="400">
-    <Grid>
-        <Rectangle Fill="#08F4F4F5" HorizontalAlignment="Left" Height="251" Stroke="Black" VerticalAlignment="Top" Width="400" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
-
+             MouseEnter="SmallListing_MouseEnter"
+             MouseLeave="SmallListing_MouseLeave"
+             d:DesignHeight="251" d:DesignWidth="400" BorderBrush="Black" FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
+    <Grid x:FieldModifier="public" x:Name="SmallListingGrid" Margin="0,0,0,0">
+        <Rectangle x:FieldModifier="public" x:Name="SmallListingGridBorder" Fill="#08F4F4F5" HorizontalAlignment="Left" Height="251" Stroke="Black" VerticalAlignment="Top" Width="400" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
         <Image x:Name="PrimaryImage" HorizontalAlignment="Left" Height="164" VerticalAlignment="Top" Width="400" Stretch="UniformToFill" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
-        <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" Margin="0,164,0,0" VerticalAlignment="Top" FontSize="22" Width="289" MouseLeftButtonDown="OpenBigListing" Cursor="Hand" Height="35" RenderTransformOrigin="0.498,0.419"/>
-        <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" Margin="0,199,0,0" VerticalAlignment="Top" Width="380" FontSize="12"/>
+        <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" Margin="0,164,0,0" VerticalAlignment="Top" FontSize="22" Width="289" MouseLeftButtonDown="OpenBigListing" Cursor="Hand" Height="37" RenderTransformOrigin="0.498,0.419"/>
+        <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" Margin="0,199,0,0" VerticalAlignment="Top" Width="390" FontSize="12"/>
         <Label x:Name="Type" Content="Label" HorizontalAlignment="Left" Margin="35,225,0,0" VerticalAlignment="Top"/>
         <Label x:Name="BedBath" Content="Label" HorizontalAlignment="Left" Margin="176,225,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Size" Content="Label" HorizontalAlignment="Left" Margin="299,225,0,0" VerticalAlignment="Top"/>
         <Image x:Name="Heart" HorizontalAlignment="Left" Height="62" Margin="315,164,0,0" VerticalAlignment="Top" Width="62"/>
-        <Rectangle Fill="#08F4F4F5" HorizontalAlignment="Left" Height="1" Margin="399,267,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="#08F4F4F5" HorizontalAlignment="Left" Height="1" Margin="399,267,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" RenderTransformOrigin="0.5,0.5" Visibility="Visible">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1" ScaleX="-1"/>
@@ -27,5 +28,11 @@
             </Rectangle.RenderTransform>
         </Rectangle>
 
+        <Border x:Name="SmallListingDropShadow"  Visibility="Hidden" Margin="0,0,0,0" BorderThickness="0" >
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" />
+            </Border.Effect>
+            <Rectangle Fill="#0800" HorizontalAlignment="Left" Height="251" Stroke="Black" VerticalAlignment="Top" Width="400" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
+        </Border>
     </Grid>
 </UserControl>

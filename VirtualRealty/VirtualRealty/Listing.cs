@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,14 +48,23 @@ namespace VirtualRealty
 
             MapService.ServiceToken = "n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760";
 
+
             MapLocationFinderResult Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
 
-            //wait for search to finish
-            while (Result.Status != MapLocationFinderStatus.Success) { }
+            
+            //System.Diagnostics.Debug.WriteLine("Now calculating location for address " + this.Address);
 
-            if (Result.Locations.Count <= 0) return; // idk why this gets hit but the alternative is crashing so
+            while (true)
+            {
+                if (Result.Status == MapLocationFinderStatus.Success && Result.Locations.Count > 0) break;
+
+                Result = await MapLocationFinder.FindLocationsAsync(this.Address, Calgary);
+            }
+
             this.Latitude = Result.Locations[0].Point.Position.Latitude;
             this.Longitude = Result.Locations[0].Point.Position.Longitude;
+
+            //System.Diagnostics.Debug.WriteLine("Finished calculating location for address " + this.Address);
         
         }
 
@@ -92,7 +102,7 @@ namespace VirtualRealty
             Small.SetListing(this);
             //Small.SetBigListingInfo(Big);
         }
-        
+
         public bool ToggleFavourite()
         {
             return IsFavourited = !IsFavourited;
@@ -222,6 +232,9 @@ namespace VirtualRealty
      */
     class ListingComparer : IComparer<Listing>
     {
+
+        Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.Geopoint Loc;
+
         public enum SortBy
         { 
             Price,
@@ -237,6 +250,11 @@ namespace VirtualRealty
         public ListingComparer(SortBy Order)
         {
             this.Order = Order;
+        }
+
+        public void SetLocation(Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.Geopoint L)
+        {
+            Loc = L;
         }
 
         public ListingComparer(SortBy Order, bool Descending)
@@ -264,8 +282,10 @@ namespace VirtualRealty
                 case SortBy.DateFavourited: // Date favorited can be null so be careful
                     return invert * A.DateFavourited.CompareTo(B.DateFavourited);
                 case SortBy.Proximity:
-                    //TODO
-                    return 0;
+
+                    if (A.Latitude == B.Latitude && A.Longitude == B.Longitude) return 0;
+
+                    return (int) (invert * (Math.Sqrt(Math.Pow((Loc.Position.Latitude - A.Latitude), 2) + Math.Pow(Loc.Position.Longitude - A.Longitude, 2) - Math.Sqrt(Math.Pow(Loc.Position.Latitude - B.Latitude, 2) + Math.Pow(Loc.Position.Longitude - B.Longitude, 2)))));
                 default:
                     return 0;
             }

@@ -44,6 +44,11 @@ namespace VirtualRealty
                 this.NextBtn.Visibility = Visibility.Collapsed;
             }
 
+            // Set image of favourite
+            //if(L.IsFavourited)
+            //{
+            //    this.MapImage.Source = new BitmapImage(new Uri(@"/icons/favouritesIcon.png", UriKind.Relative));
+            //}
 
             this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
             this.Address.Content = Listing.Address;
@@ -66,7 +71,6 @@ namespace VirtualRealty
 
             // listing description
             this.Description.Text = Listing.Description;
-
             // listing details
             this.Parking.Content = Listing.Parking;
             this.Washer.Content = Listing.Washer;
@@ -114,7 +118,8 @@ namespace VirtualRealty
             if (prev >= 0)
             {
                 SetBigListing(ListingsList[prev]);
-                SetThumbnailImages(prev);
+                SetThumbnailImages();
+                SetMapImage();
                 prev--;
                 next--;
                 if(prev < 0)
@@ -133,7 +138,8 @@ namespace VirtualRealty
             if(next < ListingsList.Count && next >= 0)
             {
                 SetBigListing(ListingsList[next]);
-                SetThumbnailImages(next);
+                SetThumbnailImages();
+                SetMapImage();
                 next++;
                 prev++;
                 if (prev >= 0)
@@ -147,23 +153,195 @@ namespace VirtualRealty
             }
         }
 
-        public void SetThumbnailImages(int i)
-        {
-            string src = "/img/" + i.ToString() + ".jpg";
-
-            this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-            this.SmallImage1.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-            this.SmallImage2.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-        }
-
-
         private void OpenGallery(object sender, RoutedEventArgs e)
         {
-           // ContactPopup contactPopup = new ContactPopup();
-           // contactPopup.SetContactInfo(Listing.Address);
-           // BigListingGrid.Children.Add(contactPopup);
-           //ListingGallery gallery = new ListingGallery
+           ListingGallery gallery = new ListingGallery();
+            // send in name of image that was clicked
+           //gallery.SetBigImage(sender.)
+           string btn = (sender as Image).Name;
+           gallery.SetImages(Listing.Address,btn);
+           BigListingGrid.Children.Add(gallery);
 
+        }
+
+        private void OpenGalleryBtn(object sender, RoutedEventArgs e)
+        {
+            ListingGallery gallery = new ListingGallery();
+            // send in name of image that was clicked
+            //gallery.SetBigImage(sender.)
+            string btn = (sender as Button).Name;
+            gallery.SetImages(Listing.Address, btn);
+            BigListingGrid.Children.Add(gallery);
+
+        }
+
+        public void SetMapImage()
+        {
+            string src;
+            string addr = Listing.Address;
+
+            // listing 1
+            if(addr.Equals("Pineridge Apartments, # 772706, 433 Pinestream Pl NE, Calgary, AB T1Y 3A5"))
+            {
+                this.MapImage.Source = new BitmapImage(new Uri(@"/img/map0.jpg", UriKind.Relative));
+            }
+            // listing 2
+            else if (addr.Equals("841 NE Royal Ave SW, Calgary, AB T2T 0L4"))
+            {
+                this.MapImage.Source = new BitmapImage(new Uri(@"/img/map1.jpg", UriKind.Relative));
+            }
+        
+            // listing 3 and on
+            else
+            {
+                this.MapImage.Source = new BitmapImage(new Uri(@"/img/map2.jpg", UriKind.Relative));
+            }
+
+        }
+
+        public void SetThumbnailImages()
+        {
+            string src;
+            string addr = Listing.Address;
+                
+            switch (addr)
+            {
+                // first listing in sorted by new
+                case "Pineridge Apartments, # 772706, 433 Pinestream Pl NE, Calgary, AB T1Y 3A5":
+                    src = "/img/" + (19).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery1/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery1/2.jpg", UriKind.Relative));
+                    break;
+                // second listing in sorted by new
+                case "841 NE Royal Ave SW, Calgary, AB T2T 0L4":
+                    src = "/img/" + (9).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery2/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery2/2.jpg", UriKind.Relative));
+                    break;
+                // third listing in sorted by new
+                case "180 S Prestwick Acres Ln SE, Calgary, AB T2Z 3Y2":
+                    src = "/img/" + (2).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                // first listing when sorted by price (low to high)
+                case "6503 SE Ranchview Dr NW #25, Calgary, AB T3G 1P2":
+                    src = "/img/" + (6).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery4/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery4/2.jpg", UriKind.Relative));
+                    break;
+                case "1510-1001 13th Ave SW #1510, Calgary, AB T2R 0K7":
+                    src = "/img/" + (0).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "136 NE Edelweiss Dr NW, Calgary, AB T3A 3P6":
+                    src = "/img/" + (3).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "4328 W 4th St NW #202, Calgary, AB T2K 1A2":
+                    src = "/img/" + (1).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "9 S Hamptons Vw NW, Calgary, AB T3A 6M1":
+                    src = "/img/" + (4).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "711 Bearspaw Village Dr, Rocky View County, AB T3L 2P3":
+                    src = "/img/" + (5).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "448-8535 Bonaventure Dr SE #448, Calgary, AB T2H 2R7":
+                    src = "/img/" + (7).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "7638 W 27th St SE, Calgary, AB T2C 1E7":
+                    src = "/img/" + (8).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "272 Cornerstone Pass NE, Calgary, AB T3N 1G3":
+                    src = "/img/" + (10).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "3228 E Rae Cres SE, Calgary, AB T2A 1Y3":
+                    src = "/img/" + (11).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "128 S Pinetree Rd NE, Calgary, AB T1Y 1K2":
+                    src = "/img/" + (12).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "55 E Falconer Ter NE, Calgary, AB T3J 1W3":
+                    src = "/img/" + (13).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "58 E Skyview Point Rise NE, Calgary, AB T3N 0G9":
+                    src = "/img/" + (14).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "15 Grier Pl NE, Calgary, AB T2K 5Y5":
+                    src = "/img/" + (15).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "Varsity Place Apartments, # 773175, 3607 49th St NW, Calgary, AB T3A 2H3":
+                    src = "/img/" + (16).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "1240 N 18a St NW, Calgary, AB T2N 2H4":
+                    src = "/img/" + (17).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                case "915 44th St SE, Calgary, AB T2A 5K7":
+                    src = "/img/" + (18).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
+                    break;
+                
+
+            }
+
+
+        }
+
+        // Button to favourite a listing 
+        private void FavBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
         }
     }
 }

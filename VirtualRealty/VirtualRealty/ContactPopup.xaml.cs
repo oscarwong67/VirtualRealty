@@ -46,6 +46,7 @@ namespace VirtualRealty
             TextBox box = sender as TextBox;
             box.Text = "";
             box.GotFocus -= TextBox_GotFocus;
+            box.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
 
         // If the user deselects textbox and leaves it blank, display default message
@@ -56,6 +57,7 @@ namespace VirtualRealty
             {
                 box.Text = box.Name.Equals("Message") ? "Enter your message here" : "Enter your email here";
                 box.GotFocus += TextBox_GotFocus;
+                box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
             }
         }
 

@@ -13,17 +13,18 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
-            <Button Grid.Row="1" Click="MapView_Click" Content="Switch to Map View" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"/>
+            <Button Grid.Row="1" Click="MapView_Click" Content="Switch to Map View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"/>
             <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>
-            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="354,0,0,15" VerticalAlignment="Bottom" FontSize="18" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
-                <ComboBoxItem Content="Newest" IsSelected="True" />
-                <ComboBoxItem Content="Oldest" />
-                <ComboBoxItem Content="Price (Low to High)" />
-                <ComboBoxItem Content="Price (High to Low)" />
-                <ComboBoxItem Content="Closest Proximity to Calgary" Tag="LocationSort" />
+            <ComboBox Grid.Row="1" x:Name="SortOrder" Cursor="Hand" HorizontalAlignment="Left" Margin="354,0,0,15" VerticalAlignment="Bottom" FontSize="18" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
+                <ComboBoxItem Content="Newest" IsSelected="True" Cursor="Hand" />
+                <ComboBoxItem Content="Oldest" Cursor="Hand" />
+                <ComboBoxItem Content="Price (Low to High)" Cursor="Hand" />
+                <ComboBoxItem Content="Price (High to Low)" Cursor="Hand" />
+                <ComboBoxItem Content="Closest Proximity to Calgary" Tag="LocationSort" Cursor="Hand" />
             </ComboBox>
+            <TextBlock x:FieldModifier="public" Name="ListingsHeader" Grid.Row="1" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Homes for Sale Near Calgary" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
         </Grid>
         <ScrollViewer Grid.Row="1" x:FieldModifier="public" x:Name="Viewer" HorizontalAlignment="Left" Height="520" Margin="15,155,0,0" VerticalAlignment="Top" Width="1248" Panel.ZIndex="0">
             <Grid>

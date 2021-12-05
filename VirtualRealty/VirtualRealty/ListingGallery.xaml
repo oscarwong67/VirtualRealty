@@ -5,34 +5,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualRealty"
              mc:Ignorable="d" 
-             d:DesignHeight="780" d:DesignWidth="1280">
-    <Grid Background="White" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1080" Height="682">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="380"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="8,53,0,0">
-            <StackPanel Orientation="Vertical">
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Margin" Value="0,10,0,0"/>
-                    </Style>
-                </StackPanel.Resources>
-                <Image x:Name="Gallery1" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery2" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery3" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery4" Source="/img/0.jpg" Stretch="UniformToFill" Height="230" Width="352"/>
-                <Image x:Name="Gallery5" Source="/img/0.jpg" Stretch="UniformToFill"  Height="230" Width="352"/>
-            </StackPanel>
+             d:DesignHeight="780" d:DesignWidth="1280" FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
+    <Grid x:Name="GalleryGrid">
+        <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseGallery"/>
+        <Grid Background="White" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1080" Height="682">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="380"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Margin="8,53,0,0">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="0,0,8,10"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image x:Name="Gallery0"  Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352" Cursor="Hand"/>
+                    <Image x:Name="Gallery1"  Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352" Cursor="Hand"/>
+                    <Image x:Name="Gallery2"  Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352" Cursor="Hand"/>
+                    <Image x:Name="Gallery3"  Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352" Cursor="Hand"/>
+                    <Image x:Name="Gallery4"  Stretch="UniformToFill" Height="230" MouseLeftButtonDown="ChangeBigImage" Width="352" Cursor="Hand"/>
+                </StackPanel>
 
-        </ScrollViewer>
-        <Button Content="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="75" RenderTransformOrigin="1.447,2.453" Margin="10,10,0,0" Cursor="Hand"/>
+            </ScrollViewer>
+            <Button Content="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="75" RenderTransformOrigin="1.447,2.453" Margin="10,10,0,0" Cursor="Hand" Click="CloseGallery"/>
 
-        <Image x:Name="GalleryLargeImg" Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,84,0,0" VerticalAlignment="Top" Width="680" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="GalleryBigImg" Grid.Column="1" HorizontalAlignment="Left" Height="421" Margin="10,84,0,0" VerticalAlignment="Top" Width="680" RenderTransformOrigin="0.5,0.5"/>
 
 
-        <Button Content="Back" Grid.Column="1" HorizontalAlignment="Left" Margin="141,531,0,0" VerticalAlignment="Top" Height="32" Width="75"/>
-        <Button Content="Next" Grid.Column="1" HorizontalAlignment="Left" Margin="487,531,0,0" VerticalAlignment="Top" Height="32"  Width="75"/>
+            <Button x:Name="BackBtn" Content="Back" Grid.Column="1" HorizontalAlignment="Left" Margin="141,509,0,0" VerticalAlignment="Top" Height="32" Width="75" Click="GalleryBack"/>
+            <Button x:Name="NextBtn" Content="Next" Grid.Column="1" HorizontalAlignment="Left" Margin="487,509,0,0" VerticalAlignment="Top" Height="32"  Width="75" Click="GalleryNext"/>
 
+        </Grid>
     </Grid>
 </UserControl>

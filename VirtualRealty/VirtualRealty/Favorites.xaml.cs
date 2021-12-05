@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,7 @@ namespace VirtualRealty
             this.Listings = Listings;
             foreach (Listing L in Listings)
             {
+                L.Small.ShowPurchaseOrRental();
                 switch (i % 3)
                 {
                     case 0:
@@ -55,19 +57,19 @@ namespace VirtualRealty
                         L.Small.SetListingGrid(this.FavesPgGrid);
                         //L.Small.SetListingGrid();
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        L.Small.SetDisplayImage(L);
                         break;
                     case 1:
                         CentreFaves.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.FavesPgGrid);
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        L.Small.SetDisplayImage(L);
                         break;
                     case 2:
                         RightFaves.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.FavesPgGrid);
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        L.Small.SetDisplayImage(L);
                         break;
                 }
                 i++;
@@ -120,7 +122,12 @@ namespace VirtualRealty
             }
             else
             {
-                sortedListings.Sort(new ListingComparer(ListingComparer.SortBy.Proximity));
+                Geopoint Calgary = new Geopoint(new Windows.Devices.Geolocation.BasicGeoposition() { Latitude = 51.0447, Longitude = 114.0719 });
+
+                ListingComparer Comp = new ListingComparer(ListingComparer.SortBy.Proximity);
+                Comp.SetLocation(Calgary);
+
+                sortedListings.Sort(Comp);
             }
             SetListings(sortedListings);
         }
