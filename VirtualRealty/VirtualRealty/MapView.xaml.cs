@@ -80,6 +80,7 @@ namespace VirtualRealty
 
             Layer = new MapElementsLayer();
             Layer.MapElementClick += Layer_MapElementClick;
+            
 
             foreach (Listing L in Listings)
             {
@@ -89,6 +90,7 @@ namespace VirtualRealty
                 MapIcon Pin = new MapIcon();
                 Geopoint Location = new Geopoint(new BasicGeoposition() { Latitude = L.Latitude, Longitude = L.Longitude });
                 Pin.Location = Location;
+                Pin.Title = "Click me!";
 
                 Pin.Tag = L;
 
@@ -118,6 +120,12 @@ namespace VirtualRealty
 
                 await Task.Delay(3); // The animation will take 3 seconds
             }
+
+            foreach (MapIcon M in Layer.MapElements)
+            {
+                M.Title = "";
+            }
+
             listing.Small.SmallListingGridBorder.Fill = (Brush) (new BrushConverter().ConvertFrom("#08F4F4F5"));
         }
 
