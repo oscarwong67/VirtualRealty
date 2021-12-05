@@ -51,6 +51,7 @@ namespace VirtualRealty
             //}
 
             this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
+            if (!Listing.Purchase) this.Price.Content += " / Month";
             this.Address.Content = Listing.Address;
 
             //this.Price.Content = ListingsList.IndexOf(L) + " ";
@@ -353,11 +354,13 @@ namespace VirtualRealty
             if (this.Listing.IsFavourited)
             {
                 this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+                Listing.Small.Heart.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
                 this.Listing.IsFavourited = false;
             }
             else
             {
                 this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+                Listing.Small.Heart.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
                 this.Listing.IsFavourited = true;
             }
 

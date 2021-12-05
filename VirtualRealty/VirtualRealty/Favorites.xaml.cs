@@ -78,6 +78,7 @@ namespace VirtualRealty
 
         public void MapView_Click(Object Sender, RoutedEventArgs args)
         {
+            MainWindow.isLoaded = false;
             Switcher.Switch(MainWindow.FavouritesMapViewPage);
             List<Listing> temp = Listings;
             foreach (Listing l in temp)
@@ -86,6 +87,8 @@ namespace VirtualRealty
             }
             ClearListings();
             MainWindow.FavouritesMapViewPage.SetListings(temp);
+
+            MainWindow.FavouritesMapViewPage.SortOrder.SelectedIndex = this.SortOrder.SelectedIndex;
         }
 
         private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
