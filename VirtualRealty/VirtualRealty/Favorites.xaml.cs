@@ -57,19 +57,19 @@ namespace VirtualRealty
                         L.Small.SetListingGrid(this.FavesPgGrid);
                         //L.Small.SetListingGrid();
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        L.Small.SetDisplayImage(L);
                         break;
                     case 1:
                         CentreFaves.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.FavesPgGrid);
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        L.Small.SetDisplayImage(L);
                         break;
                     case 2:
                         RightFaves.Children.Add(L.Small);
                         L.Small.SetListingGrid(this.FavesPgGrid);
                         L.Small.SetListingInd(Listings, i);
-                        L.Small.SetDisplayImage(i);
+                        L.Small.SetDisplayImage(L);
                         break;
                 }
                 i++;

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualRealty"
              mc:Ignorable="d" 
-             d:DesignHeight="780" d:DesignWidth="1280">
+             d:DesignHeight="780" d:DesignWidth="1280" FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
     <Grid x:Name="GalleryGrid">
         <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseGallery"/>
         <Grid Background="White" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1080" Height="682">

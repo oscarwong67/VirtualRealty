@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              MouseEnter="SmallListing_MouseEnter"
              MouseLeave="SmallListing_MouseLeave"
-             d:DesignHeight="251" d:DesignWidth="400" BorderBrush="Black">
+             d:DesignHeight="251" d:DesignWidth="400" BorderBrush="Black" FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
     <Grid x:FieldModifier="public" x:Name="SmallListingGrid" Margin="0,0,0,0">
         <Rectangle x:FieldModifier="public" x:Name="SmallListingGridBorder" Fill="#08F4F4F5" HorizontalAlignment="Left" Height="251" Stroke="Black" VerticalAlignment="Top" Width="400" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
         <Image x:Name="PrimaryImage" HorizontalAlignment="Left" Height="164" VerticalAlignment="Top" Width="400" Stretch="UniformToFill" MouseLeftButtonDown="OpenBigListing" Cursor="Hand"/>
         <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" Margin="0,164,0,0" VerticalAlignment="Top" FontSize="22" Width="289" MouseLeftButtonDown="OpenBigListing" Cursor="Hand" Height="37" RenderTransformOrigin="0.498,0.419"/>
-        <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" Margin="0,199,0,0" VerticalAlignment="Top" Width="380" FontSize="12"/>
+        <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" Margin="0,199,0,0" VerticalAlignment="Top" Width="390" FontSize="12"/>
         <Label x:Name="Type" Content="Label" HorizontalAlignment="Left" Margin="35,225,0,0" VerticalAlignment="Top"/>
         <Label x:Name="BedBath" Content="Label" HorizontalAlignment="Left" Margin="176,225,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Size" Content="Label" HorizontalAlignment="Left" Margin="299,225,0,0" VerticalAlignment="Top"/>

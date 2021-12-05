@@ -184,6 +184,8 @@ namespace VirtualRealty
                     break;
 
             }
+        }
+
         private void SmallListing_MouseEnter(object sender, MouseEventArgs e)
         {
             SmallListingDropShadow.Visibility = Visibility.Visible;

@@ -45,6 +45,17 @@ namespace VirtualRealty
             // default  gallery is gallery3
             int gallery = 3;
 
+            // not working (doesnt jump to img upon opening gallery)
+            int jumpTo = btn.Last() - '0';
+            if(jumpTo == 1)
+            {
+                Gallery1.BringIntoView();
+            }
+            else if(jumpTo == 2)
+            {
+                Gallery2.BringIntoView();
+            }
+
             // listing 1 (when sorted by new)
             if(addr.Equals("Pineridge Apartments, # 772706, 433 Pinestream Pl NE, Calgary, AB T1Y 3A5"))
             {
@@ -67,7 +78,7 @@ namespace VirtualRealty
             }
 
             string newImg = "/img/gallery" + gallery.ToString();
-            this.Gallery0.Source = new BitmapImage(new Uri(newImg+"/0.jpg", UriKind.Relative));
+            this.Gallery0.Source = new BitmapImage(new Uri(newImg+"/0.jpg", UriKind.Relative));    
             this.Gallery1.Source = new BitmapImage(new Uri(newImg+"/1.jpg", UriKind.Relative));
             this.Gallery2.Source = new BitmapImage(new Uri(newImg+"/2.jpg", UriKind.Relative));
             this.Gallery3.Source = new BitmapImage(new Uri(newImg+"/3.jpg", UriKind.Relative));

@@ -44,6 +44,11 @@ namespace VirtualRealty
                 this.NextBtn.Visibility = Visibility.Collapsed;
             }
 
+            // Set image of favourite
+            //if(L.IsFavourited)
+            //{
+            //    this.MapImage.Source = new BitmapImage(new Uri(@"/icons/favouritesIcon.png", UriKind.Relative));
+            //}
 
             this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
             this.Address.Content = Listing.Address;
@@ -169,17 +174,6 @@ namespace VirtualRealty
             BigListingGrid.Children.Add(gallery);
 
         }
-
-
-        //public void SetThumbnailImages(int i)
-        //{
-        //    string src = "/img/" + i.ToString() + ".jpg";
-        //
-        //    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-        //    this.SmallImage1.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-        //    this.SmallImage2.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-        //
-        //}
 
         public void SetMapImage()
         {
@@ -340,6 +334,13 @@ namespace VirtualRealty
             }
 
 
+        }
+
+        // Button to favourite a listing 
+        private void FavBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
         }
     }
 }
