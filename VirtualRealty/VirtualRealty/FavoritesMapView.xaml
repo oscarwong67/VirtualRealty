@@ -50,10 +50,10 @@
                     Background="#23A6F0"
                     Foreground="White"/>
             <TextBlock Grid.Row="1" x:FieldModifier="public" x:Name="FavoritesMapViewLabel" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="All of Your Favourites" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
-            <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="556,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
+            <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>
-            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="654,0,0,15" VerticalAlignment="Bottom" FontSize="18" Cursor="Hand" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
+            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="354,0,0,15" VerticalAlignment="Bottom" FontSize="18" Cursor="Hand" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
                 <ComboBoxItem Content="Date Favourited (Newest)" IsSelected="True" Cursor="Hand" />
                 <ComboBoxItem Content="Date Favourited (Oldest)" Cursor="Hand" />
                 <ComboBoxItem Content="Newest" Cursor="Hand" />
