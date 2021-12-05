@@ -282,6 +282,7 @@ namespace VirtualRealty
 
         private void ApplyThisSearch_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.LP = new ListingsPage();
             MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, PriceMin:MinPrice, PriceMax:MaxPrice, Types:HomeType, MinBeds:MinBeds, MaxBeds:MaxBeds, MinBaths:MinBaths, MaxBaths:MaxBaths, MinSize:MinSqFt, MaxSize:MaxSqFt, MaxListingAge:MaxAgeOfListingInDays, MinYear:MinYearBuilt, MaxYear:MaxYearBuilt, Washer:hasWasherDryer, Parking:hasParking, Purchase:isPurchase));
             string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationSearchString != null && locationSearchString.Length > 0) ? " near " + locationSearchString : "");
             MainWindow.LP.ListingsHeader.Text = searchHeader;

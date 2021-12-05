@@ -13,17 +13,18 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280" x:Name="SavedSearchesTopBar" x:FieldModifier="public"/>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Saved Searches" VerticalAlignment="Top" Margin="0,2,10,0" FontSize="36" />
-            <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,0" VerticalAlignment="Center" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
+            <Rectangle HorizontalAlignment="Left" Height="100" Margin="141,0,0,0" VerticalAlignment="Top" Width="972" Fill="White"/>
+            <TextBlock HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Saved Searches" VerticalAlignment="Top" Margin="0,44,180,0" FontSize="36" />
+            <ComboBox x:Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,60,0,0" VerticalAlignment="Top" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>
-            <ComboBox Grid.Row="1" x:Name="SortOrder" HorizontalAlignment="Left" Margin="433,0,0,0" VerticalAlignment="Center" FontSize="18" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
+            <ComboBox x:Name="SortOrder" HorizontalAlignment="Left" Margin="433,60,0,0" VerticalAlignment="Top" FontSize="18" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">
                 <ComboBoxItem Content="Last Accessed" IsSelected="True" />
                 <ComboBoxItem Content="Date Saved (Newest)" />
                 <ComboBoxItem Content="Date Saved (Oldest)" />
             </ComboBox>
         </Grid>
-        <ScrollViewer Height="520" Width="1248" Margin="5,155,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <ScrollViewer Height="574" Width="1248" Margin="5,101,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <StackPanel Name="SavedSearchesSection" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         </ScrollViewer>
     </Grid>
