@@ -51,6 +51,7 @@ namespace VirtualRealty
             //}
 
             this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
+            if (!Listing.Purchase) this.Price.Content += " / Month";
             this.Address.Content = Listing.Address;
 
             //this.Price.Content = ListingsList.IndexOf(L) + " ";
