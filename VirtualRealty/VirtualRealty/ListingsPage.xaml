@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:VirtualRealty"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
-             d:DesignHeight="720" d:DesignWidth="1280">
+             d:DesignHeight="720" d:DesignWidth="1280" FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
     <UserControl.Resources>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
         <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
@@ -46,10 +46,10 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280" x:Name="LPTopBar" x:FieldModifier="public"/>
-            <Button Template="{DynamicResource RoundedBlueBtn}" Grid.Row="1" Click="MapView_Click" Content="Switch to Map View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="18" Width="173"
+            <Button Template="{DynamicResource RoundedBlueBtn}" Grid.Row="1" Click="MapView_Click" Content="Switch to Map View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="16" Width="173"
                     Background="#23A6F0"
                     Foreground="White" Height="30"/>
-            <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
+            <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="248,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>
             <ComboBox Grid.Row="1" x:Name="SortOrder" Cursor="Hand" HorizontalAlignment="Left" Margin="354,0,0,15" VerticalAlignment="Bottom" FontSize="18" SelectionChanged="SortOrder_SelectionChanged" MinWidth="150">

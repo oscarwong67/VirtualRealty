@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:VirtualRealty"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="VirtualRealty.Top_Bar"
         mc:Ignorable="d" 
-        d:DesignHeight="120" d:DesignWidth="1280" Height="120" Width="1280">
+        d:DesignHeight="120" d:DesignWidth="1280" Height="120" Width="1280"
+        FontFamily="/VirtualRealty;component/Fonts/Montserrat/#Montserrat">
     <UserControl.Resources>
         <Style x:Key="HoverStyle" TargetType="TextBlock">
             <Setter Property="Background" Value="White"/>
@@ -69,7 +70,7 @@
         <Button Click="GoToHomePage" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White" BorderBrush="White" Width="142" Margin="0,16,0,0">
             <Image Source="logo.png" Height="54" Width="136" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
-        <TextBox x:Name="Location" Text="Enter your city or neighborhood" KeyDown="OnLocationInputKeyDownHandler" Foreground="#FF555555" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="25,33,142,63" Grid.Column="1" Grid.ColumnSpan="3" Cursor="IBeam" FontSize="16" />
+        <TextBox x:Name="Location" Text="Enter your city or neighborhood" KeyDown="OnLocationInputKeyDownHandler" Foreground="#FF555555" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="25,33,142,63" Grid.Column="1" Grid.ColumnSpan="3" Cursor="IBeam" FontSize="14" />
 
         <ComboBox Text="Price" x:Name="Price" Grid.ColumnSpan="2" Margin="19,25,116,55" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" Panel.ZIndex="0">
             <Grid Width="210" Height="180">
@@ -208,7 +209,7 @@
         <TextBlock Margin="97,27,57,57" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" Width="130.444444444445"/>
         <TextBlock Name="MoreFiltersLabel" Margin="101,33,0,0" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Height="22" TextAlignment="Left" Text="More Filters" Width="124" Grid.ColumnSpan="2"/>
 
-        <RadioButton x:Name="Purchase" IsChecked="True" Content="Purchase" HorizontalAlignment = "Center" VerticalAlignment = "Top" Grid.Column="1" Margin="0,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Cursor="Hand" Height="20" Width="87" FontSize="16"/>
+        <RadioButton x:Name="Purchase" IsChecked="True" Content="Purchase" HorizontalAlignment = "Center" VerticalAlignment = "Top" Grid.Column="1" Margin="0,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Cursor="Hand" Height="20" Width="98" FontSize="16"/>
         <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="131,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Grid.ColumnSpan="2" Cursor="Hand" FontSize="16"/>
         <Button Content="🔍" Click="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="26" Grid.Column="2" Cursor="Hand" Height="24" FontSize="16" Margin="117,33,0,0" Grid.ColumnSpan="2"
                 Background="#23A6F0" Foreground="White"/>
@@ -238,7 +239,9 @@
                     <TextBox x:Name="NameThisSearch" Grid.Column="0" Text="Name this Search" GotFocus="NameThisSearch_GotFocus" LostFocus="NameThisSearch_LostFocus" TextChanged="NameThisSearch_TextChanged"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="1" Padding="0,5,5,5" >
-                    <Button Content="Save" Click="SaveSearch" Cursor="Hand"/>
+                    <Button Template="{DynamicResource RoundedBlueBtn}" Content="Save" Click="SaveSearch" Cursor="Hand"
+                            Background="#23A6F0"
+                            Foreground="White"/>
                 </Border>
             </Grid>
         </Popup>

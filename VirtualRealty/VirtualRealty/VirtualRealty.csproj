@@ -28,6 +28,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Fonts\Montserrat\Montserrat-Black.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-BlackItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-Bold.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-BoldItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-ExtraBold.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-ExtraBoldItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-ExtraLight.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-ExtraLightItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-Italic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-Light.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-LightItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-Medium.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-MediumItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-Regular.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-SemiBold.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-SemiBoldItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-Thin.ttf" />
+	  <None Remove="Fonts\Montserrat\Montserrat-ThinItalic.ttf" />
+	  <None Remove="Fonts\Montserrat\OFL.txt" />
 	  <None Remove="icons\eye.png" />
 	  <None Remove="icons\new.png" />
 	  <None Remove="icons\unfavouritedIcon.png" />
@@ -90,6 +109,25 @@
 	<ItemGroup>
 	  <Resource Include="assets\logo.png" />
 	  <Resource Include="assets\Pushpin.png" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-Black.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-BlackItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-Bold.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-BoldItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-ExtraBold.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-ExtraBoldItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-ExtraLight.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-ExtraLightItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-Italic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-Light.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-LightItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-Medium.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-MediumItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-Regular.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-SemiBold.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-SemiBoldItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-Thin.ttf" />
+	  <Resource Include="Fonts\Montserrat\Montserrat-ThinItalic.ttf" />
+	  <Resource Include="Fonts\Montserrat\OFL.txt" />
 	  <Resource Include="icons\eye.png" />
 	  <Resource Include="icons\new.png" />
 	  <Resource Include="icons\unfavouritedIcon.png" />

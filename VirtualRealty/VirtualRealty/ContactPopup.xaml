@@ -70,7 +70,7 @@
                         Foreground="White"/>
 
                 <!-- Copy Buttons -->
-                <Button x:Name="EmailCopy" Content="Copy" HorizontalAlignment="Left" Margin="287,131,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick" Cursor="Hand"/>
+                <Button x:Name="EmailCopy" Content="Copy" HorizontalAlignment="Left" Margin="292,131,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick" Cursor="Hand"/>
                 <Button x:Name="PhoneCopy" Content="Copy" HorizontalAlignment="Left" Margin="240,167,0,0" VerticalAlignment="Top" Width="74" Click="CopyBtnClick" Cursor="Hand"/>
                 <Button x:Name="ListingIDCopy" Content="Copy" HorizontalAlignment="Left" Margin="186,201,0,0" VerticalAlignment="Top" Width="76" Click="CopyBtnClick" Cursor="Hand"/>
                 <Button x:Name="AddressCopy" Content="Copy" HorizontalAlignment="Left" Margin="693,237,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick" Cursor="Hand"/>
