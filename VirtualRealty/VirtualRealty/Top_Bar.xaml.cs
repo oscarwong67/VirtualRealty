@@ -141,40 +141,23 @@ namespace VirtualRealty
             List<HomeType> homeTypesList = homeTypes.ToList();
 
             string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near " + locationInput : "");
-            if (this.Tag != null && this.Tag.Equals("FavoritesMapViewTopBar"))
+            if (MainWindow.ContentPane.Children[0] == MainWindow.FavesTopbar)
             {
                 MainWindow.FavouritesMapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
                 MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
-                //Switcher.Switch(MainWindow.FavouritesMapViewPage);
-                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
-                // MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.applyAllLabelText();
-            } else if (this.Tag != null && this.Tag.Equals("FavoritesTopBar"))
-            {
                 MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
-                MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
-                MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
-                //Switcher.Switch(MainWindow.FavouritesPage);
-                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
-                // MainWindow.FavouritesPage.FavesTopBar.applyAllLabelText();
-            } else if (this.Tag != null && this.Tag.Equals("MapViewTopBar")) {
+            }
+            else
+            {
                 MainWindow.MapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
                 MainWindow.LP.ListingsHeader.Text = searchHeader;
                 MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
-                //Switcher.Switch(MainWindow.MapViewPage);
-                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
-                // MainWindow.MapViewPage.MapViewTopBar.applyAllLabelText();
-            } else
-            {
                 MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
-                MainWindow.LP.ListingsHeader.Text = searchHeader;
-                MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
-                //Switcher.Switch(MainWindow.LP);
-                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
-                // MainWindow.LP.LPTopBar.copyPropertiesFrom(this);
-                // MainWindow.LP.LPTopBar.applyAllLabelText();
-                MainWindow.isLoaded = true;
+
             }
+
+            Switcher.Switch((MainWindow.ContentPane.Children[1] as UserControl));
         }
 
         private void ToggleSavingSearch(object sender, RoutedEventArgs e)

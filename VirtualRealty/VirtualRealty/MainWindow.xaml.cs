@@ -30,6 +30,7 @@ namespace VirtualRealty
         public static FavoritesMapView FavouritesMapViewPage = new FavoritesMapView();
         public static Top_Bar Topbar;
         public static Top_Bar FavesTopbar;
+        public static Canvas ContentPane;
         public static bool isLoaded = false;
 
         public MainWindow()
@@ -48,6 +49,8 @@ namespace VirtualRealty
 
 
             InitializeComponent();
+
+            ContentPane = large;
 
             large.Children.Add(Topbar);
 
