@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Title="VirtualRealty" Height="720" Width="1280" ResizeMode="NoResize">
-    <StackPanel x:Name="large"/>
+    <Canvas x:Name="large"/>
 
 
 </Window>

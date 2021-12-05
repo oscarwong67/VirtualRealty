@@ -37,7 +37,7 @@
         <Button Click="GoToHomePage" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White" BorderBrush="White" Width="142" Margin="0,16,0,0">
             <Image Source="logo.png" Height="54" Width="136" Stretch="UniformToFill" Cursor="Hand"/>
         </Button>
-        <TextBox x:Name="Location" Text="Enter your city or neighborhood" KeyDown="OnLocationInputKeyDownHandler" Foreground="#FF555555" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="25,33,142,63" Grid.Column="1" Grid.ColumnSpan="3" Cursor="IBeam" FontSize="16" />
+        <TextBox x:Name="Location" Text="Enter your city or neighborhood" KeyDown="OnLocationInputKeyDownHandler" Foreground="#FF555555" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="17,33,9,63" Grid.Column="1" Grid.ColumnSpan="2" Cursor="IBeam" FontSize="16" />
 
         <ComboBox Text="Price" x:Name="Price" Grid.ColumnSpan="2" Margin="19,25,116,55" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged" IsSynchronizedWithCurrentItem="True" Cursor="Hand" Panel.ZIndex="0">
             <Grid Width="210" Height="180">
@@ -176,8 +176,8 @@
         <TextBlock Margin="97,27,57,57" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2" Width="130.444444444445"/>
         <TextBlock Name="MoreFiltersLabel" Margin="101,33,0,0" Grid.Column="6" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Height="22" TextAlignment="Left" Text="More Filters" Width="124" Grid.ColumnSpan="2"/>
 
-        <RadioButton x:Name="Purchase" IsChecked="True" Content="Purchase" HorizontalAlignment = "Center" VerticalAlignment = "Top" Grid.Column="1" Margin="0,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Cursor="Hand" Height="20" Width="87" FontSize="16"/>
-        <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="131,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Grid.ColumnSpan="2" Cursor="Hand" FontSize="16"/>
+        <RadioButton x:Name="Purchase" IsChecked="True" Content="Purchase" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="19,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Cursor="Hand" Height="20" Width="87" FontSize="16"/>
+        <RadioButton x:Name="Rent" Content="Rent" HorizontalAlignment = "Left" VerticalAlignment = "Top" Grid.Column="1" Margin="123,77,0,0" GroupName="BuyType" Checked="PurchaseCheck" Grid.ColumnSpan="2" Cursor="Hand" FontSize="16"/>
         <Button Content="🔍" Click="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="26" Grid.Column="2" Cursor="Hand" Height="24" FontSize="16" Margin="117,33,0,0" Grid.ColumnSpan="2"/>
         <Button x:FieldModifier="public" x:Name="SavedSearchesButton" Click="GoToSavedSearches" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="7" RenderTransformOrigin="0.5,0.5" Background="White" BorderBrush="White" Margin="132,21,0,0" Cursor="Hand" Grid.ColumnSpan="2">
             <Image Margin="0,0,0,0" Source="icons/savedSearchesIcon.png" Height="45" Width="47" Stretch="UniformToFill" Cursor="Hand"/>

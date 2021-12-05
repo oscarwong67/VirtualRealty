@@ -37,8 +37,8 @@ namespace VirtualRealty
             Topbar = new Top_Bar();
             Topbar.Height = 100;
             Topbar.Width = 1280;
-            Topbar.BorderBrush = Brushes.SlateGray;
-            Topbar.BorderThickness = new Thickness(2);
+            //Topbar.BorderBrush = Brushes.SlateGray;
+            //Topbar.BorderThickness = new Thickness(2);
 
             
 
