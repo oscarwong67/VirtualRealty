@@ -143,6 +143,7 @@
                 </ComboBox>
                 <Label Content="—"/>
                 <ComboBox Text="Max" x:Name="MaxSqFt" Cursor="Hand" Width="60" Height="25" IsEditable="True" IsReadOnly="True" SelectionChanged="MaxSelected">
+                    <ComboBoxItem Content="Any"/>
                     <ComboBoxItem Content="500"/>
                     <ComboBoxItem Content="750"/>
                     <ComboBoxItem Content="1000"/>
@@ -155,7 +156,6 @@
                     <ComboBoxItem Content="3000"/>
                     <ComboBoxItem Content="4000"/>
                     <ComboBoxItem Content="7000"/>
-                    <ComboBoxItem Content="Any"/>
                 </ComboBox>
             </StackPanel>
             <Label FontWeight="Bold" Content="Max Age of Listing"/>

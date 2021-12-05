@@ -122,7 +122,7 @@ namespace VirtualRealty
                 locationInput = Location.Text;
             }
 
-            if (AgeListing.Text != "")
+            if (!AgeListing.Text.Equals("") && !AgeListing.Text.Equals("—"))
             {
                 ageOfListing = Int32.Parse(AgeListing.Text);
             }
@@ -130,6 +130,7 @@ namespace VirtualRealty
             List<HomeType> homeTypesList = homeTypes.ToList();
 
             MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
+
             string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near " + locationInput : "");
             MainWindow.LP.ListingsHeader.Text = searchHeader;
             MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
