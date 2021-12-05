@@ -37,6 +37,9 @@ namespace VirtualRealty
             MapViewer2.Loaded += MapControl_Loaded;
             MapViewer2.ActualCameraChanged += MapControl_Moved;
 
+
+            MapViewer2.Layers.Add(Layer2);
+
         }
 
 
@@ -68,8 +71,6 @@ namespace VirtualRealty
 
                 Layer2.MapElements.Add(Pin);
             }
-
-            MapViewer2.Layers.Add(Layer2);
         }
 
         private async void Layer_MapElementClick(MapElementsLayer sender, MapElementsLayerClickEventArgs args)

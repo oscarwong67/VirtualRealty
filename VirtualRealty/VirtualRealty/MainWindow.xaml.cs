@@ -31,6 +31,10 @@ namespace VirtualRealty
 
         public MainWindow()
         {
+            
+
+            InitializeComponent();
+
             CreateInitialSavedSearches();
             savedSearchesPage = new SavedSearches();
 
@@ -40,8 +44,6 @@ namespace VirtualRealty
             ListingsPage LP = new ListingsPage();
             Listings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
             LP.SetListings(Listing.FilterListings(Listings));
-
-            InitializeComponent();
 
             Switcher.pageSwitcher = this;
             Switcher.Switch(LP);  //initial page 
