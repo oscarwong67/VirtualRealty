@@ -134,6 +134,8 @@ namespace VirtualRealty
             List<Listing> temp = Listings;
             ClearListings();
             MainWindow.FavouritesPage.SetListings(temp);
+
+            MainWindow.FavouritesPage.SortOrder.SelectedIndex = this.SortOrder.SelectedIndex;
         }
 
         private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)

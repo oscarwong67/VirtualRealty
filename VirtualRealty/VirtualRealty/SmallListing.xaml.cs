@@ -37,11 +37,21 @@ namespace VirtualRealty
             Listing = L;
 
             this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
+            if (!Listing.Purchase) this.Price.Content += " / Month";
             this.Address.Content = Listing.Address;
             this.Type.Content = L.ListingType.ToString();
             this.BedBath.Content = Listing.Beds.ToString() + " Beds, " + Listing.Baths.ToString() + " Baths";
             this.Size.Content = Listing.size.ToString() + " sqft";
             SetDisplayImage(L);
+
+            if (!this.Listing.IsFavourited)
+            {
+                this.Heart.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+            }
+            else
+            {
+                this.Heart.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+            }
         }
 
         public void ShowPurchaseOrRental()
@@ -90,6 +100,28 @@ namespace VirtualRealty
             MainWindow.FavouritesMapViewPage.MapViewer2.Visibility = Visibility.Hidden;
 
             // Set images here
+        }
+
+        public void FavClicked(Object sender, MouseButtonEventArgs e)
+        {
+            if (Listing.IsFavourited)
+            {
+                Listing.IsFavourited = false;
+                this.Heart.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+            }
+            else
+            {
+                Listing.IsFavourited = true;
+                this.Heart.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+            }
+
+            foreach (Listing L in MainWindow.Listings)
+            {
+                if (L.Address == Listing.Address)
+                {
+                    L.IsFavourited = !L.IsFavourited;
+                }
+            }
         }
 
 
