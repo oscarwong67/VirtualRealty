@@ -28,11 +28,16 @@ namespace VirtualRealty
         public List<Listing> Listings;
         private Boolean LocationSort = false;
         private DateTime LastSorted = DateTime.Now;
+        MapElementsLayer Layer;
 
         public MapView()
         {
             InitializeComponent();
+            Create_Mapview();
+        }
 
+        public void Create_Mapview()
+        {
             MapViewer.Loaded += MapControl_Loaded;
             MapViewer.ActualCameraChanged += MapControl_Moved;
         }
@@ -59,7 +64,11 @@ namespace VirtualRealty
 
         public void ClearListings()
         {
-            MapViewer.MapElements.Clear();
+            if (Layer != null)
+            {
+                Layer.MapElements.Clear();
+            }
+            
             ListingViewer.Children.Clear();
         }
 
@@ -69,8 +78,9 @@ namespace VirtualRealty
 
             ClearListings();
 
-            MapElementsLayer Layer = new MapElementsLayer();
+            Layer = new MapElementsLayer();
             Layer.MapElementClick += Layer_MapElementClick;
+            
 
             foreach (Listing L in Listings)
             {
@@ -80,6 +90,7 @@ namespace VirtualRealty
                 MapIcon Pin = new MapIcon();
                 Geopoint Location = new Geopoint(new BasicGeoposition() { Latitude = L.Latitude, Longitude = L.Longitude });
                 Pin.Location = Location;
+                Pin.Title = "Click me!";
 
                 Pin.Tag = L;
 
@@ -109,6 +120,12 @@ namespace VirtualRealty
 
                 await Task.Delay(3); // The animation will take 3 seconds
             }
+
+            foreach (MapIcon M in Layer.MapElements)
+            {
+                M.Title = "";
+            }
+
             listing.Small.SmallListingGridBorder.Fill = (Brush) (new BrushConverter().ConvertFrom("#08F4F4F5"));
         }
 
@@ -122,6 +139,8 @@ namespace VirtualRealty
 
             // Set the map location.
             await (sender as Microsoft.Toolkit.Wpf.UI.Controls.MapControl).TrySetViewAsync(cityCenter, 11);
+
+            MainWindow.isLoaded = true;
         }
 
         public void ListView_Click(Object Sender,RoutedEventArgs args)
@@ -130,6 +149,10 @@ namespace VirtualRealty
             List<Listing> temp = Listings;
             ClearListings();
             MainWindow.LP.SetListings(temp);
+
+            MainWindow.LP.LPTopBar = this.MapViewTopBar;
+
+            MainWindow.LP.SortOrder.SelectedIndex = this.SortOrder.SelectedIndex;
         }
 
         private void SortOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)

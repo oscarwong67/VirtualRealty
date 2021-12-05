@@ -44,10 +44,8 @@
                 <RowDefinition Height="105"/>
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/>
-            <Button Template="{DynamicResource RoundedBlueBtn}" Grid.Row="1" Click="MapView_Click" Content="Switch to Map View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="18" Width="174"
-                    Background="#23A6F0"
-                    Foreground="White" Height="30"/>
+            <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280" x:Name="LPTopBar" x:FieldModifier="public"/>
+            <Button Grid.Row="1" Click="MapView_Click" Content="Switch to Map View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"/>
             <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="256,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>

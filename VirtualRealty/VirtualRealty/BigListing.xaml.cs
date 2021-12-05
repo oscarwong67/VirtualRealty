@@ -51,6 +51,7 @@ namespace VirtualRealty
             //}
 
             this.Price.Content = "$" + String.Format("{0:n0}", Listing.Price);
+            if (!Listing.Purchase) this.Price.Content += " / Month";
             this.Address.Content = Listing.Address;
 
             //this.Price.Content = ListingsList.IndexOf(L) + " ";
@@ -84,6 +85,15 @@ namespace VirtualRealty
             this.Pool.Content = Listing.Pool ? "Yes" : "No";
             this.Gym.Content = Listing.Gym ? "Yes" : "No";
             this.Elevator.Content = Listing.Elevator ? "Yes" : "No";
+
+            if (!this.Listing.IsFavourited)
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+            }
+            else
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+            }
         }
 
         public void SetBigListingInd(List<Listing> list, int i)
@@ -102,6 +112,7 @@ namespace VirtualRealty
             this.Visibility = Visibility.Collapsed;
             this.BigListingGrid.Children.Clear();
             MainWindow.MapViewPage.MapViewer.Visibility = Visibility.Visible;
+            MainWindow.FavouritesMapViewPage.MapViewer2.Visibility = Visibility.Visible;
         }
 
         // Opens the contact page popup
@@ -227,6 +238,13 @@ namespace VirtualRealty
                     this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
                     this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
                     break;
+                // first listing when sorted by price (low to high)
+                case "6503 SE Ranchview Dr NW #25, Calgary, AB T3G 1P2":
+                    src = "/img/" + (6).ToString() + ".jpg";
+                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
+                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery4/1.jpg", UriKind.Relative));
+                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery4/2.jpg", UriKind.Relative));
+                    break;
                 case "1510-1001 13th Ave SW #1510, Calgary, AB T2R 0K7":
                     src = "/img/" + (0).ToString() + ".jpg";
                     this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
@@ -253,12 +271,6 @@ namespace VirtualRealty
                     break;
                 case "711 Bearspaw Village Dr, Rocky View County, AB T3L 2P3":
                     src = "/img/" + (5).ToString() + ".jpg";
-                    this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
-                    this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
-                    this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
-                    break;
-                case "6503 SE Ranchview Dr NW #25, Calgary, AB T3G 1P2":
-                    src = "/img/" + (6).ToString() + ".jpg";
                     this.LargeImage.Source = new BitmapImage(new Uri(@src, UriKind.Relative));
                     this.SmallImage1.Source = new BitmapImage(new Uri(@"/img/gallery3/1.jpg", UriKind.Relative));
                     this.SmallImage2.Source = new BitmapImage(new Uri(@"/img/gallery3/2.jpg", UriKind.Relative));
@@ -339,8 +351,25 @@ namespace VirtualRealty
         // Button to favourite a listing 
         private void FavBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (this.Listing.IsFavourited)
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+                Listing.Small.Heart.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+                this.Listing.IsFavourited = false;
+            }
+            else
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+                Listing.Small.Heart.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+                this.Listing.IsFavourited = true;
+            }
 
-            this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+            //update the original database as well
+            foreach (Listing L in MainWindow.Listings)
+            {
+                if (L.Address == this.Listing.Address) L.IsFavourited = !L.IsFavourited;
+            }
+            
         }
     }
 }

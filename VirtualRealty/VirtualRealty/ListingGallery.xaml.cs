@@ -70,6 +70,12 @@ namespace VirtualRealty
                 galleryNum = 2;
                 gallery = 2;
             }
+            else if (addr.Equals("6503 SE Ranchview Dr NW #25, Calgary, AB T3G 1P2"))
+            {
+                SetBigImage(4);
+                galleryNum = 4;
+                gallery = 4;
+            }
             // listing 3 and onwards
             else
             {
