@@ -39,7 +39,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Resources>
- 
+
     <!-- GRID VIEW DEFAULT HEIGHT = 780 -->
     <Grid Name="BigListingGrid" HorizontalAlignment="Center" Height="780" VerticalAlignment="Top" Width="1280">
         <!--<local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/> -->
@@ -75,8 +75,8 @@
 
                 <!-- Listing Details (price, address, date, bed/bath, sqft,  type.) -->
                 <Label x:Name="Price" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="44" Margin="10,366,0,0" Height="78" Width="373"/>
-                <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" FontSize="22" Margin="10,433,0,0" VerticalAlignment="Top" Width="807" Grid.ColumnSpan="2"/>
-                <Label x:Name="Date" Content="Label" HorizontalAlignment="Right" FontSize="20" Margin="0,381,0,0" VerticalAlignment="Top" Height="50" Width="209"/>
+                <Label x:Name="Address" Content="Label" HorizontalAlignment="Left" FontSize="22" Margin="10,433,0,0" VerticalAlignment="Top" Width="816" Grid.ColumnSpan="2"/>
+                <Label x:Name="Date" Content="Label" HorizontalAlignment="Right" FontSize="20" Margin="0,381,0,0" VerticalAlignment="Top" Height="50" Width="231"/>
                 <Label x:Name="ListingDetails" Content="Label" HorizontalAlignment="Left" FontSize="24" Margin="10,493,0,0" VerticalAlignment="Top" Width="597"/>
 
                 <!-- Right column: Fav button, contact button, map -->
