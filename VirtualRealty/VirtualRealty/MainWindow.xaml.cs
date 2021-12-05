@@ -28,6 +28,7 @@ namespace VirtualRealty
         public static MapView MapViewPage = new MapView();
         public static Favorites FavouritesPage = new Favorites();
         public static FavoritesMapView FavouritesMapViewPage = new FavoritesMapView();
+        public static bool isLoaded = false;
 
         public MainWindow()
         {
@@ -146,6 +147,11 @@ namespace VirtualRealty
             };
 
             SavedSearches.savedSearches.Add(savedSearch2);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            isLoaded = true;
         }
     }
 }

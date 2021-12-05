@@ -115,8 +115,21 @@ namespace VirtualRealty
             applyBedBathLabelText();
             applyMoreFiltersLabelText();
         }
+
+        private void OnLocationInputKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Search(sender, e);
+            }
+        }
+
         private void Search(object sender, RoutedEventArgs e)
         {
+            if (AgeListing == null || MainWindow.Listings == null || !(MainWindow.isLoaded))
+            {
+                return;
+            }
             if (Location.Text != "Enter your city or neighborhood")
             {
                 locationInput = Location.Text;
@@ -129,12 +142,48 @@ namespace VirtualRealty
 
             List<HomeType> homeTypesList = homeTypes.ToList();
 
-            MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
-
             string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0) ? " near " + locationInput : "");
-            MainWindow.LP.ListingsHeader.Text = searchHeader;
-            MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
-            Switcher.Switch(MainWindow.LP);
+            if (this.Tag != null && this.Tag.Equals("FavoritesMapViewTopBar"))
+            {
+                MainWindow.FavouritesMapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
+                MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
+                MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
+                Switcher.Switch(MainWindow.FavouritesMapViewPage);
+                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
+                MainWindow.FavouritesMapViewPage.FavesMapViewTopBar = this;
+                // MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.applyAllLabelText();
+                MainWindow.isLoaded = true;
+            } else if (this.Tag != null && this.Tag.Equals("FavoritesTopBar"))
+            {
+                MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
+                MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
+                MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
+                Switcher.Switch(MainWindow.FavouritesPage);
+                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
+                MainWindow.FavouritesPage.FavesTopBar = this;
+                // MainWindow.FavouritesPage.FavesTopBar.applyAllLabelText();
+                MainWindow.isLoaded = true;
+            } else if (this.Tag != null && this.Tag.Equals("MapViewTopBar")) {
+                MainWindow.MapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
+                MainWindow.LP.ListingsHeader.Text = searchHeader;
+                MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
+                Switcher.Switch(MainWindow.MapViewPage);
+                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
+                MainWindow.MapViewPage.MapViewTopBar = this;
+                // MainWindow.MapViewPage.MapViewTopBar.applyAllLabelText();
+                MainWindow.isLoaded = true;
+            } else
+            {
+                MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
+                MainWindow.LP.ListingsHeader.Text = searchHeader;
+                MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
+                Switcher.Switch(MainWindow.LP);
+                MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
+                // MainWindow.LP.LPTopBar.copyPropertiesFrom(this);
+                MainWindow.LP.LPTopBar = this;
+                // MainWindow.LP.LPTopBar.applyAllLabelText();
+                MainWindow.isLoaded = true;
+            }
         }
 
         private void ToggleSavingSearch(object sender, RoutedEventArgs e)
@@ -161,10 +210,8 @@ namespace VirtualRealty
                 box.GotFocus += PriceMinInput_GotFocus;
             }
 
-            if (priceMin >= 0)
-            {
-                applyPriceInputLabelText();
-            }
+            applyPriceInputLabelText();
+            Search(sender, e);
         }
 
         private void PriceMinInput_TextChanged(object sender, RoutedEventArgs e)
@@ -203,6 +250,9 @@ namespace VirtualRealty
             } else if (priceMin != -1 && priceMax == -1)
             {
                 PriceInputLabel.Text = "$" + priceMin / 1000 + "k+";
+            } else if (priceMin == -1 && priceMax == -1)
+            {
+                PriceInputLabel.Text = "Price";
             }
         }
 
@@ -228,10 +278,8 @@ namespace VirtualRealty
                 box.GotFocus += PriceMaxInput_GotFocus;
             }
 
-            if (priceMax > priceMin)
-            {
-                applyPriceInputLabelText();
-            }
+            applyPriceInputLabelText();
+            Search(sender, e);
         }
 
         private void PriceMaxInput_TextChanged(object sender, RoutedEventArgs e)
@@ -430,6 +478,7 @@ namespace VirtualRealty
                 sizeSet = true;
             }
             applyMoreFiltersLabelText();
+            Search(sender, e);
         }
 
         private void MaxSelected(object sender, SelectionChangedEventArgs e)
@@ -452,6 +501,7 @@ namespace VirtualRealty
                 sizeSet = true;
             }
             applyMoreFiltersLabelText();
+            Search(sender, e);
         }
 
 
@@ -465,6 +515,7 @@ namespace VirtualRealty
 
             numBedMax = numBedMin; // For updating value right on click rather than having to reclick
             applyBedBathLabelText();
+            Search(sender, e);
         }
 
         private void UseExactMatchUnchecked(object sender, RoutedEventArgs e)
@@ -477,6 +528,7 @@ namespace VirtualRealty
 
             numBedMax = -1; // For updating value right on click rather than having to reclick
             applyBedBathLabelText();
+            Search(sender, e);
         }
 
         private void applyBedBathLabelText()
@@ -485,6 +537,11 @@ namespace VirtualRealty
             {
                 return;
             }
+            if (numBedMin <= 0 && numBathMin <= 0)
+            {
+                BedBathLabel.Text = "Beds & Baths";
+                return;
+            } 
             BedBathLabel.Text = "";
 
             BedBathLabel.Text += Math.Max(0, numBedMin);
@@ -565,6 +622,7 @@ namespace VirtualRealty
                 numBedMax = 5;
             }
             applyBedBathLabelText();
+            Search(sender, e);
         }
         private void NumBathCheck(object sender, RoutedEventArgs e)
         {
@@ -589,10 +647,16 @@ namespace VirtualRealty
                 numBathMin = 4;
             }
             applyBedBathLabelText();
+            Search(sender, e);
         }
 
         private void applyHomeTypeLabelText()
         {
+            if (homeTypes.Count == 0)
+            {
+                HomeTypeLabel.Text = "Home Type";
+                return;
+            }
             HomeTypeLabel.Text = "";
             foreach (HomeType h in homeTypes)
             {
@@ -631,6 +695,7 @@ namespace VirtualRealty
                 }
             }
             applyHomeTypeLabelText();
+            Search(sender, e);
         }
 
         private void HomeTypeUnchecked(object sender, RoutedEventArgs e)
@@ -658,6 +723,7 @@ namespace VirtualRealty
                 }
             }
             applyHomeTypeLabelText();
+            Search(sender, e);
         }
 
 
@@ -690,6 +756,7 @@ namespace VirtualRealty
                 washerDryerSet = false;
             }
             applyMoreFiltersLabelText();
+            Search(sender, e);
         }
 
         private void YearTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -716,6 +783,7 @@ namespace VirtualRealty
                 yearBuiltFilterSet = false;
             }
             applyMoreFiltersLabelText();
+            Search(sender, e);
         }
 
         private void AgeText_TextChanged(object sender, TextChangedEventArgs e)
@@ -740,6 +808,7 @@ namespace VirtualRealty
             {
                 maxAgeSet = false;
             }
+            Search(sender, e);
             applyMoreFiltersLabelText();
         }
 
@@ -773,6 +842,7 @@ namespace VirtualRealty
                 washerDryerSet = false;
             }
             applyMoreFiltersLabelText();
+            Search(sender, e);
         }
 
         private void PurchaseCheck(object sender, RoutedEventArgs e)
@@ -828,6 +898,7 @@ namespace VirtualRealty
             PriceMinInput.Text = (sender as TextBlock).Text;
             MaxPriceOptions.Visibility = Visibility.Visible;
             applyPriceInputLabelText();
+            Search(sender, e);
         }
 
         private void ChooseMaxPriceInput(object sender, MouseButtonEventArgs e)
@@ -844,6 +915,7 @@ namespace VirtualRealty
                 PriceMaxInput.Text = (sender as TextBlock).Text;
             }
             applyPriceInputLabelText();
+            Search(sender, e);
 
         }
 

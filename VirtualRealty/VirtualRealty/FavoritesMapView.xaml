@@ -13,9 +13,9 @@
                 <RowDefinition Height="105"/>
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280" x:Name="FavesMapViewTopBar" x:FieldModifier="public"/>
+            <local:Top_Bar Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280" x:Name="FavesMapViewTopBar" x:FieldModifier="public" Tag="FavoritesMapViewTopBar"/>
             <Button Grid.Row="1" Click="ListView_Click" Content="Switch to Map View" Cursor="Hand" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" FontSize="18" Width="165"/>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="Favourites" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
+            <TextBlock Grid.Row="1" x:FieldModifier="public" x:Name="FavoritesMapViewLabel" HorizontalAlignment="Right" Height="45" TextWrapping="Wrap" Text="All of Your Favourites" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
             <ComboBox Grid.Row="1" Name="SortOrderLabel" HorizontalAlignment="Left" Margin="556,0,0,15" VerticalAlignment="Bottom" Width="178" FontSize="18" IsReadOnly="True" IsEnabled="False">
                 <ComboBoxItem Content="Sort Order: " IsSelected="True" />
             </ComboBox>
