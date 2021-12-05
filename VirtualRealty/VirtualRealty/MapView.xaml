@@ -26,10 +26,10 @@
             </ComboBox>
             <TextBlock x:FieldModifier="public" Name="MapViewHeader" Grid.Row="1" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Homes for Sale Near Calgary" VerticalAlignment="Top" Margin="0,2,20,0" FontSize="36" />
         </Grid>
-        <Grid Margin="0,155,428,0">
-            <Controls:MapControl x:Name="MapViewer" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760"/>
+        <Grid Margin="0,155,428,0" MaxWidth="838">
+            <Controls:MapControl x:Name="MapViewer" MapServiceToken="n4SwISsG3bGTljC5Z3Tk~l-OwVP9iSAx6EqO1HMyhdQ~AiCExZh0kbW6ciH98aJZRKb_TW58Kyponu3JazAS-GhveBQ2ZmuwNgr6YmMP1760" Width="838" Height="620" Margin="-11,0,25,5"/>
         </Grid>
-        <ScrollViewer Margin="838,155,0,0">
+        <ScrollViewer Margin="838,155,0,0" Height="620" MaxWidth="450">
             <StackPanel x:Name="ListingViewer"/>
         </ScrollViewer>
 
