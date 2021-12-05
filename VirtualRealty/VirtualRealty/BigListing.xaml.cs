@@ -84,6 +84,15 @@ namespace VirtualRealty
             this.Pool.Content = Listing.Pool ? "Yes" : "No";
             this.Gym.Content = Listing.Gym ? "Yes" : "No";
             this.Elevator.Content = Listing.Elevator ? "Yes" : "No";
+
+            if (!this.Listing.IsFavourited)
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+            }
+            else
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+            }
         }
 
         public void SetBigListingInd(List<Listing> list, int i)
@@ -102,6 +111,7 @@ namespace VirtualRealty
             this.Visibility = Visibility.Collapsed;
             this.BigListingGrid.Children.Clear();
             MainWindow.MapViewPage.MapViewer.Visibility = Visibility.Visible;
+            MainWindow.FavouritesMapViewPage.MapViewer2.Visibility = Visibility.Visible;
         }
 
         // Opens the contact page popup
@@ -340,8 +350,23 @@ namespace VirtualRealty
         // Button to favourite a listing 
         private void FavBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (this.Listing.IsFavourited)
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/unfavouritedIcon.png", UriKind.Relative));
+                this.Listing.IsFavourited = false;
+            }
+            else
+            {
+                this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+                this.Listing.IsFavourited = true;
+            }
 
-            this.FavBtnImg.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
+            //update the original database as well
+            foreach (Listing L in MainWindow.Listings)
+            {
+                if (L.Address == this.Listing.Address) L.IsFavourited = !L.IsFavourited;
+            }
+            
         }
     }
 }
