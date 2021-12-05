@@ -132,6 +132,7 @@ namespace VirtualRealty
 
         public void ListView_Click(Object Sender, RoutedEventArgs args)
         {
+            MainWindow.isLoaded = false;
             Switcher.Switch(MainWindow.FavouritesPage);
             List<Listing> temp = Listings;
             ClearListings();

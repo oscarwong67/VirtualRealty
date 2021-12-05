@@ -72,6 +72,7 @@ namespace VirtualRealty
 
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
+            MainWindow.isLoaded = false;
             List<Listing> listings = Listing.FilterListings(MainWindow.Listings);
             MainWindow.LP = new ListingsPage();
             listings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
@@ -82,6 +83,7 @@ namespace VirtualRealty
 
         void GoToFavorites(object sender, RoutedEventArgs e)
         {
+            MainWindow.isLoaded = false;
             MainWindow.FavouritesPage = new Favorites();
             Switcher.Switch(MainWindow.FavouritesPage);
             MainWindow.LP.ClearListings();
@@ -101,6 +103,7 @@ namespace VirtualRealty
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
         {
+            MainWindow.isLoaded = false;
             MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderBrush = Brushes.SlateGray;
             MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderThickness = new Thickness(2);
 
