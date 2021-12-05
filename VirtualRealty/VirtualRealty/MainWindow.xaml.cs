@@ -29,6 +29,7 @@ namespace VirtualRealty
         public static Favorites FavouritesPage = new Favorites();
         public static FavoritesMapView FavouritesMapViewPage = new FavoritesMapView();
         public static Top_Bar Topbar;
+        public static Top_Bar FavesTopbar;
         public static bool isLoaded = false;
 
         public MainWindow()
@@ -40,7 +41,11 @@ namespace VirtualRealty
             //Topbar.BorderBrush = Brushes.SlateGray;
             //Topbar.BorderThickness = new Thickness(2);
 
-            
+            FavesTopbar = new Top_Bar();
+            FavesTopbar.Height = 100;
+            FavesTopbar.Width = 1280;
+
+
 
             InitializeComponent();
 
@@ -77,7 +82,29 @@ namespace VirtualRealty
 
         public void Navigate(UserControl nextPage)
         {
-            if (large.Children.Count > 1) this.large.Children.Remove(large.Children[1]);
+
+            if (large.Children.Count > 1)
+            {
+
+                if ((large.Children[1] == LP || large.Children[1] == MapViewPage) && nextPage == FavouritesPage)
+                {
+                    //We are changing from non favourite to favourite
+                    large.Children.Clear();
+                    large.Children.Add(FavesTopbar);
+                    FavesTopbar.Search(new object(), new RoutedEventArgs());
+                }
+                else if ((large.Children[1] == FavouritesMapViewPage || large.Children[1] == FavouritesPage) && nextPage == LP)
+                {
+                    //going from favourite to non-favorite
+                    large.Children.Clear();
+                    large.Children.Add(Topbar);
+                    Topbar.Search(new object(), new RoutedEventArgs());
+                }
+                else
+                {
+                    large.Children.Remove(large.Children[1]);
+                }
+            }
             this.large.Children.Add(nextPage);
         }
 

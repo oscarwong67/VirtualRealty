@@ -122,7 +122,7 @@ namespace VirtualRealty
             }
         }
 
-        private void Search(object sender, RoutedEventArgs e)
+        public void Search(object sender, RoutedEventArgs e)
         {
             if (AgeListing == null || MainWindow.Listings == null || !(MainWindow.isLoaded))
             {
@@ -146,7 +146,7 @@ namespace VirtualRealty
                 MainWindow.FavouritesMapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
                 MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
-                Switcher.Switch(MainWindow.FavouritesMapViewPage);
+                //Switcher.Switch(MainWindow.FavouritesMapViewPage);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
                 // MainWindow.FavouritesMapViewPage.FavesMapViewTopBar.applyAllLabelText();
             } else if (this.Tag != null && this.Tag.Equals("FavoritesTopBar"))
@@ -154,14 +154,14 @@ namespace VirtualRealty
                 MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
                 MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
-                Switcher.Switch(MainWindow.FavouritesPage);
+                //Switcher.Switch(MainWindow.FavouritesPage);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
                 // MainWindow.FavouritesPage.FavesTopBar.applyAllLabelText();
             } else if (this.Tag != null && this.Tag.Equals("MapViewTopBar")) {
                 MainWindow.MapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
                 MainWindow.LP.ListingsHeader.Text = searchHeader;
                 MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
-                Switcher.Switch(MainWindow.MapViewPage);
+                //Switcher.Switch(MainWindow.MapViewPage);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
                 // MainWindow.MapViewPage.MapViewTopBar.applyAllLabelText();
             } else
@@ -169,7 +169,7 @@ namespace VirtualRealty
                 MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
                 MainWindow.LP.ListingsHeader.Text = searchHeader;
                 MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
-                Switcher.Switch(MainWindow.LP);
+                //Switcher.Switch(MainWindow.LP);
                 MainWindow.isLoaded = false; // set this to false so we don't accidentally start searching
                 // MainWindow.LP.LPTopBar.copyPropertiesFrom(this);
                 // MainWindow.LP.LPTopBar.applyAllLabelText();
