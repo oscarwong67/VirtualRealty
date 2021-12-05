@@ -78,6 +78,7 @@ namespace VirtualRealty
         public void MapView_Click(Object Sender, RoutedEventArgs args)
         {
             MainWindow.isLoaded = false;
+            MainWindow.MapViewPage.MapViewTopBar = MainWindow.LP.LPTopBar;
             Switcher.Switch(MainWindow.MapViewPage);
             List<Listing> temp = Listings;
             foreach (Listing l in temp) {
@@ -85,8 +86,6 @@ namespace VirtualRealty
             }
             ClearListings();
             MainWindow.MapViewPage.SetListings(temp);
-
-            MainWindow.MapViewPage.MapViewTopBar = MainWindow.LP.LPTopBar;
 
             MainWindow.MapViewPage.SortOrder.SelectedIndex = this.SortOrder.SelectedIndex;
         }
@@ -125,6 +124,11 @@ namespace VirtualRealty
                 sortedListings.Sort(Comp);
             }
             SetListings(sortedListings);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow.isLoaded = true;
         }
     }
 }

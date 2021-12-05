@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualRealty"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="720" d:DesignWidth="1280">
     <UserControl.Resources>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>

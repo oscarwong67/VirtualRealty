@@ -145,6 +145,7 @@ namespace VirtualRealty
 
         public void ListView_Click(Object Sender,RoutedEventArgs args)
         {
+            MainWindow.isLoaded = false;
             Switcher.Switch(MainWindow.LP);
             List<Listing> temp = Listings;
             ClearListings();

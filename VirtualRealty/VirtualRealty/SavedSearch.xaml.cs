@@ -301,6 +301,11 @@ namespace VirtualRealty
                 SavedSearches.savedSearches.Remove(target as SavedSearch);
             }
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow.isLoaded = true;
+        }
     }
 
     class SavedSearchComparer : IComparer<SavedSearch>

@@ -134,5 +134,10 @@ namespace VirtualRealty
             }
             SetListings(sortedListings);
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow.isLoaded = true;
+        }
     }
 }

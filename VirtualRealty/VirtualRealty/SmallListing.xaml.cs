@@ -52,6 +52,11 @@ namespace VirtualRealty
             {
                 this.Heart.Source = new BitmapImage(new Uri(@"icons/favouritesIcon.png", UriKind.Relative));
             }
+
+            if (Listing != null && Math.Abs((Listing.DateListed - DateTime.Now).TotalDays) < 8)
+            {
+                newIcon.Visibility = Visibility.Visible;
+            }
         }
 
         public void ShowPurchaseOrRental()
@@ -79,7 +84,8 @@ namespace VirtualRealty
 
         private void OpenBigListing(object sender, MouseButtonEventArgs e)
         {
-
+            newIcon.Visibility = Visibility.Hidden;
+            eyeIcon.Visibility = Visibility.Visible;
             //if(ListingPgGrid.Children.Contains(bigListing))
             //{
             //    ListingPgGrid.Children.Remove(bigListing);
