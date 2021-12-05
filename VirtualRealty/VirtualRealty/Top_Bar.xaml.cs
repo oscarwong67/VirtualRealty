@@ -72,32 +72,35 @@ namespace VirtualRealty
 
         void GoToHomePage(object sender, RoutedEventArgs e)
         {
-            MainWindow.isLoaded = false;
-            List<Listing> listings = Listing.FilterListings(MainWindow.Listings);
-            MainWindow.LP = new ListingsPage();
-            listings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
-            MainWindow.LP.SetListings(listings);
+            //MainWindow.isLoaded = false;
+            //List<Listing> listings = Listing.FilterListings(MainWindow.Listings);
+            //listings.Sort(new ListingComparer(ListingComparer.SortBy.DateListed));
+            //MainWindow.LP.SetListings(listings);
             Switcher.Switch(MainWindow.LP);
-            MainWindow.LP.SortOrder.SelectedIndex = 0;
+            //MainWindow.LP.SortOrder.SelectedIndex = 0;
+
+            MainWindow.Topbar.Search(sender, e);
         }
 
         void GoToFavorites(object sender, RoutedEventArgs e)
         {
-            MainWindow.isLoaded = false;
-            MainWindow.FavouritesPage = new Favorites();
+            //MainWindow.isLoaded = false;
+            //MainWindow.FavouritesPage = new Favorites();
             Switcher.Switch(MainWindow.FavouritesPage);
-            MainWindow.LP.ClearListings();
+            //MainWindow.LP.ClearListings();
+
+            MainWindow.FavesTopbar.Search(sender, e);
 
             // i cannot believe
-            List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).ToList();
-            listings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
-            MainWindow.FavouritesPage.SetListings(listings);
+            //List<Listing> listings = Listing.FilterListings(MainWindow.Listings, Favourite: true).ToList();
+            //listings.Sort(new ListingComparer(ListingComparer.SortBy.DateFavourited));
+            //MainWindow.FavouritesPage.SetListings(listings);
 
         }
 
         void GoToSavedSearches(object sender, RoutedEventArgs e)
         {
-            MainWindow.isLoaded = false;
+            //MainWindow.isLoaded = false;
             //MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderBrush = Brushes.SlateGray;
             //MainWindow.savedSearchesPage.SavedSearchesTopBar.SavedSearchesButton.BorderThickness = new Thickness(2);
 
@@ -147,6 +150,7 @@ namespace VirtualRealty
                 MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
                 MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
+
             }
             else
             {
@@ -157,7 +161,7 @@ namespace VirtualRealty
 
             }
 
-            Switcher.Switch((MainWindow.ContentPane.Children[1] as UserControl));
+            //Switcher.Switch((MainWindow.ContentPane.Children[1] as UserControl));
         }
 
         private void ToggleSavingSearch(object sender, RoutedEventArgs e)
