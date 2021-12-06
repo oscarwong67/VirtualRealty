@@ -149,7 +149,7 @@ namespace VirtualRealty
             string searchHeader = "Homes " + (isPurchase ? "for Purchase" : "for Rent") + ((locationInput != null && locationInput.Length > 0 && locationInput != "Enter your city or neighborhood") ? " near " + locationInput : "");
             if (this.Tag != null && this.Tag.Equals("FavoritesMapViewTopBar"))
             {
-                MainWindow.FavouritesMapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
+                MainWindow.FavouritesMapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true, locationSearchString:locationInput));
                 MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
                 Switcher.Switch(MainWindow.FavouritesMapViewPage);
@@ -159,7 +159,7 @@ namespace VirtualRealty
                 MainWindow.isLoaded = true;
             } else if (this.Tag != null && this.Tag.Equals("FavoritesTopBar"))
             {
-                MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true));
+                MainWindow.FavouritesPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, Favourite: true, locationSearchString: locationInput));
                 MainWindow.FavouritesPage.FavoritesLabel.Text = "Your Favorite " + searchHeader;
                 MainWindow.FavouritesMapViewPage.FavoritesMapViewLabel.Text = "Your Favorite " + searchHeader;
                 Switcher.Switch(MainWindow.FavouritesPage);
@@ -168,7 +168,7 @@ namespace VirtualRealty
                 // MainWindow.FavouritesPage.FavesTopBar.applyAllLabelText();
                 MainWindow.isLoaded = true;
             } else if (this.Tag != null && this.Tag.Equals("MapViewTopBar")) {
-                MainWindow.MapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
+                MainWindow.MapViewPage.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, locationSearchString: locationInput));
                 MainWindow.LP.ListingsHeader.Text = searchHeader;
                 MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
                 Switcher.Switch(MainWindow.MapViewPage);
@@ -178,7 +178,7 @@ namespace VirtualRealty
                 MainWindow.isLoaded = true;
             } else
             {
-                MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase));
+                MainWindow.LP.SetListings(Listing.FilterListings(MainWindow.Listings, priceMin, priceMax, homeTypesList, numBedMin, numBedMax, numBathMin, numBathMax, sqftMin, sqftMax, ageOfListing, yearBuiltMin, yearBuiltMax, washerDryer, parking, isPurchase, locationSearchString: locationInput));
                 MainWindow.LP.ListingsHeader.Text = searchHeader;
                 MainWindow.MapViewPage.MapViewHeader.Text = searchHeader;
                 Switcher.Switch(MainWindow.LP);
@@ -917,7 +917,7 @@ namespace VirtualRealty
             TextBox box = sender as TextBox;
             if (box.Text.Trim().Equals(string.Empty))
             {
-                box.Text = "Enter your city or neighbourhood";
+                box.Text = "Enter your city or neighborhood";
                 box.GotFocus += TextBox_GotFocus;
                 box.Foreground = new SolidColorBrush(Color.FromRgb(85, 85, 85));
             }
