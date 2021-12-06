@@ -810,7 +810,7 @@ namespace VirtualRealty
         {
             TextBox tb = sender as TextBox;
             string year = string.Empty;
-            if(tb.Text != "Min" && tb.Text != "Max")
+            if(tb.Text != "Min" && tb.Text != "Max" && tb.Text != "")
             {
                 foreach(char c in tb.Text)
                 {
@@ -820,17 +820,25 @@ namespace VirtualRealty
                     }
                 }
                 tb.Text = year;
-            }
+                
+                if(tb.Name == "MinYear")
+                {
+                    yearBuiltMin = Int32.Parse(year);
+                } else
+                {
+                    yearBuiltMax = Int32.Parse(year);
+                }
+            } else {
+                if (tb.Name == "MinYear")
+                {
+                    yearBuiltMin = -1;
+                }
+                else
+                {
+                    yearBuiltMax = -1;
+                }
 
-            if ((MinYear != null && MinYear.Text.Length > 0 && !MinYear.Text.ToUpper().Equals("MIN")) || (MaxYear != null && MaxYear.Text.Length > 0 && !MaxYear.Text.ToUpper().Equals("MAX")))
-            {
-                yearBuiltFilterSet = true;
-            } else
-            {
-                yearBuiltFilterSet = false;
             }
-            applyMoreFiltersLabelText();
-            Search(sender, e);
         }
 
         private void AgeText_TextChanged(object sender, TextChangedEventArgs e)
@@ -938,6 +946,17 @@ namespace VirtualRealty
                 box.Text = box.Name.Equals("MinYear") ? "Min" : "Max";
                 box.GotFocus += YearMinMax_GotFocus;
             }
+
+            if ((MinYear != null && MinYear.Text.Length > 0 && !MinYear.Text.ToUpper().Equals("MIN")) || (MaxYear != null && MaxYear.Text.Length > 0 && !MaxYear.Text.ToUpper().Equals("MAX")))
+            {
+                yearBuiltFilterSet = true;
+            }
+            else
+            {
+                yearBuiltFilterSet = false;
+            }
+            applyMoreFiltersLabelText();
+            Search(sender, e);
         }
         
         private void ChooseMinPriceInput(object sender, MouseButtonEventArgs e)
