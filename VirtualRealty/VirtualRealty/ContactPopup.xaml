@@ -70,10 +70,10 @@
                         Foreground="White"/>
 
                 <!-- Copy Buttons -->
-                <Button x:Name="EmailCopy" Content="Copy" HorizontalAlignment="Left" Margin="292,131,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick" Cursor="Hand"/>
-                <Button x:Name="PhoneCopy" Content="Copy" HorizontalAlignment="Left" Margin="240,167,0,0" VerticalAlignment="Top" Width="74" Click="CopyBtnClick" Cursor="Hand"/>
-                <Button x:Name="ListingIDCopy" Content="Copy" HorizontalAlignment="Left" Margin="186,201,0,0" VerticalAlignment="Top" Width="76" Click="CopyBtnClick" Cursor="Hand"/>
-                <Button x:Name="AddressCopy" Content="Copy" HorizontalAlignment="Left" Margin="693,237,0,0" VerticalAlignment="Top" Width="75" Click="CopyBtnClick" Cursor="Hand"/>
+                <Button x:Name="EmailCopy" Content="📋" BorderThickness="0" Background="#FFB4B4B4" HorizontalAlignment="Left" Margin="292,125,0,0" FontSize="22" VerticalAlignment="Top"  Click="CopyBtnClick" Cursor="Hand" ToolTip="Copy to clipboard"/>
+                <Button x:Name="PhoneCopy" Content="📋" BorderThickness="0" Background="#FFB4B4B4" HorizontalAlignment="Left" Margin="240,160,0,0" FontSize="22" VerticalAlignment="Top"  Click="CopyBtnClick" Cursor="Hand" RenderTransformOrigin="0.552,0.227" ToolTip="Copy to clipboard"/>
+                <Button x:Name="ListingIDCopy" Content="📋" BorderThickness="0" Background="#FFB4B4B4" HorizontalAlignment="Left" Margin="191,195,0,0" VerticalAlignment="Top" FontSize="22" Click="CopyBtnClick" Cursor="Hand" RenderTransformOrigin="0.575,0.292" ToolTip="Copy to clipboard"/>
+                <Button x:Name="AddressCopy" Content="📋" BorderThickness="0" Background="#FFB4B4B4" HorizontalAlignment="Left" Margin="699,230,0,0" VerticalAlignment="Top" FontSize="22" Click="CopyBtnClick" Cursor="Hand" ToolTip="Copy to clipboard"/>
 
             </Grid>
         </Grid>
