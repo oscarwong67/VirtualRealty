@@ -41,10 +41,10 @@
     </UserControl.Resources>
 
     <!-- GRID VIEW DEFAULT HEIGHT = 780 -->
-    <Grid Name="BigListingGrid" HorizontalAlignment="Center" Height="780" VerticalAlignment="Top" Width="1280">
+    <Grid Name="BigListingGrid" HorizontalAlignment="Center" Height="780" VerticalAlignment="Center" Width="1280">
         <!--<local:Top_Bar HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1280"/> -->
 
-        <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseBigListing"/>
+        <Rectangle Fill="#FF7E7E7E" Opacity=".5" MouseDown="CloseBigListing" Grid.RowSpan="2"/>
         <Button Template="{DynamicResource RoundedBlueBtn}" x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="23,364,0,0" VerticalAlignment="Top" Height="32" Width="70"  Cursor="Hand" Click="BigListingBack"
                 Background="#23A6F0"
                 Foreground="White"/>
@@ -52,7 +52,7 @@
                 Background="#23A6F0"
                 Foreground="White"/>
         <!-- SCROLL VIEW DEFAULT HEIGHT = 682 -->
-        <ScrollViewer x:Name="Viewer" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="1080" Height="682">
+        <ScrollViewer x:Name="Viewer" Background="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="1080" Height="682" Grid.RowSpan="2">
             <Grid Background="White" Height="1553">
 
                 <Grid.ColumnDefinitions>
@@ -117,6 +117,96 @@
                 <Label x:Name="Gym" Content="Gym" FontSize="18" HorizontalAlignment="Left" Margin="223,1220,0,0" VerticalAlignment="Top" Height="34" Width="147" Grid.Column="1"/>
                 <Label Content="Elevator" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="57,1288,0,-68" Width="157"/>
                 <Label x:Name="Elevator" Content="Elevator" FontSize="18" HorizontalAlignment="Left" Margin="57,1322,0,71" Width="121"/>
+                <Label Content="🚗" FontSize="22" HorizontalAlignment="Left" Margin="18,1063,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="🧺" FontSize="18" HorizontalAlignment="Left" Margin="262,1067,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="🗓️" FontSize="18" HorizontalAlignment="Left" Margin="571,1070,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="⛰️" FontSize="18" HorizontalAlignment="Left" Margin="189,1069,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="🌡️" FontSize="19" HorizontalAlignment="Left" Margin="28,1180,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="❄️" FontSize="19" HorizontalAlignment="Left" Margin="262,1178,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="🏊" FontSize="18" HorizontalAlignment="Left" Margin="569,1178,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="🏋️" FontSize="18" HorizontalAlignment="Left" Margin="189,1178,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label Content="↕️" FontSize="30" HorizontalAlignment="Left" Margin="29,1280,0,0" VerticalAlignment="Top" Height="38" Width="38" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.716"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.238"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
 
 
             </Grid>
